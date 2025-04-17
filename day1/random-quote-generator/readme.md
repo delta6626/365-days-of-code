@@ -22,6 +22,7 @@ Powered by the [Quotable API](https://api.quotable.io).
 - HTML
 - CSS
 - JavaScript
+- [Lucide icons](https://lucide.dev)
 - [Quotable API](https://api.quotable.io)
   
 ## ⚙️ How It Works
