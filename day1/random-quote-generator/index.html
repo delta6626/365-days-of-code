@@ -8,16 +8,43 @@
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
   <body>
-    <div class="mainWrapper light">
-      <div class="quoteTextArea">
-        <p class="quoteText">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-          reprehenderit a dolore autem perspiciatis, facere obcaecati similique
-          omnis veniam nesciunt, iste hic repellat iure cupiditate recusandae
-          eaque magni cumque quis?
-        </p>
+    <div class="mainWrapper">
+      <div class="topNav">
+        <div class="logo">
+          <a href="https://github.com/delta6626/" target="_blank"
+            >RandomQuotes</a
+          >
+        </div>
+        <div class="themeChanger">
+          <button class="applyDarkTheme flex">
+            <i data-lucide="moon"></i>
+          </button>
+          <button class="applyLightTheme flex hidden">
+            <i data-lucide="sun"></i>
+          </button>
+        </div>
       </div>
-      <button class="getNew">Get new quote</button>
+      <div class="quoteArea flex">
+        <div class="iconHolder">
+          <i class="quoteIcon" data-lucide="quote"></i>
+        </div>
+        <p class="quoteText">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
+          recusandae deleniti, accusamus odio quibusdam expedita aliquam
+          molestiae a obcaecati quos ab esse quaerat. Doloribus totam excepturi
+          necessitatibus voluptas consequatur illo facilis odit veritatis
+          mollitia exercitationem? Perferendis minus placeat a veritatis!
+        </p>
+        <p class="quoteAuthor">Lorem, ipsum.</p>
+        <div class="actionButtons">
+          <button class="nextQuote flex">
+            <p class="nextText">Next quote</p>
+            <p class="loaderIcon flex hidden">
+              <i class="loader" data-lucide="loader"></i>
+            </p>
+          </button>
+        </div>
+      </div>
     </div>
   </body>
   <script src="script.js"></script>
