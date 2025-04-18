@@ -56,5 +56,3 @@ No installations or dependencies needed.
 MIT License. Free to use and modify.
 
 ---
-
-Let me know if you'd like to add links to your GitHub profile, the 365-days-of-code repo, or maybe a live demo!
