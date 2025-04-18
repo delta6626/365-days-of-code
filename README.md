@@ -16,7 +16,7 @@ Hi! I'm coding every day for a year. Starting off with very simple tech like HTM
 
 I'll try to update this as I go.  
 Day 1: ✅  
-...
+Day 2: ✅
 
 ---
 
