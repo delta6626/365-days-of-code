@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MDPreviewer</title>
+    <script
+      type="text/javascript"
+      src="/static/js/codemirror-5.62.0/lib/codemirror.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper flex flex-column">
+      <div class="topNav flex align-center">
+        <div class="logo">MDPreviewer</div>
+        <div class="actionButtons flex align-center">
+          <button class="increaseFontSize">+</button>
+          <p class="fontIcon">A</p>
+          <button class="decreaseFontSize">-</button>
+          <button class="toggleScreen">Full screen</button>
+          <button class="copyHTML">Copy HTML</button>
+        </div>
+      </div>
+      <div class="contentWrapper flex">
+        <div class="textAreaWrapper flex">
+          <textarea
+            class="markdownTextArea"
+            autofocus="true"
+            placeholder="Type your markdown here.."
+          ></textarea>
+        </div>
+        <div class="previewer"></div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
