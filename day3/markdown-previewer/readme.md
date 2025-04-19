@@ -79,6 +79,6 @@ And see the preview on the right update in real time. ✨
 
 ## 📄 License
 
-This project is open-source under the MIT License.
+This project is open-source under the MIT License. Free to use and modify.
 
 ---
