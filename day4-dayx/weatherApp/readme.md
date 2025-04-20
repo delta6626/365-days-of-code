@@ -46,8 +46,7 @@ A minimalistic weather application built using **HTML**, **CSS**, and **JavaScri
 weather-app/
 ├── index.html          # Main layout
 ├── style.css           # Stylesheet (WIP)
-├── script.js           # Logic and (future) API interaction
-└── assets/             # Optional: images, fonts, icons
+└── script.js           # Logic and (future) API interaction
 ```
 
 ---
