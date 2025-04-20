@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Skye Weather</title>
+  </head>
+  <body>
+    <div class="mainWrapper">
+      <div class="left">
+        <div class="topBar">
+          <div class="logo">Skye</div>
+          <div class="searchArea">
+            <input
+              class="searchBox"
+              type="text"
+              placeholder="Enter your city"
+            />
+            <button class="search">Search</button>
+          </div>
+        </div>
+        <div class="weatherToday">
+          <div class="temperatureAndWeatherCode">
+            <p class="temperature">21 °C</p>
+            <p class="weatherCode">Rainy</p>
+          </div>
+          <div class="widgetsMain">
+            <div class="widgetRowOne">
+              <div class="feelsLike">
+                <div class="title">
+                  <i data-lucide="thermometer"></i>
+                  <p class="titleText">FEELS LIKE</p>
+                </div>
+                <div class="content">
+                  <p class="feelsLikeTemperature">30 °C</p>
+                </div>
+              </div>
+              <div class="precipitation">
+                <div class="title">
+                  <i data-lucide="droplet"></i>
+                  <p class="titleText">PRECIPITATION</p>
+                </div>
+                <div class="content">
+                  <p class="precipitationValue">2.3mm</p>
+                </div>
+              </div>
+            </div>
+            <div class="widgetRowTwo">
+              <div class="visibility">
+                <div class="title">
+                  <i data-lucide="eye"></i>
+                  <p class="titleText">VISIBILITY</p>
+                </div>
+                <div class="content">
+                  <p class="visiblity">10 Km</p>
+                </div>
+              </div>
+              <div class="humidity">
+                <div class="title">
+                  <i data-lucide="droplets"></i>
+                  <p class="titleText">HUMIDITY</p>
+                </div>
+                <div class="content">
+                  <p class="humidityValue">96%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="hourlyForecast">
+          <div class="hourlyForecastTitle">
+            <i data-lucide="clock"></i>
+            <p class="titleText">HOURLY FORECAST</p>
+          </div>
+          <div class="hourlyForecastWidgets">
+            <div class="widget currentHour">
+              <p class="hour">Now</p>
+              <p class="widgetText">28 °C</p>
+            </div>
+            <div class="widget">
+              <p class="hour">15:00</p>
+              <p class="widgetText">32 °C</p>
+            </div>
+            <div class="widget">
+              <p class="hour">15:00</p>
+              <p class="widgetText">32 °C</p>
+            </div>
+            <div class="widget">
+              <p class="hour">15:00</p>
+              <p class="widgetText">32 °C</p>
+            </div>
+            <div class="widget">
+              <p class="hour">15:00</p>
+              <p class="widgetText">32 °C</p>
+            </div>
+            <div class="widget">
+              <p class="hour">15:00</p>
+              <p class="widgetText">32 °C</p>
+            </div>
+            <div class="widget">
+              <p class="hour">15:00</p>
+              <p class="widgetText">32 °C</p>
+            </div>
+          </div>
+        </div>
+        <div class="sevenDayForecast">
+          <div class="sevenDayForecastTitle">
+            <i data-lucide="calendar"></i>
+            <p class="titleText">7 DAY FORECAST</p>
+          </div>
+          <div class="sevenDayForecastWidgets">
+            <div class="widget currentDay">
+              <p class="day">Today</p>
+              <p class="widgetText">28 °C</p>
+            </div>
+            <div class="widget">
+              <p class="day">17-4-25</p>
+              <p class="widgetText">28 °C</p>
+            </div>
+            <div class="widget">
+              <p class="day">17-4-25</p>
+              <p class="widgetText">28 °C</p>
+            </div>
+            <div class="widget">
+              <p class="day">17-4-25</p>
+              <p class="widgetText">28 °C</p>
+            </div>
+            <div class="widget">
+              <p class="day">17-4-25</p>
+              <p class="widgetText">28 °C</p>
+            </div>
+            <div class="widget">
+              <p class="day">17-4-25</p>
+              <p class="widgetText">28 °C</p>
+            </div>
+            <div class="widget">
+              <p class="day">17-4-25</p>
+              <p class="widgetText">28 °C</p>
+            </div>
+          </div>
+        </div>
+        <div class="widgetsExtra">
+          <div class="uvIndex">
+            <div class="uvIndexTitle">
+              <i data-lucide="thermometer-sun"></i>
+              <p class="titleText">UV INDEX</p>
+            </div>
+            <div class="uvIndexContent">
+              <p class="uvIndexValue">3</p>
+              <p class="indexText">Moderate</p>
+            </div>
+          </div>
+          <div class="windSpeed">
+            <div class="windSpeedTitle">
+              <i data-lucide="wind"></i>
+              <p class="titleText">WIND SPEED</p>
+            </div>
+            <div class="windSpeedContent">
+              <p class="windSpeedValue">10 Km/hr</p>
+              <p class="windSpeedText">Winds blowing North</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
