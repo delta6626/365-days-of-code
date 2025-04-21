@@ -1,4 +1,3 @@
-Absolutely! Here's the updated README with a new **📸 Screenshots** section added:
 
 ---
 
@@ -78,4 +77,3 @@ MIT License – Feel free to use, modify, and share.
 
 ---
 
-Let me know if you want help optimizing screenshots or linking to a live demo too!
