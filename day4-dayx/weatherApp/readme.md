@@ -1,22 +1,24 @@
 
 ---
 
-# 🌦️ Skye - A weather App
+# 🌦️ Skye – A Weather App
 
-A minimalistic weather application built using **HTML**, **CSS**, and **JavaScript**, powered by the **Open-Meteo API** and styled with **Lucide Icons**. This app is currently under construction, with the front-end in place and data hardcoded as placeholders for live API integration.
-
----
-
-## 🚧 Status: In Development
-
-- 🔧 The UI is mostly complete but **not yet mobile responsive**
+A minimalistic weather application built using **HTML**, **CSS**, and **JavaScript**, powered by the **[Open-Meteo API](https://open-meteo.com/)** and styled with **Lucide Icons**. The app is mostly complete. UI is still being fine-tuned for mobile responsiveness.
 
 ---
 
-## ✅ Features (So Far)
+## 🚀 Status: In Development
+
+- ✅ Backend/API integration complete – now using **live weather data**
+- 🔧 The UI is mostly complete but **not yet mobile responsive**  
+- 🛠 A few more UI tweaks remain
+
+---
+
+## ✅ Features
 
 - 🌡️ Shows current **temperature**
-- 🌤️ Displays **weather code** (e.g., sunny, cloudy, rainy)
+- 🌤️ Displays **weather condition codes** (e.g., sunny, cloudy, rainy)
 - 💧 Includes **precipitation**
 - 👁️ Shows **visibility**
 - 💦 Displays **humidity**
@@ -30,11 +32,11 @@ A minimalistic weather application built using **HTML**, **CSS**, and **JavaScri
 
 ## 🛠 Tech Stack
 
-- **HTML5** – Structure and layout
-- **CSS3** – Styling (responsive design coming soon)
-- **JavaScript** – Data handling and interactivity
-- **Lucide Icons** – Modern, open-source icons
-- **Open-Meteo API** – Free weather data (API integration coming next)
+- **HTML5** – Structure and layout  
+- **CSS3** – Styling (responsive design coming soon)  
+- **JavaScript** – Data handling, interactivity, and API calls  
+- **Lucide Icons** – Clean, open-source icon set  
+- **[Open-Meteo API](https://open-meteo.com/)** – Free, accurate weather data
 
 ---
 
@@ -44,7 +46,7 @@ A minimalistic weather application built using **HTML**, **CSS**, and **JavaScri
 weather-app/
 ├── index.html          # Main layout
 ├── style.css           # Stylesheet (WIP)
-└── script.js           # Logic and (future) API interaction
+└── script.js           # Logic and live API interaction
 ```
 
 ---
@@ -52,10 +54,14 @@ weather-app/
 ## 🔜 Next Steps
 
 - [ ] Make the app **mobile responsive**
-- [ ] Replace hardcoded values with **live data** from Open-Meteo API
-- [ ] Add **location detection** using the Geolocation API
-- [ ] Implement **error handling/loading states**
 - [ ] Optional: Add a **dark mode**
+
+---
+
+## 🙏 Acknowledgements
+
+- **[Open-Meteo](https://open-meteo.com/)** – For providing free, high-quality weather data
+- **[Lucide Icons](https://lucide.dev/)** – For modern and elegant iconography
 
 ---
 
