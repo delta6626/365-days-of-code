@@ -10,8 +10,6 @@ A minimalistic weather application built using **HTML**, **CSS**, and **JavaScri
 ## 🚧 Status: In Development
 
 - 🔧 The UI is mostly complete but **not yet mobile responsive**
-- 💾 Weather data is currently **hardcoded**
-- 🔄 Dynamic API integration and responsive design are in progress
 
 ---
 
