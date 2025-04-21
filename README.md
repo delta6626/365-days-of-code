@@ -18,6 +18,7 @@ I'll try to update this as I go.
 - Day 1 ✅: Created a random quote generator.
 - Day 2 ✅: Created a mini clone of [coolors.co](https://coolors.co)
 - Day 3 ✅: Created a simple markdown previewer
+- Day 4 ✅: Created front end for a weather app
 
 ---
 
