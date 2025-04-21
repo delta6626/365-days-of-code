@@ -1,3 +1,4 @@
+Absolutely! Here's the updated README with a new **📸 Screenshots** section added:
 
 ---
 
@@ -9,7 +10,7 @@ A minimalistic weather application built using **HTML**, **CSS**, and **JavaScri
 
 ## 🚀 Status: In Development
 
-- ✅ Backend/API integration complete – now using **live weather data**
+- ✅ Backend/API integration complete – now using **live weather data**  
 - 🔧 The UI is mostly complete but **not yet mobile responsive**  
 - 🛠 A few more UI tweaks remain
 
@@ -51,6 +52,12 @@ weather-app/
 
 ---
 
+## 📸 Screenshot
+
+![Skye Weather](assets/screenshot.png)  
+
+---
+
 ## 🔜 Next Steps
 
 - [ ] Make the app **mobile responsive**
@@ -60,7 +67,7 @@ weather-app/
 
 ## 🙏 Acknowledgements
 
-- **[Open-Meteo](https://open-meteo.com/)** – For providing free, high-quality weather data
+- **[Open-Meteo](https://open-meteo.com/)** – For providing free, high-quality weather data  
 - **[Lucide Icons](https://lucide.dev/)** – For modern and elegant iconography
 
 ---
@@ -70,3 +77,5 @@ weather-app/
 MIT License – Feel free to use, modify, and share.
 
 ---
+
+Let me know if you want help optimizing screenshots or linking to a live demo too!
