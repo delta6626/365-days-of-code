@@ -7,6 +7,7 @@
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   color: white;
+  transition: 0.2s ease-in-out;
 }
 
 :root {
@@ -67,6 +68,7 @@
 }
 
 .search {
+  min-width: 100px;
   margin-left: 1.5rem;
   padding-inline: 1rem;
   padding-block: 0.5rem;
@@ -75,6 +77,25 @@
   border-radius: var(--borderRadiusSmall);
   background-color: var(--buttonBackgroundColor);
   color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loaderIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: spin 0.8s ease-in-out infinite;
+}
+
+.hidden {
+  display: none;
+}
+
+.error {
+  border: 1px solid rgb(255, 85, 85);
+  background-color: rgb(247, 60, 60);
 }
 
 .weatherToday {
@@ -147,6 +168,8 @@
 .right {
   width: calc(60% - 2rem);
   height: 100%;
+  display: flex;
+  flex-direction: column;
   background-color: var(--rightBackgroundCOlor);
 }
 
@@ -234,4 +257,27 @@
 .uvIndexValue,
 .windSpeedValue {
   font-size: 3rem;
+}
+
+.links {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.links > a {
+  display: flex;
+  border-radius: var(--borderRadiusLarge);
+  padding: 1rem;
+  background-color: #0f032b;
+}
+
+@keyframes spin {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
 }

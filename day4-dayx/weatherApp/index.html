@@ -16,13 +16,19 @@
             <input
               class="searchBox"
               type="text"
-              placeholder="Enter your city"
+              placeholder="Search for your city.."
             />
-            <button class="search">Search</button>
+            <button class="search">
+              <p class="searchButtonText">Search</p>
+              <div class="loaderIcon hidden">
+                <i data-lucide="loader"></i>
+              </div>
+            </button>
           </div>
         </div>
         <div class="weatherToday">
           <div class="temperatureAndWeatherCode">
+            <p class="place">Dubai, United Arab Emirates</p>
             <p class="temperature">21 °C</p>
             <p class="weatherCode">Rainy</p>
           </div>
@@ -40,7 +46,7 @@
               <div class="precipitation">
                 <div class="title">
                   <i data-lucide="droplet"></i>
-                  <p class="titleText">PRECIPITATION</p>
+                  <p class="titleText">PRECIPITATION CHANCE</p>
                 </div>
                 <div class="content">
                   <p class="precipitationValue">2.3mm</p>
@@ -79,31 +85,31 @@
           <div class="hourlyForecastWidgets">
             <div class="widget currentHour">
               <p class="hour">Now</p>
-              <p class="widgetText">28 °C</p>
+              <p class="widgetText hourWidgetText">28 °C</p>
             </div>
             <div class="widget">
               <p class="hour">15:00</p>
-              <p class="widgetText">32 °C</p>
+              <p class="widgetText hourWidgetText">32 °C</p>
             </div>
             <div class="widget">
               <p class="hour">15:00</p>
-              <p class="widgetText">32 °C</p>
+              <p class="widgetText hourWidgetText">32 °C</p>
             </div>
             <div class="widget">
               <p class="hour">15:00</p>
-              <p class="widgetText">32 °C</p>
+              <p class="widgetText hourWidgetText">32 °C</p>
             </div>
             <div class="widget">
               <p class="hour">15:00</p>
-              <p class="widgetText">32 °C</p>
+              <p class="widgetText hourWidgetText">32 °C</p>
             </div>
             <div class="widget">
               <p class="hour">15:00</p>
-              <p class="widgetText">32 °C</p>
+              <p class="widgetText hourWidgetText">32 °C</p>
             </div>
             <div class="widget">
               <p class="hour">15:00</p>
-              <p class="widgetText">32 °C</p>
+              <p class="widgetText hourWidgetText">32 °C</p>
             </div>
           </div>
         </div>
@@ -115,31 +121,31 @@
           <div class="sevenDayForecastWidgets">
             <div class="widget currentDay">
               <p class="day">Today</p>
-              <p class="widgetText">28 °C</p>
+              <p class="widgetText dayWidgetText">28 °C</p>
             </div>
             <div class="widget">
               <p class="day">17-4-25</p>
-              <p class="widgetText">28 °C</p>
+              <p class="widgetText dayWidgetText">28 °C</p>
             </div>
             <div class="widget">
               <p class="day">17-4-25</p>
-              <p class="widgetText">28 °C</p>
+              <p class="widgetText dayWidgetText">28 °C</p>
             </div>
             <div class="widget">
               <p class="day">17-4-25</p>
-              <p class="widgetText">28 °C</p>
+              <p class="widgetText dayWidgetText">28 °C</p>
             </div>
             <div class="widget">
               <p class="day">17-4-25</p>
-              <p class="widgetText">28 °C</p>
+              <p class="widgetText dayWidgetText">28 °C</p>
             </div>
             <div class="widget">
               <p class="day">17-4-25</p>
-              <p class="widgetText">28 °C</p>
+              <p class="widgetText dayWidgetText">28 °C</p>
             </div>
             <div class="widget">
               <p class="day">17-4-25</p>
-              <p class="widgetText">28 °C</p>
+              <p class="widgetText dayWidgetText">28 °C</p>
             </div>
           </div>
         </div>
@@ -164,6 +170,11 @@
               <p class="windSpeedText">Winds blowing North</p>
             </div>
           </div>
+        </div>
+        <div class="links">
+          <a href="https://github.com/delta6626" target="_blank">
+            <i data-lucide="github" class="githubIcon"></i>
+          </a>
         </div>
       </div>
     </div>
