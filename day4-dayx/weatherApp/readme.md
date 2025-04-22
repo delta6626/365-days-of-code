@@ -3,15 +3,7 @@
 
 # 🌦️ Skye – A Weather App
 
-A minimalistic weather application built using **HTML**, **CSS**, and **JavaScript**, powered by the **[Open-Meteo API](https://open-meteo.com/)** and styled with **Lucide Icons**. The app is mostly complete. UI is still being fine-tuned for mobile responsiveness.
-
----
-
-## 🚀 Status: In Development
-
-- ✅ Backend/API integration complete – now using **live weather data**  
-- 🔧 The UI is mostly complete but **not yet mobile responsive**  
-- 🛠 A few more UI tweaks remain
+A minimalistic weather application built using **HTML**, **CSS**, and **JavaScript**, powered by the **[Open-Meteo API](https://open-meteo.com/)** and styled with **Lucide Icons**.
 
 ---
 
@@ -54,13 +46,6 @@ weather-app/
 ## 📸 Screenshot
 
 ![Skye Weather](assets/screenshot.png)  
-
----
-
-## 🔜 Next Steps
-
-- [ ] Make the app **mobile responsive**
-- [ ] Optional: Add a **dark mode**
 
 ---
 
