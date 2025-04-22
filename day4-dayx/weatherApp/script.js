@@ -18,8 +18,14 @@ const weatherCode = document.querySelector(".weatherCode");
 // =======================
 const feelsLikeTemperature = document.querySelector(".feelsLikeTemperature");
 const precipitationValue = document.querySelector(".precipitationValue");
-const visibility = document.querySelector(".visiblity");
+const visibility = document.querySelector(".visibilityValue");
 const humidityValue = document.querySelector(".humidityValue");
+const visibilityExtraText = document.querySelector(".visibilityExtraText");
+const humidityExtraText = document.querySelector(".humidityExtraText");
+const precipitationExtraText = document.querySelector(
+  ".precipitationExtraText"
+);
+const feelsLikeExtraText = document.querySelector(".feelsLikeExtraText");
 
 // =======================
 // Hourly Forecast Elements
@@ -106,6 +112,57 @@ function degToDirection(deg) {
   return directions[index];
 }
 
+// Get the appropriate text content for 'feels like' widget
+function getFeelsLikeText(actual, feelsLike) {
+  const diff = feelsLike - actual;
+
+  if (diff >= 4) {
+    return "Feels much warmer than the actual temperature.";
+  } else if (diff >= 2) {
+    return "Feels a bit warmer than it really is.";
+  } else if (diff <= -4) {
+    return "Feels noticeably cooler than reported.";
+  } else if (diff <= -2) {
+    return "Slightly cooler than the temperature suggests.";
+  } else {
+    return "Feels about the same as reported.";
+  }
+}
+
+// Get the appropriate text content for 'visibility' widget
+
+function getVisibilityText(km) {
+  if (km >= 10) return "Visibility is excellent — great for outdoor plans.";
+  if (km >= 5) return "Visibility is decent, but some haze is possible.";
+  if (km >= 2) return "Visibility is reduced — caution advised.";
+  return "Visibility is poor — avoid travel if possible.";
+}
+
+// Get the appropriate text content for 'humidity' widget
+
+function getHumidityText(humidity) {
+  if (humidity <= 30) return "Air is dry — stay hydrated and moisturized.";
+  if (humidity <= 60) return "Humidity is comfortable and pleasant.";
+  if (humidity <= 80) return "Feels a bit sticky or muggy at times.";
+  return "Very humid — may feel warmer and sticky.";
+}
+
+// Get the appropriate text content for 'precipitation' widget
+
+function getPrecipitationText(probability) {
+  if (probability === 0) {
+    return "No rain expected — skies look clear.";
+  } else if (probability > 0 && probability <= 30) {
+    return "Low chance of rain — likely to stay dry.";
+  } else if (probability > 30 && probability <= 60) {
+    return "Moderate chance of rain — umbrella might help.";
+  } else if (probability > 60 && probability <= 90) {
+    return "Rain likely — plan for wet conditions.";
+  } else {
+    return "Very likely to rain — grab your rain gear!";
+  }
+}
+
 // Convert UV index to category and advice
 
 function uvIndexToLevel(uv) {
@@ -128,11 +185,21 @@ function uvIndexToLevel(uv) {
 
 function renderInformaton(weatherData) {
   const currentTime = new Date().getHours();
+  const currentYearShortened = new Date(weatherData.daily.time[1])
+    .getFullYear()
+    .toString()
+    .slice(2);
 
   // Render 7-day forecast
   for (let i = 0; i <= 6; i++) {
     sevenDayForecastDays[i].innerText =
-      i !== 0 ? weatherData.daily.time[i] : "Today";
+      i !== 0
+        ? weatherData.daily.time[i].substring(
+            weatherData.daily.time[i].indexOf("-") + 1
+          ) +
+          "-" +
+          currentYearShortened
+        : "Today";
     sevenDayForecastWidgetTexts[i].innerText =
       weatherData.daily.temperature_2m_max[i] +
       " " +
@@ -159,19 +226,32 @@ function renderInformaton(weatherData) {
     weatherData.hourly.apparent_temperature[currentTime + 1] +
     " " +
     weatherData.hourly_units.temperature_2m;
+  feelsLikeExtraText.innerText = getFeelsLikeText(
+    weatherData.hourly.temperature_2m[currentTime + 1],
+    weatherData.hourly.apparent_temperature[currentTime + 1]
+  );
 
   precipitationValue.innerText =
     weatherData.hourly.precipitation_probability[currentTime + 1] +
     " " +
     weatherData.hourly_units.precipitation_probability;
+  precipitationExtraText.innerText = getPrecipitationText(
+    weatherData.hourly.precipitation_probability[currentTime + 1]
+  );
 
   visibility.innerText =
     weatherData.hourly.visibility[currentTime + 1] / 1000 + " Km";
+  visibilityExtraText.innerText = getVisibilityText(
+    weatherData.hourly.visibility[currentTime + 1] / 1000
+  );
 
   humidityValue.innerText =
     weatherData.hourly.relative_humidity_2m[currentTime + 1] +
     " " +
     weatherData.hourly_units.relative_humidity_2m;
+  humidityExtraText.innerText = getHumidityText(
+    weatherData.hourly.relative_humidity_2m[currentTime + 1]
+  );
 
   uvIndexValue.innerText = weatherData.hourly.uv_index[currentTime + 1];
   uvIndexText.innerText = uvIndexToLevel(

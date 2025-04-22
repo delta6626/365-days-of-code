@@ -3,6 +3,7 @@
 * {
   margin: 0;
   padding: 0;
+  overflow: hidden;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
@@ -36,6 +37,8 @@
   border-radius: 1rem;
   background-color: var(--leftBackgroundColor);
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .topBar {
@@ -103,6 +106,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
 }
 
 .temperatureAndWeatherCode {
@@ -151,6 +156,13 @@
   border-radius: var(--borderRadiusLarge);
 }
 
+.feelsLikeTemperature,
+.precipitationValue,
+.visibilityValue,
+.humidityValue {
+  font-size: 3rem;
+}
+
 .title {
   display: flex;
   align-items: center;
@@ -159,10 +171,6 @@
 .titleText {
   margin-left: 0.5rem;
   font-weight: 600;
-}
-
-.content {
-  font-size: 3rem;
 }
 
 .right {
@@ -220,13 +228,8 @@
   background-color: var(--currentWidgetBackgroundColor);
 }
 
-.hour,
-.day {
-  font-size: 1rem;
-}
-
 .widgetText {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .widgetsExtra {
@@ -251,7 +254,6 @@
 .windSpeedTitle {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
 }
 
 .uvIndexValue,
@@ -279,5 +281,281 @@
   }
   to {
     rotate: 360deg;
+  }
+}
+
+@media all and (max-width: 1500px) {
+  .topBar {
+    flex-direction: column;
+  }
+
+  .logo {
+    margin-bottom: 1rem;
+  }
+
+  .searchArea {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .temperatureAndWeatherCode {
+    height: 30%;
+    padding-bottom: 0;
+  }
+
+  .temperature {
+    font-size: 6rem;
+  }
+
+  .weatherCode {
+    font-size: 2rem;
+  }
+
+  .feelsLikeTemperature,
+  .precipitationValue,
+  .visibilityValue,
+  .humidityValue {
+    font-size: 2rem;
+  }
+
+  .uvIndexValue,
+  .windSpeedValue {
+    font-size: 2rem;
+  }
+
+  .hourlyForecast {
+    height: fit-content;
+  }
+
+  .hourlyForecastWidgets {
+    display: grid;
+    grid-template-columns: calc(100% / 5) calc(100% / 5) calc(100% / 5) calc(
+        100% / 5
+      );
+    row-gap: 10px;
+    grid-template-rows: 100px 100px;
+  }
+
+  .sevenDayForecast {
+    height: fit-content;
+  }
+
+  .sevenDayForecastWidgets {
+    display: grid;
+    grid-template-columns: calc(100% / 5) calc(100% / 5) calc(100% / 5) calc(
+        100% / 5
+      );
+    row-gap: 10px;
+    grid-template-rows: 100px 100px;
+  }
+
+  .widget {
+    width: 100%;
+  }
+
+  .uvIndex,
+  .windSpeed {
+    height: 80%;
+  }
+}
+
+@media all and (max-width: 1300px) {
+  .searchArea {
+    flex-direction: column;
+  }
+  .search {
+    margin-left: 0;
+    margin-top: 1rem;
+    padding-block: 1rem;
+  }
+
+  .temperature {
+    font-size: 4rem;
+  }
+
+  .widgetsMain {
+    height: auto;
+  }
+
+  .widgetRowOne,
+  .widgetRowTwo {
+    flex-direction: column;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .feelsLike,
+  .visibility,
+  .precipitation,
+  .humidity {
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 1rem;
+  }
+
+  .humidity {
+    margin-bottom: 0;
+  }
+}
+
+@media all and (max-width: 1200px) {
+  * {
+    overflow: visible;
+  }
+
+  .mainWrapper {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .left,
+  .right {
+    width: 100%;
+    height: fit-content;
+  }
+
+  .right {
+    margin-top: 1.5rem;
+  }
+
+  .widgetsMain {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    height: auto;
+  }
+
+  .temperatureAndWeatherCode {
+    padding-block: 3rem;
+  }
+
+  .uvIndex,
+  .windSpeed {
+    height: auto;
+  }
+
+  .widgetRowOne,
+  .widgetRowTwo {
+    display: contents;
+  }
+
+  .feelsLike,
+  .visibility,
+  .precipitation,
+  .humidity {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0;
+  }
+
+  .temperatureAndWeatherCode {
+    height: 100%;
+  }
+
+  .links {
+    margin-top: 1rem;
+  }
+}
+
+@media all and (max-width: 620px) {
+  .hourlyForecastWidgets {
+    grid-template-columns: calc(100% / 3.5) calc(100% / 3.5) calc(100% / 3.5);
+    grid-template-rows: 100px 100px 100px;
+  }
+
+  .sevenDayForecastWidgets {
+    grid-template-columns: calc(100% / 3.5) calc(100% / 3.5) calc(100% / 3.5);
+    grid-template-rows: 100px 100px 100px;
+  }
+
+  .widgetsExtra {
+    flex-direction: column;
+  }
+
+  .windSpeed,
+  .uvIndex {
+    width: 100%;
+  }
+
+  .windSpeed {
+    margin-top: 1rem;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .temperature {
+    font-size: 3rem;
+  }
+
+  .weatherCode {
+    font-size: 1.5rem;
+  }
+
+  .feelsLikeTemperature,
+  .precipitationValue,
+  .visibilityValue,
+  .humidityValue,
+  .uvIndexValue,
+  .windSpeedValue {
+    font-size: 1.8rem;
+  }
+
+  .widgetText {
+    font-size: 1.2rem;
+  }
+
+  .titleText {
+    font-size: 0.9rem;
+  }
+
+  .searchBox,
+  .search {
+    font-size: 0.85rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+}
+
+@media all and (max-width: 470px) {
+  .temperature {
+    font-size: 2.5rem;
+  }
+
+  .weatherCode {
+    font-size: 1.2rem;
+  }
+
+  .feelsLikeTemperature,
+  .precipitationValue,
+  .visibilityValue,
+  .humidityValue,
+  .uvIndexValue,
+  .windSpeedValue {
+    font-size: 1.5rem;
+  }
+
+  .widgetText {
+    font-size: 1rem;
+  }
+
+  .titleText {
+    font-size: 0.8rem;
+  }
+
+  .searchBox,
+  .search {
+    font-size: 0.75rem;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  .hour,
+  .day {
+    font-size: 0.8rem;
   }
 }
