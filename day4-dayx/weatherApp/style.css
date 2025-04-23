@@ -9,6 +9,8 @@
   font-weight: 500;
   color: black;
   transition: 0.2s ease-in-out;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
 }
 
 :root {
@@ -418,6 +420,7 @@
 
   .links {
     margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 }
 
