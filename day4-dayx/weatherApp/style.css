@@ -7,17 +7,17 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  color: white;
+  color: black;
   transition: 0.2s ease-in-out;
 }
 
 :root {
-  --mainWrapperBackgroundColor: #fff7f7;
-  --leftBackgroundColor: #817ffc;
-  --rightBackgroundCOlor: #fff7f7;
-  --buttonBackgroundColor: #200d4b;
-  --widgetBackgroundColor: #200d4b;
-  --currentWidgetBackgroundColor: #0f032b;
+  --mainWrapperBackgroundColor: #ffffff;
+  --leftBackgroundColor: #fde3e3;
+  --rightBackgroundCOlor: #ffffff;
+  --buttonBackgroundColor: #bda2fc;
+  --widgetBackgroundColor: #bda2fc;
+  --currentWidgetBackgroundColor: #976dfa;
   --borderRadiusSmall: 5px;
   --borderRadiusLarge: 15px;
 }
