@@ -8,34 +8,36 @@
     <title>Skye Weather</title>
   </head>
   <body>
-    <div class="mainWrapper">
-      <div class="left">
-        <div class="topBar">
+    <div class="mainWrapper flex justify-between">
+      <div class="left flex flex-column">
+        <div class="topBar flex align-center justify-between">
           <div class="logo">Skye</div>
-          <div class="searchArea">
+          <div class="searchArea flex justify-between">
             <input
               class="searchBox"
               type="text"
               placeholder="Search for your city.."
             />
-            <button class="search">
+            <button class="search flex justify-center align-center">
               <p class="searchButtonText">Search</p>
-              <div class="loaderIcon hidden">
+              <div class="loaderIcon hidden flex justify-center align-center">
                 <i data-lucide="loader"></i>
               </div>
             </button>
           </div>
         </div>
-        <div class="weatherToday">
-          <div class="temperatureAndWeatherCode">
+        <div class="weatherToday flex flex-column justify-between">
+          <div
+            class="temperatureAndWeatherCode flex flex-column align-center justify-center"
+          >
             <p class="place">Dubai, United Arab Emirates</p>
             <p class="temperature">21 °C</p>
             <p class="weatherCode">Rainy</p>
           </div>
-          <div class="widgetsMain">
-            <div class="widgetRowOne">
+          <div class="widgetsMain flex flex-column">
+            <div class="widgetRowOne flex flex-row justify-between">
               <div class="feelsLike">
-                <div class="title">
+                <div class="title flex align-center">
                   <i data-lucide="thermometer"></i>
                   <p class="titleText">FEELS LIKE</p>
                 </div>
@@ -45,7 +47,7 @@
                 </div>
               </div>
               <div class="precipitation">
-                <div class="title">
+                <div class="title flex align-center">
                   <i data-lucide="droplet"></i>
                   <p class="titleText">PRECIPITATION</p>
                 </div>
@@ -55,9 +57,9 @@
                 </div>
               </div>
             </div>
-            <div class="widgetRowTwo">
+            <div class="widgetRowTwo flex flex-row justify-between">
               <div class="visibility">
-                <div class="title">
+                <div class="title flex align-center">
                   <i data-lucide="eye"></i>
                   <p class="titleText">VISIBILITY</p>
                 </div>
@@ -67,7 +69,7 @@
                 </div>
               </div>
               <div class="humidity">
-                <div class="title">
+                <div class="title flex align-center">
                   <i data-lucide="droplets"></i>
                   <p class="titleText">HUMIDITY</p>
                 </div>
@@ -80,82 +82,88 @@
           </div>
         </div>
       </div>
-      <div class="right">
-        <div class="hourlyForecast">
-          <div class="hourlyForecastTitle">
+      <div class="right flex flex-column">
+        <div class="hourlyForecast flex flex-column justify-between">
+          <div class="hourlyForecastTitle flex align-center">
             <i data-lucide="clock"></i>
             <p class="titleText">HOURLY FORECAST</p>
           </div>
-          <div class="hourlyForecastWidgets">
-            <div class="widget currentHour">
+          <div class="hourlyForecastWidgets flex align-center justify-between">
+            <div
+              class="widget currentHour flex flex-column justify-center align-center"
+            >
               <p class="hour">Now</p>
               <p class="widgetText hourWidgetText">28 °C</p>
             </div>
-            <div class="widget">
+            <div class="widget flex flex-column justify-center align-center">
               <p class="hour">15:00</p>
               <p class="widgetText hourWidgetText">32 °C</p>
             </div>
-            <div class="widget">
+            <div class="widget flex flex-column justify-center align-center">
               <p class="hour">15:00</p>
               <p class="widgetText hourWidgetText">32 °C</p>
             </div>
-            <div class="widget">
+            <div class="widget flex flex-column justify-center align-center">
               <p class="hour">15:00</p>
               <p class="widgetText hourWidgetText">32 °C</p>
             </div>
-            <div class="widget">
+            <div class="widget flex flex-column justify-center align-center">
               <p class="hour">15:00</p>
               <p class="widgetText hourWidgetText">32 °C</p>
             </div>
-            <div class="widget">
+            <div class="widget flex flex-column justify-center align-center">
               <p class="hour">15:00</p>
               <p class="widgetText hourWidgetText">32 °C</p>
             </div>
-            <div class="widget">
+            <div class="widget flex flex-column justify-center align-center">
               <p class="hour">15:00</p>
               <p class="widgetText hourWidgetText">32 °C</p>
             </div>
           </div>
         </div>
-        <div class="sevenDayForecast">
-          <div class="sevenDayForecastTitle">
+        <div class="sevenDayForecast flex flex-column justify-between">
+          <div class="sevenDayForecastTitle flex align-center">
             <i data-lucide="calendar"></i>
             <p class="titleText">7 DAY FORECAST</p>
           </div>
-          <div class="sevenDayForecastWidgets">
-            <div class="widget currentDay">
+          <div
+            class="sevenDayForecastWidgets flex align-center justify-between"
+          >
+            <div
+              class="widget currentDay flex flex-column justify-center align-center"
+            >
               <p class="day">Today</p>
               <p class="widgetText dayWidgetText">28 °C</p>
             </div>
-            <div class="widget">
+            <div class="widget flex flex-column justify-center align-center">
               <p class="day">17-4-25</p>
               <p class="widgetText dayWidgetText">28 °C</p>
             </div>
-            <div class="widget">
+            <div class="widget flex flex-column justify-center align-center">
               <p class="day">17-4-25</p>
               <p class="widgetText dayWidgetText">28 °C</p>
             </div>
-            <div class="widget">
+            <div class="widget flex flex-column justify-center align-center">
               <p class="day">17-4-25</p>
               <p class="widgetText dayWidgetText">28 °C</p>
             </div>
-            <div class="widget">
+            <div class="widget flex flex-column justify-center align-center">
               <p class="day">17-4-25</p>
               <p class="widgetText dayWidgetText">28 °C</p>
             </div>
-            <div class="widget">
+            <div class="widget flex flex-column justify-center align-center">
               <p class="day">17-4-25</p>
               <p class="widgetText dayWidgetText">28 °C</p>
             </div>
-            <div class="widget">
+            <div class="widget flex flex-column justify-center align-center">
               <p class="day">17-4-25</p>
               <p class="widgetText dayWidgetText">28 °C</p>
             </div>
           </div>
         </div>
-        <div class="widgetsExtra">
+        <div class="widgetsExtra flex flex-row justify-between">
           <div class="uvIndex">
-            <div class="uvIndexTitle">
+            <div class="uvIndexTitle flex align-center">
               <i data-lucide="thermometer-sun"></i>
               <p class="titleText">UV INDEX</p>
             </div>
@@ -165,7 +173,7 @@
             </div>
           </div>
           <div class="windSpeed">
-            <div class="windSpeedTitle">
+            <div class="windSpeedTitle flex align-center">
               <i data-lucide="wind"></i>
               <p class="titleText">WIND SPEED</p>
             </div>
@@ -175,7 +183,7 @@
             </div>
           </div>
         </div>
-        <div class="links">
+        <div class="links flex justify-center align-center">
           <a href="https://github.com/delta6626" target="_blank">
             <i data-lucide="github" class="githubIcon"></i>
           </a>
