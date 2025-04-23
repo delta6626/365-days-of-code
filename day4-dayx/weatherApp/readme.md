@@ -43,9 +43,12 @@ weather-app/
 
 ---
 
-## 📸 Screenshot
+## 📸 Screenshots
 
-![Skye Weather](assets/screenshot.png)  
+![Skye Weather](assets/screenshot-1.png)  
+![Skye Weather](assets/screenshot-2.png) 
+![Skye Weather](assets/screenshot-3.png)  
+![Skye Weather](assets/screenshot-4.png)  
 
 ---
 
