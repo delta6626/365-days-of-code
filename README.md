@@ -18,8 +18,9 @@ I'll try to update this as I go.
 - Day 1 ✅: Created a random quote generator.
 - Day 2 ✅: Created a mini clone of [coolors.co](https://coolors.co)
 - Day 3 ✅: Created a simple markdown previewer
-- Day 4 ✅: Created front end for a weather app
-- DAY 5 ✅: Completed back end work for the weather app
+- Day 4 ✅: Created front end for a weather app (Skye)
+- Day 5 ✅: Completed back end work for skye
+- Day 6 ✅: Made Skye mobile responsive
 
 ---
 
