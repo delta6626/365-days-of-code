@@ -124,27 +124,45 @@ function renderTask(task) {
 }
 
 function showDeletedTasks() {
+  let count = 0;
+
   contentTitle.innerText = "Deleted Tasks";
   taskArea.innerHTML = "";
   tasks.forEach((task) => {
-    if (task.status === "deleted") renderTask(task);
+    if (task.status === "deleted") {
+      count++;
+      renderTask(task);
+    }
   });
+
+  contentTitle.innerText = `Completed tasks (${count})`;
 }
 
 function showCompletedTasks() {
-  contentTitle.innerText = "Completed Tasks";
+  let count = 0;
+
   taskArea.innerHTML = "";
   tasks.forEach((task) => {
-    if (task.status === "completed") renderTask(task);
+    if (task.status === "completed") {
+      count++;
+      renderTask(task);
+    }
   });
+
+  contentTitle.innerText = `Deleted tasks (${count})`;
 }
 
 function showPendingTasks() {
-  contentTitle.innerText = "Pending Tasks";
+  let count = 0;
+
   taskArea.innerHTML = "";
   tasks.forEach((task) => {
-    if (task.status === "pending") renderTask(task);
+    if (task.status === "pending") {
+      count++;
+      renderTask(task);
+    }
   });
+  contentTitle.innerText = `Pending tasks (${count})`;
 }
 
 function addNewTask() {
