@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>Taskly</title>
+  </head>
+  <body>
+    <div class="mainWrapper flex justify-between">
+      <div class="sideBar">
+        <div class="logo">
+          <div class="logoContent flex align-center">
+            <i data-lucide="circle-check-big"></i>
+            <h1 class="logoText">Taskly</h1>
+          </div>
+        </div>
+        <hr />
+        <div class="actionButtons flex justify-center flex-column">
+          <button class="createTask">
+            <i data-lucide="plus"></i>
+            Create
+          </button>
+          <hr />
+          <button class="pendingTasks">
+            <i data-lucide="circle-dashed"></i>
+            Pending
+          </button>
+          <button class="completedTasks">
+            <i data-lucide="check"></i>
+            Completed
+          </button>
+          <button class="deletedTasks">
+            <i data-lucide="trash"></i>
+            Deleted
+          </button>
+        </div>
+      </div>
+      <div class="contentArea">
+        <div class="contentTitle">
+          <h2 class="title">Pending</h2>
+          <hr />
+        </div>
+        <div class="taskArea"></div>
+      </div>
+      <dialog class="addTaskModal">
+        <form method="dialog" class="addTaskForm">
+          <h2>Add New Task</h2>
+
+          <label for="taskTitle">Title<span style="color: red">*</span></label>
+          <input
+            type="text"
+            id="taskTitle"
+            name="taskTitle"
+            required
+            minlength="2"
+            placeholder="Enter task title"
+          />
+
+          <label for="taskContent">Content (optional)</label>
+          <textarea
+            id="taskContent"
+            name="taskContent"
+            rows="4"
+            placeholder="Add more details..."
+          ></textarea>
+
+          <div class="modalButtons flex justify-end">
+            <button type="submit" class="addTaskToListButton">
+              Create Task
+            </button>
+            <button type="button" class="closeModalButton">Cancel</button>
+          </div>
+        </form>
+      </dialog>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>

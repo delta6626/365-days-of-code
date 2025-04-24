@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+  --mainWrapperBackground: #ffffff;
+  --sideBarBackground: #ffffff;
+  --contentAreaBackground: #ffffff;
+  --actionButtonBackground: #000000;
+  --actionButtonHoverBackground: #141010;
+  --taskBackgroundColor: #ffffff;
+  --taskActionButtonBackground: #000000;
+  --taskActionButtonHoverBackground: #141010;
+  --dangerBackgroundColor: rgb(255, 63, 63);
+  --dangerHoverBackgroundColor: rgb(250, 28, 28);
+  --dividerBorderColor: rgb(219, 219, 219);
+  --borderRadiusLarge: 0.6rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  color: black;
+}
+
+html {
+  overflow: hidden;
+}
+
+button {
+  color: white;
+}
+
+svg {
+  stroke: white;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.mainWrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--mainWrapperBackground);
+  padding: 1.5rem;
+}
+
+.sideBar {
+  width: 15%;
+  height: 100%;
+  background-color: var(--sideBarBackground);
+  border-radius: var(--borderRadiusLarge);
+  padding: 1.5rem;
+  border: 2px solid var(--dividerBorderColor);
+}
+
+.contentArea {
+  width: calc(85% - 1.5rem);
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  background-color: var(--contentAreaBackground);
+  border-radius: var(--borderRadiusLarge);
+  border: 2px solid var(--dividerBorderColor);
+}
+
+.logo {
+  margin-bottom: 1.5rem;
+}
+
+.logoContent > svg {
+  stroke: black;
+}
+
+.logoText {
+  margin-left: 0.5rem;
+}
+
+.actionButtons {
+  width: 100%;
+}
+
+.actionButtons > button {
+  width: 100%;
+  padding-block: 1rem;
+  padding-left: 1.5rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border: none;
+  border-radius: var(--borderRadiusLarge);
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: var(--actionButtonBackground);
+  margin-bottom: 1rem;
+}
+
+hr {
+  margin-bottom: 1rem;
+  border: 1px solid var(--dividerBorderColor);
+}
+
+.actionButtons > button:hover {
+  background-color: var(--actionButtonHoverBackground);
+}
+
+.actionButtons > button > svg {
+  margin-right: 10px;
+}
+
+.contentArea {
+  padding: 1.5rem;
+}
+
+.title {
+  margin-bottom: 1.5rem;
+}
+
+.taskArea {
+  display: grid;
+  grid-template-columns:
+    calc((80vw / 4) - 3rem) calc((80vw / 4) - 3rem) calc((80vw / 4) - 3rem)
+    calc((80vw / 4) - 3rem);
+  row-gap: 10px;
+  column-gap: 10px;
+}
+
+.task {
+  background-color: var(--taskBackgroundColor);
+  border: 2px solid var(--dividerBorderColor);
+  border-radius: var(--borderRadiusLarge);
+  padding: 1.5rem;
+}
+
+.taskTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.taskText {
+  margin-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.taskActionButtons {
+  margin-top: 1rem;
+}
+
+.taskActionButtons > button {
+  background-color: var(--taskActionButtonBackground);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border: none;
+  border-radius: var(--borderRadiusLarge);
+}
+
+.deleteTask,
+.deleteTaskForever {
+  margin-left: 10px;
+}
+
+.taskActionButtons > button:hover {
+  background-color: var(--taskActionButtonHoverBackground);
+}
+
+.addTaskModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Modal Base Styles */
+.addTaskModal {
+  padding: 1.5rem;
+  border: none;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  font-family: sans-serif;
+}
+
+.addTaskModal::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Form Layout */
+.addTaskForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.addTaskForm > * {
+  color: black;
+}
+
+/* Inputs & Textarea */
+.addTaskForm input,
+.addTaskForm textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: none;
+  transition: border-color 0.2s ease;
+  color: black;
+}
+
+.addTaskForm input:focus,
+.addTaskForm textarea:focus {
+  border-color: var(--actionButtonBackground); /* blue-ish */
+  outline: none;
+}
+
+/* Labels */
+.addTaskForm label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+/* Buttons */
+.modalButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.modalButtons > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 1rem;
+  padding-inline: 1.5rem;
+  border: none;
+  border-radius: var(--borderRadiusLarge);
+}
+
+.addTaskToListButton {
+  background-color: var(--actionButtonBackground);
+}
+
+.closeModalButton {
+  background-color: var(--dangerBackgroundColor);
+}
+
+.addTaskToListButton:hover {
+  background-color: var(--actionButtonHoverBackground);
+}
+
+.closeModalButton:hover {
+  background-color: var(--dangerHoverBackgroundColor);
+}
