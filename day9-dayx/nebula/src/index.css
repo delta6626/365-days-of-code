@@ -1,2 +1,14 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  /* themes: cmyk --default, night --prefersdark; */
+  themes: light --default,
+  root: ":root";
+  include: ;
+  exclude: ;
+  prefix: ;
+  logs: true;
+}
+
+@utility btn {
+    @apply active:scale-95 text-white transition-all ease-in-out duration-200;
+}
