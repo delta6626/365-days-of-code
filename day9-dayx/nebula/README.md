@@ -1,15 +1,18 @@
----
----
-
 ## 🌌 Nebula — A Private Note-Taking App
 
 ### ⚙ Tech stack
 
+---
+
 1. React for the front end
-2. Daisy UI + Tailwind CSS for styling
-3. Firebase for storing notes and authentication
+2. Zustand for state management
+3. React-router-dom for client side routing
+4. Daisy UI + Tailwind CSS for styling
+5. Firebase for storing notes and authentication
 
 ### 🧠 Core Features
+
+---
 
 | Feature                     | Description                                  |
 | --------------------------- | -------------------------------------------- |
@@ -23,6 +26,8 @@
 
 ### 🔐 Auth/User Features
 
+---
+
 | Feature                                   | Description                     |
 | ----------------------------------------- | ------------------------------- |
 | ✅ **User login/signup**                  | Firebase Auth — email/password. |
@@ -33,6 +38,8 @@
 ---
 
 ### ✨ Nice-To-Haves (Optional If Time Allows)
+
+---
 
 | Feature                     | Description                                    |
 | --------------------------- | ---------------------------------------------- |
