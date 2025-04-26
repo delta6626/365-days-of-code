@@ -24,6 +24,7 @@ I'll try to update this as I go.
 - Day 7 ✅: Refactored some code for Skye, changed its color theme, added new screenshots
 - Day 8 ✅: Created Taskly, a basic task manager app
 - Day 9 ✅: Started working on Nebula, A note taking application
+- Day 10 ✅: Set up routing for Nebula
 
 ---
 
