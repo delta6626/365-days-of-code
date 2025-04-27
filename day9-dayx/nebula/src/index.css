@@ -1,7 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 @import "tailwindcss";
+
 @plugin "daisyui" {
-  /* themes: cmyk --default, night --prefersdark; */
-  themes: light --default,
+  themes: light, dark;
   root: ":root";
   include: ;
   exclude: ;
@@ -9,6 +10,10 @@
   logs: true;
 }
 
+@theme {
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
+}
+
 @utility btn {
-    @apply active:scale-95 text-white transition-all ease-in-out duration-200;
+  @apply active:scale-95 transition-all ease-in-out duration-200 font-jakarta shadow-none;
 }
