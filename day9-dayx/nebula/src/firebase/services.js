@@ -2,6 +2,7 @@ import { auth, firestore } from "./firebaseConfig";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { getDoc, doc, setDoc } from "firebase/firestore";
 import { APP_CONSTANTS } from "../constants/APP_CONSTANTS";
@@ -36,6 +37,10 @@ function addUserToDatabase(uid, name, email, emailVerified) {
   };
 
   return setDoc(doc(firestore, "users", uid), basicUserSchema);
+}
+
+export function logInWithEmailAndPassword(email, password) {
+  return signInWithEmailAndPassword(auth, email, password);
 }
 
 /**

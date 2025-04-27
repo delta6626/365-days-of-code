@@ -149,7 +149,7 @@ function SignUpPage() {
         navigate("/dashboard");
       }
     });
-  });
+  }, []);
 
   return (
     <div className="">
@@ -216,7 +216,7 @@ function SignUpPage() {
 
           <button className="btn btn-primary mt-4" onClick={handleSignUp}>
             {!authenticating ? (
-              "Sign up"
+              "Sign Up"
             ) : (
               <span className="loading loading-spinner"></span>
             )}

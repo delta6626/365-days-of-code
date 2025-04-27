@@ -1,15 +1,24 @@
 import NavBar from "../components/NavBar";
 import GoogleIcon from "../../assets/GoogleIcon";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import validateEmail from "../../utils/validateEmail";
+import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
+import {
+  logInWithEmailAndPassword,
+  getAuthenticatedUser,
+} from "../../firebase/services";
 
 function LogInPage() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const [databaseError, setDatabaseError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [authenticating, setAuthenticating] = useState(false);
 
   function handleEmailChange(e) {
     const value = e.target.value;
@@ -17,7 +26,7 @@ function LogInPage() {
 
     if (value.length === 0 || !validateEmail(value)) {
       setEmailError(true);
-      setErrorMessage("Enter a valid email.");
+      setErrorMessage(APP_CONSTANTS.EMAIL_INVALID);
     } else {
       setEmailError(false);
       setErrorMessage("");
@@ -30,11 +39,45 @@ function LogInPage() {
 
     if (value.length >= 0 && value.length < 8) {
       setPasswordError(true);
-      setErrorMessage("Password must be at least 8 characters.");
+      setErrorMessage(APP_CONSTANTS.PASSWORD_LENGTH_SHORT);
     } else {
       setPasswordError(false);
       setErrorMessage("");
     }
+  }
+
+  function logIn() {
+    setAuthenticating(true);
+    setDatabaseError(false);
+    logInWithEmailAndPassword(email, password)
+      .then(() => {
+        setAuthenticating(false);
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        setAuthenticating(false);
+        setDatabaseError(true);
+        switch (error.code) {
+          case "auth/invalid-email":
+            setErrorMessage(APP_CONSTANTS.EMAIL_INVALID);
+            break;
+          case "auth/user-disabled":
+            setErrorMessage(APP_CONSTANTS.USER_DISABLED);
+            break;
+          case "auth/too-many-requests":
+            setErrorMessage(APP_CONSTANTS.TOO_MANY_ATTEMPTS);
+            break;
+          case "auth/invalid-credential":
+            setErrorMessage(APP_CONSTANTS.INVALID_CREDENTIALS);
+            break;
+          case "auth/network-request-failed":
+            setErrorMessage(APP_CONSTANTS.BAD_NETWORK);
+            break;
+          default:
+            setErrorMessage(APP_CONSTANTS.UNKNOWN_ERROR);
+            break;
+        }
+      });
   }
 
   function handleLogin(e) {
@@ -43,19 +86,28 @@ function LogInPage() {
     // Final safety check when user clicks login
     if (!validateEmail(email)) {
       setEmailError(true);
-      setErrorMessage("Enter a valid email.");
+      setErrorMessage(APP_CONSTANTS.EMAIL_INVALID);
       return;
     }
 
     if (password.length < 8) {
       setPasswordError(true);
-      setErrorMessage("Password must be at least 8 characters.");
+      setErrorMessage(APP_CONSTANTS.PASSWORD_LENGTH_SHORT);
       return;
     }
 
-    console.log("Logging in with:", { email, password });
-    // Proceed with login logic here
+    logIn();
   }
+
+  useEffect(() => {
+    getAuthenticatedUser().then((result) => {
+      if (result == APP_CONSTANTS.UNAUTHENTICATED) {
+        return;
+      } else {
+        navigate("/dashboard");
+      }
+    });
+  }, []);
 
   return (
     <div className="">
@@ -85,11 +137,15 @@ function LogInPage() {
             value={password}
             onChange={handlePasswordChange}
           />
-          {(emailError || passwordError) && (
+          {(emailError || passwordError || databaseError) && (
             <p className="text-error text-sm">{errorMessage}</p>
           )}
           <button className="btn btn-primary mt-4" onClick={handleLogin}>
-            Login
+            {!authenticating ? (
+              "Log In"
+            ) : (
+              <span className="loading loading-spinner"></span>
+            )}
           </button>
           <button className="btn bg-white text-black">
             <GoogleIcon></GoogleIcon>

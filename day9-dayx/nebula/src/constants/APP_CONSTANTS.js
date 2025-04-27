@@ -11,5 +11,7 @@ export const APP_CONSTANTS = {
   EMAIL_TAKEN: "This email is already taken.",
   TOO_MANY_ATTEMPTS: "Too many attempts. Try again later.",
   BAD_NETWORK: "Network error. Check your internet connection and try again.",
+  USER_DISABLED: "This email has been disabled.",
+  INVALID_CREDENTIALS: "Wrong email or password.",
   UNKNOWN_ERROR: "An unknown error occurred. Try again later.",
 };
