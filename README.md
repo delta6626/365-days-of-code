@@ -25,6 +25,7 @@ I'll try to update this as I go.
 - Day 8 ✅: Created Taskly, a basic task manager app
 - Day 9 ✅: Started working on Nebula, A note taking application
 - Day 10 ✅: Set up routing for Nebula
+- Day 11 ✅: Created navbar, log in and sign up pages with error handling for Nebula
 
 ---
 
