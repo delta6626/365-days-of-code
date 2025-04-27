@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import validateEmail from "../../utils/validateEmail";
 import { createNewUserWithEmailAndPassword } from "../../firebase/services";
+import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 
 function SignUpPage() {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ function SignUpPage() {
     setName(value);
     if (value.length === 0) {
       setNameError(true);
-      setErrorMessage("Enter your name.");
+      setErrorMessage(APP_CONSTANTS.NAME_EMPTY);
     } else {
       setNameError(false);
       setErrorMessage("");
@@ -39,7 +40,7 @@ function SignUpPage() {
 
     if (value.length === 0 || !validateEmail(value)) {
       setEmailError(true);
-      setErrorMessage("Enter a valid email.");
+      setErrorMessage(APP_CONSTANTS.EMAIL_INVALID);
     } else {
       setEmailError(false);
       setErrorMessage("");
@@ -52,7 +53,7 @@ function SignUpPage() {
 
     if (value.length >= 0 && value.length < 8) {
       setPasswordError(true);
-      setErrorMessage("Password must be at least 8 characters.");
+      setErrorMessage(APP_CONSTANTS.PASSWORD_LENGTH_SHORT);
     } else {
       setPasswordError(false);
       setErrorMessage("");
@@ -65,7 +66,7 @@ function SignUpPage() {
 
     if (value !== password) {
       setConfirmPasswordError(true);
-      setErrorMessage("Passwords do not match.");
+      setErrorMessage(APP_CONSTANTS.PASSWORD_MISMATCH);
     } else {
       setConfirmPasswordError(false);
       setErrorMessage("");
@@ -85,24 +86,22 @@ function SignUpPage() {
         setAuthenticating(false);
         switch (error.code) {
           case "auth/invalid-email":
-            setErrorMessage("Enter a valid email address.");
+            setErrorMessage(APP_CONSTANTS.EMAIL_INVALID);
             break;
           case "auth/email-already-in-use":
-            setErrorMessage("This email is already taken.");
+            setErrorMessage(APP_CONSTANTS.EMAIL_TAKEN);
             break;
           case "auth/weak-password":
-            setErrorMessage("Password should be at least 6 characters.");
+            setErrorMessage(APP_CONSTANTS.PASSWORD_LENGTH_SHORT);
             break;
           case "auth/too-many-requests":
-            setErrorMessage("Too many attempts. Try again later.");
+            setErrorMessage(APP_CONSTANTS.TOO_MANY_ATTEMPTS);
             break;
           case "auth/network-request-failed":
-            setErrorMessage(
-              "Network error. Check your internet connection and try again."
-            );
+            setErrorMessage(APP_CONSTANTS.BAD_NETWORK);
             break;
           default:
-            setErrorMessage("An unknown error occurred. Try again later.");
+            setErrorMessage(APP_CONSTANTS.UNKNOWN_ERROR);
             break;
         }
       });
@@ -114,32 +113,30 @@ function SignUpPage() {
     // Final safety check when user clicks sign up
     if (name.length === 0) {
       setNameError(true);
-      setErrorMessage("Enter your name.");
+      setErrorMessage(APP_CONSTANTS.NAME_EMPTY);
       return;
     }
 
     if (!validateEmail(email)) {
       setEmailError(true);
-      setErrorMessage("Enter a valid email.");
+      setErrorMessage(APP_CONSTANTS.EMAIL_INVALID);
       return;
     }
 
     if (password.length < 8) {
       setPasswordError(true);
-      setErrorMessage("Password must be at least 8 characters.");
+      setErrorMessage(APP_CONSTANTS.PASSWORD_LENGTH_SHORT);
       return;
     }
 
     if (password !== confirmPassword) {
       setConfirmPasswordError(true);
-      setErrorMessage("Passwords do not match.");
+      setErrorMessage(APP_CONSTANTS.PASSWORD_MISMATCH);
       return;
     }
 
     createUser();
   }
-
-  useEffect(() => {});
 
   return (
     <div className="">

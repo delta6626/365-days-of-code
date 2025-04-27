@@ -4,6 +4,7 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { getDoc, doc, setDoc } from "firebase/firestore";
+import { APP_CONSTANTS } from "../constants/APP_CONSTANTS";
 
 export function getUserData() {
   return getAuthenticatedUser().then((result) => {
@@ -25,11 +26,11 @@ function addUserToDatabase(uid, name, email, emailVerified) {
     name: name,
     email: email,
     emailVerified: emailVerified,
-    tierType: "basic",
+    tierType: APP_CONSTANTS.BASIC_TIER,
     tags: [],
     preferences: {
       autoSaveTriggerTime: 1,
-      language: "en",
+      language: APP_CONSTANTS.ENGLISH,
       subscribedToEmailNotifications: true,
     },
   };
@@ -48,7 +49,7 @@ export function createNewUserWithEmailAndPassword(name, email, password) {
       return addUserToDatabase(uid, name, email, emailVerified);
     })
     .then(() => {
-      return "SUCCESS";
+      return APP_CONSTANTS.SUCCESS;
     })
     .catch((error) => {
       throw error;
@@ -62,7 +63,7 @@ export function getAuthenticatedUser() {
       if (user) {
         resolve(user); // If a user is authenticated, resolve with user info
       } else {
-        resolve("Unauthenticated"); // If no user, resolve with 'Unauthenticated'
+        resolve(APP_CONSTANTS.UNAUTHENTICATED); // If no user, resolve with 'Unauthenticated'
       }
     });
   });
