@@ -1,7 +1,7 @@
 import NavBar from "../components/NavBar";
 import GoogleIcon from "../../assets/GoogleIcon";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import validateEmail from "../../utils/validateEmail";
 import { createNewUserWithEmailAndPassword } from "../../firebase/services";
@@ -17,6 +17,7 @@ function SignUpPage() {
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+  const [databaseError, setDatabaseError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [authenticating, setAuthenticating] = useState(false);
 
@@ -73,12 +74,15 @@ function SignUpPage() {
 
   function createUser() {
     setAuthenticating(true);
+    setDatabaseError(false);
     createNewUserWithEmailAndPassword(name, email, password)
       .then(() => {
         setAuthenticating(false);
         navigate("/dashboard");
       })
       .catch((error) => {
+        setDatabaseError(true);
+        setAuthenticating(false);
         switch (error.code) {
           case "auth/invalid-email":
             setErrorMessage("Enter a valid email address.");
@@ -134,6 +138,8 @@ function SignUpPage() {
 
     createUser();
   }
+
+  useEffect(() => {});
 
   return (
     <div className="">
@@ -193,12 +199,17 @@ function SignUpPage() {
           {(nameError ||
             emailError ||
             passwordError ||
-            confirmPasswordError) && (
+            confirmPasswordError ||
+            databaseError) && (
             <p className="text-error text-sm">{errorMessage}</p>
           )}
 
           <button className="btn btn-primary mt-4" onClick={handleSignUp}>
-            Sign up
+            {!authenticating ? (
+              "Sign up"
+            ) : (
+              <span className="loading loading-spinner"></span>
+            )}
           </button>
 
           <button className="btn bg-white text-black">
