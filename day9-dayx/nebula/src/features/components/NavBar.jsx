@@ -10,7 +10,16 @@ function NavBar() {
         </Link>
       </div>
       <div className="">
-        <Link className="btn border-none" to={"/login"}>
+        <Link className="btn bg-transparent border-none" to={"/#features"}>
+          Features
+        </Link>
+        <Link className="btn bg-transparent border-none" to={"/#about"}>
+          About
+        </Link>
+        <Link className="btn bg-transparent border-none" to={"/#contact"}>
+          Contact
+        </Link>
+        <Link className="btn bg-transparent border-none" to={"/login"}>
           Log In
         </Link>
         <Link className="btn btn-primary border-none mx-2" to={"/signup"}>

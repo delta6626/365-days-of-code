@@ -101,6 +101,8 @@ function SignUpPage() {
           <label className="label">Password</label>
           <input
             type="password"
+            minLength={8}
+            maxLength={64}
             className={!passwordError ? "input w-md" : "input input-error w-md"}
             placeholder="Password"
             value={password}
@@ -110,6 +112,8 @@ function SignUpPage() {
           <label className="label">Confirm password</label>
           <input
             type="password"
+            minLength={8}
+            maxLength={64}
             className={
               !confirmPasswordError ? "input w-md" : "input input-error w-md"
             }
