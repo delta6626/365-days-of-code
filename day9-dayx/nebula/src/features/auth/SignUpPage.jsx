@@ -2,16 +2,35 @@ import NavBar from "../components/NavBar";
 import GoogleIcon from "../../assets/GoogleIcon";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import validateEmail from "../../utils/validateEmail";
+import { createNewUserWithEmailAndPassword } from "../../firebase/services";
 
 function SignUpPage() {
+  const navigate = useNavigate();
+
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [authenticating, setAuthenticating] = useState(false);
+
+  function handleNameChange(e) {
+    const value = e.target.value;
+    setName(value);
+    if (value.length === 0) {
+      setNameError(true);
+      setErrorMessage("Enter your name.");
+    } else {
+      setNameError(false);
+      setErrorMessage("");
+    }
+  }
 
   function handleEmailChange(e) {
     const value = e.target.value;
@@ -52,10 +71,49 @@ function SignUpPage() {
     }
   }
 
+  function createUser() {
+    setAuthenticating(true);
+    createNewUserWithEmailAndPassword(name, email, password)
+      .then(() => {
+        setAuthenticating(false);
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        switch (error.code) {
+          case "auth/invalid-email":
+            setErrorMessage("Enter a valid email address.");
+            break;
+          case "auth/email-already-in-use":
+            setErrorMessage("This email is already taken.");
+            break;
+          case "auth/weak-password":
+            setErrorMessage("Password should be at least 6 characters.");
+            break;
+          case "auth/too-many-requests":
+            setErrorMessage("Too many attempts. Try again later.");
+            break;
+          case "auth/network-request-failed":
+            setErrorMessage(
+              "Network error. Check your internet connection and try again."
+            );
+            break;
+          default:
+            setErrorMessage("An unknown error occurred. Try again later.");
+            break;
+        }
+      });
+  }
+
   function handleSignUp(e) {
     e.preventDefault();
 
     // Final safety check when user clicks sign up
+    if (name.length === 0) {
+      setNameError(true);
+      setErrorMessage("Enter your name.");
+      return;
+    }
+
     if (!validateEmail(email)) {
       setEmailError(true);
       setErrorMessage("Enter a valid email.");
@@ -74,8 +132,7 @@ function SignUpPage() {
       return;
     }
 
-    console.log("Signing up with:", { email, password });
-    // Proceed with signup logic here
+    createUser();
   }
 
   return (
@@ -89,6 +146,17 @@ function SignUpPage() {
           <p className="text-center text-sm mb-4">
             Fill in your details to continue.
           </p>
+
+          <label className="label">Name</label>
+          <input
+            type="text"
+            maxLength={150}
+            className={!nameError ? "input w-md" : "input input-error w-md"}
+            placeholder="Name"
+            value={name}
+            onChange={handleNameChange}
+          />
+
           <label className="label">Email</label>
           <input
             type="email"
@@ -122,7 +190,10 @@ function SignUpPage() {
             onChange={handleConfirmPasswordChange}
           />
 
-          {(emailError || passwordError || confirmPasswordError) && (
+          {(nameError ||
+            emailError ||
+            passwordError ||
+            confirmPasswordError) && (
             <p className="text-error text-sm">{errorMessage}</p>
           )}
 
