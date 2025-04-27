@@ -1,10 +1,13 @@
 import NavBar from "../components/NavBar";
 import GoogleIcon from "../../assets/GoogleIcon";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import validateEmail from "../../utils/validateEmail";
-import { createNewUserWithEmailAndPassword } from "../../firebase/services";
+import {
+  createNewUserWithEmailAndPassword,
+  getAuthenticatedUser,
+} from "../../firebase/services";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 
 function SignUpPage() {
@@ -137,6 +140,16 @@ function SignUpPage() {
 
     createUser();
   }
+
+  useEffect(() => {
+    getAuthenticatedUser().then((result) => {
+      if (result == APP_CONSTANTS.UNAUTHENTICATED) {
+        return;
+      } else {
+        navigate("/dashboard");
+      }
+    });
+  });
 
   return (
     <div className="">
