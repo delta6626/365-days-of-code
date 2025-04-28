@@ -185,6 +185,7 @@ function LogInPage() {
               <span className="loading loading-spinner"></span>
             )}
           </button>
+          <div className="divider">OR</div>
           <button
             className="btn bg-white text-black"
             onClick={handleLogInWithGoogle}
