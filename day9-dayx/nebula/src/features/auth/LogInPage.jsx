@@ -7,6 +7,7 @@ import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import {
   logInWithEmailAndPassword,
   getAuthenticatedUser,
+  googleAuthSignIn,
 } from "../../firebase/services";
 
 function LogInPage() {
@@ -18,7 +19,7 @@ function LogInPage() {
   const [passwordError, setPasswordError] = useState(false);
   const [databaseError, setDatabaseError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [authenticating, setAuthenticating] = useState(false);
+  const [authenticating, setAuthenticating] = useState(APP_CONSTANTS.NULL);
 
   function handleEmailChange(e) {
     const value = e.target.value;
@@ -47,15 +48,15 @@ function LogInPage() {
   }
 
   function logIn() {
-    setAuthenticating(true);
+    setAuthenticating(APP_CONSTANTS.WITH_EMAIL);
     setDatabaseError(false);
     logInWithEmailAndPassword(email, password)
       .then(() => {
-        setAuthenticating(false);
+        setAuthenticating(APP_CONSTANTS.NULL);
         navigate("/dashboard");
       })
       .catch((error) => {
-        setAuthenticating(false);
+        setAuthenticating(APP_CONSTANTS.NULL);
         setDatabaseError(true);
         switch (error.code) {
           case "auth/invalid-email":
@@ -97,6 +98,42 @@ function LogInPage() {
     }
 
     logIn();
+  }
+
+  function handleLogInWithGoogle() {
+    setAuthenticating(APP_CONSTANTS.WITH_GOOGLE);
+    setDatabaseError(false);
+    googleAuthSignIn()
+      .then(() => {
+        setAuthenticating(APP_CONSTANTS.NULL);
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        setAuthenticating(APP_CONSTANTS.NULL);
+        setDatabaseError(true);
+        switch (error.code) {
+          case "auth/account-exists-with-different-credential":
+            setErrorMessage(
+              APP_CONSTANTS.ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL
+            );
+            break;
+          case "auth/popup-blocked":
+            setErrorMessage(APP_CONSTANTS.POPUP_BLOCKED);
+            break;
+          case "auth/popup-closed-by-user":
+            setErrorMessage(APP_CONSTANTS.POPUP_CLOSED_BY_USER);
+            break;
+          case "auth/unauthorized-domain":
+            setErrorMessage(APP_CONSTANTS.UNAUTHORIZED_DOMAIN);
+            break;
+          case "auth/network-request-failed":
+            setErrorMessage(APP_CONSTANTS.BAD_NETWORK);
+            break;
+          default:
+            setErrorMessage(APP_CONSTANTS.UNKNOWN_ERROR);
+            break;
+        }
+      });
   }
 
   useEffect(() => {
@@ -141,15 +178,26 @@ function LogInPage() {
             <p className="text-error text-sm">{errorMessage}</p>
           )}
           <button className="btn btn-primary mt-4" onClick={handleLogin}>
-            {!authenticating ? (
+            {authenticating == APP_CONSTANTS.NULL ||
+            authenticating == APP_CONSTANTS.WITH_GOOGLE ? (
               "Log In"
             ) : (
               <span className="loading loading-spinner"></span>
             )}
           </button>
-          <button className="btn bg-white text-black">
-            <GoogleIcon></GoogleIcon>
-            Log in with Google
+          <button
+            className="btn bg-white text-black"
+            onClick={handleLogInWithGoogle}
+          >
+            {authenticating == APP_CONSTANTS.NULL ||
+            authenticating == APP_CONSTANTS.WITH_EMAIL ? (
+              <>
+                <GoogleIcon></GoogleIcon>
+                Log in with Google
+              </>
+            ) : (
+              <span className="loading loading-spinner"></span>
+            )}
           </button>
           <p className="text-center text-sm mt-4">
             Don't have an account?{" "}

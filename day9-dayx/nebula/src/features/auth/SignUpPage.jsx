@@ -7,6 +7,7 @@ import validateEmail from "../../utils/validateEmail";
 import {
   createNewUserWithEmailAndPassword,
   getAuthenticatedUser,
+  googleAuthSignIn,
 } from "../../firebase/services";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 
@@ -23,7 +24,7 @@ function SignUpPage() {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const [databaseError, setDatabaseError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [authenticating, setAuthenticating] = useState(false);
+  const [authenticating, setAuthenticating] = useState(APP_CONSTANTS.NULL);
 
   function handleNameChange(e) {
     const value = e.target.value;
@@ -77,16 +78,16 @@ function SignUpPage() {
   }
 
   function createUser() {
-    setAuthenticating(true);
+    setAuthenticating(APP_CONSTANTS.WITH_EMAIL);
     setDatabaseError(false);
     createNewUserWithEmailAndPassword(name, email, password)
       .then(() => {
-        setAuthenticating(false);
+        setAuthenticating(APP_CONSTANTS.NULL);
         navigate("/dashboard");
       })
       .catch((error) => {
         setDatabaseError(true);
-        setAuthenticating(false);
+        setAuthenticating(APP_CONSTANTS.NULL);
         switch (error.code) {
           case "auth/invalid-email":
             setErrorMessage(APP_CONSTANTS.EMAIL_INVALID);
@@ -139,6 +140,42 @@ function SignUpPage() {
     }
 
     createUser();
+  }
+
+  function handleSignUpWithGoogle() {
+    setAuthenticating(APP_CONSTANTS.WITH_GOOGLE);
+    setDatabaseError(false);
+    googleAuthSignIn()
+      .then(() => {
+        setAuthenticating(APP_CONSTANTS.NULL);
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        setAuthenticating(APP_CONSTANTS.NULL);
+        setDatabaseError(true);
+        switch (error.code) {
+          case "auth/account-exists-with-different-credential":
+            setErrorMessage(
+              APP_CONSTANTS.ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL
+            );
+            break;
+          case "auth/popup-blocked":
+            setErrorMessage(APP_CONSTANTS.POPUP_BLOCKED);
+            break;
+          case "auth/popup-closed-by-user":
+            setErrorMessage(APP_CONSTANTS.POPUP_CLOSED_BY_USER);
+            break;
+          case "auth/unauthorized-domain":
+            setErrorMessage(APP_CONSTANTS.UNAUTHORIZED_DOMAIN);
+            break;
+          case "auth/network-request-failed":
+            setErrorMessage(APP_CONSTANTS.BAD_NETWORK);
+            break;
+          default:
+            setErrorMessage(APP_CONSTANTS.UNKNOWN_ERROR);
+            break;
+        }
+      });
   }
 
   useEffect(() => {
@@ -215,16 +252,27 @@ function SignUpPage() {
           )}
 
           <button className="btn btn-primary mt-4" onClick={handleSignUp}>
-            {!authenticating ? (
+            {authenticating == APP_CONSTANTS.NULL ||
+            authenticating == APP_CONSTANTS.WITH_GOOGLE ? (
               "Sign Up"
             ) : (
               <span className="loading loading-spinner"></span>
             )}
           </button>
 
-          <button className="btn bg-white text-black">
-            <GoogleIcon></GoogleIcon>
-            Sign up with Google
+          <button
+            className="btn bg-white text-black"
+            onClick={handleSignUpWithGoogle}
+          >
+            {authenticating == APP_CONSTANTS.NULL ||
+            authenticating == APP_CONSTANTS.WITH_EMAIL ? (
+              <>
+                <GoogleIcon></GoogleIcon>
+                Sign up with Google
+              </>
+            ) : (
+              <span className="loading loading-spinner"></span>
+            )}
           </button>
 
           <p className="text-center text-sm mt-4">

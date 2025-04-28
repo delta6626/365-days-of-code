@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 export const useThemeStore = create(function (set) {
   return {
-    theme: "light",
+    theme: "dark",
     setTheme: function (newTheme) {
       set({ theme: newTheme });
     },

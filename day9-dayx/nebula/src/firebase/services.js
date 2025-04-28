@@ -3,6 +3,9 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  getAdditionalUserInfo,
 } from "firebase/auth";
 import { getDoc, doc, setDoc } from "firebase/firestore";
 import { APP_CONSTANTS } from "../constants/APP_CONSTANTS";
@@ -55,6 +58,28 @@ export function createNewUserWithEmailAndPassword(name, email, password) {
     })
     .then(() => {
       return APP_CONSTANTS.SUCCESS;
+    })
+    .catch((error) => {
+      throw error;
+    });
+}
+
+// Sign in with Google
+export function googleAuthSignIn() {
+  const provider = new GoogleAuthProvider();
+  return signInWithPopup(auth, provider)
+    .then((result) => {
+      const extraInformation = getAdditionalUserInfo(result);
+      if (extraInformation.isNewUser) {
+        return addUserToDatabase(
+          result.user.uid,
+          result.user.displayName,
+          result.user.email,
+          result.user.emailVerified
+        );
+      } else {
+        return;
+      }
     })
     .catch((error) => {
       throw error;

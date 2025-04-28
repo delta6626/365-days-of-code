@@ -13,5 +13,16 @@ export const APP_CONSTANTS = {
   BAD_NETWORK: "Network error. Check your internet connection and try again.",
   USER_DISABLED: "This email has been disabled.",
   INVALID_CREDENTIALS: "Wrong email or password.",
+  ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL:
+    "An account already exists with this email using a different sign-in method.",
+  POPUP_BLOCKED:
+    "Your browser blocked the sign-in popup. Please allow popups and try again.",
+  POPUP_CLOSED_BY_USER:
+    "Sign-in popup was closed before completing the sign-in.",
+  UNAUTHORIZED_DOMAIN:
+    "This app is not authorized for Google sign-in. Contact support.",
+  WITH_EMAIL: "email",
+  WITH_GOOGLE: "google",
+  NULL: "null",
   UNKNOWN_ERROR: "An unknown error occurred. Try again later.",
 };
