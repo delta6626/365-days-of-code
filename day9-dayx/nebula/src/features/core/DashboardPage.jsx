@@ -1,10 +1,13 @@
 import { ArrowLeft, File, LayoutGrid, Notebook, Settings } from "lucide-react";
 import { useUserStore } from "../../store/userStore";
 import { getAuthenticatedUser, getUserData } from "../../firebase/services";
-import ThemeChanger from "../components/ThemeChanger";
 import { useEffect, useState } from "react";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useNavigate } from "react-router-dom";
+import DashboardArea from "./DashboardArea";
+import NotesArea from "./NotesArea";
+import NotebooksArea from "./NotebooksArea";
+import SettingsArea from "./SettingsArea";
 
 function DashboardPage() {
   const navigate = useNavigate();
@@ -55,7 +58,7 @@ function DashboardPage() {
   }, []);
 
   return (
-    <div className="">
+    <div className="flex">
       <div
         className={
           "sideBar h-[100vh] bg-base-300 p-4 flex flex-col ease-in-out duration-200" +
@@ -173,6 +176,17 @@ function DashboardPage() {
           </button>
         </div>
       </div>
+      {activeTab == APP_CONSTANTS.DASHBOARD_PAGE ? (
+        <DashboardArea></DashboardArea>
+      ) : activeTab == APP_CONSTANTS.NOTES_PAGE ? (
+        <NotesArea></NotesArea>
+      ) : activeTab == APP_CONSTANTS.NOTEBOOKS_PAGE ? (
+        <NotebooksArea></NotebooksArea>
+      ) : activeTab == APP_CONSTANTS.SETTINGS_PAGE ? (
+        <SettingsArea></SettingsArea>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

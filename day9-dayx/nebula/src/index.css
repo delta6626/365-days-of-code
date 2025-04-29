@@ -21,3 +21,7 @@
 @utility input {
   @apply rounded-lg;
 }
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
