@@ -32,6 +32,7 @@ function addUserToDatabase(uid, name, email, emailVerified) {
     emailVerified: emailVerified,
     tierType: APP_CONSTANTS.BASIC_TIER,
     tags: [],
+    pinnedNotes: [],
     preferences: {
       autoSaveTriggerTime: 1,
       language: APP_CONSTANTS.ENGLISH,
