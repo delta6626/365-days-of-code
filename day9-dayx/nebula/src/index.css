@@ -15,5 +15,9 @@
 }
 
 @utility btn {
-  @apply active:scale-95 transition-all ease-in-out duration-200 font-jakarta shadow-none;
+  @apply active:scale-95 transition-all ease-in-out duration-200 font-jakarta shadow-none rounded-lg;
+}
+
+@utility input {
+  @apply rounded-lg;
 }
