@@ -25,4 +25,8 @@ export const APP_CONSTANTS = {
   WITH_GOOGLE: "google",
   NULL: "null",
   UNKNOWN_ERROR: "An unknown error occurred. Try again later.",
+  DASHBOARD_PAGE: "dashboard",
+  NOTES_PAGE: "notes",
+  NOTEBOOKS_PAGE: "notebooks",
+  SETTINGS_PAGE: "settings",
 };
