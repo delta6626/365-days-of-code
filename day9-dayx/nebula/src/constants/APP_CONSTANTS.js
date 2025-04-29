@@ -29,4 +29,7 @@ export const APP_CONSTANTS = {
   NOTES_PAGE: "notes",
   NOTEBOOKS_PAGE: "notebooks",
   SETTINGS_PAGE: "settings",
+  ALERT_SUCCESS: "alert-success",
+  ALERT_ERROR: "alert-error",
+  ALERT_DURATION: 3000,
 };

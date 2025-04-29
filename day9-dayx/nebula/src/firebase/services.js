@@ -25,6 +25,14 @@ export function getUserData() {
   });
 }
 
+export function updateUserData(userObject) {
+  return getAuthenticatedUser().then((result) => {
+    return setDoc(doc(firestore, "users", result.uid), userObject, {
+      merge: true,
+    });
+  });
+}
+
 function addUserToDatabase(uid, name, email, authenticationMethod) {
   const basicUserSchema = {
     name: name,
