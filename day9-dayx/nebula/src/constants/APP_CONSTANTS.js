@@ -2,7 +2,7 @@ export const APP_CONSTANTS = {
   UNAUTHENTICATED: "Unauthenticated",
   BASIC_TIER: "basic",
   PRO_TIER: "pro",
-  ENGLISH: "en",
+  ENGLISH: "English",
   SUCCESS: "success",
   NAME_EMPTY: "Enter your name.",
   EMAIL_INVALID: "Enter a valid email address.",

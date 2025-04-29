@@ -80,7 +80,12 @@ function SignUpPage() {
   function createUser() {
     setAuthenticating(APP_CONSTANTS.WITH_EMAIL);
     setDatabaseError(false);
-    createNewUserWithEmailAndPassword(name, email, password)
+    createNewUserWithEmailAndPassword(
+      name,
+      email,
+      password,
+      APP_CONSTANTS.WITH_EMAIL
+    )
       .then(() => {
         setAuthenticating(APP_CONSTANTS.NULL);
         navigate("/dashboard");

@@ -8,11 +8,13 @@ import DashboardArea from "./DashboardArea";
 import NotesArea from "./NotesArea";
 import NotebooksArea from "./NotebooksArea";
 import SettingsArea from "./SettingsArea";
+import { useUserVerifiedStore } from "../../store/userVerifiedStore";
 
 function DashboardPage() {
   const navigate = useNavigate();
 
   const { user, setUser } = useUserStore();
+  const { userVerified, setUserVerified } = useUserVerifiedStore();
 
   const [activeTab, setActiveTab] = useState(APP_CONSTANTS.DASHBOARD_PAGE);
   const [sideBarCollapsed, setSideBarCollapsed] = useState(false);
@@ -42,10 +44,11 @@ function DashboardPage() {
       if (user == APP_CONSTANTS.UNAUTHENTICATED) {
         navigate("/login");
       } else {
+        setUserVerified(user.emailVerified);
         return;
       }
     });
-  });
+  }, []);
 
   useEffect(() => {
     getUserData().then((userData) => {

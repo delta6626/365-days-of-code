@@ -25,14 +25,20 @@ export function getUserData() {
   });
 }
 
-function addUserToDatabase(uid, name, email, emailVerified) {
+function addUserToDatabase(uid, name, email, authenticationMethod) {
   const basicUserSchema = {
     name: name,
     email: email,
-    emailVerified: emailVerified,
+    authenticationMethod: authenticationMethod,
     tierType: APP_CONSTANTS.BASIC_TIER,
     tags: [],
     pinnedNotes: [],
+    shortcuts: {
+      DASHBOARD_PAGE: "ctrl+shift+d",
+      NOTES_PAGE: "ctrl+shift+n",
+      NOTEBOOKS_PAGE: "ctrl+shift+b",
+      SETTINGS_PAGE: "ctrl+shift+s",
+    },
     preferences: {
       autoSaveTriggerTime: 1,
       language: APP_CONSTANTS.ENGLISH,
@@ -50,12 +56,16 @@ export function logInWithEmailAndPassword(email, password) {
 /**
  * Creates a new user with email and password and adds them to Firestore
  */
-export function createNewUserWithEmailAndPassword(name, email, password) {
+export function createNewUserWithEmailAndPassword(
+  name,
+  email,
+  password,
+  authenticationMethod
+) {
   return createUserWithEmailAndPassword(auth, email, password)
     .then((userCredentials) => {
       const uid = userCredentials.user.uid;
-      const emailVerified = userCredentials.user.emailVerified;
-      return addUserToDatabase(uid, name, email, emailVerified);
+      return addUserToDatabase(uid, name, email, authenticationMethod);
     })
     .then(() => {
       return APP_CONSTANTS.SUCCESS;
@@ -76,7 +86,7 @@ export function googleAuthSignIn() {
           result.user.uid,
           result.user.displayName,
           result.user.email,
-          result.user.emailVerified
+          APP_CONSTANTS.WITH_GOOGLE
         );
       } else {
         return;
