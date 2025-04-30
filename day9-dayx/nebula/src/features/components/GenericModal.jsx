@@ -4,7 +4,7 @@ function GenericModal({
   textContent,
   firstButtonClassName,
   secondButtonClassName,
-  fistButtonOnClick,
+  firstButtonOnClick,
   secondButtonOnClick,
   firstButtonText,
   secondButtonText,
@@ -15,7 +15,7 @@ function GenericModal({
         <h3 className="font-bold text-lg">{title}</h3>
         <p className="py-4">{textContent}</p>
         <div className="modal-action">
-          <button className={firstButtonClassName} onClick={fistButtonOnClick}>
+          <button className={firstButtonClassName} onClick={firstButtonOnClick}>
             {firstButtonText}
           </button>
           <button

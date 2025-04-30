@@ -129,7 +129,7 @@ function SettingsArea() {
         secondButtonClassName={"btn hidden"}
         firstButtonText={APP_CONSTANTS.OK}
         secondButtonText={""}
-        fistButtonOnClick={function () {
+        firstButtonOnClick={function () {
           document.getElementById(APP_CONSTANTS.SUCCESS_MODAL)?.close();
         }}
         secondButtonOnClick={function () {}}
@@ -143,7 +143,7 @@ function SettingsArea() {
         secondButtonClassName={"btn hidden"} // Hide second button if not needed
         firstButtonText={APP_CONSTANTS.OK} // Should be "OK"
         secondButtonText={""}
-        fistButtonOnClick={function () {
+        firstButtonOnClick={function () {
           document.getElementById(APP_CONSTANTS.ERROR_MODAL)?.close();
         }}
         secondButtonOnClick={function () {}}
@@ -353,7 +353,7 @@ function SettingsArea() {
             secondButtonClassName={"btn"}
             firstButtonText={APP_CONSTANTS.DELETE}
             secondButtonText={APP_CONSTANTS.CANCEL}
-            fistButtonOnClick={() => {
+            firstButtonOnClick={() => {
               deleteAllNotes();
             }}
             secondButtonOnClick={() => {
@@ -392,7 +392,7 @@ function SettingsArea() {
             secondButtonClassName={"btn"}
             firstButtonText={APP_CONSTANTS.DELETE}
             secondButtonText={APP_CONSTANTS.CANCEL}
-            fistButtonOnClick={() => {
+            firstButtonOnClick={() => {
               deleteAllNotebooks();
             }}
             secondButtonOnClick={() => {
@@ -427,7 +427,7 @@ function SettingsArea() {
             secondButtonClassName={"btn"}
             firstButtonText={APP_CONSTANTS.DELETE}
             secondButtonText={APP_CONSTANTS.CANCEL}
-            fistButtonOnClick={() => {
+            firstButtonOnClick={() => {
               deleteAccount();
             }}
             secondButtonOnClick={() => {
