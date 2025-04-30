@@ -27,6 +27,7 @@ I'll try to update this as I go.
 - Day 10 ✅: Set up routing for Nebula
 - Day 11 ✅: Created navbar, log in and sign up pages with error handling for Nebula
 - Day 12 ✅: Implemented Google sign in for nebula
+- Day 13 ✅: Implemented front end for Nebula's settings page, added new service functions, fixed bugs
 
 ---
 
