@@ -63,6 +63,7 @@ Each step returns a **new promise**, which is why we nest `return` inside `.then
 When you soft-delete each note with `updateDoc(...)`, you're starting **a bunch of delete requests at once** — but they're *asynchronous* (they don’t finish instantly).
 
 `Promise.all([...])` waits for **all of them** to finish.
+Promise.all() is used to wait for multiple promises to resolve. It takes an iterable (like an array) of promises and returns a single promise that resolves when all of the input promises have resolved.
 
 ### 🎨 Visual:
 
