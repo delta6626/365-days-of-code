@@ -1,16 +1,19 @@
 import React, { useState, useSyncExternalStore } from "react";
-import { ArrowBigUp, CheckCircle2, Command, Plus, XCircle } from "lucide-react";
+import { ArrowBigUp, Command, Plus } from "lucide-react";
 import { LANGUAGES } from "../../constants/LANGUAGES";
 import { useUserStore } from "../../store/userStore";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
+import { useMessageStore } from "../../store/messageStore";
 import {
   softDeleteAllNotes,
   updateUserData,
   softDeleteAllNotebooks,
+  deleteUserAccount,
 } from "../../firebase/services";
 import { Timestamp } from "firebase/firestore";
 import GenericModal from "../components/GenericModal";
+import { useNavigate } from "react-router-dom";
 
 /*
 TO DO
@@ -23,8 +26,11 @@ TO DO
 */
 
 function SettingsArea() {
+  const navigate = useNavigate();
+
   const { user, setUser } = useUserStore();
   const { userVerified } = useUserVerifiedStore();
+  const { message, setMessage } = useMessageStore();
 
   // State variables
   const [name, setName] = useState(user.name);
@@ -151,7 +157,22 @@ function SettingsArea() {
       });
   }
 
-  function deleteAccount() {}
+  function deleteAccount() {
+    const updatedUser = {
+      ...user,
+      deleted: true,
+    };
+
+    updateUserData(updatedUser)
+      .then(() => {
+        deleteUserAccount().then(() => {
+          navigate("/");
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
   return (
     <div className="flex-1 h-[100vh] p-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
@@ -453,7 +474,11 @@ function SettingsArea() {
                 .showModal();
             }}
           >
-            Delete
+            {!deletingAccount ? (
+              "Delete"
+            ) : (
+              <span className="loading loading-spinner"></span>
+            )}
           </button>
           <GenericModal
             id={APP_CONSTANTS.DELETE_ACCOUNT_MODAL}

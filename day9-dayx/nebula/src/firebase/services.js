@@ -164,3 +164,13 @@ export function softDeleteAllNotebooks() {
     });
   });
 }
+
+export function deleteUserAccount() {
+  return getAuthenticatedUser()
+    .then((user) => {
+      return user.delete();
+    })
+    .catch((error) => {
+      throw error;
+    });
+}
