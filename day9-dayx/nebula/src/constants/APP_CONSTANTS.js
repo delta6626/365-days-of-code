@@ -54,4 +54,5 @@ export const APP_CONSTANTS = {
   DELETE: "Delete",
   CANCEL: "Cancel",
   OK: "Okay",
+  HOUR: 3600000,
 };

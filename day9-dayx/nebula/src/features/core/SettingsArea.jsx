@@ -9,6 +9,7 @@ import {
   updateUserData,
   softDeleteAllNotebooks,
 } from "../../firebase/services";
+import { Timestamp } from "firebase/firestore";
 import GenericModal from "../components/GenericModal";
 
 /*
@@ -87,12 +88,44 @@ function SettingsArea() {
       });
   }
 
+  function updateMassDeletionTime() {
+    const updatedUser = {
+      ...user,
+      lastMassDeletionTime: new Date(),
+    };
+
+    setUser(updatedUser);
+
+    updateUserData(updatedUser)
+      .then(() => {
+        setUpdating(false);
+      })
+      .catch((error) => {
+        setUpdating(false);
+        console.error(error);
+      });
+  }
+
+  function canDelete() {
+    const last = user.lastMassDeletionTime;
+
+    if (!last) {
+      return true; // If there's no last mass deletion time, allow deletion
+    }
+
+    const lastTimestamp = new Timestamp(last.seconds, last.nanoseconds);
+    const elapsed = Date.now() - lastTimestamp.toMillis();
+
+    return elapsed >= APP_CONSTANTS.HOUR;
+  }
+
   function deleteAllNotes() {
     document.getElementById(APP_CONSTANTS.DELETE_NOTES_MODAL).close();
     setDeletingNotes(true);
     softDeleteAllNotes()
       .then(() => {
         setDeletingNotes(false);
+        updateMassDeletionTime();
         document.getElementById(APP_CONSTANTS.SUCCESS_MODAL).showModal();
       })
       .catch((error) => {
@@ -108,6 +141,7 @@ function SettingsArea() {
     softDeleteAllNotebooks()
       .then(() => {
         setDeletingNotebooks(false);
+        updateMassDeletionTime();
         document.getElementById(APP_CONSTANTS.SUCCESS_MODAL).showModal();
       })
       .catch((error) => {
@@ -220,7 +254,7 @@ function SettingsArea() {
           <div className="w-full max-w-xs">
             <input
               type="range"
-              min={0}
+              min={0} // 0 indicates 'Off'
               max={10}
               value={autoSaveTriggerTime}
               onChange={(e) => setAutoSaveTriggerTime(Number(e.target.value))}
@@ -234,7 +268,7 @@ function SettingsArea() {
             </div>
             <div className="flex justify-between px-2.5 mt-4 text-xs">
               {[...Array(11)].map((_, i) => (
-                <span key={i}>{i}</span>
+                <span key={i}>{i != 0 ? i : "Off"}</span>
               ))}
             </div>
           </div>
@@ -338,6 +372,7 @@ function SettingsArea() {
                 .getElementById(APP_CONSTANTS.DELETE_NOTES_MODAL)
                 .showModal();
             }}
+            disabled={!canDelete()}
           >
             {!deletingNotes ? (
               "Delete"
@@ -377,6 +412,7 @@ function SettingsArea() {
                 .getElementById(APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL)
                 .showModal();
             }}
+            disabled={!canDelete()}
           >
             {!deletingNotebooks ? (
               "Delete"
