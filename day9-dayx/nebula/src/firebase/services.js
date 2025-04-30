@@ -43,6 +43,7 @@ export function updateUserData(userObject) {
 function addUserToDatabase(uid, name, email, authenticationMethod) {
   const basicUserSchema = {
     deleted: "false",
+    lastMassDeletionTime: null,
     name: name,
     email: email,
     authenticationMethod: authenticationMethod,
