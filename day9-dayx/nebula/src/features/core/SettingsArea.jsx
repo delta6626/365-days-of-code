@@ -5,6 +5,7 @@ import { useUserStore } from "../../store/userStore";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
 import { updateUserData } from "../../firebase/services";
+import GenericModal from "../components/GenericModal";
 
 /*
 TO DO
@@ -96,6 +97,12 @@ function SettingsArea() {
         setTimeout(() => setMessage(null), APP_CONSTANTS.ALERT_DURATION);
       });
   }
+
+  function deleteAllNotes() {}
+
+  function deleteAllNotebooks() {}
+
+  function deleteAccount() {}
 
   return (
     <div className="flex-1 h-[100vh] p-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
@@ -293,15 +300,108 @@ function SettingsArea() {
         <div className="divider"></div>
         <div className="flex justify-between">
           <p className="font-medium">Delete my notes</p>
-          <button className="btn btn-error text-error-content">Delete</button>
+          <button
+            className="btn btn-error text-error-content"
+            onClick={() => {
+              document
+                .getElementById(APP_CONSTANTS.DELETE_NOTES_MODAL)
+                .showModal();
+            }}
+          >
+            Delete
+          </button>
+          <GenericModal
+            id={APP_CONSTANTS.DELETE_NOTES_MODAL}
+            title={APP_CONSTANTS.DELETE_NOTES_MODAL_TITLE}
+            textContent={APP_CONSTANTS.DELETE_NOTES_MODAL_TEXT_CONTENT}
+            firstButtonClassName={"btn btn-error"}
+            secondButtonClassName={"btn"}
+            firstButtonText={APP_CONSTANTS.DELETE}
+            secondButtonText={APP_CONSTANTS.CANCEL}
+            fistButtonOnClick={() => {
+              deleteAllNotes();
+            }}
+            secondButtonOnClick={() => {
+              if (
+                document.getElementById(APP_CONSTANTS.DELETE_NOTES_MODAL) !=
+                null
+              ) {
+                document
+                  .getElementById(APP_CONSTANTS.DELETE_NOTES_MODAL)
+                  .close();
+              }
+            }}
+          ></GenericModal>
         </div>
         <div className="flex justify-between mt-4">
           <p className="font-medium">Delete my notebooks</p>
-          <button className="btn btn-error text-error-content">Delete</button>
+          <button
+            className="btn btn-error text-error-content"
+            onClick={() => {
+              document
+                .getElementById(APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL)
+                .showModal();
+            }}
+          >
+            Delete
+          </button>
+          <GenericModal
+            id={APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL}
+            title={APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL_TITLE}
+            textContent={APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL_TEXT_CONTENT}
+            firstButtonClassName={"btn btn-error"}
+            secondButtonClassName={"btn"}
+            firstButtonText={APP_CONSTANTS.DELETE}
+            secondButtonText={APP_CONSTANTS.CANCEL}
+            fistButtonOnClick={() => {
+              deleteAllNotebooks();
+            }}
+            secondButtonOnClick={() => {
+              if (
+                document.getElementById(APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL) !=
+                null
+              ) {
+                document
+                  .getElementById(APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL)
+                  .close();
+              }
+            }}
+          ></GenericModal>
         </div>
         <div className="flex justify-between mt-4">
           <p className="font-medium">Delete my account</p>
-          <button className="btn btn-error text-error-content">Delete</button>
+          <button
+            className="btn btn-error text-error-content"
+            onClick={() => {
+              document
+                .getElementById(APP_CONSTANTS.DELETE_ACCOUNT_MODAL)
+                .showModal();
+            }}
+          >
+            Delete
+          </button>
+          <GenericModal
+            id={APP_CONSTANTS.DELETE_ACCOUNT_MODAL}
+            title={APP_CONSTANTS.DELETE_ACCOUNT_MODAL_TITLE}
+            textContent={APP_CONSTANTS.DELETE_ACCOUNT_MODAL_TEXT_CONTENT}
+            firstButtonClassName={"btn btn-error"}
+            secondButtonClassName={"btn"}
+            firstButtonText={APP_CONSTANTS.DELETE}
+            secondButtonText={APP_CONSTANTS.CANCEL}
+            fistButtonOnClick={() => {
+              deleteAccount();
+            }}
+            secondButtonOnClick={() => {
+              if (
+                document.getElementById(APP_CONSTANTS.DELETE_ACCOUNT_MODAL) !=
+                null
+              ) {
+                document
+                  .getElementById(APP_CONSTANTS.DELETE_ACCOUNT_MODAL)
+                  .close();
+              }
+            }}
+          ></GenericModal>
         </div>
       </div>
     </div>

@@ -32,4 +32,18 @@ export const APP_CONSTANTS = {
   ALERT_SUCCESS: "alert-success",
   ALERT_ERROR: "alert-error",
   ALERT_DURATION: 3000,
+  DELETE_NOTES_MODAL: "deleteNotesModal",
+  DELETE_NOTES_MODAL_TITLE: "Delete all notes?",
+  DELETE_NOTES_MODAL_TEXT_CONTENT:
+    "This will permanently delete all your notes. This action cannot be undone. Are you sure you want to continue?",
+  DELETE_NOTEBOOKS_MODAL: "deleteNotebooksModal",
+  DELETE_NOTEBOOKS_MODAL_TITLE: "Delete all notebooks?",
+  DELETE_NOTEBOOKS_MODAL_TEXT_CONTENT:
+    "This will permanently delete all your notebooks and their contents. This action cannot be undone. Are you sure you want to continue?",
+  DELETE_ACCOUNT_MODAL: "deleteAccountModal",
+  DELETE_ACCOUNT_MODAL_TITLE: "Delete your account?",
+  DELETE_ACCOUNT_MODAL_TEXT_CONTENT:
+    "This will permanently delete your account and all associated data. This action cannot be undone. Are you sure you want to continue?",
+  DELETE: "Delete",
+  CANCEL: "Cancel",
 };
