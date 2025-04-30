@@ -144,3 +144,22 @@ export function softDeleteAllNotes() {
     });
   });
 }
+
+export function softDeleteAllNotebooks() {
+  return getAuthenticatedUser().then(function (user) {
+    const notebooksRef = collection(firestore, "users", user.uid, "notebooks");
+
+    return getDocs(notebooksRef).then(function (snapshot) {
+      var updatePromises = [];
+
+      snapshot.forEach(function (docSnap) {
+        var updatePromise = updateDoc(docSnap.ref, {
+          deleted: true,
+        });
+        updatePromises.push(updatePromise);
+      });
+
+      return Promise.all(updatePromises);
+    });
+  });
+}

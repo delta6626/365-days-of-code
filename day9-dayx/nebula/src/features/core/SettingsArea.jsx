@@ -4,7 +4,11 @@ import { LANGUAGES } from "../../constants/LANGUAGES";
 import { useUserStore } from "../../store/userStore";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
-import { softDeleteAllNotes, updateUserData } from "../../firebase/services";
+import {
+  softDeleteAllNotes,
+  updateUserData,
+  softDeleteAllNotebooks,
+} from "../../firebase/services";
 import GenericModal from "../components/GenericModal";
 
 /*
@@ -98,7 +102,20 @@ function SettingsArea() {
       });
   }
 
-  function deleteAllNotebooks() {}
+  function deleteAllNotebooks() {
+    document.getElementById(APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL).close();
+    setDeletingNotebooks(true);
+    softDeleteAllNotebooks()
+      .then(() => {
+        setDeletingNotebooks(false);
+        document.getElementById(APP_CONSTANTS.SUCCESS_MODAL).showModal();
+      })
+      .catch((error) => {
+        setDeletingNotes(false);
+        document.getElementById(APP_CONSTANTS.ERROR_MODAL).showModal();
+        console.log(error);
+      });
+  }
 
   function deleteAccount() {}
 
@@ -361,7 +378,11 @@ function SettingsArea() {
                 .showModal();
             }}
           >
-            Delete
+            {!deletingNotebooks ? (
+              "Delete"
+            ) : (
+              <span className="loading loading-spinner"></span>
+            )}
           </button>
           <GenericModal
             id={APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL}
