@@ -44,6 +44,14 @@ export const APP_CONSTANTS = {
   DELETE_ACCOUNT_MODAL_TITLE: "Delete your account?",
   DELETE_ACCOUNT_MODAL_TEXT_CONTENT:
     "This will permanently delete your account and all associated data. This action cannot be undone. Are you sure you want to continue?",
+  SUCCESS_MODAL: "successModal",
+  SUCCESS_MODAL_TITLE: "Success",
+  SUCCESS_MODAL_TEXT_CONTENT: "Your action was completed successfully.",
+  ERROR_MODAL: "errorModal",
+  ERROR_MODAL_TITLE: "Something went wrong",
+  ERROR_MODAL_TEXT_CONTENT:
+    "We couldn't complete your request. Please try again.",
   DELETE: "Delete",
   CANCEL: "Cancel",
+  OK: "Okay",
 };

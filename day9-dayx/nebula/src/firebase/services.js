@@ -7,7 +7,14 @@ import {
   signInWithPopup,
   getAdditionalUserInfo,
 } from "firebase/auth";
-import { getDoc, doc, setDoc } from "firebase/firestore";
+import {
+  getDoc,
+  doc,
+  setDoc,
+  getDocs,
+  collection,
+  updateDoc,
+} from "firebase/firestore";
 import { APP_CONSTANTS } from "../constants/APP_CONSTANTS";
 
 export function getUserData() {
@@ -35,6 +42,7 @@ export function updateUserData(userObject) {
 
 function addUserToDatabase(uid, name, email, authenticationMethod) {
   const basicUserSchema = {
+    deleted: "false",
     name: name,
     email: email,
     authenticationMethod: authenticationMethod,
@@ -114,6 +122,25 @@ export function getAuthenticatedUser() {
       } else {
         resolve(APP_CONSTANTS.UNAUTHENTICATED); // If no user, resolve with 'Unauthenticated'
       }
+    });
+  });
+}
+
+export function softDeleteAllNotes() {
+  return getAuthenticatedUser().then(function (user) {
+    const notesRef = collection(firestore, "users", user.uid, "notes");
+
+    return getDocs(notesRef).then(function (snapshot) {
+      var updatePromises = [];
+
+      snapshot.forEach(function (docSnap) {
+        var updatePromise = updateDoc(docSnap.ref, {
+          deleted: true,
+        });
+        updatePromises.push(updatePromise);
+      });
+
+      return Promise.all(updatePromises);
     });
   });
 }

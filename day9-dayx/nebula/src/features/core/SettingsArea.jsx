@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useSyncExternalStore } from "react";
 import { ArrowBigUp, CheckCircle2, Command, Plus, XCircle } from "lucide-react";
 import { LANGUAGES } from "../../constants/LANGUAGES";
 import { useUserStore } from "../../store/userStore";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
-import { updateUserData } from "../../firebase/services";
+import { softDeleteAllNotes, updateUserData } from "../../firebase/services";
 import GenericModal from "../components/GenericModal";
 
 /*
@@ -33,7 +33,9 @@ function SettingsArea() {
   );
   const [shortcuts, setShortcuts] = useState({ ...user.shortcuts });
   const [updating, setUpdating] = useState(false);
-  const [message, setMessage] = useState();
+  const [deletingNotes, setDeletingNotes] = useState(false);
+  const [deletingNotebooks, setDeletingNotebooks] = useState(false);
+  const [deletingAccount, setDeletingAccount] = useState(false);
 
   function isUserDataChanged() {
     return (
@@ -49,13 +51,6 @@ function SettingsArea() {
   // Update handler
   function handleUpdate() {
     if (!isUserDataChanged()) {
-      setMessage({
-        type: APP_CONSTANTS.ALERT_ERROR,
-        text: "You have not changed any settings yet.",
-      });
-      setTimeout(() => {
-        setMessage(null);
-      }, APP_CONSTANTS.ALERT_DURATION);
       return;
     }
 
@@ -81,24 +76,27 @@ function SettingsArea() {
     updateUserData(updatedUser)
       .then(() => {
         setUpdating(false);
-        setMessage({
-          type: APP_CONSTANTS.ALERT_SUCCESS,
-          text: "Settings updated successfully!",
-        });
-        setTimeout(() => setMessage(null), APP_CONSTANTS.ALERT_DURATION);
       })
       .catch((error) => {
         setUpdating(false);
         console.error(error);
-        setMessage({
-          type: APP_CONSTANTS.ALERT_ERROR,
-          text: "Failed to update settings. Please try again.",
-        });
-        setTimeout(() => setMessage(null), APP_CONSTANTS.ALERT_DURATION);
       });
   }
 
-  function deleteAllNotes() {}
+  function deleteAllNotes() {
+    document.getElementById(APP_CONSTANTS.DELETE_NOTES_MODAL).close();
+    setDeletingNotes(true);
+    softDeleteAllNotes()
+      .then(() => {
+        setDeletingNotes(false);
+        document.getElementById(APP_CONSTANTS.SUCCESS_MODAL).showModal();
+      })
+      .catch((error) => {
+        setDeletingNotes(false);
+        document.getElementById(APP_CONSTANTS.ERROR_MODAL).showModal();
+        console.log(error);
+      });
+  }
 
   function deleteAllNotebooks() {}
 
@@ -106,18 +104,34 @@ function SettingsArea() {
 
   return (
     <div className="flex-1 h-[100vh] p-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
-      {message && (
-        <div className={`alert ${message.type} mb-4`}>
-          {message.type == APP_CONSTANTS.ALERT_ERROR ? (
-            <XCircle></XCircle>
-          ) : message.type == APP_CONSTANTS.ALERT_SUCCESS ? (
-            <CheckCircle2></CheckCircle2>
-          ) : (
-            ""
-          )}
-          <span className="">{message.text}</span>
-        </div>
-      )}
+      <GenericModal
+        id={APP_CONSTANTS.SUCCESS_MODAL}
+        title={APP_CONSTANTS.SUCCESS_MODAL_TITLE}
+        textContent={APP_CONSTANTS.SUCCESS_MODAL_TEXT_CONTENT}
+        firstButtonClassName={"btn btn-primary"}
+        secondButtonClassName={"btn hidden"}
+        firstButtonText={APP_CONSTANTS.OK}
+        secondButtonText={""}
+        fistButtonOnClick={function () {
+          document.getElementById(APP_CONSTANTS.SUCCESS_MODAL)?.close();
+        }}
+        secondButtonOnClick={function () {}}
+      />
+
+      <GenericModal
+        id={APP_CONSTANTS.ERROR_MODAL}
+        title={APP_CONSTANTS.ERROR_MODAL_TITLE}
+        textContent={APP_CONSTANTS.ERROR_MODAL_TEXT_CONTENT}
+        firstButtonClassName={"btn btn-error"}
+        secondButtonClassName={"btn hidden"} // Hide second button if not needed
+        firstButtonText={APP_CONSTANTS.OK} // Should be "OK"
+        secondButtonText={""}
+        fistButtonOnClick={function () {
+          document.getElementById(APP_CONSTANTS.ERROR_MODAL)?.close();
+        }}
+        secondButtonOnClick={function () {}}
+      />
+
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Settings</h1>
         <button
@@ -308,7 +322,11 @@ function SettingsArea() {
                 .showModal();
             }}
           >
-            Delete
+            {!deletingNotes ? (
+              "Delete"
+            ) : (
+              <span className="loading loading-spinner"></span>
+            )}
           </button>
           <GenericModal
             id={APP_CONSTANTS.DELETE_NOTES_MODAL}
