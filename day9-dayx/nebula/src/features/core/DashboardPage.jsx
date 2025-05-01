@@ -41,7 +41,7 @@ function DashboardPage() {
   }
 
   useHotkeys(
-    `ctrl+shift+${user.shortcuts.DASHBOARD_PAGE}`,
+    `ctrl+shift+${user?.shortcuts.DASHBOARD_PAGE}`,
     () => {
       handleDashboardButtonClick();
     },
@@ -52,7 +52,7 @@ function DashboardPage() {
   );
 
   useHotkeys(
-    `ctrl+shift+${user.shortcuts.NOTES_PAGE}`,
+    `ctrl+shift+${user?.shortcuts.NOTES_PAGE}`,
     () => {
       handleNotesButtonClick();
     },
@@ -63,7 +63,7 @@ function DashboardPage() {
   );
 
   useHotkeys(
-    `ctrl+shift+${user.shortcuts.NOTEBOOKS_PAGE}`,
+    `ctrl+shift+${user?.shortcuts.NOTEBOOKS_PAGE}`,
     () => {
       handleNotebooksButtonClick();
     },
@@ -74,7 +74,7 @@ function DashboardPage() {
   );
 
   useHotkeys(
-    `ctrl+shift+${user.shortcuts.SETTINGS_PAGE}`,
+    `ctrl+shift+${user?.shortcuts.SETTINGS_PAGE}`,
     () => {
       handleSettingsButtonClick();
     },
