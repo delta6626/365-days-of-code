@@ -28,6 +28,8 @@ I'll try to update this as I go.
 - Day 11 ✅: Created navbar, log in and sign up pages with error handling for Nebula
 - Day 12 ✅: Implemented Google sign in for nebula
 - Day 13 ✅: Implemented front end for Nebula's settings page, added new service functions, fixed bugs
+- Day 14 ✅: Implemented deletion of notes, notebooks and account functionality for Nebula
+- Day 15 ✅: Implemented sign out and email verification for Nebula + Refactored some code
 
 ---
 
