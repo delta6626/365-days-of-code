@@ -5,6 +5,7 @@ import { useUserStore } from "../../store/userStore";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
 import { useMessageStore } from "../../store/messageStore";
+import { hasEmptyStringValue } from "../../utils/hasEmptyStringValue";
 import {
   softDeleteAllNotes,
   updateUserData,
@@ -58,9 +59,30 @@ function SettingsArea() {
     );
   }
 
+  function emptyFields() {
+    return name == "" || hasEmptyStringValue(shortcuts);
+  }
+
   // Update handler
   function handleUpdate() {
     if (!isUserDataChanged()) {
+      return;
+    }
+
+    if (emptyFields()) {
+      setMessage({
+        title: APP_CONSTANTS.ERROR_MODAL_TITLE,
+        textContent: APP_CONSTANTS.FIELD_EMPTY,
+        firstButtonClassName: "btn btn-error",
+        secondButtonClassName: "hidden",
+        firstButtonText: APP_CONSTANTS.OK,
+        secondButtonText: "",
+        firstButtonOnClick: function () {
+          document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+        },
+        secondButtonOnClick: function () {},
+      });
+      document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
       return;
     }
 
@@ -86,6 +108,19 @@ function SettingsArea() {
     updateUserData(updatedUser)
       .then(() => {
         setUpdating(false);
+        setMessage({
+          title: APP_CONSTANTS.SUCCESS_MODAL_TITLE,
+          textContent: APP_CONSTANTS.SUCCESS_MODAL_TEXT_CONTENT,
+          firstButtonClassName: "btn btn-primary",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
       })
       .catch((error) => {
         setUpdating(false);
