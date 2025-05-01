@@ -52,10 +52,10 @@ function addUserToDatabase(uid, name, email, authenticationMethod) {
     tags: [],
     pinnedNotes: [],
     shortcuts: {
-      DASHBOARD_PAGE: "ctrl+shift+d",
-      NOTES_PAGE: "ctrl+shift+n",
-      NOTEBOOKS_PAGE: "ctrl+shift+b",
-      SETTINGS_PAGE: "ctrl+shift+s",
+      DASHBOARD_PAGE: "d",
+      NOTES_PAGE: "n",
+      NOTEBOOKS_PAGE: "b",
+      SETTINGS_PAGE: "s",
     },
     preferences: {
       autoSaveTriggerTime: 1,

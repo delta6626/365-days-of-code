@@ -18,9 +18,6 @@ import { useNavigate } from "react-router-dom";
 
 /*
 TO DO
-1. Delete user
-2. Delete notes
-3. Delete notebooks
 4. email validation
 5. Short cut input validation
 6. Send verification email
