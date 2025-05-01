@@ -7,6 +7,7 @@ import {
   signInWithPopup,
   getAdditionalUserInfo,
   signOut,
+  sendEmailVerification,
 } from "firebase/auth";
 import {
   getDoc,
@@ -164,6 +165,10 @@ export function softDeleteAllNotebooks() {
       return Promise.all(updatePromises);
     });
   });
+}
+
+export function sendVerificationEmail() {
+  return sendEmailVerification(auth.currentUser);
 }
 
 export function signOutUser() {

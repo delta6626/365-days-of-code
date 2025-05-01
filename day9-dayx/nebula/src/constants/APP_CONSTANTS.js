@@ -46,8 +46,12 @@ export const APP_CONSTANTS = {
   SIGN_OUT_MODAL_TITLE: "Sign out?",
   SIGN_OUT_MODAL_TEXT_CONTENT:
     "You will be signed out of your account. You can sign back in at any time. Are you sure you want to continue?",
+  EMAIL_VERIFICATION_MODAL_SUCCESS: "Check your inbox",
+  EMAIL_VERIFICATION_MODAL_SUCCESS_TEXT_CONTENT:
+    "We've sent a verification link to your email. Please check your inbox to complete the verification.",
   GENERIC_MODAL: "genericModal",
   SIGN_OUT: "Sign out",
+  SEND: "Send",
   DELETE: "Delete",
   CANCEL: "Cancel",
   OK: "Okay",

@@ -11,6 +11,7 @@ import {
   softDeleteAllNotebooks,
   deleteUserAccount,
   signOutUser,
+  sendVerificationEmail,
 } from "../../firebase/services";
 import { Timestamp } from "firebase/firestore";
 import GenericModal from "../components/GenericModal";
@@ -18,8 +19,6 @@ import { useNavigate } from "react-router-dom";
 
 /*
 TO DO
-4. email validation
-5. Short cut input validation
 6. Send verification email
 */
 
@@ -44,6 +43,7 @@ function SettingsArea() {
   const [updating, setUpdating] = useState(false);
   const [deletingNotes, setDeletingNotes] = useState(false);
   const [deletingNotebooks, setDeletingNotebooks] = useState(false);
+  const [sendingMail, setSendingMail] = useState(false);
   const [signingOut, setSigningOut] = useState(false);
   const [deletingAccount, setDeletingAccount] = useState(false);
 
@@ -159,6 +159,44 @@ function SettingsArea() {
     const elapsed = Date.now() - lastTimestamp.toMillis();
 
     return elapsed >= APP_CONSTANTS.HOUR;
+  }
+
+  function handleSendVerificationMail() {
+    setSendingMail(!sendingMail);
+    sendVerificationEmail()
+      .then(() => {
+        setSendingMail(false);
+        setMessage({
+          title: APP_CONSTANTS.EMAIL_VERIFICATION_MODAL_SUCCESS,
+          textContent:
+            APP_CONSTANTS.EMAIL_VERIFICATION_MODAL_SUCCESS_TEXT_CONTENT,
+          firstButtonClassName: "btn btn-primary",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+      })
+      .catch(() => {
+        setSendingMail(false);
+        setMessage({
+          title: APP_CONSTANTS.ERROR_MODAL_TITLE,
+          textContent: APP_CONSTANTS.ERROR_MODAL_TEXT_CONTENT + "\n" + error,
+          firstButtonClassName: "btn btn-error",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+      });
   }
 
   function deleteAllNotes() {
@@ -341,65 +379,19 @@ function SettingsArea() {
         </div>
         <div className="flex flex-col mt-4">
           <p className="font-medium">Email</p>
-          <input
-            className="input input-primary mt-4 w-200 max-w-full"
-            type="text"
-            placeholder="Email"
-            value={email}
-            readOnly={user.authenticationMethod === APP_CONSTANTS.WITH_GOOGLE}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-      </div>
-
-      {/* Account management */}
-      <div className={"bg-base-200 rounded-lg p-4 mt-4"}>
-        <p className="text-xl font-semibold">Account</p>
-        <p className="mt-4 text-neutral-400">Manage your account</p>
-        <div className="divider"></div>
-        <div className="flex justify-between">
-          <p className="font-medium">Sign out</p>
-          <button
-            className="btn btn-primary"
-            onClick={() => {
-              setMessage({
-                title: APP_CONSTANTS.SIGN_OUT_MODAL_TITLE,
-                textContent: APP_CONSTANTS.SIGN_OUT_MODAL_TEXT_CONTENT,
-                firstButtonClassName: "btn btn-primary",
-                secondButtonClassName: "btn",
-                firstButtonText: APP_CONSTANTS.SIGN_OUT,
-                secondButtonText: APP_CONSTANTS.CANCEL,
-                firstButtonOnClick: function () {
-                  handleSignOut();
-                },
-                secondButtonOnClick: function () {
-                  if (
-                    document.getElementById(APP_CONSTANTS.GENERIC_MODAL) != null
-                  ) {
-                    document
-                      .getElementById(APP_CONSTANTS.GENERIC_MODAL)
-                      .close();
-                  }
-                },
-              });
-              document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
-            }}
+          <div
+            className="tooltip tooltip-bottom tooltip-warning"
+            data-tip="Unfortunately, you can't change your email."
           >
-            {!signingOut ? (
-              APP_CONSTANTS.SIGN_OUT
-            ) : (
-              <span className="loading loading-spinner"></span>
-            )}
-          </button>
-        </div>
-        <div className="flex justify-between mt-4">
-          <p className="font-medium">Send verification mail</p>
-          <button
-            className="btn btn-primary"
-            disabled={userVerified ? true : false}
-          >
-            Send
-          </button>
+            <input
+              className="input input-primary mt-4 w-200 max-w-full"
+              type="text"
+              placeholder="Email"
+              value={email}
+              readOnly={true}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
         </div>
       </div>
 
@@ -517,6 +509,64 @@ function SettingsArea() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Account management */}
+      <div className={"bg-base-200 rounded-lg p-4 mt-4"}>
+        <p className="text-xl font-semibold">Account</p>
+        <p className="mt-4 text-neutral-400">Manage your account</p>
+        <div className="divider"></div>
+        <div className="flex justify-between">
+          <p className="font-medium">Send verification mail</p>
+          <button
+            className="btn btn-primary"
+            disabled={userVerified ? true : false}
+            onClick={handleSendVerificationMail}
+          >
+            {userVerified ? (
+              "Already verified"
+            ) : !sendingMail ? (
+              APP_CONSTANTS.SEND
+            ) : (
+              <span className="loading loading-spinner"></span>
+            )}
+          </button>
+        </div>
+        <div className="flex justify-between mt-4">
+          <p className="font-medium">Sign out</p>
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              setMessage({
+                title: APP_CONSTANTS.SIGN_OUT_MODAL_TITLE,
+                textContent: APP_CONSTANTS.SIGN_OUT_MODAL_TEXT_CONTENT,
+                firstButtonClassName: "btn btn-primary",
+                secondButtonClassName: "btn",
+                firstButtonText: APP_CONSTANTS.SIGN_OUT,
+                secondButtonText: APP_CONSTANTS.CANCEL,
+                firstButtonOnClick: function () {
+                  handleSignOut();
+                },
+                secondButtonOnClick: function () {
+                  if (
+                    document.getElementById(APP_CONSTANTS.GENERIC_MODAL) != null
+                  ) {
+                    document
+                      .getElementById(APP_CONSTANTS.GENERIC_MODAL)
+                      .close();
+                  }
+                },
+              });
+              document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+            }}
+          >
+            {!signingOut ? (
+              APP_CONSTANTS.SIGN_OUT
+            ) : (
+              <span className="loading loading-spinner"></span>
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Danger Zone */}
