@@ -29,28 +29,25 @@ export const APP_CONSTANTS = {
   NOTES_PAGE: "notes",
   NOTEBOOKS_PAGE: "notebooks",
   SETTINGS_PAGE: "settings",
-  ALERT_SUCCESS: "alert-success",
-  ALERT_ERROR: "alert-error",
-  ALERT_DURATION: 3000,
-  DELETE_NOTES_MODAL: "deleteNotesModal",
   DELETE_NOTES_MODAL_TITLE: "Delete all notes?",
   DELETE_NOTES_MODAL_TEXT_CONTENT:
     "This will permanently delete all your notes. This action cannot be undone. Are you sure you want to continue?",
-  DELETE_NOTEBOOKS_MODAL: "deleteNotebooksModal",
   DELETE_NOTEBOOKS_MODAL_TITLE: "Delete all notebooks?",
   DELETE_NOTEBOOKS_MODAL_TEXT_CONTENT:
     "This will permanently delete all your notebooks and their contents. This action cannot be undone. Are you sure you want to continue?",
-  DELETE_ACCOUNT_MODAL: "deleteAccountModal",
   DELETE_ACCOUNT_MODAL_TITLE: "Delete your account?",
   DELETE_ACCOUNT_MODAL_TEXT_CONTENT:
     "This will permanently delete your account and all associated data. This action cannot be undone. Are you sure you want to continue?",
-  SUCCESS_MODAL: "successModal",
   SUCCESS_MODAL_TITLE: "Success",
   SUCCESS_MODAL_TEXT_CONTENT: "Your action was completed successfully.",
-  ERROR_MODAL: "errorModal",
   ERROR_MODAL_TITLE: "Something went wrong",
   ERROR_MODAL_TEXT_CONTENT:
     "We couldn't complete your request. Please try again.",
+  SIGN_OUT_MODAL_TITLE: "Sign out?",
+  SIGN_OUT_MODAL_TEXT_CONTENT:
+    "You will be signed out of your account. You can sign back in at any time. Are you sure you want to continue?",
+  GENERIC_MODAL: "genericModal",
+  SIGN_OUT: "Sign out",
   DELETE: "Delete",
   CANCEL: "Cancel",
   OK: "Okay",

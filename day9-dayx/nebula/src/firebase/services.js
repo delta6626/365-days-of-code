@@ -6,6 +6,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   getAdditionalUserInfo,
+  signOut,
 } from "firebase/auth";
 import {
   getDoc,
@@ -163,6 +164,10 @@ export function softDeleteAllNotebooks() {
       return Promise.all(updatePromises);
     });
   });
+}
+
+export function signOutUser() {
+  return signOut(auth);
 }
 
 export function deleteUserAccount() {

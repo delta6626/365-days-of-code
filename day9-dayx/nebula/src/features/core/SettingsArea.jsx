@@ -10,6 +10,7 @@ import {
   updateUserData,
   softDeleteAllNotebooks,
   deleteUserAccount,
+  signOutUser,
 } from "../../firebase/services";
 import { Timestamp } from "firebase/firestore";
 import GenericModal from "../components/GenericModal";
@@ -46,6 +47,7 @@ function SettingsArea() {
   const [updating, setUpdating] = useState(false);
   const [deletingNotes, setDeletingNotes] = useState(false);
   const [deletingNotebooks, setDeletingNotebooks] = useState(false);
+  const [signingOut, setSigningOut] = useState(false);
   const [deletingAccount, setDeletingAccount] = useState(false);
 
   function isUserDataChanged() {
@@ -94,6 +96,31 @@ function SettingsArea() {
       });
   }
 
+  function handleSignOut() {
+    setSigningOut(true);
+    document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+    signOutUser()
+      .then(() => {
+        setSigningOut(false);
+        navigate("/signup");
+      })
+      .catch((error) => {
+        setMessage({
+          title: APP_CONSTANTS.ERROR_MODAL_TITLE,
+          textContent: APP_CONSTANTS.ERROR_MODAL_TEXT_CONTENT + "\n" + error,
+          firstButtonClassName: "btn btn-error",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+      });
+  }
+
   function updateMassDeletionTime() {
     const updatedUser = {
       ...user,
@@ -108,7 +135,19 @@ function SettingsArea() {
       })
       .catch((error) => {
         setUpdating(false);
-        console.error(error);
+        setMessage({
+          title: APP_CONSTANTS.ERROR_MODAL_TITLE,
+          textContent: APP_CONSTANTS.ERROR_MODAL_TEXT_CONTENT + "\n" + error,
+          firstButtonClassName: "btn btn-error",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
       });
   }
 
@@ -126,38 +165,88 @@ function SettingsArea() {
   }
 
   function deleteAllNotes() {
-    document.getElementById(APP_CONSTANTS.DELETE_NOTES_MODAL).close();
+    document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
     setDeletingNotes(true);
     softDeleteAllNotes()
       .then(() => {
         setDeletingNotes(false);
         updateMassDeletionTime();
-        document.getElementById(APP_CONSTANTS.SUCCESS_MODAL).showModal();
+        setMessage({
+          title: APP_CONSTANTS.SUCCESS_MODAL_TITLE,
+          textContent: APP_CONSTANTS.SUCCESS_MODAL_TEXT_CONTENT,
+          firstButtonClassName: "btn btn-primary",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
       })
       .catch((error) => {
         setDeletingNotes(false);
-        document.getElementById(APP_CONSTANTS.ERROR_MODAL).showModal();
-        console.log(error);
+        setMessage({
+          title: APP_CONSTANTS.ERROR_MODAL_TITLE,
+          textContent: APP_CONSTANTS.ERROR_MODAL_TEXT_CONTENT + "\n" + error,
+          firstButtonClassName: "btn btn-error",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
       });
   }
 
   function deleteAllNotebooks() {
-    document.getElementById(APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL).close();
+    document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
     setDeletingNotebooks(true);
     softDeleteAllNotebooks()
       .then(() => {
         setDeletingNotebooks(false);
         updateMassDeletionTime();
-        document.getElementById(APP_CONSTANTS.SUCCESS_MODAL).showModal();
+        setMessage({
+          title: APP_CONSTANTS.SUCCESS_MODAL_TITLE,
+          textContent: APP_CONSTANTS.SUCCESS_MODAL_TEXT_CONTENT,
+          firstButtonClassName: "btn btn-primary",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
       })
       .catch((error) => {
         setDeletingNotes(false);
-        document.getElementById(APP_CONSTANTS.ERROR_MODAL).showModal();
-        console.log(error);
+        setMessage({
+          title: APP_CONSTANTS.ERROR_MODAL_TITLE,
+          textContent: APP_CONSTANTS.ERROR_MODAL_TEXT_CONTENT + "\n" + error,
+          firstButtonClassName: "btn btn-error",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
       });
   }
 
   function deleteAccount() {
+    document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+
+    setDeletingAccount(true);
+
     const updatedUser = {
       ...user,
       deleted: true,
@@ -165,44 +254,60 @@ function SettingsArea() {
 
     updateUserData(updatedUser)
       .then(() => {
-        deleteUserAccount().then(() => {
-          navigate("/");
-        });
+        deleteUserAccount()
+          .then(() => {
+            setDeletingAccount(false);
+            navigate("/");
+          })
+          .catch((error) => {
+            setDeletingAccount(false);
+            setMessage({
+              title: APP_CONSTANTS.ERROR_MODAL_TITLE,
+              textContent:
+                APP_CONSTANTS.ERROR_MODAL_TEXT_CONTENT + "\n" + error,
+              firstButtonClassName: "btn btn-error",
+              secondButtonClassName: "hidden",
+              firstButtonText: APP_CONSTANTS.OK,
+              secondButtonText: "",
+              firstButtonOnClick: function () {
+                document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+              },
+              secondButtonOnClick: function () {},
+            });
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+          });
       })
       .catch((error) => {
-        console.error(error);
+        setDeletingAccount(false);
+        setMessage({
+          title: APP_CONSTANTS.ERROR_MODAL_TITLE,
+          textContent: APP_CONSTANTS.ERROR_MODAL_TEXT_CONTENT + "\n" + error,
+          firstButtonClassName: "btn btn-error",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
       });
   }
 
   return (
     <div className="flex-1 h-[100vh] p-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
       <GenericModal
-        id={APP_CONSTANTS.SUCCESS_MODAL}
-        title={APP_CONSTANTS.SUCCESS_MODAL_TITLE}
-        textContent={APP_CONSTANTS.SUCCESS_MODAL_TEXT_CONTENT}
-        firstButtonClassName={"btn btn-primary"}
-        secondButtonClassName={"btn hidden"}
-        firstButtonText={APP_CONSTANTS.OK}
-        secondButtonText={""}
-        firstButtonOnClick={function () {
-          document.getElementById(APP_CONSTANTS.SUCCESS_MODAL)?.close();
-        }}
-        secondButtonOnClick={function () {}}
-      />
-
-      <GenericModal
-        id={APP_CONSTANTS.ERROR_MODAL}
-        title={APP_CONSTANTS.ERROR_MODAL_TITLE}
-        textContent={APP_CONSTANTS.ERROR_MODAL_TEXT_CONTENT}
-        firstButtonClassName={"btn btn-error"}
-        secondButtonClassName={"btn hidden"} // Hide second button if not needed
-        firstButtonText={APP_CONSTANTS.OK} // Should be "OK"
-        secondButtonText={""}
-        firstButtonOnClick={function () {
-          document.getElementById(APP_CONSTANTS.ERROR_MODAL)?.close();
-        }}
-        secondButtonOnClick={function () {}}
-      />
+        id={APP_CONSTANTS.GENERIC_MODAL}
+        title={message.title}
+        textContent={message.textContent}
+        firstButtonClassName={message.firstButtonClassName}
+        secondButtonClassName={message.secondButtonClassName}
+        firstButtonOnClick={message.firstButtonOnClick}
+        secondButtonOnClick={message.secondButtonOnClick}
+        firstButtonText={message.firstButtonText}
+        secondButtonText={message.secondButtonText}
+      ></GenericModal>
 
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Settings</h1>
@@ -250,16 +355,54 @@ function SettingsArea() {
         </div>
       </div>
 
-      {/* Verification */}
-      <div
-        className={!userVerified ? "bg-base-200 rounded-lg p-4 mt-4" : "hidden"}
-      >
-        <p className="text-xl font-semibold">Account verification</p>
-        <p className="mt-4 text-neutral-400">Verify your account</p>
+      {/* Account management */}
+      <div className={"bg-base-200 rounded-lg p-4 mt-4"}>
+        <p className="text-xl font-semibold">Account</p>
+        <p className="mt-4 text-neutral-400">Manage your account</p>
         <div className="divider"></div>
         <div className="flex justify-between">
+          <p className="font-medium">Sign out</p>
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              setMessage({
+                title: APP_CONSTANTS.SIGN_OUT_MODAL_TITLE,
+                textContent: APP_CONSTANTS.SIGN_OUT_MODAL_TEXT_CONTENT,
+                firstButtonClassName: "btn btn-primary",
+                secondButtonClassName: "btn",
+                firstButtonText: APP_CONSTANTS.SIGN_OUT,
+                secondButtonText: APP_CONSTANTS.CANCEL,
+                firstButtonOnClick: function () {
+                  handleSignOut();
+                },
+                secondButtonOnClick: function () {
+                  if (
+                    document.getElementById(APP_CONSTANTS.GENERIC_MODAL) != null
+                  ) {
+                    document
+                      .getElementById(APP_CONSTANTS.GENERIC_MODAL)
+                      .close();
+                  }
+                },
+              });
+              document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+            }}
+          >
+            {!signingOut ? (
+              APP_CONSTANTS.SIGN_OUT
+            ) : (
+              <span className="loading loading-spinner"></span>
+            )}
+          </button>
+        </div>
+        <div className="flex justify-between mt-4">
           <p className="font-medium">Send verification mail</p>
-          <button className="btn btn-primary">Send</button>
+          <button
+            className="btn btn-primary"
+            disabled={userVerified ? true : false}
+          >
+            Send
+          </button>
         </div>
       </div>
 
@@ -384,124 +527,115 @@ function SettingsArea() {
         <p className="text-xl font-semibold text-error">Danger zone</p>
         <p className="mt-4 text-neutral-400">You're walking on thin ice.</p>
         <div className="divider"></div>
+
         <div className="flex justify-between">
           <p className="font-medium">Delete my notes</p>
           <button
             className="btn btn-error text-error-content"
             onClick={() => {
-              document
-                .getElementById(APP_CONSTANTS.DELETE_NOTES_MODAL)
-                .showModal();
+              setMessage({
+                title: APP_CONSTANTS.DELETE_NOTES_MODAL_TITLE,
+                textContent: APP_CONSTANTS.DELETE_NOTES_MODAL_TEXT_CONTENT,
+                firstButtonClassName: "btn btn-error",
+                secondButtonClassName: "btn",
+                firstButtonText: APP_CONSTANTS.DELETE,
+                secondButtonText: APP_CONSTANTS.CANCEL,
+                firstButtonOnClick: function () {
+                  deleteAllNotes();
+                },
+                secondButtonOnClick: function () {
+                  if (
+                    document.getElementById(APP_CONSTANTS.GENERIC_MODAL) != null
+                  ) {
+                    document
+                      .getElementById(APP_CONSTANTS.GENERIC_MODAL)
+                      .close();
+                  }
+                },
+              });
+              document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
             }}
             disabled={!canDelete()}
           >
             {!deletingNotes ? (
-              "Delete"
+              APP_CONSTANTS.DELETE
             ) : (
               <span className="loading loading-spinner"></span>
             )}
           </button>
-          <GenericModal
-            id={APP_CONSTANTS.DELETE_NOTES_MODAL}
-            title={APP_CONSTANTS.DELETE_NOTES_MODAL_TITLE}
-            textContent={APP_CONSTANTS.DELETE_NOTES_MODAL_TEXT_CONTENT}
-            firstButtonClassName={"btn btn-error"}
-            secondButtonClassName={"btn"}
-            firstButtonText={APP_CONSTANTS.DELETE}
-            secondButtonText={APP_CONSTANTS.CANCEL}
-            firstButtonOnClick={() => {
-              deleteAllNotes();
-            }}
-            secondButtonOnClick={() => {
-              if (
-                document.getElementById(APP_CONSTANTS.DELETE_NOTES_MODAL) !=
-                null
-              ) {
-                document
-                  .getElementById(APP_CONSTANTS.DELETE_NOTES_MODAL)
-                  .close();
-              }
-            }}
-          ></GenericModal>
         </div>
+
         <div className="flex justify-between mt-4">
           <p className="font-medium">Delete my notebooks</p>
           <button
             className="btn btn-error text-error-content"
             onClick={() => {
-              document
-                .getElementById(APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL)
-                .showModal();
+              setMessage({
+                title: APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL_TITLE,
+                textContent: APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL_TEXT_CONTENT,
+                firstButtonClassName: "btn btn-error",
+                secondButtonClassName: "btn",
+                firstButtonText: APP_CONSTANTS.DELETE,
+                secondButtonText: APP_CONSTANTS.CANCEL,
+                firstButtonOnClick: function () {
+                  deleteAllNotebooks();
+                },
+                secondButtonOnClick: function () {
+                  if (
+                    document.getElementById(APP_CONSTANTS.GENERIC_MODAL) != null
+                  ) {
+                    document
+                      .getElementById(APP_CONSTANTS.GENERIC_MODAL)
+                      .close();
+                  }
+                },
+              });
+              document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
             }}
             disabled={!canDelete()}
           >
             {!deletingNotebooks ? (
-              "Delete"
+              APP_CONSTANTS.DELETE
             ) : (
               <span className="loading loading-spinner"></span>
             )}
           </button>
-          <GenericModal
-            id={APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL}
-            title={APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL_TITLE}
-            textContent={APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL_TEXT_CONTENT}
-            firstButtonClassName={"btn btn-error"}
-            secondButtonClassName={"btn"}
-            firstButtonText={APP_CONSTANTS.DELETE}
-            secondButtonText={APP_CONSTANTS.CANCEL}
-            firstButtonOnClick={() => {
-              deleteAllNotebooks();
-            }}
-            secondButtonOnClick={() => {
-              if (
-                document.getElementById(APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL) !=
-                null
-              ) {
-                document
-                  .getElementById(APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL)
-                  .close();
-              }
-            }}
-          ></GenericModal>
         </div>
+
         <div className="flex justify-between mt-4">
           <p className="font-medium">Delete my account</p>
           <button
             className="btn btn-error text-error-content"
             onClick={() => {
-              document
-                .getElementById(APP_CONSTANTS.DELETE_ACCOUNT_MODAL)
-                .showModal();
+              setMessage({
+                title: APP_CONSTANTS.DELETE_ACCOUNT_MODAL_TITLE,
+                textContent: APP_CONSTANTS.DELETE_ACCOUNT_MODAL_TEXT_CONTENT,
+                firstButtonClassName: "btn btn-error",
+                secondButtonClassName: "btn",
+                firstButtonText: APP_CONSTANTS.DELETE,
+                secondButtonText: APP_CONSTANTS.CANCEL,
+                firstButtonOnClick: function () {
+                  deleteAccount();
+                },
+                secondButtonOnClick: function () {
+                  if (
+                    document.getElementById(APP_CONSTANTS.GENERIC_MODAL) != null
+                  ) {
+                    document
+                      .getElementById(APP_CONSTANTS.GENERIC_MODAL)
+                      .close();
+                  }
+                },
+              });
+              document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
             }}
           >
             {!deletingAccount ? (
-              "Delete"
+              APP_CONSTANTS.DELETE
             ) : (
               <span className="loading loading-spinner"></span>
             )}
           </button>
-          <GenericModal
-            id={APP_CONSTANTS.DELETE_ACCOUNT_MODAL}
-            title={APP_CONSTANTS.DELETE_ACCOUNT_MODAL_TITLE}
-            textContent={APP_CONSTANTS.DELETE_ACCOUNT_MODAL_TEXT_CONTENT}
-            firstButtonClassName={"btn btn-error"}
-            secondButtonClassName={"btn"}
-            firstButtonText={APP_CONSTANTS.DELETE}
-            secondButtonText={APP_CONSTANTS.CANCEL}
-            firstButtonOnClick={() => {
-              deleteAccount();
-            }}
-            secondButtonOnClick={() => {
-              if (
-                document.getElementById(APP_CONSTANTS.DELETE_ACCOUNT_MODAL) !=
-                null
-              ) {
-                document
-                  .getElementById(APP_CONSTANTS.DELETE_ACCOUNT_MODAL)
-                  .close();
-              }
-            }}
-          ></GenericModal>
         </div>
       </div>
     </div>
