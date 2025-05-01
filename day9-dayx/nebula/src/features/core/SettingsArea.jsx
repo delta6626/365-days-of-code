@@ -1,5 +1,5 @@
 import React, { useState, useSyncExternalStore } from "react";
-import { ArrowBigUp, Command, Plus } from "lucide-react";
+import { ArrowBigUp, Command, Info, Plus } from "lucide-react";
 import { LANGUAGES } from "../../constants/LANGUAGES";
 import { useUserStore } from "../../store/userStore";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
@@ -414,19 +414,14 @@ function SettingsArea() {
         </div>
         <div className="flex flex-col mt-4">
           <p className="font-medium">Email</p>
-          <div
-            className="tooltip tooltip-bottom tooltip-warning"
-            data-tip="Unfortunately, you can't change your email."
-          >
-            <input
-              className="input input-primary mt-4 w-200 max-w-full"
-              type="text"
-              placeholder="Email"
-              value={email}
-              readOnly={true}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
+          <input
+            className="input input-primary mt-4 w-200 max-w-full"
+            type="text"
+            placeholder="Email"
+            value={email}
+            readOnly={true}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
       </div>
 
@@ -508,7 +503,14 @@ function SettingsArea() {
       {/* Shortcuts */}
       <div className="bg-base-200 rounded-lg p-4 mt-4">
         <p className="text-xl font-semibold">Shortcuts</p>
-        <p className="mt-4 text-neutral-400">Configure your shortcuts</p>
+        <p className="mt-4 text-neutral-400">Configure your shortcuts </p>
+        <div className="text-warning flex mt-2 items-center">
+          <Info></Info>
+          <p className="ml-2">
+            Your custom shortcut might not work due to existing browser
+            shortcuts.
+          </p>
+        </div>
         <div className="divider"></div>
 
         {[
