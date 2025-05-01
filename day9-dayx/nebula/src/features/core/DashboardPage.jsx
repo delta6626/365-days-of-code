@@ -1,6 +1,10 @@
 import { ArrowLeft, File, LayoutGrid, Notebook, Settings } from "lucide-react";
 import { useUserStore } from "../../store/userStore";
-import { getAuthenticatedUser, getUserData } from "../../firebase/services";
+import {
+  getAllNotes,
+  getAuthenticatedUser,
+  getUserData,
+} from "../../firebase/services";
 import { useEffect, useState } from "react";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +13,7 @@ import NotesArea from "./NotesArea";
 import NotebooksArea from "./NotebooksArea";
 import SettingsArea from "./SettingsArea";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
+import { useNotesStore } from "../../store/notesStore";
 import { useHotkeys } from "react-hotkeys-hook";
 
 function DashboardPage() {
@@ -16,6 +21,7 @@ function DashboardPage() {
 
   const { user, setUser } = useUserStore();
   const { userVerified, setUserVerified } = useUserVerifiedStore();
+  const { notes, setNotes } = useNotesStore();
 
   const [activeTab, setActiveTab] = useState(APP_CONSTANTS.DASHBOARD_PAGE);
   const [sideBarCollapsed, setSideBarCollapsed] = useState(false);
@@ -102,6 +108,16 @@ function DashboardPage() {
       } else {
         setUser(userData);
       }
+    });
+  }, []);
+
+  useEffect(() => {
+    getAllNotes().then((notesSnapshot) => {
+      const allNotesData = [];
+      notesSnapshot.forEach((note) => {
+        allNotesData.push(note.data());
+      });
+      setNotes(allNotesData);
     });
   }, []);
 

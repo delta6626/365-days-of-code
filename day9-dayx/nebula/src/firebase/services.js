@@ -129,6 +129,13 @@ export function getAuthenticatedUser() {
   });
 }
 
+export function getAllNotes() {
+  return getAuthenticatedUser().then((user) => {
+    const notesRef = collection(firestore, "users", user.uid, "notes");
+    return getDocs(notesRef);
+  });
+}
+
 export function softDeleteAllNotes() {
   return getAuthenticatedUser().then(function (user) {
     const notesRef = collection(firestore, "users", user.uid, "notes");
@@ -176,11 +183,7 @@ export function signOutUser() {
 }
 
 export function deleteUserAccount() {
-  return getAuthenticatedUser()
-    .then((user) => {
-      return user.delete();
-    })
-    .catch((error) => {
-      throw error;
-    });
+  return getAuthenticatedUser().then((user) => {
+    return user.delete();
+  });
 }
