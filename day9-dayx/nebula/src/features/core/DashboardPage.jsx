@@ -9,6 +9,7 @@ import NotesArea from "./NotesArea";
 import NotebooksArea from "./NotebooksArea";
 import SettingsArea from "./SettingsArea";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
+import { useHotkeys } from "react-hotkeys-hook";
 
 function DashboardPage() {
   const navigate = useNavigate();
@@ -38,6 +39,50 @@ function DashboardPage() {
   function handleSettingsButtonClick() {
     setActiveTab(APP_CONSTANTS.SETTINGS_PAGE);
   }
+
+  useHotkeys(
+    `ctrl+shift+${user.shortcuts.DASHBOARD_PAGE}`,
+    () => {
+      handleDashboardButtonClick();
+    },
+    {
+      preventDefault: true,
+      enableOnFormTags: true,
+    }
+  );
+
+  useHotkeys(
+    `ctrl+shift+${user.shortcuts.NOTES_PAGE}`,
+    () => {
+      handleNotesButtonClick();
+    },
+    {
+      preventDefault: true,
+      enableOnFormTags: true,
+    }
+  );
+
+  useHotkeys(
+    `ctrl+shift+${user.shortcuts.NOTEBOOKS_PAGE}`,
+    () => {
+      handleNotebooksButtonClick();
+    },
+    {
+      preventDefault: true,
+      enableOnFormTags: true,
+    }
+  );
+
+  useHotkeys(
+    `ctrl+shift+${user.shortcuts.SETTINGS_PAGE}`,
+    () => {
+      handleSettingsButtonClick();
+    },
+    {
+      preventDefault: true,
+      enableOnFormTags: true,
+    }
+  );
 
   useEffect(() => {
     getAuthenticatedUser().then((user) => {
