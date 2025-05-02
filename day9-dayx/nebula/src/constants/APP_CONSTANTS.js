@@ -29,6 +29,9 @@ export const APP_CONSTANTS = {
   NOTES_PAGE: "notes",
   NOTEBOOKS_PAGE: "notebooks",
   SETTINGS_PAGE: "settings",
+  VIEW_GRID: "gridView",
+  VIEW_LIST: "listView",
+  VIEW_TABLE: "tableView",
   DELETE_NOTES_MODAL_TITLE: "Delete all notes?",
   DELETE_NOTES_MODAL_TEXT_CONTENT:
     "This will permanently delete all your notes. This action cannot be undone. Are you sure you want to continue?",
