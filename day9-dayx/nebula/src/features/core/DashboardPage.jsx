@@ -121,7 +121,9 @@ function DashboardPage() {
     getAllNotes().then((notesSnapshot) => {
       const allNotesData = [];
       notesSnapshot.forEach((note) => {
-        allNotesData.push(note.data());
+        if (note.data().deleted == null) {
+          allNotesData.push(note.data());
+        }
       });
       setNotes(allNotesData);
     });
