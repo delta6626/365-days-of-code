@@ -1,4 +1,10 @@
-import { ArrowLeft, File, LayoutGrid, Notebook, Settings } from "lucide-react";
+import {
+  ArrowLeft,
+  File,
+  LayoutPanelTop,
+  Notebook,
+  Settings,
+} from "lucide-react";
 import { useUserStore } from "../../store/userStore";
 import {
   getAllNotes,
@@ -163,10 +169,10 @@ function DashboardPage() {
             onClick={handleDashboardButtonClick}
           >
             {sideBarCollapsed ? (
-              <LayoutGrid className="shrink-0" />
+              <LayoutPanelTop className="shrink-0" />
             ) : (
               <>
-                <LayoutGrid className="shrink-0" />
+                <LayoutPanelTop className="shrink-0" />
                 <p>Dashboard</p>
               </>
             )}
