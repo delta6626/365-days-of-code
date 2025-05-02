@@ -405,7 +405,7 @@ function SettingsArea() {
         <div className="flex flex-col">
           <p className="font-medium">Name</p>
           <input
-            className="input input-primary mt-4 w-200 max-w-full"
+            className="input focus:input-primary mt-4 w-200 max-w-full"
             type="text"
             placeholder="Name"
             value={name}
@@ -415,7 +415,7 @@ function SettingsArea() {
         <div className="flex flex-col mt-4">
           <p className="font-medium">Email</p>
           <input
-            className="input input-primary mt-4 w-200 max-w-full"
+            className="input focus:input-primary mt-4 w-200 max-w-full"
             type="text"
             placeholder="Email"
             value={email}
@@ -463,7 +463,7 @@ function SettingsArea() {
           <select
             value={language}
             onChange={(e) => setLanguage(e.target.value)}
-            className="select select-primary"
+            className="select focus:select-primary"
           >
             {Object.keys(LANGUAGES).map((lang, id) => (
               <option key={id} value={lang}>
@@ -533,7 +533,7 @@ function SettingsArea() {
               </button>
               <Plus />
               <input
-                className="input input-primary w-20 uppercase"
+                className="input focus:input-primary w-20 uppercase"
                 maxLength={1}
                 value={shortcuts[page]}
                 onChange={(e) =>
