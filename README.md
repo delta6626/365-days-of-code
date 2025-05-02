@@ -1,20 +1,21 @@
 # 💻 365 Days of Code
 
-Hi! I'm coding every day for a year. Starting off with very simple tech like HTML, CSS, and JavaScript, and slowly moving on to more advanced stuff. 
+Hi! I'm coding every day for a year. Starting off with very simple tech like HTML, CSS, and JavaScript, and slowly moving on to more advanced stuff.
 
 ---
 
 ## 📅 How it works
 
-- One folder per day  
-- Each folder has the code I wrote that day  
+- One folder per day
+- Each folder has the code I wrote that day
 - Just practicing, experimenting, and learning new things
 
 ---
 
 ## ✅ Progress
 
-I'll try to update this as I go.  
+I'll try to update this as I go.
+
 - Day 1 ✅: Created a random quote generator.
 - Day 2 ✅: Created a mini clone of [coolors.co](https://coolors.co)
 - Day 3 ✅: Created a simple markdown previewer
@@ -30,6 +31,7 @@ I'll try to update this as I go.
 - Day 13 ✅: Implemented front end for Nebula's settings page, added new service functions, fixed bugs
 - Day 14 ✅: Implemented deletion of notes, notebooks and account functionality for Nebula
 - Day 15 ✅: Implemented sign out and email verification for Nebula + Refactored some code
+- Day 16 ✅: Implemented grid view for notes, set up new service functons for fetching notes from firestore, created new utility functions
 
 ---
 
