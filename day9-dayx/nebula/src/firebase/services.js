@@ -136,6 +136,13 @@ export function getAllNotes() {
   });
 }
 
+export function getAllNotebooks() {
+  return getAuthenticatedUser().then((user) => {
+    const notebooksRef = collection(firestore, "users", user.uid, "notebooks");
+    return getDocs(notebooksRef);
+  });
+}
+
 export function softDeleteAllNotes() {
   return getAuthenticatedUser().then(function (user) {
     const notesRef = collection(firestore, "users", user.uid, "notes");
