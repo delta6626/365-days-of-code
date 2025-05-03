@@ -4,7 +4,7 @@ export const useNotebooksStore = create(function (set) {
   return {
     notebooks: [],
     setNotebooks: function (notebooksArray) {
-      set({ notes: notebooksArray });
+      set({ notebooks: notebooksArray });
     },
   };
 });
