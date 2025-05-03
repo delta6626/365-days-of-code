@@ -52,6 +52,7 @@ export const APP_CONSTANTS = {
   EMAIL_VERIFICATION_MODAL_SUCCESS: "Check your inbox",
   EMAIL_VERIFICATION_MODAL_SUCCESS_TEXT_CONTENT:
     "We've sent a verification link to your email. Please check your inbox to complete the verification.",
+  VERIFY_EMAIL: "Pleasse verify your email first.",
   FIELD_EMPTY: "One or more fields are empty. Please fill them and try again.",
   GENERIC_MODAL: "genericModal",
   SIGN_OUT: "Sign out",

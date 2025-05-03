@@ -2,24 +2,39 @@ import { Search, LayoutGrid, Table } from "lucide-react";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useNotesStore } from "../../store/notesStore";
 import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
+import { useUserVerifiedStore } from "../../store/userVerifiedStore";
 import GridNote from "../components/GridNote";
 import TableNote from "../components/TableNote";
 
 function NotesArea() {
   const { notes, setNotes } = useNotesStore();
   const { notesView, setNotesView } = useCurrentNotesViewStore();
+  const { userVerified, setUserVerified } = useUserVerifiedStore();
+
+  function handleNewNoteButtonClick() {}
 
   return (
     <div className="flex-1 h-[100vh] p-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Notes</h1>
 
-        <div className="">
+        <div className="flex">
           <div className="w-2xl input focus-within:input-primary">
             <Search className="text-gray-400"></Search>
             <input className="" placeholder="Search for notes" type="text" />
           </div>
-          <button className="btn btn-primary ml-2">New note</button>
+          <div
+            className={!userVerified ? "tooltip tooltip-right" : ""}
+            data-tip={APP_CONSTANTS.VERIFY_EMAIL}
+          >
+            <button
+              className="btn btn-primary ml-2"
+              disabled={!userVerified}
+              onClick={handleNewNoteButtonClick}
+            >
+              New note
+            </button>
+          </div>
         </div>
 
         <div className="">
