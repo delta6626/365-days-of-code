@@ -22,6 +22,10 @@
   @apply rounded-lg;
 }
 
+@utility select {
+  @apply rounded-lg;
+}
+
 .scrollbar-thin {
   scrollbar-width: thin;
 }
