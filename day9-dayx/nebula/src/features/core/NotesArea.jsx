@@ -1,8 +1,9 @@
-import { Search, LayoutGrid, Rows3, Table, Plus } from "lucide-react";
+import { Search, LayoutGrid, Table } from "lucide-react";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useNotesStore } from "../../store/notesStore";
 import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import GridNote from "../components/GridNote";
+import TableNote from "../components/TableNote";
 
 function NotesArea() {
   const { notes, setNotes } = useNotesStore();
@@ -36,20 +37,6 @@ function NotesArea() {
             </button>
           </div>
 
-          <div className="tooltip tooltip-left" data-tip="List view">
-            <button
-              onClick={() => setNotesView(APP_CONSTANTS.VIEW_LIST)}
-              className={
-                "btn btn-square " +
-                (notesView == APP_CONSTANTS.VIEW_LIST
-                  ? "btn-active"
-                  : "btn-ghost")
-              }
-            >
-              <Rows3></Rows3>
-            </button>
-          </div>
-
           <div className="tooltip tooltip-left" data-tip="Table view">
             <button
               onClick={() => setNotesView(APP_CONSTANTS.VIEW_TABLE)}
@@ -69,15 +56,34 @@ function NotesArea() {
       <div className="divider"></div>
 
       {notesView == APP_CONSTANTS.VIEW_GRID ? (
-        <div className="">
+        <div className="flex gap-5 flex-wrap">
           {notes.map((note, id) => {
             return <GridNote key={id} noteObject={note}></GridNote>;
           })}
         </div>
-      ) : notesView == APP_CONSTANTS.VIEW_LIST ? (
-        <p>LIST view</p>
       ) : notesView == APP_CONSTANTS.VIEW_TABLE ? (
-        <p>Table view</p>
+        <div className="rounded-lg bg-base-300">
+          <table className="table">
+            <thead>
+              <tr className="text-lg">
+                <th>#</th>
+                <th>Name</th>
+                <th>Content</th>
+                <th>Tags</th>
+                <th>Created</th>
+                <th>Last edited</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {notes.map((note, id) => {
+                return (
+                  <TableNote key={id} id={id} noteObject={note}></TableNote>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       ) : (
         ""
       )}

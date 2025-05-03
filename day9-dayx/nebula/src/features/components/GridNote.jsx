@@ -39,7 +39,7 @@ function GridNote({ noteObject }) {
           </div>
         </div>
       </div>
-      <div className="flex gap-4 mt-2">
+      <div className="flex gap-4 mt-2 text-gray-400">
         <p className="flex gap-2 items-center">
           <Clock />
           {formatDateDDMMYY(objectToDate(noteObject.creationDate))}

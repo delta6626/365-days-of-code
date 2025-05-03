@@ -30,7 +30,6 @@ export const APP_CONSTANTS = {
   NOTEBOOKS_PAGE: "notebooks",
   SETTINGS_PAGE: "settings",
   VIEW_GRID: "gridView",
-  VIEW_LIST: "listView",
   VIEW_TABLE: "tableView",
   DELETE_NOTES_MODAL_TITLE: "Delete all notes?",
   DELETE_NOTES_MODAL_TEXT_CONTENT:
