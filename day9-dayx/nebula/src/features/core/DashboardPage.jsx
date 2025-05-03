@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { useUserStore } from "../../store/userStore";
 import {
+  getAllNotebooks,
   getAllNotes,
   getAuthenticatedUser,
   getUserData,
@@ -19,6 +20,7 @@ import NotesArea from "./NotesArea";
 import NotebooksArea from "./NotebooksArea";
 import SettingsArea from "./SettingsArea";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
+import { useNotebooksStore } from "../../store/notebooksStore";
 import { useNotesStore } from "../../store/notesStore";
 import { useHotkeys } from "react-hotkeys-hook";
 
@@ -27,6 +29,7 @@ function DashboardPage() {
 
   const { user, setUser } = useUserStore();
   const { userVerified, setUserVerified } = useUserVerifiedStore();
+  const { notebooks, setNotebooks } = useNotebooksStore();
   const { notes, setNotes } = useNotesStore();
 
   const [activeTab, setActiveTab] = useState(APP_CONSTANTS.DASHBOARD_PAGE);
@@ -114,6 +117,19 @@ function DashboardPage() {
       } else {
         setUser(userData);
       }
+    });
+  }, []);
+
+  useEffect(() => {
+    getAllNotebooks().then((notebooksSnapshot) => {
+      const allNotebooksData = [];
+      notebooksSnapshot.forEach((notebook) => {
+        console.log(notebook.data());
+        if (notebook.data().deleted == null) {
+          allNotebooksData.push(notebook.data());
+        }
+      });
+      setNotebooks(allNotebooksData);
     });
   }, []);
 
