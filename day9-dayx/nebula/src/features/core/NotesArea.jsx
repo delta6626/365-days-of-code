@@ -5,19 +5,22 @@ import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
 import GridNote from "../components/GridNote";
 import TableNote from "../components/TableNote";
+import CreateNoteModal from "../components/CreateNoteModal";
 
 function NotesArea() {
   const { notes, setNotes } = useNotesStore();
   const { notesView, setNotesView } = useCurrentNotesViewStore();
   const { userVerified, setUserVerified } = useUserVerifiedStore();
 
-  function handleNewNoteButtonClick() {}
+  function handleNewNoteButtonClick() {
+    document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).showModal();
+  }
 
   return (
     <div className="flex-1 h-[100vh] p-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
+      <CreateNoteModal></CreateNoteModal>
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Notes</h1>
-
         <div className="flex">
           <div className="w-2xl input focus-within:input-primary">
             <Search className="text-gray-400"></Search>

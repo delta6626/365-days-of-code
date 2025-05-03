@@ -124,9 +124,8 @@ function DashboardPage() {
     getAllNotebooks().then((notebooksSnapshot) => {
       const allNotebooksData = [];
       notebooksSnapshot.forEach((notebook) => {
-        console.log(notebook.data());
         if (notebook.data().deleted == null) {
-          allNotebooksData.push(notebook.data());
+          allNotebooksData.push({ ...notebook.data(), id: notebook.id });
         }
       });
       setNotebooks(allNotebooksData);
@@ -138,7 +137,7 @@ function DashboardPage() {
       const allNotesData = [];
       notesSnapshot.forEach((note) => {
         if (note.data().deleted == null) {
-          allNotesData.push(note.data());
+          allNotesData.push({ ...note.data(), id: note.id });
         }
       });
       setNotes(allNotesData);

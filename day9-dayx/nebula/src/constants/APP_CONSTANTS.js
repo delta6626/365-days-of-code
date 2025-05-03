@@ -55,6 +55,7 @@ export const APP_CONSTANTS = {
   VERIFY_EMAIL: "Pleasse verify your email first.",
   FIELD_EMPTY: "One or more fields are empty. Please fill them and try again.",
   GENERIC_MODAL: "genericModal",
+  CREATE_NOTE_MODAL: "createNoteModal",
   SIGN_OUT: "Sign out",
   SEND: "Send",
   DELETE: "Delete",
