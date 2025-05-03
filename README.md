@@ -32,6 +32,7 @@ I'll try to update this as I go.
 - Day 14 ✅: Implemented deletion of notes, notebooks and account functionality for Nebula
 - Day 15 ✅: Implemented sign out and email verification for Nebula + Refactored some code
 - Day 16 ✅: Implemented grid view for notes, set up new service functons for fetching notes from firestore, created new utility functions
+- Day 17 ✅: Implemented table view for notes
 
 ---
 
