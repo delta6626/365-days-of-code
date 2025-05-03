@@ -55,35 +55,45 @@ function NotesArea() {
 
       <div className="divider"></div>
 
-      {notesView == APP_CONSTANTS.VIEW_GRID ? (
-        <div className="flex gap-5 flex-wrap">
-          {notes.map((note, id) => {
-            return <GridNote key={id} noteObject={note}></GridNote>;
-          })}
-        </div>
-      ) : notesView == APP_CONSTANTS.VIEW_TABLE ? (
-        <div className="rounded-lg bg-base-300">
-          <table className="table">
-            <thead>
-              <tr className="text-lg">
-                <th>#</th>
-                <th>Name</th>
-                <th>Content</th>
-                <th>Tags</th>
-                <th>Created</th>
-                <th>Last edited</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {notes.map((note, id) => {
-                return (
-                  <TableNote key={id} id={id} noteObject={note}></TableNote>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+      {notesView === APP_CONSTANTS.VIEW_GRID ? (
+        notes.length > 0 ? (
+          <div className="flex gap-5 flex-wrap">
+            {notes.map((note, id) => (
+              <GridNote key={id} noteObject={note} />
+            ))}
+          </div>
+        ) : (
+          <div className="flex justify-center items-center h-[calc(100vh-8rem)] text-gray-400 mt-4 select-none">
+            {APP_CONSTANTS.NO_NOTES}
+          </div>
+        )
+      ) : notesView === APP_CONSTANTS.VIEW_TABLE ? (
+        notes.length > 0 ? (
+          <div className="rounded-lg bg-base-300">
+            <table className="table">
+              <thead>
+                <tr className="text-lg">
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Content</th>
+                  <th>Tags</th>
+                  <th>Created</th>
+                  <th>Last edited</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {notes.map((note, id) => (
+                  <TableNote key={id} id={id} noteObject={note} />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="flex justify-center items-center h-[calc(100vh-8rem)] text-gray-400 mt-4 select-none">
+            {APP_CONSTANTS.NO_NOTES}
+          </div>
+        )
       ) : (
         ""
       )}
