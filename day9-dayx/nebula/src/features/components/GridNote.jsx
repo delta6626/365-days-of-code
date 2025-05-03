@@ -58,7 +58,7 @@ function GridNote({ noteObject }) {
       <div className="flex gap-2">
         <div className="flex gap-2 flex-wrap max-w-full overflow-hidden">
           {noteObject.tags.slice(0, 5).map((tag, index) => (
-            <Tag key={index} tagText={tag} />
+            <Tag key={index} tagText={tag} showTagIcon={true} />
           ))}
           {noteObject.tags.length > 5 && (
             <Tag
