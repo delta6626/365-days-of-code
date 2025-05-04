@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useNotesStore } from "../../store/notesStore";
+import { useMessageStore } from "../../store/messageStore";
 import { useNotebooksStore } from "../../store/notebooksStore";
 import { addNoteToDatabase } from "../../firebase/services";
 import { toTimestamp } from "../../utils/toTimestamp";
@@ -9,6 +10,7 @@ import Tag from "../components/Tag";
 function CreateNoteModal() {
   const { notebooks, setNotebooks } = useNotebooksStore();
   const { notes, setNotes } = useNotesStore();
+  const { message, setMessage } = useMessageStore();
 
   const [noteName, setNoteName] = useState("");
   const [selectedNotebook, setSelectedNotebook] = useState("");
@@ -63,10 +65,24 @@ function CreateNoteModal() {
 
         setNotes([...notes, noteObject]);
         setCreatingNote(false);
+        document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).close();
       })
       .catch((error) => {
         setCreatingNote(false);
-        alert(error);
+        document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).close();
+        setMessage({
+          title: APP_CONSTANTS.ERROR_MODAL_TITLE,
+          textContent: APP_CONSTANTS.ERROR_MODAL_TEXT_CONTENT + "\n" + error,
+          firstButtonClassName: "btn btn-error",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
       });
   }
 

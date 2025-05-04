@@ -3,14 +3,17 @@ import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useNotesStore } from "../../store/notesStore";
 import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
+import { useMessageStore } from "../../store/messageStore";
 import GridNote from "../components/GridNote";
 import TableNote from "../components/TableNote";
 import CreateNoteModal from "../components/CreateNoteModal";
+import GenericModal from "../components/GenericModal";
 
 function NotesArea() {
   const { notes, setNotes } = useNotesStore();
   const { notesView, setNotesView } = useCurrentNotesViewStore();
   const { userVerified, setUserVerified } = useUserVerifiedStore();
+  const { message, setMessage } = useMessageStore();
 
   function handleNewNoteButtonClick() {
     document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).showModal();
@@ -19,6 +22,17 @@ function NotesArea() {
   return (
     <div className="flex-1 h-[100vh] p-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
       <CreateNoteModal></CreateNoteModal>
+      <GenericModal
+        id={APP_CONSTANTS.GENERIC_MODAL}
+        title={message.title}
+        textContent={message.textContent}
+        firstButtonClassName={message.firstButtonClassName}
+        secondButtonClassName={message.secondButtonClassName}
+        firstButtonOnClick={message.firstButtonOnClick}
+        secondButtonOnClick={message.secondButtonOnClick}
+        firstButtonText={message.firstButtonText}
+        secondButtonText={message.secondButtonText}
+      ></GenericModal>
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Notes</h1>
         <div className="flex">
