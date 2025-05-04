@@ -3,6 +3,7 @@ import { dateDistanceFromNow } from "../../utils/dateDistanceFromNow";
 import { objectToDate } from "../../utils/objectToDate";
 import { formatDateDDMMYY } from "../../utils/formatDateDDMMYY";
 import Tag from "./Tag";
+import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 
 function GridNote({ noteObject }) {
   return (
@@ -52,7 +53,11 @@ function GridNote({ noteObject }) {
       </div>
       <div className="divider"></div>
       <div className="">
-        <p className="line-clamp-3">{noteObject.content.slice(0, 200)}</p>
+        <p className="line-clamp-3">
+          {noteObject.content != ""
+            ? noteObject.content.slice(0, 200) + ".."
+            : APP_CONSTANTS.NOTE_EMPTY}
+        </p>
       </div>
       <div className="divider"></div>
       <div className="flex gap-2">

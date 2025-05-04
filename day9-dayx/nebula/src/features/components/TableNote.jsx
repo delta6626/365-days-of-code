@@ -3,6 +3,7 @@ import { objectToDate } from "../../utils/objectToDate";
 import { formatDateDDMMYY } from "../../utils/formatDateDDMMYY";
 import Tag from "./Tag";
 import { PinOff, Pin, FileEdit, Trash2 } from "lucide-react";
+import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 
 function TableNote({ id, noteObject }) {
   return (
@@ -11,7 +12,11 @@ function TableNote({ id, noteObject }) {
       <td className="text-lg" title={noteObject.name}>
         {noteObject.name}
       </td>
-      <td className="s">{noteObject.content.slice(0, 100) + ".."}</td>
+      <td className="">
+        {noteObject.content != ""
+          ? noteObject.content.slice(0, 100) + ".."
+          : APP_CONSTANTS.NOTE_EMPTY}
+      </td>
       <td className="flex gap-2">
         {noteObject.tags.slice(0, 3).map((tag, index) => (
           <Tag key={index} tagText={tag} showTagIcon={false} />

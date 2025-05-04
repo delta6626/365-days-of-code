@@ -56,6 +56,8 @@ export const APP_CONSTANTS = {
   FIELD_EMPTY: "One or more fields are empty. Please fill them and try again.",
   GENERIC_MODAL: "genericModal",
   CREATE_NOTE_MODAL: "createNoteModal",
+  NOTE_EMPTY:
+    "Don't be shy, give your note some love! Start typing your masterpiece.",
   TAG_LIMIT: 15,
   CREATE: "Create",
   SIGN_OUT: "Sign out",
