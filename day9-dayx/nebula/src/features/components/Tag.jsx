@@ -7,7 +7,6 @@ function Tag({
   showTagIcon,
   showDeleteIcon,
   darkBackground,
-  tags,
   onDeleteClick,
 }) {
   function handleTagDelete() {
@@ -18,7 +17,7 @@ function Tag({
     <div
       className={
         (darkBackground ? "bg-base-300 " : "bg-base-100 ") +
-        "rounded-lg flex text-gray-400 items-center gap-2 px-4 py-2 max-w-[200px]"
+        "btn rounded-lg flex text-gray-400 items-center gap-2 px-4 py-2 max-w-[200px] cursor-pointer"
       }
       title={tagText}
     >
