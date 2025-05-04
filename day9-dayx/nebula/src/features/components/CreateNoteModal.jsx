@@ -1,14 +1,20 @@
 import { useState } from "react";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
+import { useNotesStore } from "../../store/notesStore";
 import { useNotebooksStore } from "../../store/notebooksStore";
+import { addNoteToDatabase } from "../../firebase/services";
+import { toTimestamp } from "../../utils/toTimestamp";
 import Tag from "../components/Tag";
 
 function CreateNoteModal() {
   const { notebooks, setNotebooks } = useNotebooksStore();
+  const { notes, setNotes } = useNotesStore();
 
   const [noteName, setNoteName] = useState("");
   const [selectedNotebook, setSelectedNotebook] = useState("");
   const [tags, setTags] = useState([]);
+  const [notebookEmpty, setNotebookEmpty] = useState(false);
+  const [creatingNote, setCreatingNote] = useState(false);
 
   function handleNameInputChange(e) {
     setNoteName(e.target.value);
@@ -28,7 +34,41 @@ function CreateNoteModal() {
     }
   }
 
-  function handleCreateButtonClick() {}
+  function handleCreateButtonClick() {
+    if (selectedNotebook == "") {
+      setNotebookEmpty(true);
+      return;
+    }
+
+    setCreatingNote(true);
+
+    addNoteToDatabase(
+      noteName == "" ? "Untitled" : noteName,
+      selectedNotebook,
+      tags
+    )
+      .then((doc) => {
+        const noteObject = {
+          id: doc.id,
+          name: noteName == "" ? "Untitled" : noteName,
+          assignedTo: selectedNotebook,
+          content: "",
+          pinned: false,
+          referencedBy: {},
+          references: {},
+          tags: tags,
+          creationDate: toTimestamp(new Date()),
+          lastEditDate: toTimestamp(new Date()),
+        };
+
+        setNotes([...notes, noteObject]);
+        setCreatingNote(false);
+      })
+      .catch((error) => {
+        setCreatingNote(false);
+        alert(error);
+      });
+  }
 
   function handleCloseButtonClick() {
     document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).close();
@@ -46,11 +86,17 @@ function CreateNoteModal() {
           value={noteName}
           onChange={handleNameInputChange}
         />
+
         <select
-          className="select focus:select-primary w-full mt-2"
+          className={
+            !notebookEmpty
+              ? "select focus:select-primary w-full mt-2"
+              : "select select-error w-full mt-2"
+          }
           value={selectedNotebook}
           onChange={handleSelectChange}
         >
+          <option value="">Select a notebook</option>
           {notebooks.map((notebook, id) => {
             return (
               <option key={id} value={notebook.id}>
@@ -59,6 +105,7 @@ function CreateNoteModal() {
             );
           })}
         </select>
+
         <input
           className="input focus:input-primary w-full mt-2"
           placeholder="Write a tag and press space"
@@ -83,10 +130,14 @@ function CreateNoteModal() {
         </div>
         <div className="modal-action">
           <button className="btn btn-primary" onClick={handleCreateButtonClick}>
-            Create
+            {!creatingNote ? (
+              APP_CONSTANTS.CREATE
+            ) : (
+              <span className="loading loading-spinner"></span>
+            )}
           </button>
           <button className="btn" onClick={handleCloseButtonClick}>
-            Close
+            {APP_CONSTANTS.CANCEL}
           </button>
         </div>
       </div>

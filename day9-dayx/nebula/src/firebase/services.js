@@ -13,6 +13,7 @@ import {
   getDoc,
   doc,
   setDoc,
+  addDoc,
   getDocs,
   collection,
   updateDoc,
@@ -140,6 +141,25 @@ export function getAllNotebooks() {
   return getAuthenticatedUser().then((user) => {
     const notebooksRef = collection(firestore, "users", user.uid, "notebooks");
     return getDocs(notebooksRef);
+  });
+}
+
+export function addNoteToDatabase(noteName, assignedNotebook, tags) {
+  const basicNoteSchema = {
+    name: noteName,
+    assignedTo: assignedNotebook,
+    content: "",
+    pinned: false,
+    referencedBy: {},
+    references: {},
+    tags: tags,
+    creationDate: new Date(),
+    lastEditDate: new Date(),
+  };
+
+  return getAuthenticatedUser().then((user) => {
+    const notesCollection = collection(firestore, "users", user.uid, "notes");
+    return addDoc(notesCollection, basicNoteSchema);
   });
 }
 

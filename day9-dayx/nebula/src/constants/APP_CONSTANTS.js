@@ -57,6 +57,7 @@ export const APP_CONSTANTS = {
   GENERIC_MODAL: "genericModal",
   CREATE_NOTE_MODAL: "createNoteModal",
   TAG_LIMIT: 15,
+  CREATE: "Create",
   SIGN_OUT: "Sign out",
   SEND: "Send",
   DELETE: "Delete",

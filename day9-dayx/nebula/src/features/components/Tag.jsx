@@ -24,9 +24,9 @@ function Tag({
       }
     >
       {!moreTag && showTagIcon ? (
-        <TagIcon className="shrink-0" />
+        <TagIcon size={20} className="shrink-0" />
       ) : moreTag ? (
-        <Plus></Plus>
+        <Plus size={20}></Plus>
       ) : (
         ""
       )}
@@ -35,6 +35,7 @@ function Tag({
       </span>
       {showDeleteIcon ? (
         <Trash2
+          size={20}
           className="text-error cursor-pointer"
           onClick={handleTagDelete}
         ></Trash2>
