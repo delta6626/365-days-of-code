@@ -8,12 +8,30 @@ import GridNote from "../components/GridNote";
 import TableNote from "../components/TableNote";
 import CreateNoteModal from "../components/CreateNoteModal";
 import GenericModal from "../components/GenericModal";
+import { useState } from "react";
 
 function NotesArea() {
   const { notes, setNotes } = useNotesStore();
   const { notesView, setNotesView } = useCurrentNotesViewStore();
   const { userVerified, setUserVerified } = useUserVerifiedStore();
   const { message, setMessage } = useMessageStore();
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredNotes = notes.filter((note) => {
+    const lowerName = note.name.toLowerCase();
+    const lowerTags = note.tags.map((tag) => tag.toLowerCase());
+    const searchTerms = searchTerm.toLowerCase().split(/\s+/); // split by space
+
+    return (
+      lowerName.includes(searchTerm.toLowerCase()) ||
+      searchTerms.some((term) => lowerTags.includes(term))
+    );
+  });
+
+  function handleSearch(e) {
+    setSearchTerm(e.target.value);
+  }
 
   function handleNewNoteButtonClick() {
     document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).showModal();
@@ -38,7 +56,13 @@ function NotesArea() {
         <div className="flex">
           <div className="w-2xl input focus-within:input-primary">
             <Search className="text-gray-400"></Search>
-            <input className="" placeholder="Search for notes" type="text" />
+            <input
+              className=""
+              placeholder="Search for notes"
+              type="text"
+              value={searchTerm}
+              onChange={handleSearch}
+            />
           </div>
           <div
             className={!userVerified ? "tooltip tooltip-right" : ""}
@@ -88,9 +112,9 @@ function NotesArea() {
       <div className="divider"></div>
 
       {notesView === APP_CONSTANTS.VIEW_GRID ? (
-        notes.length > 0 ? (
+        filteredNotes.length > 0 ? (
           <div className="flex gap-5 flex-wrap">
-            {notes.map((note, id) => (
+            {filteredNotes.map((note, id) => (
               <>
                 <GridNote key={id} noteObject={note} />
               </>
@@ -102,7 +126,7 @@ function NotesArea() {
           </div>
         )
       ) : notesView === APP_CONSTANTS.VIEW_TABLE ? (
-        notes.length > 0 ? (
+        filteredNotes.length > 0 ? (
           <div className="rounded-lg bg-base-300 p-4">
             <table className="table">
               <thead>
@@ -117,7 +141,7 @@ function NotesArea() {
                 </tr>
               </thead>
               <tbody>
-                {notes.map((note, id) => (
+                {filteredNotes.map((note, id) => (
                   <TableNote key={id} id={id} noteObject={note} />
                 ))}
               </tbody>
