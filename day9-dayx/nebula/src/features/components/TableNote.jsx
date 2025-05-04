@@ -17,20 +17,24 @@ function TableNote({ id, noteObject }) {
           ? noteObject.content.slice(0, 100) + ".."
           : APP_CONSTANTS.NOTE_EMPTY}
       </td>
-      <td className="flex gap-2">
-        {noteObject.tags.slice(0, 3).map((tag, index) => (
+      <td className="flex flex-wrap items-center gap-2">
+        {noteObject.tags.slice(0, 10).map((tag, index) => (
           <Tag key={index} tagText={tag} showTagIcon={false} />
         ))}
-        {noteObject.tags.length > 3 && (
+        {noteObject.tags.length > 10 && (
           <Tag
             key="more"
             moreTag={true}
-            tagText={`${noteObject.tags.length - 3} more`}
+            tagText={`${noteObject.tags.length - 10} more`}
           />
         )}
       </td>
-      <td>{formatDateDDMMYY(objectToDate(noteObject.creationDate))}</td>
-      <td>{dateDistanceFromNow(objectToDate(noteObject.lastEditDate))}</td>
+      <td className="text-gray-400">
+        {formatDateDDMMYY(objectToDate(noteObject.creationDate))}
+      </td>
+      <td className="text-gray-400">
+        {dateDistanceFromNow(objectToDate(noteObject.lastEditDate))}
+      </td>
       <td>
         <div className="flex gap-2">
           <div

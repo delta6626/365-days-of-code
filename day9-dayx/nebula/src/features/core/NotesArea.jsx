@@ -89,7 +89,7 @@ function NotesArea() {
         )
       ) : notesView === APP_CONSTANTS.VIEW_TABLE ? (
         notes.length > 0 ? (
-          <div className="rounded-lg bg-base-300">
+          <div className="rounded-lg bg-base-300 p-4">
             <table className="table">
               <thead>
                 <tr className="text-lg">
