@@ -8,12 +8,10 @@ function Tag({
   showDeleteIcon,
   darkBackground,
   tags,
-  setTags,
+  onDeleteClick,
 }) {
   function handleTagDelete() {
-    let newTags = [...tags];
-    newTags.splice(id, 1);
-    setTags(newTags);
+    onDeleteClick(id);
   }
 
   return (

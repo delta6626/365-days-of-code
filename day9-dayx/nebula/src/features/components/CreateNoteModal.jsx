@@ -119,7 +119,10 @@ function CreateNoteModal() {
                 id={id}
                 tags={tags}
                 setTags={setTags}
-                onDeleteClick={setTags}
+                onDeleteClick={(tagId) => {
+                  const newTags = tags.filter((_, index) => index !== tagId);
+                  setTags(newTags);
+                }}
                 tagText={tagContent}
                 showTagIcon={false}
                 showDeleteIcon={true}
