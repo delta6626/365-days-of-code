@@ -40,14 +40,14 @@ function GridNote({ noteObject }) {
           </div>
         </div>
       </div>
-      <div className="flex gap-4 mt-2 text-gray-400">
+      <div className="flex gap-4 mt-2 text-gray-400 text-sm">
         <p className="flex gap-2 items-center">
-          <Clock />
+          <Clock size={20} />
           {formatDateDDMMYY(objectToDate(noteObject.creationDate))}
         </p>
 
         <p className="flex gap-2 items-center">
-          <PenSquare />
+          <PenSquare size={20} />
           {dateDistanceFromNow(objectToDate(noteObject.lastEditDate))}
         </p>
       </div>
