@@ -22,6 +22,7 @@ function Tag({
         (darkBackground ? "bg-base-300 " : "bg-base-100 ") +
         "rounded-lg flex text-gray-400 items-center gap-2 px-4 py-2 max-w-[200px]"
       }
+      title={tagText}
     >
       {!moreTag && showTagIcon ? (
         <TagIcon size={20} className="shrink-0" />
@@ -31,7 +32,7 @@ function Tag({
         ""
       )}
       <span className="truncate whitespace-nowrap overflow-hidden text-ellipsis">
-        {tagText}
+        {tagText.length > 10 ? tagText.slice(0, 10) + ".." : tagText}
       </span>
       {showDeleteIcon ? (
         <Trash2

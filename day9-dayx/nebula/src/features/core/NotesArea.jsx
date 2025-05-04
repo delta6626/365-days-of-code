@@ -77,7 +77,9 @@ function NotesArea() {
         notes.length > 0 ? (
           <div className="flex gap-5 flex-wrap">
             {notes.map((note, id) => (
-              <GridNote key={id} noteObject={note} />
+              <>
+                <GridNote key={id} noteObject={note} />
+              </>
             ))}
           </div>
         ) : (
