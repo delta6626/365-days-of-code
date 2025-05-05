@@ -17,6 +17,7 @@ import {
   getDocs,
   collection,
   updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import { APP_CONSTANTS } from "../constants/APP_CONSTANTS";
 
@@ -181,10 +182,10 @@ export function updateNote(
   });
 }
 
-export function softDeleteNote(noteId) {
+export function hardDeleteNote(noteId) {
   return getAuthenticatedUser().then((user) => {
     const noteDocRef = doc(firestore, "users", user.uid, "notes", noteId);
-    return updateDoc(noteDocRef, { deleted: true });
+    return deleteDoc(noteDocRef);
   });
 }
 

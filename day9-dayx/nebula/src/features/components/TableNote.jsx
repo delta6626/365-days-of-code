@@ -4,8 +4,112 @@ import { formatDateDDMMYY } from "../../utils/formatDateDDMMYY";
 import Tag from "./Tag";
 import { PinOff, Pin, FileEdit, Trash2 } from "lucide-react";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
+import { useNotesStore } from "../../store/notesStore";
+import { useMessageStore } from "../../store/messageStore";
+import { hardDeleteNote, updatePinStatus } from "../../firebase/services";
+import { useEditTargetNoteStore } from "../../store/editTargetNoteStore";
+import { useState } from "react";
 
 function TableNote({ id, noteObject }) {
+  const { notes, setNotes } = useNotesStore();
+  const { message, setMessage } = useMessageStore();
+  const { editTargetNote, setEditTargetNote } = useEditTargetNoteStore();
+
+  const [updatingPin, setUpdatingPin] = useState(false);
+  const [deletingNote, setDeletingNote] = useState(false);
+
+  function handleNotePinAndUnpin(noteId) {
+    setUpdatingPin(true);
+
+    updatePinStatus(noteObject.id, noteObject.pinned)
+      .then(() => {
+        setNotes(
+          notes.map((note) =>
+            note.id == noteId ? { ...note, pinned: !note.pinned } : note
+          )
+        );
+        setUpdatingPin(false);
+      })
+      .catch((error) => {
+        setUpdatingPin(false);
+        setMessage({
+          title: APP_CONSTANTS.ERROR_MODAL_TITLE,
+          textContent: APP_CONSTANTS.ERROR_MODAL_TEXT_CONTENT + "\n" + error,
+          firstButtonClassName: "btn btn-error",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+      });
+  }
+
+  function handleNoteEditButtonClick() {
+    setEditTargetNote(noteObject);
+    document.getElementById(APP_CONSTANTS.EDIT_NOTE_MODAL).showModal();
+  }
+
+  function deleteCurrentNote() {
+    hardDeleteNote(noteObject.id)
+      .then(() => {
+        setDeletingNote(false);
+        setNotes(notes.filter((note) => note.id !== noteObject.id));
+        setMessage({
+          title: APP_CONSTANTS.SUCCESS_MODAL_TITLE,
+          textContent: APP_CONSTANTS.SUCCESS_MODAL_TEXT_CONTENT,
+          firstButtonClassName: "btn btn-primary",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+      })
+      .catch((error) => {
+        setDeletingNote(false);
+        setMessage({
+          title: APP_CONSTANTS.ERROR_MODAL_TITLE,
+          textContent: APP_CONSTANTS.ERROR_MODAL_TEXT_CONTENT + "\n" + error,
+          firstButtonClassName: "btn btn-error",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+      });
+  }
+
+  function handleDeleteButtonClick() {
+    setMessage({
+      title: APP_CONSTANTS.DELETE_NOTE_MODAL_TITLE,
+      textContent: APP_CONSTANTS.DELETE_NOTE_MODAL_TEXT_CONTENT,
+      firstButtonClassName: "btn btn-error",
+      secondButtonClassName: "btn",
+      firstButtonText: APP_CONSTANTS.DELETE,
+      secondButtonText: APP_CONSTANTS.CANCEL,
+      firstButtonOnClick: function () {
+        deleteCurrentNote();
+        setDeletingNote(true);
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+      },
+      secondButtonOnClick: function () {
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+      },
+    });
+    document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+  }
+
   return (
     <tr className="hover:bg-base-200 cursor-pointer">
       <th className="text-lg">{id + 1}</th>
@@ -43,20 +147,41 @@ function TableNote({ id, noteObject }) {
               noteObject.pinned ? "Unpin from dashboard" : "Pin to dashboard"
             }
           >
-            <button className="btn btn-square">
-              {noteObject.pinned ? <PinOff></PinOff> : <Pin></Pin>}
+            <button
+              className="btn btn-square"
+              onClick={() => {
+                handleNotePinAndUnpin(noteObject.id);
+              }}
+            >
+              {updatingPin ? (
+                <span className="loading loading-spinner"></span>
+              ) : noteObject.pinned ? (
+                <PinOff></PinOff>
+              ) : (
+                <Pin></Pin>
+              )}
             </button>
           </div>
 
           <div className="tooltip" data-tip="Edit details">
-            <button className="btn btn-square">
+            <button
+              className="btn btn-square"
+              onClick={handleNoteEditButtonClick}
+            >
               <FileEdit></FileEdit>
             </button>
           </div>
 
           <div className="tooltip tooltip-error" data-tip="Delete note">
-            <button className="btn btn-square text-error">
-              <Trash2></Trash2>
+            <button
+              className="btn btn-square text-error"
+              onClick={handleDeleteButtonClick}
+            >
+              {deletingNote ? (
+                <span className="loading loading-spinner"></span>
+              ) : (
+                <Trash2></Trash2>
+              )}
             </button>
           </div>
         </div>

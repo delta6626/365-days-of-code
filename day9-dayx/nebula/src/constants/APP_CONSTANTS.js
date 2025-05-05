@@ -34,7 +34,7 @@ export const APP_CONSTANTS = {
   VIEW_TABLE: "tableView",
   DELETE_NOTE_MODAL_TITLE: "Delete this note?",
   DELETE_NOTE_MODAL_TEXT_CONTENT:
-    "This note wil be permanently deleted. Are you sure you want to continue?",
+    "This note wil be permanently deleted. This action cannot be undone. Are you sure you want to continue?",
   DELETE_NOTES_MODAL_TITLE: "Delete all notes?",
   DELETE_NOTES_MODAL_TEXT_CONTENT:
     "This will permanently delete all your notes. This action cannot be undone. Are you sure you want to continue?",

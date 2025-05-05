@@ -5,7 +5,7 @@ import { formatDateDDMMYY } from "../../utils/formatDateDDMMYY";
 import Tag from "./Tag";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useNotesStore } from "../../store/notesStore";
-import { softDeleteNote, updatePinStatus } from "../../firebase/services";
+import { hardDeleteNote, updatePinStatus } from "../../firebase/services";
 import { useMessageStore } from "../../store/messageStore";
 import { useEditTargetNoteStore } from "../../store/editTargetNoteStore";
 import { useState } from "react";
@@ -54,7 +54,7 @@ function GridNote({ noteObject }) {
   }
 
   function deleteCurrentNote() {
-    softDeleteNote(noteObject.id)
+    hardDeleteNote(noteObject.id)
       .then(() => {
         setDeletingNote(false);
         setNotes(notes.filter((note) => note.id !== noteObject.id));
