@@ -32,6 +32,9 @@ export const APP_CONSTANTS = {
   SETTINGS_PAGE: "settings",
   VIEW_GRID: "gridView",
   VIEW_TABLE: "tableView",
+  DELETE_NOTE_MODAL_TITLE: "Delete this note?",
+  DELETE_NOTE_MODAL_TEXT_CONTENT:
+    "This note wil be permanently deleted. Are you sure you want to continue?",
   DELETE_NOTES_MODAL_TITLE: "Delete all notes?",
   DELETE_NOTES_MODAL_TEXT_CONTENT:
     "This will permanently delete all your notes. This action cannot be undone. Are you sure you want to continue?",
@@ -56,11 +59,13 @@ export const APP_CONSTANTS = {
   FIELD_EMPTY: "One or more fields are empty. Please fill them and try again.",
   GENERIC_MODAL: "genericModal",
   CREATE_NOTE_MODAL: "createNoteModal",
+  EDIT_NOTE_MODAL: "editNoteModal",
   NOTE_EMPTY:
     "Don't be shy, give your note some love! Start typing your masterpiece.",
   TAG_LIMIT: 15,
   CREATE: "Create",
   SIGN_OUT: "Sign out",
+  EDIT: "Save changes",
   SEND: "Send",
   DELETE: "Delete",
   CANCEL: "Cancel",

@@ -9,6 +9,7 @@ import TableNote from "../components/TableNote";
 import CreateNoteModal from "../components/CreateNoteModal";
 import GenericModal from "../components/GenericModal";
 import { useState } from "react";
+import EditNoteModal from "../components/EditNoteModal";
 
 function NotesArea() {
   const { notes, setNotes } = useNotesStore();
@@ -51,6 +52,7 @@ function NotesArea() {
         firstButtonText={message.firstButtonText}
         secondButtonText={message.secondButtonText}
       ></GenericModal>
+      <EditNoteModal></EditNoteModal>
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Notes</h1>
         <div className="flex">
@@ -115,9 +117,7 @@ function NotesArea() {
         filteredNotes.length > 0 ? (
           <div className="flex gap-5 flex-wrap">
             {filteredNotes.map((note, id) => (
-              <>
-                <GridNote key={id} noteObject={note} />
-              </>
+              <GridNote key={id} noteObject={note} />
             ))}
           </div>
         ) : (

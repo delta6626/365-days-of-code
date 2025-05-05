@@ -1,0 +1,6 @@
+1. Design dashboard
+2. Design notebooks page
+3. Refactor edit note modal for better performance.
+4. Refactor to include all modals in the dashboard page only.
+5. Disable buttons while loading
+6. Update state after mass deletion of notes and notebooks

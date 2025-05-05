@@ -163,6 +163,31 @@ export function addNoteToDatabase(noteName, assignedNotebook, tags) {
   });
 }
 
+export function updateNote(
+  noteId,
+  newNoteName,
+  newAssignedTo,
+  newTagList,
+  newLastEditDate
+) {
+  return getAuthenticatedUser().then((user) => {
+    const noteDocRef = doc(firestore, "users", user.uid, "notes", noteId);
+    return updateDoc(noteDocRef, {
+      name: newNoteName,
+      assignedTo: newAssignedTo,
+      tags: newTagList,
+      lastEditDate: newLastEditDate,
+    });
+  });
+}
+
+export function softDeleteNote(noteId) {
+  return getAuthenticatedUser().then((user) => {
+    const noteDocRef = doc(firestore, "users", user.uid, "notes", noteId);
+    return updateDoc(noteDocRef, { deleted: true });
+  });
+}
+
 export function updatePinStatus(noteId, currentPinStatus) {
   return getAuthenticatedUser().then((user) => {
     const noteDocRef = doc(firestore, "users", user.uid, "notes", noteId);
