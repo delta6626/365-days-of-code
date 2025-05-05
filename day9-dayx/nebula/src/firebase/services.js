@@ -163,6 +163,13 @@ export function addNoteToDatabase(noteName, assignedNotebook, tags) {
   });
 }
 
+export function updatePinStatus(noteId, currentPinStatus) {
+  return getAuthenticatedUser().then((user) => {
+    const noteDocRef = doc(firestore, "users", user.uid, "notes", noteId);
+    return updateDoc(noteDocRef, { pinned: !currentPinStatus });
+  });
+}
+
 export function softDeleteAllNotes() {
   return getAuthenticatedUser().then(function (user) {
     const notesRef = collection(firestore, "users", user.uid, "notes");

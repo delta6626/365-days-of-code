@@ -4,8 +4,47 @@ import { objectToDate } from "../../utils/objectToDate";
 import { formatDateDDMMYY } from "../../utils/formatDateDDMMYY";
 import Tag from "./Tag";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
+import { useNotesStore } from "../../store/notesStore";
+import { updatePinStatus } from "../../firebase/services";
+import { useMessageStore } from "../../store/messageStore";
+import { useState } from "react";
 
 function GridNote({ noteObject }) {
+  const { notes, setNotes } = useNotesStore();
+  const { message, setMessage } = useMessageStore();
+
+  const [updatingPin, setUpdatingPin] = useState(false);
+
+  function handleNotePinAndUnpin(noteId) {
+    setUpdatingPin(true);
+
+    updatePinStatus(noteObject.id, noteObject.pinned)
+      .then(() => {
+        setNotes(
+          notes.map((note) =>
+            note.id == noteId ? { ...note, pinned: !note.pinned } : note
+          )
+        );
+        setUpdatingPin(false);
+      })
+      .catch((error) => {
+        setUpdatingPin(false);
+        setMessage({
+          title: APP_CONSTANTS.ERROR_MODAL_TITLE,
+          textContent: APP_CONSTANTS.ERROR_MODAL_TEXT_CONTENT + "\n" + error,
+          firstButtonClassName: "btn btn-error",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+      });
+  }
+
   return (
     <div className="w-sm bg-base-300 rounded-lg p-4 select-none">
       <div className="flex gap-2 items-center justify-between">
@@ -22,8 +61,19 @@ function GridNote({ noteObject }) {
               noteObject.pinned ? "Unpin from dashboard" : "Pin to dashboard"
             }
           >
-            <button className="btn btn-square">
-              {noteObject.pinned ? <PinOff></PinOff> : <Pin></Pin>}
+            <button
+              className="btn btn-square"
+              onClick={() => {
+                handleNotePinAndUnpin(noteObject.id);
+              }}
+            >
+              {updatingPin ? (
+                <span className="loading loading-spinner"></span>
+              ) : noteObject.pinned ? (
+                <PinOff></PinOff>
+              ) : (
+                <Pin></Pin>
+              )}
             </button>
           </div>
 
