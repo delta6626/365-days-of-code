@@ -6,6 +6,7 @@ import GridNote from "../components/GridNote";
 import TableNote from "../components/TableNote"; // Make sure you have this component
 import GenericModal from "../components/GenericModal";
 import EditNoteModal from "../components/EditNoteModal";
+import CreateNoteModal from "../components/CreateNoteModal";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useState } from "react";
 import { Search, Table, LayoutGrid, BookPlus, FilePlus } from "lucide-react";
@@ -34,6 +35,10 @@ function DashboardArea() {
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
+
+  function handleNewNoteButtonClick() {
+    document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).showModal();
+  }
 
   const renderSection = (title, noteList) => {
     if (noteList.length === 0) {
@@ -92,6 +97,7 @@ function DashboardArea() {
         secondButtonText={message.secondButtonText}
       />
       <EditNoteModal />
+      <CreateNoteModal></CreateNoteModal>
 
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Dashboard</h1>
@@ -114,6 +120,7 @@ function DashboardArea() {
               <button
                 className="btn btn-primary btn-square ml-2"
                 disabled={!userVerified}
+                onClick={handleNewNoteButtonClick}
               >
                 <FilePlus></FilePlus>
               </button>
