@@ -34,7 +34,8 @@ I'll try to update this as I go.
 - Day 16 ✅: Implemented grid view for notes, set up new service functons for fetching notes from firestore, created new utility functions
 - Day 17 ✅: Implemented table view for notes
 - Day 18 ✅: Implemented modal for creating new notes, service functions to create a note in the database, powerful note searching feature
-- Day 19 ✅: Pin notes to dashboard, Edit note meta data (title, assigned notebook and tags), delete a noteS
+- Day 19 ✅: Pin notes to dashboard, Edit note meta data (title, assigned notebook and tags), delete a notes
+- Day 20 ✅: Show pinned noted, recent activity, tagged and untagged notes in dashboard with collapsible containers
 
 ---
 
