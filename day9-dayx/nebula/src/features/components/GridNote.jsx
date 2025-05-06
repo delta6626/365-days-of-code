@@ -178,7 +178,11 @@ function GridNote({ noteObject }) {
       </div>
       <div className="divider"></div>
       <div className="">
-        <p className="line-clamp-3">
+        <p
+          className={
+            noteObject.tags.length != 0 ? "line-clamp-3" : "line-clamp-3 mb-4"
+          }
+        >
           {noteObject.content != ""
             ? noteObject.content.slice(0, 200) + ".."
             : APP_CONSTANTS.NOTE_EMPTY}
