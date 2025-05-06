@@ -1,23 +1,72 @@
 import { useNotesStore } from "../../store/notesStore";
 import { useMessageStore } from "../../store/messageStore";
+import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
+import { useUserVerifiedStore } from "../../store/userVerifiedStore";
 import GridNote from "../components/GridNote";
+import TableNote from "../components/TableNote"; // Make sure you have this component
 import GenericModal from "../components/GenericModal";
 import EditNoteModal from "../components/EditNoteModal";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useState } from "react";
-import { Search } from "lucide-react";
+import { Search, Table, LayoutGrid } from "lucide-react";
 
 function DashboardArea() {
-  const { notes, setNotes } = useNotesStore();
-  const { message, setMessage } = useMessageStore();
+  const { notes } = useNotesStore();
+  const { message } = useMessageStore();
+  const { notesView, setNotesView } = useCurrentNotesViewStore();
+  const { userVerified, setUserVerified } = useUserVerifiedStore();
 
   const [searchTerm, setSearchTerm] = useState("");
 
   const pinnedNotes = notes.filter((note) => note.pinned === true);
   const taggedNotes = notes.filter((note) => note.tags.length > 0);
-  const untaggedNotes = notes.filter((note) => note.tags.length == 0);
+  const untaggedNotes = notes.filter((note) => note.tags.length === 0);
 
-  function handleSearch() {}
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const renderSection = (title, noteList) => {
+    if (noteList.length === 0) {
+      return;
+    }
+
+    return (
+      <div className="mt-4">
+        <h3 className="text-xl font-semibold">
+          {title} ({noteList.length})
+        </h3>
+        {notesView === APP_CONSTANTS.VIEW_GRID ? (
+          <div className="flex gap-5 flex-wrap mt-4">
+            {noteList.map((note, id) => (
+              <GridNote key={id} noteObject={note} />
+            ))}
+          </div>
+        ) : (
+          <div className="rounded-lg bg-base-300 p-4 mt-4 overflow-x-auto">
+            <table className="table">
+              <thead>
+                <tr className="text-lg">
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Content</th>
+                  <th>Tags</th>
+                  <th>Created</th>
+                  <th>Last edited</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {noteList.map((note, id) => (
+                  <TableNote key={id} id={id} noteObject={note} />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    );
+  };
 
   return (
     <div className="flex-1 h-[100vh] p-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
@@ -31,71 +80,70 @@ function DashboardArea() {
         secondButtonOnClick={message.secondButtonOnClick}
         firstButtonText={message.firstButtonText}
         secondButtonText={message.secondButtonText}
-      ></GenericModal>
-      <EditNoteModal></EditNoteModal>
+      />
+      <EditNoteModal />
+
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Dashboard</h1>
+        <h1 className="text-3xl font-bold">Notes</h1>
         <div className="flex">
           <div className="w-2xl input focus-within:input-primary">
             <Search className="text-gray-400"></Search>
             <input
               className=""
-              placeholder="Search anything"
+              placeholder="Search for notes"
               type="text"
               value={searchTerm}
               onChange={handleSearch}
             />
           </div>
-          <button className="btn btn-primary ml-2">Create</button>
+          <div
+            className={!userVerified ? "tooltip tooltip-right" : ""}
+            data-tip={APP_CONSTANTS.VERIFY_EMAIL}
+          >
+            <button className="btn btn-primary ml-2" disabled={!userVerified}>
+              Create
+            </button>
+          </div>
         </div>
+
         <div className="">
-          <h1></h1>
+          <div className="tooltip tooltip-left" data-tip="Grid view">
+            <button
+              onClick={() => setNotesView(APP_CONSTANTS.VIEW_GRID)}
+              className={
+                "btn btn-square " +
+                (notesView == APP_CONSTANTS.VIEW_GRID
+                  ? "btn-active"
+                  : "btn-ghost")
+              }
+            >
+              <LayoutGrid></LayoutGrid>
+            </button>
+          </div>
+
+          <div className="tooltip tooltip-left" data-tip="Table view">
+            <button
+              onClick={() => setNotesView(APP_CONSTANTS.VIEW_TABLE)}
+              className={
+                "btn btn-square " +
+                (notesView == APP_CONSTANTS.VIEW_TABLE
+                  ? "btn-active"
+                  : "btn-ghost")
+              }
+            >
+              <Table></Table>
+            </button>
+          </div>
         </div>
       </div>
-      <div className="divider"></div>
-      <div className="">
-        {pinnedNotes.length != 0 ? (
-          <h3 className="text-xl font-semibold">
-            Pinned notes ({pinnedNotes.length})
-          </h3>
-        ) : (
-          ""
-        )}
-        <div className="flex gap-5 flex-wrap mt-4">
-          {pinnedNotes.map((note, id) => (
-            <GridNote key={id} noteObject={note} />
-          ))}
-        </div>
-      </div>
-      <div className="mt-4">
-        {taggedNotes.length != 0 ? (
-          <h3 className="text-xl font-semibold">
-            Tagged ({taggedNotes.length})
-          </h3>
-        ) : (
-          ""
-        )}
-        <div className="flex gap-5 flex-wrap mt-4">
-          {taggedNotes.map((note, id) => (
-            <GridNote key={id} noteObject={note} />
-          ))}
-        </div>
-      </div>
-      <div className="mt-4">
-        {untaggedNotes.length != 0 ? (
-          <h3 className="text-xl font-semibold">
-            Untagged ({untaggedNotes.length})
-          </h3>
-        ) : (
-          ""
-        )}
-        <div className="flex gap-5 flex-wrap mt-4">
-          {untaggedNotes.map((note, id) => (
-            <GridNote key={id} noteObject={note} />
-          ))}
-        </div>
-      </div>
+
+      <div className="divider" />
+
+      {renderSection("Pinned notes", pinnedNotes)}
+      {renderSection("Tagged", taggedNotes)}
+      {renderSection("Untagged", untaggedNotes)}
     </div>
   );
 }
+
 export default DashboardArea;
