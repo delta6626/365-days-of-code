@@ -26,6 +26,10 @@
   @apply rounded-lg;
 }
 
+* {
+  scrollbar-gutter: auto !important;
+}
+
 .scrollbar-thin {
   scrollbar-width: thin;
 }
