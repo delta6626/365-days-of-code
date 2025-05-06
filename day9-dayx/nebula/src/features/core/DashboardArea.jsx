@@ -14,6 +14,8 @@ function DashboardArea() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const pinnedNotes = notes.filter((note) => note.pinned === true);
+  const taggedNotes = notes.filter((note) => note.tags.length > 0);
+  const untaggedNotes = notes.filter((note) => note.tags.length == 0);
 
   function handleSearch() {}
 
@@ -52,11 +54,43 @@ function DashboardArea() {
       </div>
       <div className="divider"></div>
       <div className="">
-        <h3 className="text-xl font-semibold">
-          Pinned notes ({pinnedNotes.length})
-        </h3>
+        {pinnedNotes.length != 0 ? (
+          <h3 className="text-xl font-semibold">
+            Pinned notes ({pinnedNotes.length})
+          </h3>
+        ) : (
+          ""
+        )}
         <div className="flex gap-5 flex-wrap mt-4">
           {pinnedNotes.map((note, id) => (
+            <GridNote key={id} noteObject={note} />
+          ))}
+        </div>
+      </div>
+      <div className="mt-4">
+        {taggedNotes.length != 0 ? (
+          <h3 className="text-xl font-semibold">
+            Tagged ({taggedNotes.length})
+          </h3>
+        ) : (
+          ""
+        )}
+        <div className="flex gap-5 flex-wrap mt-4">
+          {taggedNotes.map((note, id) => (
+            <GridNote key={id} noteObject={note} />
+          ))}
+        </div>
+      </div>
+      <div className="mt-4">
+        {untaggedNotes.length != 0 ? (
+          <h3 className="text-xl font-semibold">
+            Untagged ({untaggedNotes.length})
+          </h3>
+        ) : (
+          ""
+        )}
+        <div className="flex gap-5 flex-wrap mt-4">
+          {untaggedNotes.map((note, id) => (
             <GridNote key={id} noteObject={note} />
           ))}
         </div>
