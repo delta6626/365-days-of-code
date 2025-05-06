@@ -1,4 +1,4 @@
-import { Search, LayoutGrid, Table } from "lucide-react";
+import { Search, LayoutGrid, Table, FilePlus } from "lucide-react";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useNotesStore } from "../../store/notesStore";
 import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
@@ -71,11 +71,11 @@ function NotesArea() {
             data-tip={APP_CONSTANTS.VERIFY_EMAIL}
           >
             <button
-              className="btn btn-primary ml-2"
+              className="btn btn-primary btn-square ml-2"
               disabled={!userVerified}
               onClick={handleNewNoteButtonClick}
             >
-              New note
+              <FilePlus></FilePlus>
             </button>
           </div>
         </div>
@@ -115,11 +115,11 @@ function NotesArea() {
 
       <div className="">
         {searchTerm == "" && filteredNotes.length != 0 ? (
-          <h3 className="text-2xl font-semibold">
+          <h3 className="text-xl font-semibold">
             All notes ({filteredNotes.length})
           </h3>
         ) : searchTerm != "" && filteredNotes.length != 0 ? (
-          <h3 className="text-2xl font-semibold">
+          <h3 className="text-xl font-semibold">
             Results for “{searchTerm}” — {filteredNotes.length} found
           </h3>
         ) : (

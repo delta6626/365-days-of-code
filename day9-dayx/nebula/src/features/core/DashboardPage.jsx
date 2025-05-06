@@ -1,10 +1,4 @@
-import {
-  ArrowLeft,
-  File,
-  LayoutPanelTop,
-  Notebook,
-  Settings,
-} from "lucide-react";
+import { ArrowLeft, File, LayoutPanelTop, Book, Settings } from "lucide-react";
 import { useUserStore } from "../../store/userStore";
 import {
   getAllNotebooks,
@@ -230,10 +224,10 @@ function DashboardPage() {
             onClick={handleNotebooksButtonClick}
           >
             {sideBarCollapsed ? (
-              <Notebook className="shrink-0" />
+              <Book className="shrink-0" />
             ) : (
               <>
-                <Notebook className="shrink-0" />
+                <Book className="shrink-0" />
                 <p>Notebooks</p>
               </>
             )}

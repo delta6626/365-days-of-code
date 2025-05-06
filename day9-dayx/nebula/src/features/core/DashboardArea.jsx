@@ -8,7 +8,7 @@ import GenericModal from "../components/GenericModal";
 import EditNoteModal from "../components/EditNoteModal";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useState } from "react";
-import { Search, Table, LayoutGrid } from "lucide-react";
+import { Search, Table, LayoutGrid, BookPlus, FilePlus } from "lucide-react";
 import { objectToDate } from "../../utils/objectToDate";
 
 function DashboardArea() {
@@ -94,7 +94,7 @@ function DashboardArea() {
       <EditNoteModal />
 
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Notes</h1>
+        <h1 className="text-3xl font-bold">Dashboard</h1>
         <div className="flex">
           <div className="w-2xl input focus-within:input-primary">
             <Search className="text-gray-400"></Search>
@@ -110,9 +110,22 @@ function DashboardArea() {
             className={!userVerified ? "tooltip tooltip-right" : ""}
             data-tip={APP_CONSTANTS.VERIFY_EMAIL}
           >
-            <button className="btn btn-primary ml-2" disabled={!userVerified}>
-              Create
-            </button>
+            <div className="tooltip tooltip-bottom" data-tip={"New note"}>
+              <button
+                className="btn btn-primary btn-square ml-2"
+                disabled={!userVerified}
+              >
+                <FilePlus></FilePlus>
+              </button>
+            </div>
+            <div className="tooltip tooltip-bottom" data-tip={"New notebook"}>
+              <button
+                className="btn btn-primary btn-square ml-2"
+                disabled={!userVerified}
+              >
+                <BookPlus></BookPlus>
+              </button>
+            </div>
           </div>
         </div>
 
