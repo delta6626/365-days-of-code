@@ -9,6 +9,7 @@ import EditNoteModal from "../components/EditNoteModal";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useState } from "react";
 import { Search, Table, LayoutGrid } from "lucide-react";
+import { objectToDate } from "../../utils/objectToDate";
 
 function DashboardArea() {
   const { notes } = useNotesStore();
@@ -21,6 +22,12 @@ function DashboardArea() {
   const pinnedNotes = notes.filter((note) => note.pinned === true);
   const taggedNotes = notes.filter((note) => note.tags.length > 0);
   const untaggedNotes = notes.filter((note) => note.tags.length === 0);
+  const recentNotes = notes.filter((note) => {
+    return (
+      new Date().getTime() - objectToDate(note.lastEditDate).getTime() <=
+      592200000
+    );
+  });
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -33,7 +40,7 @@ function DashboardArea() {
 
     return (
       <div className="mt-4">
-        <h3 className="text-xl font-semibold">
+        <h3 className="text-2xl font-semibold">
           {title} ({noteList.length})
         </h3>
         {notesView === APP_CONSTANTS.VIEW_GRID ? (
@@ -90,7 +97,7 @@ function DashboardArea() {
             <Search className="text-gray-400"></Search>
             <input
               className=""
-              placeholder="Search for notes"
+              placeholder="Search anything"
               type="text"
               value={searchTerm}
               onChange={handleSearch}
@@ -140,6 +147,7 @@ function DashboardArea() {
       <div className="divider" />
 
       {renderSection("Pinned notes", pinnedNotes)}
+      {renderSection("Recent", recentNotes)}
       {renderSection("Tagged", taggedNotes)}
       {renderSection("Untagged", untaggedNotes)}
     </div>

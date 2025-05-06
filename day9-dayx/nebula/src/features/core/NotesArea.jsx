@@ -113,48 +113,62 @@ function NotesArea() {
 
       <div className="divider"></div>
 
-      {notesView === APP_CONSTANTS.VIEW_GRID ? (
-        filteredNotes.length > 0 ? (
-          <div className="flex gap-5 flex-wrap">
-            {filteredNotes.map((note, id) => (
-              <GridNote key={id} noteObject={note} />
-            ))}
-          </div>
+      <div className="">
+        {searchTerm == "" && filteredNotes.length != 0 ? (
+          <h3 className="text-2xl font-semibold">
+            All notes ({filteredNotes.length})
+          </h3>
+        ) : searchTerm != "" && filteredNotes.length != 0 ? (
+          <h3 className="text-2xl font-semibold">
+            Results for “{searchTerm}” — {filteredNotes.length} found
+          </h3>
         ) : (
-          <div className="flex justify-center items-center h-[calc(100vh-8rem)] text-gray-400 mt-4 select-none">
-            {APP_CONSTANTS.NO_NOTES}
-          </div>
-        )
-      ) : notesView === APP_CONSTANTS.VIEW_TABLE ? (
-        filteredNotes.length > 0 ? (
-          <div className="rounded-lg bg-base-300 p-4">
-            <table className="table">
-              <thead>
-                <tr className="text-lg">
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Content</th>
-                  <th>Tags</th>
-                  <th>Created</th>
-                  <th>Last edited</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredNotes.map((note, id) => (
-                  <TableNote key={id} id={id} noteObject={note} />
-                ))}
-              </tbody>
-            </table>
-          </div>
+          ""
+        )}
+
+        {notesView === APP_CONSTANTS.VIEW_GRID ? (
+          filteredNotes.length > 0 ? (
+            <div className="flex gap-5 flex-wrap mt-4">
+              {filteredNotes.map((note, id) => (
+                <GridNote key={id} noteObject={note} />
+              ))}
+            </div>
+          ) : (
+            <div className="flex justify-center items-center h-[calc(100vh-8rem)] text-gray-400 mt-4 select-none">
+              {APP_CONSTANTS.NO_NOTES}
+            </div>
+          )
+        ) : notesView === APP_CONSTANTS.VIEW_TABLE ? (
+          filteredNotes.length > 0 ? (
+            <div className="rounded-lg bg-base-300 p-4 mt-4">
+              <table className="table">
+                <thead>
+                  <tr className="text-lg">
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Content</th>
+                    <th>Tags</th>
+                    <th>Created</th>
+                    <th>Last edited</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredNotes.map((note, id) => (
+                    <TableNote key={id} id={id} noteObject={note} />
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className="flex justify-center items-center h-[calc(100vh-8rem)] text-gray-400 mt-4 select-none">
+              {APP_CONSTANTS.NO_NOTES}
+            </div>
+          )
         ) : (
-          <div className="flex justify-center items-center h-[calc(100vh-8rem)] text-gray-400 mt-4 select-none">
-            {APP_CONSTANTS.NO_NOTES}
-          </div>
-        )
-      ) : (
-        ""
-      )}
+          ""
+        )}
+      </div>
     </div>
   );
 }

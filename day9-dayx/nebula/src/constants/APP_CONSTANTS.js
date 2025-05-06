@@ -27,7 +27,7 @@ export const APP_CONSTANTS = {
   UNKNOWN_ERROR: "An unknown error occurred. Try again later.",
   DASHBOARD_PAGE: "dashboard",
   NOTES_PAGE: "notes",
-  NO_NOTES: "You don't have any notes yet.",
+  NO_NOTES: "Sorry, we couldn't find any notes.",
   NOTEBOOKS_PAGE: "notebooks",
   SETTINGS_PAGE: "settings",
   VIEW_GRID: "gridView",
