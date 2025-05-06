@@ -41,18 +41,19 @@ function DashboardArea() {
     }
 
     return (
-      <div className="mt-4">
-        <h3 className="text-2xl font-semibold">
+      <div className="collapse collapse-arrow bg-base-200 mt-4">
+        <input type="checkbox"></input>
+        <div className="collapse-title text-xl font-semibold">
           {title} ({noteList.length})
-        </h3>
+        </div>
         {notesView === APP_CONSTANTS.VIEW_GRID ? (
-          <div className="flex gap-5 flex-wrap mt-4">
+          <div className="collapse-content flex gap-5 flex-wrap mt-4">
             {noteList.map((note, id) => (
               <GridNote key={id} noteObject={note} />
             ))}
           </div>
         ) : (
-          <div className="rounded-lg bg-base-300 p-4 mt-4 overflow-x-auto">
+          <div className="collapse-content rounded-lg bg-base-300 p-4 mt-4 overflow-x-auto">
             <table className="table">
               <thead>
                 <tr className="text-lg">
