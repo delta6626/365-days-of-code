@@ -22,12 +22,14 @@ function DashboardArea() {
   const pinnedNotes = notes.filter((note) => note.pinned === true);
   const taggedNotes = notes.filter((note) => note.tags.length > 0);
   const untaggedNotes = notes.filter((note) => note.tags.length === 0);
-  const recentNotes = notes.filter((note) => {
-    return (
-      new Date().getTime() - objectToDate(note.lastEditDate).getTime() <=
-      592200000
-    );
-  });
+  const recentNotes = notes
+    .filter((note) => {
+      return (
+        new Date().getTime() - objectToDate(note.lastEditDate).getTime() <=
+        592200000 // 7 day time window
+      );
+    })
+    .slice(0, APP_CONSTANTS.RECENT_LIMIT);
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -147,7 +149,7 @@ function DashboardArea() {
       <div className="divider" />
 
       {renderSection("Pinned notes", pinnedNotes)}
-      {renderSection("Recent", recentNotes)}
+      {renderSection("Recently edited", recentNotes)}
       {renderSection("Tagged", taggedNotes)}
       {renderSection("Untagged", untaggedNotes)}
     </div>

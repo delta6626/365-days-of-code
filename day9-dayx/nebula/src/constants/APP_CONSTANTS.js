@@ -63,6 +63,7 @@ export const APP_CONSTANTS = {
   NOTE_EMPTY:
     "Don't be shy, give your note some love! Start typing your masterpiece.",
   TAG_LIMIT: 15,
+  RECENT_LIMIT: 20,
   CREATE: "Create",
   SIGN_OUT: "Sign out",
   EDIT: "Save changes",
