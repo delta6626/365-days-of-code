@@ -63,7 +63,7 @@ function DashboardArea() {
             ))}
           </div>
         ) : (
-          <div className="collapse-content rounded-lg bg-base-300 p-4 mt-4 overflow-x-auto">
+          <div className="collapse-content rounded-lg bg-base-300 p-4 mt-4 overflow-hidden">
             <table className="table">
               <thead>
                 <tr className="text-lg">

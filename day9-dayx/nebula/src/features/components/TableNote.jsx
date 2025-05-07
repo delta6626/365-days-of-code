@@ -157,9 +157,9 @@ function TableNote({ id, noteObject }) {
               {updatingPin ? (
                 <span className="loading loading-spinner"></span>
               ) : noteObject.pinned ? (
-                <PinOff></PinOff>
+                <PinOff size={20}></PinOff>
               ) : (
-                <Pin></Pin>
+                <Pin size={20}></Pin>
               )}
             </button>
           </div>
@@ -169,7 +169,7 @@ function TableNote({ id, noteObject }) {
               className="btn btn-square"
               onClick={handleNoteEditButtonClick}
             >
-              <FileEdit></FileEdit>
+              <FileEdit size={20}></FileEdit>
             </button>
           </div>
 
@@ -181,7 +181,7 @@ function TableNote({ id, noteObject }) {
               {deletingNote ? (
                 <span className="loading loading-spinner"></span>
               ) : (
-                <Trash2></Trash2>
+                <Trash2 size={20}></Trash2>
               )}
             </button>
           </div>
