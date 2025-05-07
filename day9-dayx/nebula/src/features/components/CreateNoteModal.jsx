@@ -46,14 +46,14 @@ function CreateNoteModal() {
 
     addNoteToDatabase(
       noteName == "" ? "Untitled" : noteName,
-      selectedNotebook,
+      JSON.parse(selectedNotebook),
       tags
     )
       .then((doc) => {
         const noteObject = {
           id: doc.id,
           name: noteName == "" ? "Untitled" : noteName,
-          assignedTo: selectedNotebook,
+          assignedTo: JSON.parse(selectedNotebook),
           content: "",
           pinned: false,
           referencedBy: {},
@@ -112,10 +112,13 @@ function CreateNoteModal() {
           value={selectedNotebook}
           onChange={handleSelectChange}
         >
-          <option value="">Select a notebook</option>
+          <option value={""}>Select a notebook</option>
           {notebooks.map((notebook, id) => {
             return (
-              <option key={id} value={notebook.id}>
+              <option
+                key={id}
+                value={JSON.stringify([notebook.id, notebook.name])}
+              >
                 {notebook.name}
               </option>
             );
