@@ -147,6 +147,7 @@ function NotesArea() {
                     <th>#</th>
                     <th>Name</th>
                     <th>Content</th>
+                    <th>Notebook</th>
                     <th>Tags</th>
                     <th>Created</th>
                     <th>Last edited</th>

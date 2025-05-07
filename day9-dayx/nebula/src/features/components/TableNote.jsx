@@ -112,7 +112,7 @@ function TableNote({ id, noteObject }) {
 
   return (
     <tr className="hover:bg-base-200 cursor-pointer">
-      <th className="text-lg">{id + 1}</th>
+      <th className="font-normal">{id + 1}</th>
       <td className="text-lg" title={noteObject.name}>
         {noteObject.name}
       </td>
@@ -121,6 +121,7 @@ function TableNote({ id, noteObject }) {
           ? noteObject.content.slice(0, 100) + ".."
           : APP_CONSTANTS.NOTE_EMPTY}
       </td>
+      <td className="">{noteObject.assignedTo[1]}</td>
       <td className="flex flex-wrap items-center gap-2">
         {noteObject.tags.slice(0, 10).map((tag, index) => (
           <Tag key={index} tagText={tag} showTagIcon={false} />

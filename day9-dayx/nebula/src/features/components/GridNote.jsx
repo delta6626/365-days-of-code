@@ -1,4 +1,12 @@
-import { Clock, FileEdit, PenSquare, Pin, PinOff, Trash2 } from "lucide-react";
+import {
+  Book,
+  Clock,
+  FileEdit,
+  PenSquare,
+  Pin,
+  PinOff,
+  Trash2,
+} from "lucide-react";
 import { dateDistanceFromNow } from "../../utils/dateDistanceFromNow";
 import { objectToDate } from "../../utils/objectToDate";
 import { formatDateDDMMYY } from "../../utils/formatDateDDMMYY";
@@ -165,7 +173,16 @@ function GridNote({ noteObject }) {
           </div>
         </div>
       </div>
-      <div className="flex gap-4 mt-2 text-gray-400 text-sm">
+      <div className="flex gap-4 mt-4 text-gray-400 text-sm">
+        <div className="flex gap-2 items-center max-w-full">
+          <Book size={20} className="flex-shrink-0" />
+          <span className="overflow-hidden whitespace-nowrap text-ellipsis block w-full">
+            {noteObject.assignedTo[1]}
+          </span>
+        </div>
+      </div>
+
+      <div className="flex gap-4 mt-4 text-gray-400 text-sm">
         <p className="flex gap-2 items-center">
           <Clock size={20} />
           {formatDateDDMMYY(objectToDate(noteObject.creationDate))}

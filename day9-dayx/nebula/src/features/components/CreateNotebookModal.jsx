@@ -78,7 +78,7 @@ function CreateNotebookModal() {
           type="text"
           className="input focus:input-primary w-full mt-4"
           placeholder="Notebook name"
-          maxLength={150}
+          maxLength={100}
           value={notebookName}
           onChange={handleNotebookNameChange}
         />
