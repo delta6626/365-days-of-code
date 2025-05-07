@@ -14,7 +14,9 @@ function CreateNotebookModal() {
   const [creatingNotebook, setCreatingNotebook] = useState(false);
   const [tags, setTags] = useState([]);
 
-  function handleNotebookNameChange(e) {}
+  function handleNotebookNameChange(e) {
+    setNotebookName(e.target.value);
+  }
 
   function handleTagChange(e) {
     if (e.code === "Enter" || e.code === "Space") {
