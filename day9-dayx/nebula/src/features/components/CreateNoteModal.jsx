@@ -124,7 +124,7 @@ function CreateNoteModal() {
 
         <input
           className="input focus:input-primary w-full mt-2"
-          placeholder="Write a tag and press space"
+          placeholder="Tag your note (write something and press space)"
           maxLength={30}
           onKeyDown={handleTagChange}
         ></input>

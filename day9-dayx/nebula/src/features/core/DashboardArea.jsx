@@ -11,6 +11,7 @@ import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useState } from "react";
 import { Search, Table, LayoutGrid, BookPlus, FilePlus } from "lucide-react";
 import { objectToDate } from "../../utils/objectToDate";
+import CreateNotebookModal from "../components/CreateNotebookModal";
 
 function DashboardArea() {
   const { notes } = useNotesStore();
@@ -38,6 +39,10 @@ function DashboardArea() {
 
   function handleNewNoteButtonClick() {
     document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).showModal();
+  }
+
+  function handleNewNotebookButtonClick() {
+    document.getElementById(APP_CONSTANTS.CREATE_NOTEBOOK_MODAL).showModal();
   }
 
   const renderSection = (title, noteList) => {
@@ -98,6 +103,7 @@ function DashboardArea() {
       />
       <EditNoteModal />
       <CreateNoteModal></CreateNoteModal>
+      <CreateNotebookModal></CreateNotebookModal>
 
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Dashboard</h1>
@@ -129,6 +135,7 @@ function DashboardArea() {
               <button
                 className="btn btn-primary btn-square ml-2"
                 disabled={!userVerified}
+                onClick={handleNewNotebookButtonClick}
               >
                 <BookPlus></BookPlus>
               </button>

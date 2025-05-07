@@ -164,6 +164,25 @@ export function addNoteToDatabase(noteName, assignedNotebook, tags) {
   });
 }
 
+export function addNotebookToDatabase(notebookName, tags) {
+  const basicNotebookSchema = {
+    name: notebookName,
+    tags: tags,
+    creationDate: new Date(),
+    lastEditDate: new Date(),
+  };
+
+  return getAuthenticatedUser().then((user) => {
+    const notebooksCollection = collection(
+      firestore,
+      "users",
+      user.uid,
+      "notebooks"
+    );
+    return addDoc(notebooksCollection, basicNotebookSchema);
+  });
+}
+
 export function updateNote(
   noteId,
   newNoteName,
