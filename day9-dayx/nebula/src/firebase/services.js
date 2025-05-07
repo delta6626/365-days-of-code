@@ -168,6 +168,7 @@ export function addNotebookToDatabase(notebookName, tags) {
   const basicNotebookSchema = {
     name: notebookName,
     tags: tags,
+    pinned: false,
     creationDate: new Date(),
     lastEditDate: new Date(),
   };

@@ -113,7 +113,7 @@ function TableNote({ id, noteObject }) {
   return (
     <tr className="hover:bg-base-200 cursor-pointer">
       <th className="font-normal">{id + 1}</th>
-      <td className="text-lg" title={noteObject.name}>
+      <td className="text-lg break-all" title={noteObject.name}>
         {noteObject.name}
       </td>
       <td className="">
@@ -121,11 +121,7 @@ function TableNote({ id, noteObject }) {
           ? noteObject.content.slice(0, 100) + ".."
           : APP_CONSTANTS.NOTE_EMPTY}
       </td>
-      <td className="">
-        <p className="btn bg-base-100 text-gray-400">
-          {noteObject.assignedTo[1]}
-        </p>
-      </td>
+      <td className="break-all">{noteObject.assignedTo[1]}</td>
       <td className="flex flex-wrap items-center gap-2">
         {noteObject.tags.slice(0, 10).map((tag, index) => (
           <Tag key={index} tagText={tag} showTagIcon={false} />
@@ -161,9 +157,9 @@ function TableNote({ id, noteObject }) {
               {updatingPin ? (
                 <span className="loading loading-spinner"></span>
               ) : noteObject.pinned ? (
-                <PinOff size={20}></PinOff>
+                <PinOff></PinOff>
               ) : (
-                <Pin size={20}></Pin>
+                <Pin></Pin>
               )}
             </button>
           </div>
@@ -173,7 +169,7 @@ function TableNote({ id, noteObject }) {
               className="btn btn-square"
               onClick={handleNoteEditButtonClick}
             >
-              <FileEdit size={20}></FileEdit>
+              <FileEdit></FileEdit>
             </button>
           </div>
 
@@ -185,7 +181,7 @@ function TableNote({ id, noteObject }) {
               {deletingNote ? (
                 <span className="loading loading-spinner"></span>
               ) : (
-                <Trash2 size={20}></Trash2>
+                <Trash2></Trash2>
               )}
             </button>
           </div>

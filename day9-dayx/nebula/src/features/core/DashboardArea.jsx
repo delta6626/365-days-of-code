@@ -3,7 +3,7 @@ import { useMessageStore } from "../../store/messageStore";
 import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
 import GridNote from "../components/GridNote";
-import TableNote from "../components/TableNote"; // Make sure you have this component
+import TableNote from "../components/TableNote";
 import GenericModal from "../components/GenericModal";
 import EditNoteModal from "../components/EditNoteModal";
 import CreateNoteModal from "../components/CreateNoteModal";
