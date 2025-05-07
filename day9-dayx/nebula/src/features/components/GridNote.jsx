@@ -174,7 +174,7 @@ function GridNote({ noteObject }) {
         </div>
       </div>
       <div className="flex gap-4 mt-4 text-gray-400 text-sm">
-        <div className="flex gap-2 items-center max-w-full">
+        <div className="btn bg-base-100 text-gray-400 flex gap-2 items-center max-w-full">
           <Book size={20} className="flex-shrink-0" />
           <span className="overflow-hidden whitespace-nowrap text-ellipsis block w-full">
             {noteObject.assignedTo[1]}

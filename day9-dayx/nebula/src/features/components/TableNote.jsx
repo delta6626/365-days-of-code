@@ -121,7 +121,11 @@ function TableNote({ id, noteObject }) {
           ? noteObject.content.slice(0, 100) + ".."
           : APP_CONSTANTS.NOTE_EMPTY}
       </td>
-      <td className="">{noteObject.assignedTo[1]}</td>
+      <td className="">
+        <p className="btn bg-base-100 text-gray-400">
+          {noteObject.assignedTo[1]}
+        </p>
+      </td>
       <td className="flex flex-wrap items-center gap-2">
         {noteObject.tags.slice(0, 10).map((tag, index) => (
           <Tag key={index} tagText={tag} showTagIcon={false} />
