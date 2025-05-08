@@ -61,6 +61,7 @@ export const APP_CONSTANTS = {
   CREATE_NOTE_MODAL: "createNoteModal",
   CREATE_NOTEBOOK_MODAL: "createNotebookModal",
   EDIT_NOTE_MODAL: "editNoteModal",
+  NO_TAGS: "No tags here yet. Add some to keep things easy to find.",
   NOTE_EMPTY:
     "Don't be shy, give your note some love! Start typing your masterpiece.",
   TAG_LIMIT: 15,

@@ -5,6 +5,7 @@ import { dateDistanceFromNow } from "../../utils/dateDistanceFromNow";
 import { objectToDate } from "../../utils/objectToDate";
 import { useState } from "react";
 import { Clock, PenSquare } from "lucide-react";
+import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 
 function GridNotebook({ notebookObject }) {
   const [updatingPin, setUpdatingPin] = useState(false);
@@ -83,17 +84,24 @@ function GridNotebook({ notebookObject }) {
           {dateDistanceFromNow(objectToDate(notebookObject.lastEditDate))}
         </p>
       </div>
-      {notebookObject.tags.length != 0 ? <div className="divider"></div> : ""}
+      {notebookObject.tags.length != 0 ? (
+        <div className="divider"></div>
+      ) : (
+        <div className="">
+          <div className="divider"></div>
+          <p className="text-gray-400">{APP_CONSTANTS.NO_TAGS}</p>
+        </div>
+      )}
       <div className="flex gap-2">
         <div className="flex gap-2 flex-wrap max-w-full overflow-hidden">
-          {notebookObject.tags.slice(0, 5).map((tag, index) => (
+          {notebookObject.tags.slice(0, 3).map((tag, index) => (
             <Tag key={index} tagText={tag} showTagIcon={true} />
           ))}
-          {notebookObject.tags.length > 5 && (
+          {notebookObject.tags.length > 3 && (
             <Tag
               key="more"
               moreTag={true}
-              tagText={`${notebookObject.tags.length - 5} more`}
+              tagText={`${notebookObject.tags.length - 3} more`}
             />
           )}
         </div>
