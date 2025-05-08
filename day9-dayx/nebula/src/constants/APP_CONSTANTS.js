@@ -27,7 +27,8 @@ export const APP_CONSTANTS = {
   UNKNOWN_ERROR: "An unknown error occurred. Try again later.",
   DASHBOARD_PAGE: "dashboard",
   NOTES_PAGE: "notes",
-  NO_NOTES: "Sorry, we couldn't find any notes.",
+  NO_NOTES:
+    "No notes in sight. Maybe they’re on vacation? \n Let’s bring new ones to life!",
   NOTEBOOKS_PAGE: "notebooks",
   SETTINGS_PAGE: "settings",
   VIEW_GRID: "gridView",
@@ -64,6 +65,8 @@ export const APP_CONSTANTS = {
   CREATE_NOTE_MODAL: "createNoteModal",
   CREATE_NOTEBOOK_MODAL: "createNotebookModal",
   EDIT_NOTE_MODAL: "editNoteModal",
+  NO_NOTEBOOKS:
+    "We checked twice. Still no notebooks.\n Maybe it's time to create one?",
   NO_TAGS: "No tags here yet. Add some to keep things easy to find.",
   NOTE_EMPTY:
     "Don't be shy, give your note some love! Start typing your masterpiece.",

@@ -138,7 +138,9 @@ function NotebooksArea() {
             </div>
           ) : (
             <div className="flex justify-center items-center h-[calc(100vh-8rem)] text-gray-400 mt-4 select-none">
-              {APP_CONSTANTS.NO_NOTEBOOKS}
+              <p className="whitespace-pre-line text-center">
+                {APP_CONSTANTS.NO_NOTEBOOKS}
+              </p>
             </div>
           )
         ) : notesView === APP_CONSTANTS.VIEW_TABLE ? (
@@ -164,7 +166,9 @@ function NotebooksArea() {
             </div>
           ) : (
             <div className="flex justify-center items-center h-[calc(100vh-8rem)] text-gray-400 mt-4 select-none">
-              {APP_CONSTANTS.NO_NOTEBOOKS}
+              <p className="whitespace-pre-line text-center">
+                {APP_CONSTANTS.NO_NOTEBOOKS}
+              </p>
             </div>
           )
         ) : (

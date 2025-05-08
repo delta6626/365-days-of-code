@@ -228,8 +228,8 @@ function DashboardArea() {
 
       {renderNoteSection("Pinned notes", pinnedNotes)}
       {renderNotebookSection("Pinned notebooks", pinnedNotebooks)}
-      {renderNoteSection("Recently edited", recentNotes)}
-      {renderNoteSection("Tagged", taggedNotes)}
+      {renderNoteSection("Recent notes", recentNotes)}
+      {renderNoteSection("Tagged notes", taggedNotes)}
       {renderNoteSection("Untagged notes", untaggedNotes)}
     </div>
   );

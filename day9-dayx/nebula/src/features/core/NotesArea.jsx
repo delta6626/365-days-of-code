@@ -60,7 +60,7 @@ function NotesArea() {
             <Search className="text-gray-400"></Search>
             <input
               className=""
-              placeholder="Search for notes"
+              placeholder="Search notes"
               type="text"
               value={searchTerm}
               onChange={handleSearch}
@@ -70,13 +70,15 @@ function NotesArea() {
             className={!userVerified ? "tooltip tooltip-right" : ""}
             data-tip={APP_CONSTANTS.VERIFY_EMAIL}
           >
-            <button
-              className="btn btn-primary btn-square ml-2"
-              disabled={!userVerified}
-              onClick={handleNewNoteButtonClick}
-            >
-              <FilePlus></FilePlus>
-            </button>
+            <div className="tooltip tooltip-bottom" data-tip={"New note"}>
+              <button
+                className="btn btn-primary btn-square ml-2"
+                disabled={!userVerified}
+                onClick={handleNewNoteButtonClick}
+              >
+                <FilePlus></FilePlus>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -135,7 +137,9 @@ function NotesArea() {
             </div>
           ) : (
             <div className="flex justify-center items-center h-[calc(100vh-8rem)] text-gray-400 mt-4 select-none">
-              {APP_CONSTANTS.NO_NOTES}
+              <p className="whitespace-pre-line text-center">
+                {APP_CONSTANTS.NO_NOTES}
+              </p>
             </div>
           )
         ) : notesView === APP_CONSTANTS.VIEW_TABLE ? (
@@ -163,7 +167,9 @@ function NotesArea() {
             </div>
           ) : (
             <div className="flex justify-center items-center h-[calc(100vh-8rem)] text-gray-400 mt-4 select-none">
-              {APP_CONSTANTS.NO_NOTES}
+              <p className="whitespace-pre-line text-center">
+                {APP_CONSTANTS.NO_NOTES}
+              </p>
             </div>
           )
         ) : (
