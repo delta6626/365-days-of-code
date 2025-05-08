@@ -18,6 +18,8 @@ import {
   collection,
   updateDoc,
   deleteDoc,
+  query,
+  where,
 } from "firebase/firestore";
 import { APP_CONSTANTS } from "../constants/APP_CONSTANTS";
 
@@ -209,10 +211,51 @@ export function hardDeleteNote(noteId) {
   });
 }
 
+export function hardDeleteNotebookAndLinkedNotes(notebookId, notebookName) {
+  return getAuthenticatedUser().then((user) => {
+    const notebookRef = doc(
+      firestore,
+      "users",
+      user.uid,
+      "notebooks",
+      notebookId
+    );
+
+    const notesRef = collection(firestore, "users", user.uid, "notes");
+    const notesQuery = query(
+      notesRef,
+      where("assignedTo", "==", [notebookId, notebookName])
+    );
+
+    return getDocs(notesQuery).then((snapshots) => {
+      const deletePromises = [];
+
+      snapshots.forEach((noteDoc) => {
+        deletePromises.push(deleteDoc(noteDoc.ref));
+      });
+
+      return Promise.all(deletePromises).then(() => deleteDoc(notebookRef));
+    });
+  });
+}
+
 export function updatePinStatus(noteId, currentPinStatus) {
   return getAuthenticatedUser().then((user) => {
     const noteDocRef = doc(firestore, "users", user.uid, "notes", noteId);
     return updateDoc(noteDocRef, { pinned: !currentPinStatus });
+  });
+}
+
+export function updateNotebookPinStatus(notebookId, currentPinStatus) {
+  return getAuthenticatedUser().then((user) => {
+    const notebookRef = doc(
+      firestore,
+      "users",
+      user.uid,
+      "notebooks",
+      notebookId
+    );
+    return updateDoc(notebookRef, { pinned: !currentPinStatus });
   });
 }
 

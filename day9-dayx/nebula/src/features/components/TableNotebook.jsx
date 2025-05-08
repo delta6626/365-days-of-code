@@ -5,14 +5,121 @@ import Tag from "./Tag";
 import { PinOff, Pin, FileEdit, Trash2 } from "lucide-react";
 import { useState } from "react";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
+import { useNotesStore } from "../../store/notesStore";
+import { useNotebooksStore } from "../../store/notebooksStore";
+import { useMessageStore } from "../../store/messageStore";
+import {
+  hardDeleteNotebookAndLinkedNotes,
+  updateNotebookPinStatus,
+} from "../../firebase/services";
 
 function TableNotebook({ id, notebookObject }) {
+  const { notes, setNotes } = useNotesStore();
+  const { notebooks, setNotebooks } = useNotebooksStore();
+  const { message, setMessage } = useMessageStore();
+
   const [updatingPin, setUpdatingPin] = useState(false);
   const [deletingNotebook, setDeletingNotebook] = useState(false);
 
-  function handleNotebookPinAndUnpin() {}
+  function handleNotebookPinAndUnpin() {
+    setUpdatingPin(true);
+
+    updateNotebookPinStatus(notebookObject.id, notebookObject.pinned)
+      .then(() => {
+        setNotebooks(
+          notebooks.map((notebook) =>
+            notebook.id == notebookObject.id
+              ? { ...notebook, pinned: !notebook.pinned }
+              : notebook
+          )
+        );
+        setUpdatingPin(false);
+      })
+      .catch((error) => {
+        setUpdatingPin(false);
+        setMessage({
+          title: APP_CONSTANTS.ERROR_MODAL_TITLE,
+          textContent: APP_CONSTANTS.ERROR_MODAL_TEXT_CONTENT + "\n" + error,
+          firstButtonClassName: "btn btn-error",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+      });
+  }
+
+  function deleteCurrentNotebook() {
+    hardDeleteNotebookAndLinkedNotes(notebookObject.id, notebookObject.name)
+      .then(() => {
+        setDeletingNotebook(false);
+        setNotes(
+          notes.filter(
+            (note) =>
+              note.assignedTo == [notebookObject.id, notebookObject.name]
+          )
+        );
+        setNotebooks(
+          notebooks.filter((notebook) => notebook.id !== notebookObject.id)
+        );
+
+        setMessage({
+          title: APP_CONSTANTS.SUCCESS_MODAL_TITLE,
+          textContent: APP_CONSTANTS.SUCCESS_MODAL_TEXT_CONTENT,
+          firstButtonClassName: "btn btn-primary",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+      })
+      .catch((error) => {
+        setDeletingNotebook(false);
+        setMessage({
+          title: APP_CONSTANTS.ERROR_MODAL_TITLE,
+          textContent: APP_CONSTANTS.ERROR_MODAL_TEXT_CONTENT + "\n" + error,
+          firstButtonClassName: "btn btn-error",
+          secondButtonClassName: "hidden",
+          firstButtonText: APP_CONSTANTS.OK,
+          secondButtonText: "",
+          firstButtonOnClick: function () {
+            document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+          },
+          secondButtonOnClick: function () {},
+        });
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+      });
+  }
+
   function handleNotebookEditButtonClick() {}
-  function handleDeleteButtonClick() {}
+
+  function handleDeleteButtonClick() {
+    setMessage({
+      title: APP_CONSTANTS.DELETE_NOTEBOOK_MODAL_TITLE,
+      textContent: APP_CONSTANTS.DELETE_NOTEBOOK_MODAL_TEXT_CONTENT,
+      firstButtonClassName: "btn btn-error",
+      secondButtonClassName: "btn",
+      firstButtonText: APP_CONSTANTS.DELETE,
+      secondButtonText: APP_CONSTANTS.CANCEL,
+      firstButtonOnClick: function () {
+        deleteCurrentNotebook();
+        setDeletingNotebook(true);
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+      },
+      secondButtonOnClick: function () {
+        document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+      },
+    });
+    document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+  }
 
   return (
     <tr className="hover:bg-base-200 cursor-pointer">

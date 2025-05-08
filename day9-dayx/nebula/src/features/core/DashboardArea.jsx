@@ -12,9 +12,13 @@ import { useState } from "react";
 import { Search, Table, LayoutGrid, BookPlus, FilePlus } from "lucide-react";
 import { objectToDate } from "../../utils/objectToDate";
 import CreateNotebookModal from "../components/CreateNotebookModal";
+import { useNotebooksStore } from "../../store/notebooksStore";
+import GridNotebook from "../components/GridNotebook";
+import TableNotebook from "../components/TableNotebook";
 
 function DashboardArea() {
   const { notes } = useNotesStore();
+  const { notebooks } = useNotebooksStore();
   const { message } = useMessageStore();
   const { notesView, setNotesView } = useCurrentNotesViewStore();
   const { userVerified, setUserVerified } = useUserVerifiedStore();
@@ -22,6 +26,9 @@ function DashboardArea() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const pinnedNotes = notes.filter((note) => note.pinned === true);
+  const pinnedNotebooks = notebooks.filter(
+    (notebook) => notebook.pinned === true
+  );
   const taggedNotes = notes.filter((note) => note.tags.length > 0);
   const untaggedNotes = notes.filter((note) => note.tags.length === 0);
   const recentNotes = notes
@@ -45,7 +52,7 @@ function DashboardArea() {
     document.getElementById(APP_CONSTANTS.CREATE_NOTEBOOK_MODAL).showModal();
   }
 
-  const renderSection = (title, noteList) => {
+  const renderNoteSection = (title, noteList) => {
     if (noteList.length === 0) {
       return;
     }
@@ -80,6 +87,48 @@ function DashboardArea() {
               <tbody>
                 {noteList.map((note, id) => (
                   <TableNote key={id} id={id} noteObject={note} />
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const renderNotebookSection = (title, notebookList) => {
+    if (notebookList.length === 0) {
+      return;
+    }
+
+    return (
+      <div className="collapse collapse-arrow bg-base-200 mt-4">
+        <input type="checkbox"></input>
+        <div className="collapse-title text-xl font-semibold">
+          {title} ({notebookList.length})
+        </div>
+        {notesView === APP_CONSTANTS.VIEW_GRID ? (
+          <div className="collapse-content flex gap-5 flex-wrap mt-4">
+            {notebookList.map((notebook, id) => (
+              <GridNotebook key={id} notebookObject={notebook} />
+            ))}
+          </div>
+        ) : (
+          <div className="collapse-content rounded-lg bg-base-300 p-4 mt-4 overflow-hidden">
+            <table className="table">
+              <thead>
+                <tr className="text-lg">
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Tags</th>
+                  <th>Created</th>
+                  <th>Last edited</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {notebookList.map((notebook, id) => (
+                  <TableNotebook key={id} id={id} notebookObject={notebook} />
                 ))}
               </tbody>
             </table>
@@ -177,10 +226,11 @@ function DashboardArea() {
 
       <div className="divider" />
 
-      {renderSection("Pinned notes", pinnedNotes)}
-      {renderSection("Recently edited", recentNotes)}
-      {renderSection("Tagged", taggedNotes)}
-      {renderSection("Untagged", untaggedNotes)}
+      {renderNoteSection("Pinned notes", pinnedNotes)}
+      {renderNotebookSection("Pinned notebooks", pinnedNotebooks)}
+      {renderNoteSection("Recently edited", recentNotes)}
+      {renderNoteSection("Tagged", taggedNotes)}
+      {renderNoteSection("Untagged notes", untaggedNotes)}
     </div>
   );
 }

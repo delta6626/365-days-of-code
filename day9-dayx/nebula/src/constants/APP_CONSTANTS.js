@@ -35,6 +35,9 @@ export const APP_CONSTANTS = {
   DELETE_NOTE_MODAL_TITLE: "Delete this note?",
   DELETE_NOTE_MODAL_TEXT_CONTENT:
     "This note wil be permanently deleted. This action cannot be undone. Are you sure you want to continue?",
+  DELETE_NOTEBOOK_MODAL_TITLE: "Delete this notebook?",
+  DELETE_NOTEBOOK_MODAL_TEXT_CONTENT:
+    "This notebook wil be permanently deleted along with all the notes it may contain. This action cannot be undone. Are you sure you want to continue?",
   DELETE_NOTES_MODAL_TITLE: "Delete all notes?",
   DELETE_NOTES_MODAL_TEXT_CONTENT:
     "This will permanently delete all your notes. This action cannot be undone. Are you sure you want to continue?",
