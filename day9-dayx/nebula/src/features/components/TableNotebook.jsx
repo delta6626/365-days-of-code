@@ -4,6 +4,7 @@ import { formatDateDDMMYY } from "../../utils/formatDateDDMMYY";
 import Tag from "./Tag";
 import { PinOff, Pin, FileEdit, Trash2 } from "lucide-react";
 import { useState } from "react";
+import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 
 function TableNotebook({ id, notebookObject }) {
   const [updatingPin, setUpdatingPin] = useState(false);
@@ -20,6 +21,11 @@ function TableNotebook({ id, notebookObject }) {
         {notebookObject.name}
       </td>
       <td className="flex flex-wrap items-center gap-2">
+        {notebookObject.tags.length == 0 ? (
+          <p className="text-gray-400">{APP_CONSTANTS.NO_TAGS}</p>
+        ) : (
+          ""
+        )}
         {notebookObject.tags.slice(0, 10).map((tag, index) => (
           <Tag key={index} tagText={tag} showTagIcon={false} />
         ))}

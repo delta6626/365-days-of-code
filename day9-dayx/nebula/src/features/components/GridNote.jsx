@@ -205,7 +205,14 @@ function GridNote({ noteObject }) {
             : APP_CONSTANTS.NOTE_EMPTY}
         </p>
       </div>
-      {noteObject.tags.length != 0 ? <div className="divider"></div> : ""}
+      {noteObject.tags.length != 0 ? (
+        <div className="divider"></div>
+      ) : (
+        <div className="">
+          <div className="divider"></div>
+          <p className="text-gray-400 mb-4">{APP_CONSTANTS.NO_TAGS}</p>
+        </div>
+      )}
       <div className="flex gap-2">
         <div className="flex gap-2 flex-wrap max-w-full overflow-hidden">
           {noteObject.tags.slice(0, 5).map((tag, index) => (
