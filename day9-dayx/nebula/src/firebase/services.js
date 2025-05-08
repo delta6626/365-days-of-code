@@ -204,6 +204,29 @@ export function updateNote(
   });
 }
 
+export function updateNotebook(
+  notebookId,
+  newNotebookName,
+  newTagList,
+  newLastEditDate
+) {
+  return getAuthenticatedUser().then((user) => {
+    const notebookRef = doc(
+      firestore,
+      "users",
+      user.uid,
+      "notebooks",
+      notebookId
+    );
+
+    return updateDoc(notebookRef, {
+      name: newNotebookName,
+      tags: newTagList,
+      lastEditDate: newLastEditDate,
+    });
+  });
+}
+
 export function hardDeleteNote(noteId) {
   return getAuthenticatedUser().then((user) => {
     const noteDocRef = doc(firestore, "users", user.uid, "notes", noteId);

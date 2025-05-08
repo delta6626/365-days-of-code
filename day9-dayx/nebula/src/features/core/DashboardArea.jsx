@@ -15,6 +15,7 @@ import CreateNotebookModal from "../components/CreateNotebookModal";
 import { useNotebooksStore } from "../../store/notebooksStore";
 import GridNotebook from "../components/GridNotebook";
 import TableNotebook from "../components/TableNotebook";
+import EditNotebookModal from "../components/EditNotebookModal";
 
 function DashboardArea() {
   const { notes } = useNotesStore();
@@ -152,6 +153,7 @@ function DashboardArea() {
         secondButtonText={message.secondButtonText}
       />
       <EditNoteModal />
+      <EditNotebookModal></EditNotebookModal>
       <CreateNoteModal></CreateNoteModal>
       <CreateNotebookModal></CreateNotebookModal>
 

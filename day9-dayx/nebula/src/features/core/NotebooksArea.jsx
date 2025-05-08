@@ -10,6 +10,7 @@ import { Search, Table, LayoutGrid, BookPlus } from "lucide-react";
 import { useState } from "react";
 import GridNotebook from "../components/GridNotebook";
 import TableNotebook from "../components/TableNotebook";
+import EditNotebookModal from "../components/EditNotebookModal";
 
 function NotebooksArea() {
   const { message } = useMessageStore();
@@ -52,6 +53,7 @@ function NotebooksArea() {
         secondButtonText={message.secondButtonText}
       />
       <EditNoteModal />
+      <EditNotebookModal></EditNotebookModal>
       <CreateNotebookModal />
 
       <div className="flex items-center justify-between">

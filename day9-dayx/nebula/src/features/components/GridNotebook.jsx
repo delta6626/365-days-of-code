@@ -13,11 +13,14 @@ import {
 import { useNotebooksStore } from "../../store/notebooksStore";
 import { useNotesStore } from "../../store/notesStore";
 import { useMessageStore } from "../../store/messageStore";
+import { useEditTargetNotebookStore } from "../../store/editTargetNotebookStore";
 
 function GridNotebook({ notebookObject }) {
   const { notes, setNotes } = useNotesStore();
   const { notebooks, setNotebooks } = useNotebooksStore();
   const { message, setMessage } = useMessageStore();
+  const { editTargetNotebook, setEditTargetNotebook } =
+    useEditTargetNotebookStore();
 
   const [updatingPin, setUpdatingPin] = useState(false);
   const [deletingNotebook, setDeletingNotebook] = useState(false);
@@ -100,7 +103,10 @@ function GridNotebook({ notebookObject }) {
       });
   }
 
-  function handleNotebookEditButtonClick() {}
+  function handleNotebookEditButtonClick() {
+    setEditTargetNotebook(notebookObject);
+    document.getElementById(APP_CONSTANTS.EDIT_NOTEBOOK_MODAL).showModal();
+  }
 
   function handleDeleteButtonClick() {
     setMessage({

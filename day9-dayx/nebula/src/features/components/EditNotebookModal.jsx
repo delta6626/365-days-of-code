@@ -1,31 +1,21 @@
 import { useState, useEffect } from "react";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
-import { useEditTargetNoteStore } from "../../store/editTargetNoteStore";
+import { useEditTargetNotebookStore } from "../../store/editTargetNotebookStore";
 import { useNotebooksStore } from "../../store/notebooksStore";
-import { useNotesStore } from "../../store/notesStore";
-import { useMessageStore } from "../../store/messageStore";
 import Tag from "./Tag";
-import { updateNote } from "../../firebase/services";
+import { useMessageStore } from "../../store/messageStore";
+import { updateNotebook } from "../../firebase/services";
 import { toTimestamp } from "../../utils/toTimestamp";
 
-function EditNoteModal() {
-  const { editTargetNote, setEditTargetNote } = useEditTargetNoteStore();
-  const { notebooks } = useNotebooksStore();
-  const { notes, setNotes } = useNotesStore();
+function EditNotebookModal() {
+  const { editTargetNotebook, setEditTargetNotebook } =
+    useEditTargetNotebookStore();
+  const { notebooks, setNotebooks } = useNotebooksStore();
   const { setMessage } = useMessageStore();
-  const [editingNote, setEditingNote] = useState(false);
 
-  const [noteName, setNoteName] = useState("");
-  const [assignedTo, setAssignedTo] = useState("");
+  const [notebookName, setNotebookName] = useState("");
   const [tags, setTags] = useState([]);
-
-  useEffect(() => {
-    if (editTargetNote?.id) {
-      setNoteName(editTargetNote.name || "");
-      setAssignedTo(editTargetNote.assignedTo || "");
-      setTags(editTargetNote.tags || []);
-    }
-  }, [editTargetNote]);
+  const [editingNotebook, setEditingNotebook] = useState(false);
 
   function handleTagChange(e) {
     if (e.code === "Enter" || e.code === "Space") {
@@ -38,59 +28,51 @@ function EditNoteModal() {
   }
 
   function handleEditButtonClick() {
-    setEditingNote(true);
-
-    const noteId = editTargetNote.id;
-    const newNoteNameClean = noteName.trim() || "Untitled";
-    const newAssignedToClean = assignedTo;
+    setEditingNotebook(true);
+    const notebookId = editTargetNotebook.id;
+    const newNotebookNameClean = notebookName.trim() || "Untitled notebook";
     const newTagListClean = tags;
 
-    if (newAssignedToClean === "") {
-      setEditingNote(false);
-      return;
-    }
-
-    // Prevent update if no changes
     const noChanges =
-      newNoteNameClean === editTargetNote.name &&
-      newAssignedToClean === editTargetNote.assignedTo &&
-      JSON.stringify(newTagListClean) === JSON.stringify(editTargetNote.tags);
+      newNotebookNameClean === editTargetNotebook.name &&
+      JSON.stringify(newTagListClean) ===
+        JSON.stringify(editTargetNotebook.tags);
 
     if (noChanges) {
-      setEditingNote(false);
-      document.getElementById(APP_CONSTANTS.EDIT_NOTE_MODAL).close();
+      setEditingNotebook(false);
+      document.getElementById(APP_CONSTANTS.EDIT_NOTEBOOK_MODAL).close();
       return;
     }
 
     const newLastEditDate = new Date();
 
-    updateNote(
-      noteId,
-      newNoteNameClean,
-      newAssignedToClean,
+    updateNotebook(
+      notebookId,
+      newNotebookNameClean,
       newTagListClean,
       newLastEditDate
     )
       .then(() => {
-        const updatedNote = {
-          ...editTargetNote,
-          name: newNoteNameClean,
-          assignedTo: newAssignedToClean,
+        const updatedNotebook = {
+          ...editTargetNotebook,
+          name: newNotebookNameClean,
           tags: newTagListClean,
           lastEditDate: toTimestamp(newLastEditDate),
         };
 
-        setEditTargetNote(updatedNote);
-        setNotes(
-          notes.map((note) => (note.id === updatedNote.id ? updatedNote : note))
+        setEditTargetNotebook(updatedNotebook);
+        setNotebooks(
+          notebooks.map((notebook) =>
+            notebook.id === updatedNotebook.id ? updatedNotebook : notebook
+          )
         );
 
-        setEditingNote(false);
-        document.getElementById(APP_CONSTANTS.EDIT_NOTE_MODAL).close();
+        setEditingNotebook(false);
+        document.getElementById(APP_CONSTANTS.EDIT_NOTEBOOK_MODAL).close();
       })
       .catch((error) => {
-        setEditingNote(false);
-        document.getElementById(APP_CONSTANTS.EDIT_NOTE_MODAL).close();
+        setEditingNotebook(false);
+        document.getElementById(APP_CONSTANTS.EDIT_NOTEBOOK_MODAL).close();
         setMessage({
           title: APP_CONSTANTS.ERROR_MODAL_TITLE,
           textContent: APP_CONSTANTS.ERROR_MODAL_TEXT_CONTENT + "\n" + error,
@@ -108,38 +90,28 @@ function EditNoteModal() {
   }
 
   function handleCloseButtonClick() {
-    document.getElementById(APP_CONSTANTS.EDIT_NOTE_MODAL).close();
+    document.getElementById(APP_CONSTANTS.EDIT_NOTEBOOK_MODAL).close();
   }
 
+  useEffect(() => {
+    if (editTargetNotebook?.id) {
+      setNotebookName(editTargetNotebook.name || "");
+      setTags(editTargetNotebook.tags || []);
+    }
+  }, [editTargetNotebook]);
+
   return (
-    <dialog id={APP_CONSTANTS.EDIT_NOTE_MODAL} className="modal">
+    <dialog id={APP_CONSTANTS.EDIT_NOTEBOOK_MODAL} className="modal">
       <div className="modal-box">
-        <h3 className="text-lg font-bold">Edit note</h3>
+        <h3 className="text-lg font-bold">Edit notebook</h3>
 
         <input
           type="text"
           className="input focus:input-primary w-full mt-4"
           placeholder="New name"
-          value={noteName}
-          onChange={(e) => setNoteName(e.target.value)}
+          value={notebookName}
+          onChange={(e) => setNotebookName(e.target.value)}
         />
-
-        <select
-          value={assignedTo}
-          className={
-            assignedTo !== ""
-              ? "select focus:select-primary w-full mt-2"
-              : "select select-error w-full mt-2"
-          }
-          onChange={(e) => setAssignedTo(e.target.value)}
-        >
-          <option value="">Select a notebook</option>
-          {notebooks.map((notebook) => (
-            <option key={notebook.id} value={notebook.id}>
-              {notebook.name}
-            </option>
-          ))}
-        </select>
 
         <input
           className="input focus:input-primary w-full mt-2"
@@ -167,7 +139,7 @@ function EditNoteModal() {
 
         <div className="modal-action">
           <button className="btn btn-primary" onClick={handleEditButtonClick}>
-            {!editingNote ? (
+            {!editingNotebook ? (
               APP_CONSTANTS.EDIT
             ) : (
               <span className="loading loading-spinner"></span>
@@ -182,4 +154,4 @@ function EditNoteModal() {
   );
 }
 
-export default EditNoteModal;
+export default EditNotebookModal;

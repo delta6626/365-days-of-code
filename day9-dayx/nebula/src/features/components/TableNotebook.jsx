@@ -8,6 +8,7 @@ import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useNotesStore } from "../../store/notesStore";
 import { useNotebooksStore } from "../../store/notebooksStore";
 import { useMessageStore } from "../../store/messageStore";
+import { useEditTargetNotebookStore } from "../../store/editTargetNotebookStore";
 import {
   hardDeleteNotebookAndLinkedNotes,
   updateNotebookPinStatus,
@@ -17,6 +18,8 @@ function TableNotebook({ id, notebookObject }) {
   const { notes, setNotes } = useNotesStore();
   const { notebooks, setNotebooks } = useNotebooksStore();
   const { message, setMessage } = useMessageStore();
+  const { editTargetNotebook, setEditTargetNotebook } =
+    useEditTargetNotebookStore();
 
   const [updatingPin, setUpdatingPin] = useState(false);
   const [deletingNotebook, setDeletingNotebook] = useState(false);
@@ -99,7 +102,10 @@ function TableNotebook({ id, notebookObject }) {
       });
   }
 
-  function handleNotebookEditButtonClick() {}
+  function handleNotebookEditButtonClick() {
+    setEditTargetNotebook(notebookObject);
+    document.getElementById(APP_CONSTANTS.EDIT_NOTEBOOK_MODAL).showModal();
+  }
 
   function handleDeleteButtonClick() {
     setMessage({

@@ -65,6 +65,7 @@ export const APP_CONSTANTS = {
   CREATE_NOTE_MODAL: "createNoteModal",
   CREATE_NOTEBOOK_MODAL: "createNotebookModal",
   EDIT_NOTE_MODAL: "editNoteModal",
+  EDIT_NOTEBOOK_MODAL: "editNotebookModal",
   NO_NOTEBOOKS:
     "We checked twice. Still no notebooks.\n Maybe it's time to create one?",
   NO_TAGS: "No tags here yet. Add some to keep things easy to find.",
