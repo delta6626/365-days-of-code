@@ -6,3 +6,4 @@
 6. Update state after mass deletion of notes and notebooks
 7. Add new shortcuts
 8. Allow user to customize dashboard
+9. Update assigned notebook in database and notes store when the notebook name is edited

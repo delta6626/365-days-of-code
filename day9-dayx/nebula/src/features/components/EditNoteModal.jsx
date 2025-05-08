@@ -67,7 +67,7 @@ function EditNoteModal() {
     updateNote(
       noteId,
       newNoteNameClean,
-      newAssignedToClean,
+      JSON.parse(newAssignedToClean),
       newTagListClean,
       newLastEditDate
     )
@@ -75,7 +75,7 @@ function EditNoteModal() {
         const updatedNote = {
           ...editTargetNote,
           name: newNoteNameClean,
-          assignedTo: newAssignedToClean,
+          assignedTo: JSON.parse(newAssignedToClean),
           tags: newTagListClean,
           lastEditDate: toTimestamp(newLastEditDate),
         };
@@ -135,7 +135,10 @@ function EditNoteModal() {
         >
           <option value="">Select a notebook</option>
           {notebooks.map((notebook) => (
-            <option key={notebook.id} value={notebook.id}>
+            <option
+              key={notebook.id}
+              value={JSON.stringify([notebook.id, notebook.name])}
+            >
               {notebook.name}
             </option>
           ))}
