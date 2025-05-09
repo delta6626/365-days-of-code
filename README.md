@@ -37,6 +37,7 @@ I'll try to update this as I go.
 - Day 19 ✅: Pin notes to dashboard, Edit note meta data (title, assigned notebook and tags), delete a notes
 - Day 20 ✅: Show pinned noted, recent activity, tagged and untagged notes in dashboard with collapsible containers
 - Day 21 ✅: Create notebooks, Tag noteboks, View notebooks in grid and table layout
+- Day 22 ✅ Delete notebooks, Edit notebooks details (name and tag list), Better layout for notebook cards
 ---
 
 ## 📌 Notes
