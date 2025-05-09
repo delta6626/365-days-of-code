@@ -16,13 +16,17 @@ function EditNoteModal() {
   const [editingNote, setEditingNote] = useState(false);
 
   const [noteName, setNoteName] = useState("");
-  const [assignedTo, setAssignedTo] = useState("");
+  const [assignedTo, setAssignedTo] = useState("[]"); // stringified array
   const [tags, setTags] = useState([]);
 
   useEffect(() => {
     if (editTargetNote?.id) {
       setNoteName(editTargetNote.name || "");
-      setAssignedTo(editTargetNote.assignedTo || "");
+      setAssignedTo(
+        editTargetNote.assignedTo
+          ? JSON.stringify(editTargetNote.assignedTo)
+          : "[]"
+      );
       setTags(editTargetNote.tags || []);
     }
   }, [editTargetNote]);
@@ -42,10 +46,32 @@ function EditNoteModal() {
 
     const noteId = editTargetNote.id;
     const newNoteNameClean = noteName.trim() || "Untitled";
-    const newAssignedToClean = assignedTo;
     const newTagListClean = tags;
 
-    if (newAssignedToClean === "") {
+    let parsedAssignedTo;
+    try {
+      parsedAssignedTo = JSON.parse(assignedTo);
+    } catch (err) {
+      setEditingNote(false);
+      setMessage({
+        title: APP_CONSTANTS.ERROR_MODAL_TITLE,
+        textContent:
+          "An error occurred while reading the notebook selection.\n" + err,
+        firstButtonClassName: "btn btn-error",
+        secondButtonClassName: "hidden",
+        firstButtonText: APP_CONSTANTS.OK,
+        secondButtonText: "",
+        firstButtonOnClick: function () {
+          document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+        },
+        secondButtonOnClick: function () {},
+      });
+      document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+      return;
+    }
+
+    // Check if assignedTo is valid
+    if (!Array.isArray(parsedAssignedTo) || parsedAssignedTo.length === 0) {
       setEditingNote(false);
       return;
     }
@@ -53,7 +79,8 @@ function EditNoteModal() {
     // Prevent update if no changes
     const noChanges =
       newNoteNameClean === editTargetNote.name &&
-      newAssignedToClean === editTargetNote.assignedTo &&
+      JSON.stringify(parsedAssignedTo) ===
+        JSON.stringify(editTargetNote.assignedTo) &&
       JSON.stringify(newTagListClean) === JSON.stringify(editTargetNote.tags);
 
     if (noChanges) {
@@ -67,7 +94,7 @@ function EditNoteModal() {
     updateNote(
       noteId,
       newNoteNameClean,
-      JSON.parse(newAssignedToClean),
+      parsedAssignedTo,
       newTagListClean,
       newLastEditDate
     )
@@ -75,7 +102,7 @@ function EditNoteModal() {
         const updatedNote = {
           ...editTargetNote,
           name: newNoteNameClean,
-          assignedTo: JSON.parse(newAssignedToClean),
+          assignedTo: parsedAssignedTo,
           tags: newTagListClean,
           lastEditDate: toTimestamp(newLastEditDate),
         };
@@ -127,13 +154,13 @@ function EditNoteModal() {
         <select
           value={assignedTo}
           className={
-            assignedTo !== ""
+            assignedTo !== "[]"
               ? "select focus:select-primary w-full mt-2"
               : "select select-error w-full mt-2"
           }
           onChange={(e) => setAssignedTo(e.target.value)}
         >
-          <option value="">Select a notebook</option>
+          <option value="[]">Select a notebook</option>
           {notebooks.map((notebook) => (
             <option
               key={notebook.id}
