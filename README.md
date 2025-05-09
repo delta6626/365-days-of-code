@@ -38,6 +38,8 @@ I'll try to update this as I go.
 - Day 20 ✅: Show pinned noted, recent activity, tagged and untagged notes in dashboard with collapsible containers
 - Day 21 ✅: Create notebooks, Tag noteboks, View notebooks in grid and table layout
 - Day 22 ✅ Delete notebooks, Edit notebooks details (name and tag list), Better layout for notebook cards
+- Day 23 ✅ Fixed bugs + some other miscellaneous tasks, created NoteEditor component, integrated TipTap for editing notes
+
 ---
 
 ## 📌 Notes
