@@ -10,6 +10,7 @@ import CreateNoteModal from "../components/CreateNoteModal";
 import GenericModal from "../components/GenericModal";
 import { useState } from "react";
 import EditNoteModal from "../components/EditNoteModal";
+import NoteEditor from "../components/NoteEditor";
 
 function NotesArea() {
   const { notes, setNotes } = useNotesStore();
@@ -116,7 +117,9 @@ function NotesArea() {
       <div className="divider"></div>
 
       {notesView === APP_CONSTANTS.VIEW_NOTE_EDITOR ? (
-        <div className=""></div>
+        <div className="">
+          <NoteEditor></NoteEditor>
+        </div>
       ) : (
         <div className="">
           {searchTerm == "" && filteredNotes.length != 0 ? (
