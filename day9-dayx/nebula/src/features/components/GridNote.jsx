@@ -16,15 +16,22 @@ import { useNotesStore } from "../../store/notesStore";
 import { hardDeleteNote, updatePinStatus } from "../../firebase/services";
 import { useMessageStore } from "../../store/messageStore";
 import { useEditTargetNoteStore } from "../../store/editTargetNoteStore";
+import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { useState } from "react";
 
 function GridNote({ noteObject }) {
   const { notes, setNotes } = useNotesStore();
   const { message, setMessage } = useMessageStore();
   const { editTargetNote, setEditTargetNote } = useEditTargetNoteStore();
+  const { notesView, setNotesView } = useCurrentNotesViewStore();
 
   const [updatingPin, setUpdatingPin] = useState(false);
   const [deletingNote, setDeletingNote] = useState(false);
+
+  function handleNoteClick() {
+    setEditTargetNote(noteObject);
+    setNotesView(APP_CONSTANTS.VIEW_NOTE_EDITOR);
+  }
 
   function handleNotePinAndUnpin(noteId) {
     setUpdatingPin(true);
@@ -119,7 +126,10 @@ function GridNote({ noteObject }) {
   }
 
   return (
-    <div className="w-sm bg-base-300 rounded-lg p-4 select-none">
+    <div
+      className="w-sm bg-base-300 rounded-lg p-4 select-none cursor-pointer"
+      onClick={handleNoteClick}
+    >
       <div className="flex gap-2 items-center justify-between">
         <h3
           className="text-xl font-semibold overflow-hidden whitespace-nowrap truncate"

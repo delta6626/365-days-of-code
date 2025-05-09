@@ -33,6 +33,7 @@ export const APP_CONSTANTS = {
   SETTINGS_PAGE: "settings",
   VIEW_GRID: "gridView",
   VIEW_TABLE: "tableView",
+  VIEW_NOTE_EDITOR: "noteEditorView",
   DELETE_NOTE_MODAL_TITLE: "Delete this note?",
   DELETE_NOTE_MODAL_TEXT_CONTENT:
     "This note wil be permanently deleted. This action cannot be undone. Are you sure you want to continue?",

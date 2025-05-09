@@ -8,15 +8,22 @@ import { useNotesStore } from "../../store/notesStore";
 import { useMessageStore } from "../../store/messageStore";
 import { hardDeleteNote, updatePinStatus } from "../../firebase/services";
 import { useEditTargetNoteStore } from "../../store/editTargetNoteStore";
+import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { useState } from "react";
 
 function TableNote({ id, noteObject }) {
   const { notes, setNotes } = useNotesStore();
   const { message, setMessage } = useMessageStore();
   const { editTargetNote, setEditTargetNote } = useEditTargetNoteStore();
+  const { notesView, setNotesView } = useCurrentNotesViewStore();
 
   const [updatingPin, setUpdatingPin] = useState(false);
   const [deletingNote, setDeletingNote] = useState(false);
+
+  function handleNoteClick() {
+    setEditTargetNote(noteObject);
+    setNotesView(APP_CONSTANTS.VIEW_NOTE_EDITOR);
+  }
 
   function handleNotePinAndUnpin(noteId) {
     setUpdatingPin(true);
@@ -111,7 +118,7 @@ function TableNote({ id, noteObject }) {
   }
 
   return (
-    <tr className="hover:bg-base-200 cursor-pointer">
+    <tr className="hover:bg-base-200 cursor-pointer" onClick={handleNoteClick}>
       <th className="font-normal">{id + 1}</th>
       <td className="text-lg break-all" title={noteObject.name}>
         {noteObject.name}
