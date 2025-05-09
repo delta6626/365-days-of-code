@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useEditTargetNotebookStore } from "../../store/editTargetNotebookStore";
 import { useNotebooksStore } from "../../store/notebooksStore";
+import { useNotesStore } from "../../store/notesStore";
 import Tag from "./Tag";
 import { useMessageStore } from "../../store/messageStore";
 import { updateNotebook } from "../../firebase/services";
@@ -10,6 +11,7 @@ import { toTimestamp } from "../../utils/toTimestamp";
 function EditNotebookModal() {
   const { editTargetNotebook, setEditTargetNotebook } =
     useEditTargetNotebookStore();
+  const { notes, setNotes } = useNotesStore();
   const { notebooks, setNotebooks } = useNotebooksStore();
   const { setMessage } = useMessageStore();
 
@@ -30,6 +32,7 @@ function EditNotebookModal() {
   function handleEditButtonClick() {
     setEditingNotebook(true);
     const notebookId = editTargetNotebook.id;
+    const oldNotebookName = editTargetNotebook.name;
     const newNotebookNameClean = notebookName.trim() || "Untitled notebook";
     const newTagListClean = tags;
 
@@ -48,6 +51,7 @@ function EditNotebookModal() {
 
     updateNotebook(
       notebookId,
+      oldNotebookName,
       newNotebookNameClean,
       newTagListClean,
       newLastEditDate
@@ -61,9 +65,19 @@ function EditNotebookModal() {
         };
 
         setEditTargetNotebook(updatedNotebook);
+
         setNotebooks(
           notebooks.map((notebook) =>
             notebook.id === updatedNotebook.id ? updatedNotebook : notebook
+          )
+        );
+
+        setNotes(
+          notes.map((note) =>
+            note.assignedTo[0] === notebookId &&
+            note.assignedTo[1] === oldNotebookName
+              ? { ...note, assignedTo: [notebookId, newNotebookNameClean] }
+              : note
           )
         );
 

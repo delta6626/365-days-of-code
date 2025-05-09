@@ -206,6 +206,7 @@ export function updateNote(
 
 export function updateNotebook(
   notebookId,
+  oldNotebookName,
   newNotebookName,
   newTagList,
   newLastEditDate
@@ -219,10 +220,28 @@ export function updateNotebook(
       notebookId
     );
 
-    return updateDoc(notebookRef, {
-      name: newNotebookName,
-      tags: newTagList,
-      lastEditDate: newLastEditDate,
+    const notesRef = collection(firestore, "users", user.uid, "notes");
+    const notesQuery = query(
+      notesRef,
+      where("assignedTo", "==", [notebookId, oldNotebookName])
+    );
+
+    return getDocs(notesQuery).then((snapshots) => {
+      const deletePromises = [];
+
+      snapshots.forEach((noteDoc) => {
+        deletePromises.push(
+          updateDoc(noteDoc.ref, { assignedTo: [notebookId, newNotebookName] })
+        );
+      });
+
+      return Promise.all(deletePromises).then(() =>
+        updateDoc(notebookRef, {
+          name: newNotebookName,
+          tags: newTagList,
+          lastEditDate: newLastEditDate,
+        })
+      );
     });
   });
 }
