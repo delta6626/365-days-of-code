@@ -1,9 +1,9 @@
 1. Design dashboard
 2. Design notebooks page ✅
-3. Refactor edit note modal for better performance. ✅
-4. Refactor to include all modals in the dashboard page only.
+3. Refactor edit note modal for better performance ✅
+4. Refactor to include all modals in the dashboard page only
 5. Disable buttons while loading
-6. Update local state after mass deletion of notes and notebooks
+6. Update local state after mass deletion of notes and notebooks ✅
 7. Add new shortcuts
 8. Allow user to customize dashboard
-9. Update assigned notebook in database and notes store when the notebook name is edited
+9. Update assigned notebook in database and notes store when the notebook name is edited ✅

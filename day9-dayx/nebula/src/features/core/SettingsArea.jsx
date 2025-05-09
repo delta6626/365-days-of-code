@@ -5,6 +5,8 @@ import { useUserStore } from "../../store/userStore";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
 import { useMessageStore } from "../../store/messageStore";
+import { useNotesStore } from "../../store/notesStore";
+import { useNotebooksStore } from "../../store/notebooksStore";
 import { hasEmptyStringValue } from "../../utils/hasEmptyStringValue";
 import {
   softDeleteAllNotes,
@@ -29,6 +31,8 @@ function SettingsArea() {
   const { user, setUser } = useUserStore();
   const { userVerified } = useUserVerifiedStore();
   const { message, setMessage } = useMessageStore();
+  const { setNotebooks } = useNotebooksStore();
+  const { setNotes } = useNotesStore();
 
   // State variables
   const [name, setName] = useState(user.name);
@@ -241,6 +245,7 @@ function SettingsArea() {
       .then(() => {
         setDeletingNotes(false);
         updateMassDeletionTime();
+        setNotes([]); // Clear all notes from zustand store.
         setMessage({
           title: APP_CONSTANTS.SUCCESS_MODAL_TITLE,
           textContent: APP_CONSTANTS.SUCCESS_MODAL_TEXT_CONTENT,
@@ -280,6 +285,8 @@ function SettingsArea() {
       .then(() => {
         setDeletingNotebooks(false);
         updateMassDeletionTime();
+        setNotes([]);
+        setNotebooks([]);
         setMessage({
           title: APP_CONSTANTS.SUCCESS_MODAL_TITLE,
           textContent: APP_CONSTANTS.SUCCESS_MODAL_TEXT_CONTENT,
