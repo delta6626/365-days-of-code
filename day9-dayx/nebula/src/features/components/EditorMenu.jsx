@@ -1,0 +1,379 @@
+import { useCurrentEditor } from "@tiptap/react";
+import {
+  Bold,
+  Italic,
+  Underline,
+  Strikethrough,
+  Subscript,
+  Superscript,
+  Heading1,
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading5,
+  Heading6,
+  List,
+  ListOrdered,
+  ListChecks,
+  Code,
+  SquareCode,
+  TextQuote,
+  Table,
+  Video,
+  Link,
+  Minus,
+  AlignLeft,
+  AlignCenter,
+  AlignRight,
+  AlignJustify,
+  Undo,
+  Redo,
+  Ligature,
+  PaintBucket,
+} from "lucide-react";
+
+function EditorMenu() {
+  const { editor } = useCurrentEditor();
+
+  function Section({ title, children, className }) {
+    return (
+      <div className="w-fit">
+        <h3 className="font-bold mb-2 text-gray-400">{title}</h3>
+        <div className={className}>{children}</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="">
+      <div className="flex flex-wrap gap-10 w-full select-none">
+        {/* Headings */}
+        <Section
+          title="Headings"
+          className={"grid grid-cols-3 grid-rows-2 gap-1"}
+        >
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().toggleHeading({ level: 1 }).run();
+            }}
+            className={
+              editor.isActive("heading", { level: 1 })
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <Heading1></Heading1>
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().toggleHeading({ level: 2 }).run();
+            }}
+            className={
+              editor.isActive("heading", { level: 2 })
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <Heading2 />
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().toggleHeading({ level: 3 }).run();
+            }}
+            className={
+              editor.isActive("heading", { level: 3 })
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <Heading3 />
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().toggleHeading({ level: 4 }).run();
+            }}
+            className={
+              editor.isActive("heading", { level: 4 })
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <Heading4 />
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().toggleHeading({ level: 5 }).run();
+            }}
+            className={
+              editor.isActive("heading", { level: 5 })
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <Heading5 />
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().toggleHeading({ level: 6 }).run();
+            }}
+            className={
+              editor.isActive("heading", { level: 6 })
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <Heading6 />
+          </button>
+        </Section>
+
+        {/* Font */}
+        <Section title="Font styles" className={"grid gap-1"}>
+          <div className="input w-fit bg-base-200">
+            <Ligature></Ligature>
+            <select className=""></select>
+          </div>
+          <button className="btn btn-square">
+            <PaintBucket />
+          </button>
+        </Section>
+
+        {/* Text Formatting */}
+        <Section
+          title="Text Formatting"
+          className={"grid grid-cols-4 grid-rows-2 gap-1"}
+        >
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().toggleBold().run();
+            }}
+            className={
+              editor.isActive("bold")
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <Bold />
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().toggleItalic().run();
+            }}
+            className={
+              editor.isActive("italic")
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <Italic />
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().toggleUnderline().run();
+            }}
+            className={
+              editor.isActive("underline")
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <Underline />
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().toggleStrike().run();
+            }}
+            className={
+              editor.isActive("strike")
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <Strikethrough />
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().toggleSubscript().run();
+            }}
+            className={
+              editor.isActive("subscript")
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <Subscript />
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().toggleSuperscript().run();
+            }}
+            className={
+              editor.isActive("superscript")
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <Superscript />
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().toggleBlockquote().run();
+            }}
+            className={
+              editor.isActive("blockquote")
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <TextQuote />
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().setHorizontalRule().run();
+            }}
+            className={"btn btn-square"}
+          >
+            <Minus />
+          </button>
+        </Section>
+
+        {/* Lists */}
+        <Section title="Lists" className={"grid grid-cols-2 grid-rows-1 gap-1"}>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().toggleBulletList().run();
+            }}
+            className={
+              editor.isActive("bulletList")
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <List />
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().toggleOrderedList().run();
+            }}
+            className={
+              editor.isActive("orderedList")
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <ListOrdered />
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().toggleTaskList().run();
+            }}
+            className={
+              editor.isActive("taskList")
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <ListChecks />
+          </button>
+        </Section>
+
+        {/* Code & Block Formatting */}
+        <Section title="Code" className={"grid grid-cols-2 grid-rows-1 gap-1"}>
+          <button
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={() => {
+              editor.chain().focus().toggleCode().run();
+            }}
+            className={
+              editor.isActive("code")
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <Code />
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().toggleCodeBlock().run();
+            }}
+            className={
+              editor.isActive("codeBlock")
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <SquareCode />
+          </button>
+        </Section>
+
+        {/* Alignment */}
+        <Section
+          title="Alignment"
+          className={"grid grid-cols-2 grid-rows-2 gap-1"}
+        >
+          <button className="btn btn-square">
+            <AlignLeft />
+          </button>
+          <button className="btn btn-square">
+            <AlignCenter />
+          </button>
+          <button className="btn btn-square">
+            <AlignRight />
+          </button>
+          <button className="btn btn-square">
+            <AlignJustify />
+          </button>
+        </Section>
+
+        {/* Insert */}
+        <Section
+          title="Insert"
+          className={"grid grid-cols-2 grid-rows-2 gap-1"}
+        >
+          <button className="btn btn-square">
+            <Link />
+          </button>
+          <button className="btn btn-square">
+            <Video />
+          </button>
+          <button className="btn btn-square">
+            <Table />
+          </button>
+        </Section>
+
+        {/* History */}
+        <Section
+          title="History"
+          className={"grid grid-cols-2 grid-rows-1 gap-1"}
+        >
+          <button className="btn btn-square">
+            <Undo />
+          </button>
+          <button className="btn btn-square">
+            <Redo />
+          </button>
+        </Section>
+      </div>
+      <div className="divider"></div>
+    </div>
+  );
+}
+
+export default EditorMenu;

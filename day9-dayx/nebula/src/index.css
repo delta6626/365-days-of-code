@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @plugin "daisyui" {
   themes: light, dark;
@@ -32,4 +33,16 @@
 
 .scrollbar-thin {
   scrollbar-width: thin;
+}
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.tiptap {
+  outline: none;
 }
