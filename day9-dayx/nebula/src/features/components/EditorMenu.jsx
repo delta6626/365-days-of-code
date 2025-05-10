@@ -387,9 +387,16 @@ function EditorMenu() {
           </button>
         </Section>
 
-        {/* Insert */}
+        {/* Table */}
+        <Section title="Table" className={"grid grid-cols-2 grid-rows-2 gap-1"}>
+          <button className="btn btn-square">
+            <Table />
+          </button>
+        </Section>
+
+        {/* Embeds */}
         <Section
-          title="Insert"
+          title="Link & Embed"
           className={"grid grid-cols-2 grid-rows-2 gap-1"}
         >
           <button className="btn btn-square">
@@ -397,9 +404,6 @@ function EditorMenu() {
           </button>
           <button className="btn btn-square">
             <Video />
-          </button>
-          <button className="btn btn-square">
-            <Table />
           </button>
         </Section>
 
