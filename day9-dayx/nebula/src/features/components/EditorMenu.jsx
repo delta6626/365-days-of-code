@@ -30,7 +30,12 @@ import {
   Redo,
   Ligature,
   PaintBucket,
+  TableCellsMerge,
+  TableCellsSplit,
+  SquareX,
 } from "lucide-react";
+import AddRowIcon from "../../assets/AddRowIcon";
+import AddColumnIcon from "../../assets/AddColumnIcon";
 import { useEffect } from "react";
 
 function EditorMenu() {
@@ -388,22 +393,74 @@ function EditorMenu() {
         </Section>
 
         {/* Table */}
-        <Section title="Table" className={"grid grid-cols-2 grid-rows-2 gap-1"}>
-          <button className="btn btn-square">
+        <Section title="Table" className={"grid grid-cols-3 grid-rows-2 gap-1"}>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor
+                .chain()
+                .focus()
+                .insertTable({ rows: 2, cols: 2, withHeaderRow: false })
+                .run();
+            }}
+            className={"btn btn-square"}
+          >
             <Table />
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().addRowAfter().run();
+            }}
+            className={"btn btn-square"}
+          >
+            <AddRowIcon></AddRowIcon>
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().addColumnAfter().run();
+            }}
+            className={"btn btn-square"}
+          >
+            <AddColumnIcon></AddColumnIcon>
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().mergeCells().run();
+            }}
+            className={"btn btn-square"}
+          >
+            <TableCellsMerge></TableCellsMerge>
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().splitCell().run();
+            }}
+            className={"btn btn-square"}
+          >
+            <TableCellsSplit></TableCellsSplit>
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().deleteTable().run();
+            }}
+            className={"btn btn-square"}
+          >
+            <SquareX></SquareX>
           </button>
         </Section>
 
         {/* Embeds */}
-        <Section
-          title="Link & Embed"
-          className={"grid grid-cols-2 grid-rows-2 gap-1"}
-        >
+        <Section title="Links" className={"grid grid-cols-2 grid-rows-1 gap-1"}>
           <button className="btn btn-square">
-            <Link />
+            <Link></Link>
           </button>
           <button className="btn btn-square">
-            <Video />
+            <Video></Video>
           </button>
         </Section>
 
