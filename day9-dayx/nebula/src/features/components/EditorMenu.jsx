@@ -31,9 +31,14 @@ import {
   Ligature,
   PaintBucket,
 } from "lucide-react";
+import { useEffect } from "react";
 
 function EditorMenu() {
   const { editor } = useCurrentEditor();
+
+  useEffect(() => {
+    editor.chain().focus().setTextAlign("left").run();
+  }, []);
 
   function Section({ title, children, className }) {
     return (
@@ -328,16 +333,56 @@ function EditorMenu() {
           title="Alignment"
           className={"grid grid-cols-2 grid-rows-2 gap-1"}
         >
-          <button className="btn btn-square">
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().setTextAlign("left").run();
+            }}
+            className={
+              editor.isActive({ textAlign: "left" })
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
             <AlignLeft />
           </button>
-          <button className="btn btn-square">
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().setTextAlign("center").run();
+            }}
+            className={
+              editor.isActive({ textAlign: "center" })
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
             <AlignCenter />
           </button>
-          <button className="btn btn-square">
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().setTextAlign("right").run();
+            }}
+            className={
+              editor.isActive({ textAlign: "right" })
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
             <AlignRight />
           </button>
-          <button className="btn btn-square">
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().setTextAlign("justify").run();
+            }}
+            className={
+              editor.isActive({ textAlign: "justify" })
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
             <AlignJustify />
           </button>
         </Section>

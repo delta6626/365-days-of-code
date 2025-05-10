@@ -15,6 +15,7 @@ import TaskList from "@tiptap/extension-task-list";
 import TaskItem from "@tiptap/extension-task-item";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import { createLowlight, all } from "lowlight";
+import TextAlign from "@tiptap/extension-text-align";
 
 function NoteEditor() {
   const { editTargetNote, setEditTargetNote } = useEditTargetNoteStore();
@@ -55,6 +56,9 @@ function NoteEditor() {
     }),
     CodeBlockLowlight.configure({
       lowlight: lowlight,
+    }),
+    TextAlign.configure({
+      types: ["heading", "paragraph"],
     }),
   ];
 
