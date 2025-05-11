@@ -40,6 +40,8 @@ I'll try to update this as I go.
 - Day 22 ✅: Delete notebooks, Edit notebooks details (name and tag list), Better layout for notebook cards
 - Day 23 ✅: Fixed bugs + some other miscellaneous tasks, created NoteEditor component, integrated TipTap for editing notes
 - Day 24 ✅: Designed the menu bar for note editor, implemented editing functionalities like headings, underline, bold text, codeblocks, quotes, etc.
+- Day 25 ✅: Fixed bugs, Added support for inserting tables + common table operations merging and splitting columns, fixed styling for task list nodes.
+
 ---
 
 ## 📌 Notes
