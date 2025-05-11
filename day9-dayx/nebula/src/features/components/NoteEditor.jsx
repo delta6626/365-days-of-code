@@ -40,7 +40,6 @@ function NoteEditor() {
 
   const extensions = [
     StarterKit.configure({
-      history: false,
       dropcursor: false,
       codeBlock: false,
       heading: false,

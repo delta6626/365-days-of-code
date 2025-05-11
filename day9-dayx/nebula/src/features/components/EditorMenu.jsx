@@ -38,14 +38,9 @@ import AddRowIcon from "../../assets/AddRowIcon";
 import AddColumnIcon from "../../assets/AddColumnIcon";
 import DeleteRowIcon from "../../assets/DeleteRowIcon";
 import DeleteColumnIcon from "../../assets/DeleteColumnIcon";
-import { useEffect } from "react";
 
 function EditorMenu() {
   const { editor } = useCurrentEditor();
-
-  useEffect(() => {
-    editor.chain().focus().setTextAlign("left").run();
-  }, []);
 
   function Section({ title, children, className }) {
     return (
@@ -489,10 +484,24 @@ function EditorMenu() {
           title="History"
           className={"grid grid-cols-2 grid-rows-1 gap-1"}
         >
-          <button className="btn btn-square">
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().undo().run();
+            }}
+            className={"btn btn-square"}
+            disabled={!editor.can().undo()}
+          >
             <Undo />
           </button>
-          <button className="btn btn-square">
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              editor.chain().focus().redo().run();
+            }}
+            className={"btn btn-square"}
+            disabled={!editor.can().redo()}
+          >
             <Redo />
           </button>
         </Section>
