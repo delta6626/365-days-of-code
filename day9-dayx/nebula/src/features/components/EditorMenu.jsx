@@ -36,6 +36,8 @@ import {
 } from "lucide-react";
 import AddRowIcon from "../../assets/AddRowIcon";
 import AddColumnIcon from "../../assets/AddColumnIcon";
+import DeleteRowIcon from "../../assets/DeleteRowIcon";
+import DeleteColumnIcon from "../../assets/DeleteColumnIcon";
 import { useEffect } from "react";
 
 function EditorMenu() {
@@ -56,7 +58,7 @@ function EditorMenu() {
 
   return (
     <div className="">
-      <div className="flex flex-wrap gap-10 w-full select-none">
+      <div className="flex flex-wrap justify-between w-full select-none">
         {/* Headings */}
         <Section
           title="Headings"
@@ -393,7 +395,7 @@ function EditorMenu() {
         </Section>
 
         {/* Table */}
-        <Section title="Table" className={"grid grid-cols-3 grid-rows-2 gap-1"}>
+        <Section title="Table" className={"grid grid-cols-4 grid-rows-2 gap-1"}>
           <button
             onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
@@ -424,6 +426,24 @@ function EditorMenu() {
             className={"btn btn-square"}
           >
             <AddColumnIcon></AddColumnIcon>
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={() => {
+              editor.chain().focus().deleteRow().run();
+            }}
+            className={"btn btn-square"}
+          >
+            <DeleteRowIcon></DeleteRowIcon>
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={() => {
+              editor.chain().focus().deleteColumn().run();
+            }}
+            className={"btn btn-square"}
+          >
+            <DeleteColumnIcon></DeleteColumnIcon>
           </button>
           <button
             onMouseDown={(e) => e.preventDefault()}
