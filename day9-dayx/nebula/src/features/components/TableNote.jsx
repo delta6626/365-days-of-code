@@ -118,17 +118,29 @@ function TableNote({ id, noteObject }) {
   }
 
   return (
-    <tr className="hover:bg-base-200 cursor-pointer" onClick={handleNoteClick}>
-      <th className="font-normal">{id + 1}</th>
-      <td className="text-lg break-all" title={noteObject.name}>
+    <tr className="hover:bg-base-200">
+      <th className="font-normal cursor-pointer" onClick={handleNoteClick}>
+        {id + 1}
+      </th>
+      <td
+        className="text-lg break-all cursor-pointer"
+        title={noteObject.name}
+        onClick={handleNoteClick}
+      >
         {noteObject.name}
       </td>
-      <td className="">
+      <td className="cursor-pointer" onClick={handleNoteClick}>
         {noteObject.content != ""
           ? noteObject.content.slice(0, 100) + ".."
           : APP_CONSTANTS.NOTE_EMPTY}
       </td>
-      <td className="break-all">{noteObject.assignedTo[1]}</td>
+      <td className="break-all">
+        <div className="btn bg-base-100 text-gray-400 flex gap-2 items-center max-w-full">
+          <span className="overflow-hidden whitespace-nowrap text-ellipsis block w-full">
+            {noteObject.assignedTo[1]}
+          </span>
+        </div>
+      </td>
       <td className="flex flex-wrap items-center gap-2">
         {noteObject.tags.length == 0 ? (
           <p className="text-gray-400">{APP_CONSTANTS.NO_TAGS}</p>
@@ -146,10 +158,10 @@ function TableNote({ id, noteObject }) {
           />
         )}
       </td>
-      <td className="text-gray-400">
+      <td className="text-gray-400 cursor-pointer" onClick={handleNoteClick}>
         {formatDateDDMMYY(objectToDate(noteObject.creationDate))}
       </td>
-      <td className="text-gray-400">
+      <td className="text-gray-400 cursor-pointer" onClick={handleNoteClick}>
         {dateDistanceFromNow(objectToDate(noteObject.lastEditDate))}
       </td>
       <td>

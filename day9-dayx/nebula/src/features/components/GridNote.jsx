@@ -126,14 +126,12 @@ function GridNote({ noteObject }) {
   }
 
   return (
-    <div
-      className="w-sm bg-base-300 rounded-lg p-4 select-none cursor-pointer"
-      onClick={handleNoteClick}
-    >
+    <div className="w-sm bg-base-300 rounded-lg p-4 select-none">
       <div className="flex gap-2 items-center justify-between">
         <h3
-          className="text-xl font-semibold overflow-hidden whitespace-nowrap truncate"
+          className="text-xl font-semibold overflow-hidden whitespace-nowrap truncate cursor-pointer"
           title={noteObject.name}
+          onClick={handleNoteClick}
         >
           {noteObject.name}
         </h3>
@@ -192,7 +190,10 @@ function GridNote({ noteObject }) {
         </div>
       </div>
 
-      <div className="flex gap-4 mt-4 text-gray-400 text-sm">
+      <div
+        className="flex gap-4 mt-4 text-gray-400 text-sm cursor-pointer"
+        onClick={handleNoteClick}
+      >
         <p className="flex gap-2 items-center">
           <Clock size={20} />
           {formatDateDDMMYY(objectToDate(noteObject.creationDate))}
@@ -204,7 +205,7 @@ function GridNote({ noteObject }) {
         </p>
       </div>
       <div className="divider"></div>
-      <div className="">
+      <div className="cursor-pointer" onClick={handleNoteClick}>
         <p
           className={
             noteObject.tags.length != 0 ? "line-clamp-3" : "line-clamp-3 mb-4"
