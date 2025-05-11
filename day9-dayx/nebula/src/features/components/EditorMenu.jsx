@@ -63,7 +63,7 @@ function EditorMenu() {
           className={"grid grid-cols-3 grid-rows-2 gap-1"}
         >
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().toggleHeading({ level: 1 }).run();
             }}
@@ -76,7 +76,7 @@ function EditorMenu() {
             <Heading1></Heading1>
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().toggleHeading({ level: 2 }).run();
             }}
@@ -89,7 +89,7 @@ function EditorMenu() {
             <Heading2 />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().toggleHeading({ level: 3 }).run();
             }}
@@ -102,7 +102,7 @@ function EditorMenu() {
             <Heading3 />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().toggleHeading({ level: 4 }).run();
             }}
@@ -115,7 +115,7 @@ function EditorMenu() {
             <Heading4 />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().toggleHeading({ level: 5 }).run();
             }}
@@ -128,7 +128,7 @@ function EditorMenu() {
             <Heading5 />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().toggleHeading({ level: 6 }).run();
             }}
@@ -159,7 +159,7 @@ function EditorMenu() {
           className={"grid grid-cols-4 grid-rows-2 gap-1"}
         >
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().toggleBold().run();
             }}
@@ -172,7 +172,7 @@ function EditorMenu() {
             <Bold />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().toggleItalic().run();
             }}
@@ -185,7 +185,7 @@ function EditorMenu() {
             <Italic />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().toggleUnderline().run();
             }}
@@ -198,7 +198,7 @@ function EditorMenu() {
             <Underline />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().toggleStrike().run();
             }}
@@ -211,7 +211,7 @@ function EditorMenu() {
             <Strikethrough />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().toggleSubscript().run();
             }}
@@ -224,7 +224,7 @@ function EditorMenu() {
             <Subscript />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().toggleSuperscript().run();
             }}
@@ -237,7 +237,7 @@ function EditorMenu() {
             <Superscript />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().toggleBlockquote().run();
             }}
@@ -250,7 +250,7 @@ function EditorMenu() {
             <TextQuote />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().setHorizontalRule().run();
             }}
@@ -263,7 +263,7 @@ function EditorMenu() {
         {/* Lists */}
         <Section title="Lists" className={"grid grid-cols-2 grid-rows-1 gap-1"}>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().toggleBulletList().run();
             }}
@@ -276,7 +276,7 @@ function EditorMenu() {
             <List />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().toggleOrderedList().run();
             }}
@@ -289,7 +289,7 @@ function EditorMenu() {
             <ListOrdered />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().toggleTaskList().run();
             }}
@@ -319,7 +319,7 @@ function EditorMenu() {
             <Code />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().toggleCodeBlock().run();
             }}
@@ -339,7 +339,7 @@ function EditorMenu() {
           className={"grid grid-cols-2 grid-rows-2 gap-1"}
         >
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().setTextAlign("left").run();
             }}
@@ -352,7 +352,7 @@ function EditorMenu() {
             <AlignLeft />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().setTextAlign("center").run();
             }}
@@ -365,7 +365,7 @@ function EditorMenu() {
             <AlignCenter />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().setTextAlign("right").run();
             }}
@@ -378,7 +378,7 @@ function EditorMenu() {
             <AlignRight />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().setTextAlign("justify").run();
             }}
@@ -395,7 +395,7 @@ function EditorMenu() {
         {/* Table */}
         <Section title="Table" className={"grid grid-cols-3 grid-rows-2 gap-1"}>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor
                 .chain()
@@ -408,7 +408,7 @@ function EditorMenu() {
             <Table />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().addRowAfter().run();
             }}
@@ -417,7 +417,7 @@ function EditorMenu() {
             <AddRowIcon></AddRowIcon>
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().addColumnAfter().run();
             }}
@@ -426,7 +426,7 @@ function EditorMenu() {
             <AddColumnIcon></AddColumnIcon>
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().mergeCells().run();
             }}
