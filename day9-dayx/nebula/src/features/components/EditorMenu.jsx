@@ -75,10 +75,16 @@ function EditorMenu() {
     }
   }
 
+  function addYouTubeLinkToEditor(youtubeURL) {
+    editor.commands.setYoutubeVideo({ src: youtubeURL });
+  }
+
   return (
     <div className="">
       <EditorLinkModal addLinkToEditor={addLinkToEditor}></EditorLinkModal>
-      <EditorYouTubeLinkModal></EditorYouTubeLinkModal>
+      <EditorYouTubeLinkModal
+        addYouTubeLinkToEditor={addYouTubeLinkToEditor}
+      ></EditorYouTubeLinkModal>
       <GenericModal></GenericModal>
       <div className="flex flex-wrap justify-between w-full select-none">
         {/* Headings */}
@@ -506,14 +512,26 @@ function EditorMenu() {
                 .showModal();
             }}
             className={
-              editor.isActive("link")
+              editor.isActive("youtube")
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
           >
             <Link></Link>
           </button>
-          <button className="btn btn-square">
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={() => {
+              document
+                .getElementById(APP_CONSTANTS.EDITOR_YOUTUBE_LINK_MODAL)
+                .showModal();
+            }}
+            className={
+              editor.isActive("link")
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
             <Video></Video>
           </button>
         </Section>

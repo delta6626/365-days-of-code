@@ -21,6 +21,7 @@ import TableRow from "@tiptap/extension-table-row";
 import TableHeader from "@tiptap/extension-table-header";
 import TableCell from "@tiptap/extension-table-cell";
 import Link from "@tiptap/extension-link";
+import Youtube from "@tiptap/extension-youtube";
 
 function NoteEditor() {
   const { editTargetNote, setEditTargetNote } = useEditTargetNoteStore();
@@ -76,6 +77,9 @@ function NoteEditor() {
       autolink: true,
       defaultProtocol: "https",
       protocols: ["https", "http"],
+    }),
+    Youtube.configure({
+      nocookie: true,
     }),
   ];
 
