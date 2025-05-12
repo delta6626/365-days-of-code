@@ -38,6 +38,10 @@ import AddRowIcon from "../../assets/AddRowIcon";
 import AddColumnIcon from "../../assets/AddColumnIcon";
 import DeleteRowIcon from "../../assets/DeleteRowIcon";
 import DeleteColumnIcon from "../../assets/DeleteColumnIcon";
+import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
+import EditorLinkModal from "../components/EditorLinkModal";
+import EditorYouTubeLinkModal from "../components/EditorYouTubeLinkModal";
+import GenericModal from "../components/GenericModal";
 
 function EditorMenu() {
   const { editor } = useCurrentEditor();
@@ -51,10 +55,31 @@ function EditorMenu() {
     );
   }
 
-  function getLink() {}
+  function addLinkToEditor(url) {
+    if (editor.view.state.selection.empty) {
+      const domain = url.split("//")[1].split("/")[0];
+      editor
+        .chain()
+        .focus()
+        .extendMarkRange("link")
+        .setLink({ href: url })
+        .insertContent(domain)
+        .run();
+    } else {
+      editor
+        .chain()
+        .focus()
+        .extendMarkRange("link")
+        .setLink({ href: url })
+        .run();
+    }
+  }
 
   return (
     <div className="">
+      <EditorLinkModal addLinkToEditor={addLinkToEditor}></EditorLinkModal>
+      <EditorYouTubeLinkModal></EditorYouTubeLinkModal>
+      <GenericModal></GenericModal>
       <div className="flex flex-wrap justify-between w-full select-none">
         {/* Headings */}
         <Section
@@ -475,7 +500,11 @@ function EditorMenu() {
         <Section title="Links" className={"grid grid-cols-2 grid-rows-1 gap-1"}>
           <button
             onMouseDown={(e) => e.preventDefault()} // prevents focus loss
-            onClick={getLink}
+            onClick={() => {
+              document
+                .getElementById(APP_CONSTANTS.EDITOR_LINK_MODAL)
+                .showModal();
+            }}
             className={
               editor.isActive("link")
                 ? "btn btn-primary btn-square"

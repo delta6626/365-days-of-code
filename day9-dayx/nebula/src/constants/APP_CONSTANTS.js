@@ -68,6 +68,8 @@ export const APP_CONSTANTS = {
   CREATE_NOTEBOOK_MODAL: "createNotebookModal",
   EDIT_NOTE_MODAL: "editNoteModal",
   EDIT_NOTEBOOK_MODAL: "editNotebookModal",
+  EDITOR_LINK_MODAL: "editorLinkModal",
+  EDITOR_YOUTUBE_LINK_MODAL: "editorYouTubeLinkModal",
   NO_NOTEBOOKS:
     "We checked twice. Still no notebooks.\n Maybe it's time to create one?",
   NO_TAGS: "No tags here yet. Add some to keep things easy to find.",
@@ -76,6 +78,7 @@ export const APP_CONSTANTS = {
   TAG_LIMIT: 15,
   RECENT_LIMIT: 20,
   CREATE: "Create",
+  INSERT: "Insert",
   SIGN_OUT: "Sign out",
   EDIT: "Save changes",
   SEND: "Send",
