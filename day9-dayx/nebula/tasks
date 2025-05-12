@@ -8,7 +8,7 @@
 8. Feat: Allow user to customize dashboard
 9. Chore: Update assigned notebook in database and notes store when the notebook name is edited ✅
 10. Fix: Edit note modal component throws error when no notebook is selected
-11. disable auto correct in code block
+11. disable spell check in code, codeblock, link
 12. Allow centering of bullet points, quotes, and ordered lists
 13. Fix syntax highlighting
 14. Fix humongous margins
