@@ -51,6 +51,8 @@ function EditorMenu() {
     );
   }
 
+  function getLink() {}
+
   return (
     <div className="">
       <div className="flex flex-wrap justify-between w-full select-none">
@@ -471,7 +473,15 @@ function EditorMenu() {
 
         {/* Embeds */}
         <Section title="Links" className={"grid grid-cols-2 grid-rows-1 gap-1"}>
-          <button className="btn btn-square">
+          <button
+            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onClick={getLink}
+            className={
+              editor.isActive("link")
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
             <Link></Link>
           </button>
           <button className="btn btn-square">

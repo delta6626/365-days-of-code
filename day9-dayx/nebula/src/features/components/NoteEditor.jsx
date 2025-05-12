@@ -20,6 +20,7 @@ import Table from "@tiptap/extension-table";
 import TableRow from "@tiptap/extension-table-row";
 import TableHeader from "@tiptap/extension-table-header";
 import TableCell from "@tiptap/extension-table-cell";
+import Link from "@tiptap/extension-link";
 
 function NoteEditor() {
   const { editTargetNote, setEditTargetNote } = useEditTargetNoteStore();
@@ -43,6 +44,7 @@ function NoteEditor() {
       dropcursor: false,
       codeBlock: false,
       heading: false,
+      gapcursor: true,
     }),
     Heading.configure({
       levels: [1, 2, 3, 4, 5, 6],
@@ -69,6 +71,12 @@ function NoteEditor() {
     TableRow,
     TableHeader,
     TableCell,
+    Link.configure({
+      openOnClick: true,
+      autolink: true,
+      defaultProtocol: "https",
+      protocols: ["https", "http"],
+    }),
   ];
 
   useEffect(() => {
