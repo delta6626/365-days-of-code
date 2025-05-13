@@ -212,9 +212,9 @@ function EditorMenu() {
               );
             })}
           </select>
-          <button className="btn btn-square">
+          {/* <button className="btn btn-square"> // Implement later.
             <PaintBucket />
-          </button>
+          </button> */}
         </Section>
 
         {/* Text Formatting */}
