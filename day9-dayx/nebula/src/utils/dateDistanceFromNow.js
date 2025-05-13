@@ -24,5 +24,5 @@ export function dateDistanceFromNow(date) {
   if (minutes > 0) {
     return minutes === 1 ? "1 minute ago" : `${minutes} minutes ago`;
   }
-  return seconds <= 10 ? "just now" : `a few seconds ago`;
+  return seconds <= 10 ? "Just now" : `a few seconds ago`;
 }
