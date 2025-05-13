@@ -42,6 +42,7 @@ import EditorLinkModal from "../components/EditorLinkModal";
 import EditorYouTubeLinkModal from "../components/EditorYouTubeLinkModal";
 import GenericModal from "../components/GenericModal";
 import { useState } from "react";
+import EditorMenuTopBar from "./EditorMenuTopBar";
 
 function EditorMenu() {
   const fonts = [
@@ -109,6 +110,7 @@ function EditorMenu() {
         addYouTubeLinkToEditor={addYouTubeLinkToEditor}
       ></EditorYouTubeLinkModal>
       <GenericModal></GenericModal>
+      <EditorMenuTopBar></EditorMenuTopBar>
       <div className="flex flex-wrap justify-between w-full select-none">
         {/* Headings */}
         <Section

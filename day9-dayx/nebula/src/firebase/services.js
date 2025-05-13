@@ -204,6 +204,13 @@ export function updateNote(
   });
 }
 
+export function updateNoteFromEditor(noteId, updatedNotePropertiesObject) {
+  return getAuthenticatedUser().then((user) => {
+    const noteDocRef = doc(firestore, "users", user.uid, "notes", noteId);
+    return updateDoc(noteDocRef, updatedNotePropertiesObject);
+  });
+}
+
 export function updateNotebook(
   notebookId,
   oldNotebookName,

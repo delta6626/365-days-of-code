@@ -3,12 +3,8 @@ import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
 import Underline from "@tiptap/extension-underline";
 import Heading from "@tiptap/extension-heading";
-import { useEditTargetNoteStore } from "../../store/editTargetNoteStore";
-import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import EditorMenu from "./EditorMenu";
-import { Save, X, Book } from "lucide-react";
-import { useEffect, useState } from "react";
 import Subscript from "@tiptap/extension-subscript";
 import Superscript from "@tiptap/extension-superscript";
 import TaskList from "@tiptap/extension-task-list";
@@ -24,25 +20,11 @@ import Link from "@tiptap/extension-link";
 import Youtube from "@tiptap/extension-youtube";
 import FontFamily from "@tiptap/extension-font-family";
 import TextStyle from "@tiptap/extension-text-style";
-import { objectToDate } from "../../utils/objectToDate";
-import { dateDistanceFromNow } from "../../utils/dateDistanceFromNow";
+import { useEditTargetNoteStore } from "../../store/editTargetNoteStore";
 
 function NoteEditor() {
-  const { editTargetNote, setEditTargetNote } = useEditTargetNoteStore();
-  const { notesView, setNotesView } = useCurrentNotesViewStore();
-
-  const [noteName, setNoteName] = useState();
-  const [content, setContent] = useState();
-
   const lowlight = createLowlight(all);
-
-  function handleNoteNameChange(e) {
-    setNoteName(e.target.value);
-  }
-
-  function handleCloseButtonClick() {
-    setNotesView(APP_CONSTANTS.VIEW_GRID);
-  }
+  const { editTargetNote, setEditTargetNote } = useEditTargetNoteStore();
 
   const extensions = [
     StarterKit.configure({
@@ -89,58 +71,10 @@ function NoteEditor() {
     FontFamily,
   ];
 
-  useEffect(() => {
-    setNoteName(editTargetNote.name);
-    setContent(editTargetNote.content);
-  }, []);
-
   return (
     <div className="w-full">
-      <div className="flex justify-between">
-        <div className="flex-grow">
-          <input
-            type="text"
-            className="input shadow-none border-none w-full text-2xl font-bold pl-0 focus:outline-none focus:shadow-none"
-            placeholder="Untitled note"
-            value={noteName}
-            maxLength={150}
-            onChange={handleNoteNameChange}
-          />
-        </div>
-        <div className="flex gap-2">
-          <div className="tooltip tooltip-bottom ml-2">
-            <button className="btn btn-square">
-              {/* <span className="loading loading-spinner"></span> */}
-              <Save></Save>
-            </button>
-          </div>
-          <div className="tooltip tooltip-bottom" data-tip={"Close"}>
-            <button className="btn btn-square" onClick={handleCloseButtonClick}>
-              <X></X>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="flex justify-between">
-        <div className="text-gray-400 flex items-center justify-center">
-          <div className="btn bg-base-100 text-gray-400 flex gap-2 items-center max-w-full">
-            <Book size={20} className="flex-shrink-0" />
-            <span className="overflow-hidden whitespace-nowrap text-ellipsis block w-full">
-              {editTargetNote.assignedTo[1]}
-            </span>
-          </div>
-
-          <p className="mx-4"> • </p>
-
-          <p className="">
-            {"Last edited " +
-              dateDistanceFromNow(objectToDate(editTargetNote.lastEditDate))}
-          </p>
-        </div>
-      </div>
-      <div className="divider"></div>
       <EditorProvider
-        content={content}
+        content={editTargetNote.content}
         extensions={extensions}
         slotBefore={<EditorMenu></EditorMenu>}
         autofocus={true}
