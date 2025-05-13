@@ -41,7 +41,6 @@ import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import EditorLinkModal from "../components/EditorLinkModal";
 import EditorYouTubeLinkModal from "../components/EditorYouTubeLinkModal";
 import GenericModal from "../components/GenericModal";
-import { useState } from "react";
 import EditorMenuTopBar from "./EditorMenuTopBar";
 
 function EditorMenu() {
