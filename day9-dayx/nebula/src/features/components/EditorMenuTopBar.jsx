@@ -9,6 +9,7 @@ import { useNotesStore } from "../../store/notesStore";
 import { useCurrentEditor } from "@tiptap/react";
 import { updateNoteFromEditor } from "../../firebase/services";
 import { toTimestamp } from "../../utils/toTimestamp";
+import debounce from "lodash.debounce";
 
 function EditorMenuTopBar() {
   const { editTargetNote, setEditTargetNote } = useEditTargetNoteStore();
@@ -84,7 +85,8 @@ function EditorMenuTopBar() {
     setNotesView(APP_CONSTANTS.VIEW_GRID);
   }
 
-  editor.on("update", ({ editor }) => {
+  function updateFunction({ editor }) {
+    console.log("executed");
     if (editor.getHTML() === "<p></p>" && editTargetNote.content === "") {
       setnoteContentDelta(false);
       return;
@@ -94,7 +96,9 @@ function EditorMenuTopBar() {
     } else {
       setnoteContentDelta(false);
     }
-  });
+  }
+
+  editor.on("update", debounce(updateFunction, 300)); // Make sure the update function runs 300ms after the user stops typing
 
   useEffect(() => {
     setNoteName(editTargetNote.name);
