@@ -21,6 +21,9 @@ import Youtube from "@tiptap/extension-youtube";
 import FontFamily from "@tiptap/extension-font-family";
 import TextStyle from "@tiptap/extension-text-style";
 import { useEditTargetNoteStore } from "../../store/editTargetNoteStore";
+import { memo } from "react";
+
+const MemoizedEditorMenu = memo(EditorMenu);
 
 function NoteEditor() {
   const lowlight = createLowlight(all);
@@ -76,8 +79,9 @@ function NoteEditor() {
       <EditorProvider
         content={editTargetNote.content}
         extensions={extensions}
-        slotBefore={<EditorMenu></EditorMenu>}
+        slotBefore={<MemoizedEditorMenu></MemoizedEditorMenu>}
         autofocus={true}
+        shouldRerenderOnTransaction={false}
         editorContainerProps={{
           className: "prose text-xl min-w-full",
         }}
