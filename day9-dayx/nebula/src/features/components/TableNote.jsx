@@ -9,6 +9,7 @@ import { useMessageStore } from "../../store/messageStore";
 import { hardDeleteNote, updatePinStatus } from "../../firebase/services";
 import { useEditTargetNoteStore } from "../../store/editTargetNoteStore";
 import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
+import { sanitizeHTML } from "../../utils/sanitizeHTML";
 import { useState } from "react";
 
 function TableNote({ id, noteObject }) {
@@ -130,9 +131,14 @@ function TableNote({ id, noteObject }) {
         {noteObject.name}
       </td>
       <td className="cursor-pointer" onClick={handleNoteClick}>
-        {noteObject.content != ""
-          ? noteObject.content.slice(0, 100) + ".."
-          : APP_CONSTANTS.NOTE_EMPTY}
+        {(() => {
+          const plain = sanitizeHTML(noteObject.content);
+          return plain.trim()
+            ? plain.length > 200
+              ? plain.slice(0, 200) + ".."
+              : plain
+            : APP_CONSTANTS.NOTE_EMPTY;
+        })()}
       </td>
       <td className="break-all">
         <div className="btn bg-base-100 text-gray-400 flex gap-2 items-center max-w-full">

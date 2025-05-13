@@ -17,6 +17,7 @@ import { hardDeleteNote, updatePinStatus } from "../../firebase/services";
 import { useMessageStore } from "../../store/messageStore";
 import { useEditTargetNoteStore } from "../../store/editTargetNoteStore";
 import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
+import { sanitizeHTML } from "../../utils/sanitizeHTML";
 import { useState } from "react";
 
 function GridNote({ noteObject }) {
@@ -211,9 +212,14 @@ function GridNote({ noteObject }) {
             noteObject.tags.length != 0 ? "line-clamp-3" : "line-clamp-3 mb-4"
           }
         >
-          {noteObject.content != ""
-            ? noteObject.content.slice(0, 200) + ".."
-            : APP_CONSTANTS.NOTE_EMPTY}
+          {(() => {
+            const plain = sanitizeHTML(noteObject.content);
+            return plain.trim()
+              ? plain.length > 200
+                ? plain.slice(0, 200) + ".."
+                : plain
+              : APP_CONSTANTS.NOTE_EMPTY;
+          })()}
         </p>
       </div>
       {noteObject.tags.length != 0 ? (
