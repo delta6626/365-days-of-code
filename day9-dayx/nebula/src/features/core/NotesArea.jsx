@@ -40,7 +40,7 @@ function NotesArea() {
   }
 
   return (
-    <div className="flex-1 h-[100vh] p-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
+    <div className="flex-1 h-[100vh] px-8 py-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
       <CreateNoteModal></CreateNoteModal>
       <GenericModal
         id={APP_CONSTANTS.GENERIC_MODAL}
