@@ -7,7 +7,7 @@ import { useEditTargetNoteStore } from "../../store/editTargetNoteStore";
 import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import EditorMenu from "./EditorMenu";
-import { X } from "lucide-react";
+import { Save, X, Book } from "lucide-react";
 import { useEffect, useState } from "react";
 import Subscript from "@tiptap/extension-subscript";
 import Superscript from "@tiptap/extension-superscript";
@@ -24,6 +24,8 @@ import Link from "@tiptap/extension-link";
 import Youtube from "@tiptap/extension-youtube";
 import FontFamily from "@tiptap/extension-font-family";
 import TextStyle from "@tiptap/extension-text-style";
+import { objectToDate } from "../../utils/objectToDate";
+import { dateDistanceFromNow } from "../../utils/dateDistanceFromNow";
 
 function NoteEditor() {
   const { editTargetNote, setEditTargetNote } = useEditTargetNoteStore();
@@ -107,13 +109,33 @@ function NoteEditor() {
         </div>
         <div className="flex gap-2">
           <div className="tooltip tooltip-bottom ml-2">
-            <button className="btn btn-square"></button>
+            <button className="btn btn-square">
+              {/* <span className="loading loading-spinner"></span> */}
+              <Save></Save>
+            </button>
           </div>
           <div className="tooltip tooltip-bottom" data-tip={"Close"}>
             <button className="btn btn-square" onClick={handleCloseButtonClick}>
               <X></X>
             </button>
           </div>
+        </div>
+      </div>
+      <div className="flex justify-between">
+        <div className="text-gray-400 flex items-center justify-center">
+          <div className="btn bg-base-100 text-gray-400 flex gap-2 items-center max-w-full">
+            <Book size={20} className="flex-shrink-0" />
+            <span className="overflow-hidden whitespace-nowrap text-ellipsis block w-full">
+              {editTargetNote.assignedTo[1]}
+            </span>
+          </div>
+
+          <p className="mx-4"> • </p>
+
+          <p className="">
+            {"Last edited " +
+              dateDistanceFromNow(objectToDate(editTargetNote.lastEditDate))}
+          </p>
         </div>
       </div>
       <div className="divider"></div>
