@@ -28,7 +28,6 @@ import {
   AlignJustify,
   Undo,
   Redo,
-  Ligature,
   PaintBucket,
   TableCellsMerge,
   TableCellsSplit,
@@ -42,8 +41,23 @@ import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import EditorLinkModal from "../components/EditorLinkModal";
 import EditorYouTubeLinkModal from "../components/EditorYouTubeLinkModal";
 import GenericModal from "../components/GenericModal";
+import { useState } from "react";
 
 function EditorMenu() {
+  const fonts = [
+    "Plus Jakarta Sans",
+    "Arial",
+    "Verdana",
+    "Tahoma",
+    "Trebuchet MS",
+    "Times New Roman",
+    "Georgia",
+    "Courier New",
+    "Monospace",
+    "Sans serif",
+    "Serif",
+  ];
+
   const { editor } = useCurrentEditor();
 
   function Section({ title, children, className }) {
@@ -53,6 +67,15 @@ function EditorMenu() {
         <div className={className}>{children}</div>
       </div>
     );
+  }
+
+  function getActiveFont() {
+    for (let font of fonts) {
+      if (editor.isActive("textStyle", { fontFamily: font })) {
+        return font; // Return the first active font
+      }
+    }
+    return fonts[0]; // Default to the first font if none is active
   }
 
   function addLinkToEditor(url) {
@@ -174,10 +197,21 @@ function EditorMenu() {
 
         {/* Font */}
         <Section title="Font styles" className={"grid gap-1"}>
-          <div className="input w-fit bg-base-200">
-            <Ligature></Ligature>
-            <select className=""></select>
-          </div>
+          <select
+            className="select w-fit bg-base-200"
+            value={getActiveFont()}
+            onChange={(e) => {
+              editor.chain().focus().setFontFamily(e.target.value).run();
+            }}
+          >
+            {fonts.map((font, id) => {
+              return (
+                <option key={id} value={font}>
+                  {font}
+                </option>
+              );
+            })}
+          </select>
           <button className="btn btn-square">
             <PaintBucket />
           </button>
@@ -443,6 +477,7 @@ function EditorMenu() {
               editor.chain().focus().addRowAfter().run();
             }}
             className={"btn btn-square"}
+            disabled={!editor.isActive("table")}
           >
             <AddRowIcon></AddRowIcon>
           </button>
@@ -452,6 +487,7 @@ function EditorMenu() {
               editor.chain().focus().addColumnAfter().run();
             }}
             className={"btn btn-square"}
+            disabled={!editor.isActive("table")}
           >
             <AddColumnIcon></AddColumnIcon>
           </button>
@@ -461,6 +497,7 @@ function EditorMenu() {
               editor.chain().focus().deleteRow().run();
             }}
             className={"btn btn-square"}
+            disabled={!editor.isActive("table")}
           >
             <DeleteRowIcon></DeleteRowIcon>
           </button>
@@ -470,6 +507,7 @@ function EditorMenu() {
               editor.chain().focus().deleteColumn().run();
             }}
             className={"btn btn-square"}
+            disabled={!editor.isActive("table")}
           >
             <DeleteColumnIcon></DeleteColumnIcon>
           </button>
@@ -479,24 +517,27 @@ function EditorMenu() {
               editor.chain().focus().mergeCells().run();
             }}
             className={"btn btn-square"}
+            disabled={!editor.isActive("table")}
           >
             <TableCellsMerge></TableCellsMerge>
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().splitCell().run();
             }}
             className={"btn btn-square"}
+            disabled={!editor.isActive("table")}
           >
             <TableCellsSplit></TableCellsSplit>
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().deleteTable().run();
             }}
             className={"btn btn-square"}
+            disabled={!editor.isActive("table")}
           >
             <SquareX></SquareX>
           </button>
@@ -505,7 +546,7 @@ function EditorMenu() {
         {/* Embeds */}
         <Section title="Links" className={"grid grid-cols-2 grid-rows-1 gap-1"}>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               document
                 .getElementById(APP_CONSTANTS.EDITOR_LINK_MODAL)
@@ -520,7 +561,7 @@ function EditorMenu() {
             <Link></Link>
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               document
                 .getElementById(APP_CONSTANTS.EDITOR_YOUTUBE_LINK_MODAL)
@@ -542,7 +583,7 @@ function EditorMenu() {
           className={"grid grid-cols-2 grid-rows-1 gap-1"}
         >
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().undo().run();
             }}
@@ -552,7 +593,7 @@ function EditorMenu() {
             <Undo />
           </button>
           <button
-            onMouseDown={(e) => e.preventDefault()} // prevents focus loss
+            onMouseDown={(e) => e.preventDefault()}
             onClick={() => {
               editor.chain().focus().redo().run();
             }}

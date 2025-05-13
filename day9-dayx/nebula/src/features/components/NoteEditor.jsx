@@ -22,6 +22,8 @@ import TableHeader from "@tiptap/extension-table-header";
 import TableCell from "@tiptap/extension-table-cell";
 import Link from "@tiptap/extension-link";
 import Youtube from "@tiptap/extension-youtube";
+import FontFamily from "@tiptap/extension-font-family";
+import TextStyle from "@tiptap/extension-text-style";
 
 function NoteEditor() {
   const { editTargetNote, setEditTargetNote } = useEditTargetNoteStore();
@@ -81,6 +83,8 @@ function NoteEditor() {
     Youtube.configure({
       nocookie: true,
     }),
+    TextStyle,
+    FontFamily,
   ];
 
   useEffect(() => {
