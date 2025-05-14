@@ -35,6 +35,11 @@ function NoteEditor() {
       codeBlock: false,
       heading: false,
       gapcursor: true,
+      code: {
+        HTMLAttributes: {
+          spellcheck: false,
+        },
+      },
     }),
     Heading.configure({
       levels: [1, 2, 3, 4, 5, 6],
@@ -51,6 +56,9 @@ function NoteEditor() {
     }),
     CodeBlockLowlight.configure({
       lowlight: lowlight,
+      HTMLAttributes: {
+        spellcheck: false,
+      },
     }),
     TextAlign.configure({
       types: ["heading", "paragraph"],
@@ -66,6 +74,9 @@ function NoteEditor() {
       autolink: true,
       defaultProtocol: "https",
       protocols: ["https", "http"],
+      HTMLAttributes: {
+        spellcheck: false,
+      },
     }),
     Youtube.configure({
       nocookie: true,
