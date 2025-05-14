@@ -8,7 +8,7 @@ import GenericModal from "../components/GenericModal";
 import EditNoteModal from "../components/EditNoteModal";
 import CreateNoteModal from "../components/CreateNoteModal";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Search, Table, LayoutGrid, BookPlus, FilePlus } from "lucide-react";
 import { objectToDate } from "../../utils/objectToDate";
 import CreateNotebookModal from "../components/CreateNotebookModal";
@@ -16,6 +16,7 @@ import { useNotebooksStore } from "../../store/notebooksStore";
 import GridNotebook from "../components/GridNotebook";
 import TableNotebook from "../components/TableNotebook";
 import EditNotebookModal from "../components/EditNotebookModal";
+import NoteEditor from "../components/NoteEditor";
 
 function DashboardArea() {
   const { notes } = useNotesStore();
@@ -139,6 +140,10 @@ function DashboardArea() {
     );
   };
 
+  useEffect(() => {
+    setNotesView(APP_CONSTANTS.VIEW_GRID);
+  }, []);
+
   return (
     <div className="flex-1 h-[100vh] px-8 py-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
       <GenericModal
@@ -157,82 +162,91 @@ function DashboardArea() {
       <CreateNoteModal></CreateNoteModal>
       <CreateNotebookModal></CreateNotebookModal>
 
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-        <div className="flex">
-          <div className="w-2xl input focus-within:input-primary">
-            <Search className="text-gray-400"></Search>
-            <input
-              className=""
-              placeholder="Search anything"
-              type="text"
-              value={searchTerm}
-              onChange={handleSearch}
-            />
-          </div>
-          <div
-            className={!userVerified ? "tooltip tooltip-right" : ""}
-            data-tip={APP_CONSTANTS.VERIFY_EMAIL}
-          >
-            <div className="tooltip tooltip-bottom" data-tip={"New note"}>
-              <button
-                className="btn btn-primary btn-square ml-2"
-                disabled={!userVerified}
-                onClick={handleNewNoteButtonClick}
-              >
-                <FilePlus></FilePlus>
-              </button>
-            </div>
-            <div className="tooltip tooltip-bottom" data-tip={"New notebook"}>
-              <button
-                className="btn btn-primary btn-square ml-2"
-                disabled={!userVerified}
-                onClick={handleNewNotebookButtonClick}
-              >
-                <BookPlus></BookPlus>
-              </button>
-            </div>
-          </div>
-        </div>
-
+      {notesView === APP_CONSTANTS.VIEW_NOTE_EDITOR ? (
+        <NoteEditor></NoteEditor>
+      ) : (
         <div className="">
-          <div className="tooltip tooltip-left" data-tip="Grid view">
-            <button
-              onClick={() => setNotesView(APP_CONSTANTS.VIEW_GRID)}
-              className={
-                "btn btn-square " +
-                (notesView == APP_CONSTANTS.VIEW_GRID
-                  ? "btn-active"
-                  : "btn-ghost")
-              }
-            >
-              <LayoutGrid></LayoutGrid>
-            </button>
+          <div className="flex items-center justify-between">
+            <h1 className="text-3xl font-bold">Dashboard</h1>
+            <div className="flex">
+              <div className="w-2xl input focus-within:input-primary">
+                <Search className="text-gray-400"></Search>
+                <input
+                  className=""
+                  placeholder="Search anything"
+                  type="text"
+                  value={searchTerm}
+                  onChange={handleSearch}
+                />
+              </div>
+              <div
+                className={!userVerified ? "tooltip tooltip-right" : ""}
+                data-tip={APP_CONSTANTS.VERIFY_EMAIL}
+              >
+                <div className="tooltip tooltip-bottom" data-tip={"New note"}>
+                  <button
+                    className="btn btn-primary btn-square ml-2"
+                    disabled={!userVerified}
+                    onClick={handleNewNoteButtonClick}
+                  >
+                    <FilePlus></FilePlus>
+                  </button>
+                </div>
+                <div
+                  className="tooltip tooltip-bottom"
+                  data-tip={"New notebook"}
+                >
+                  <button
+                    className="btn btn-primary btn-square ml-2"
+                    disabled={!userVerified}
+                    onClick={handleNewNotebookButtonClick}
+                  >
+                    <BookPlus></BookPlus>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="">
+              <div className="tooltip tooltip-left" data-tip="Grid view">
+                <button
+                  onClick={() => setNotesView(APP_CONSTANTS.VIEW_GRID)}
+                  className={
+                    "btn btn-square " +
+                    (notesView == APP_CONSTANTS.VIEW_GRID
+                      ? "btn-active"
+                      : "btn-ghost")
+                  }
+                >
+                  <LayoutGrid></LayoutGrid>
+                </button>
+              </div>
+
+              <div className="tooltip tooltip-left" data-tip="Table view">
+                <button
+                  onClick={() => setNotesView(APP_CONSTANTS.VIEW_TABLE)}
+                  className={
+                    "btn btn-square " +
+                    (notesView == APP_CONSTANTS.VIEW_TABLE
+                      ? "btn-active"
+                      : "btn-ghost")
+                  }
+                >
+                  <Table></Table>
+                </button>
+              </div>
+            </div>
           </div>
 
-          <div className="tooltip tooltip-left" data-tip="Table view">
-            <button
-              onClick={() => setNotesView(APP_CONSTANTS.VIEW_TABLE)}
-              className={
-                "btn btn-square " +
-                (notesView == APP_CONSTANTS.VIEW_TABLE
-                  ? "btn-active"
-                  : "btn-ghost")
-              }
-            >
-              <Table></Table>
-            </button>
-          </div>
+          <div className="divider" />
+
+          {renderNoteSection("Pinned notes", pinnedNotes)}
+          {renderNotebookSection("Pinned notebooks", pinnedNotebooks)}
+          {renderNoteSection("Recent notes", recentNotes)}
+          {renderNoteSection("Tagged notes", taggedNotes)}
+          {renderNoteSection("Untagged notes", untaggedNotes)}
         </div>
-      </div>
-
-      <div className="divider" />
-
-      {renderNoteSection("Pinned notes", pinnedNotes)}
-      {renderNotebookSection("Pinned notebooks", pinnedNotebooks)}
-      {renderNoteSection("Recent notes", recentNotes)}
-      {renderNoteSection("Tagged notes", taggedNotes)}
-      {renderNoteSection("Untagged notes", untaggedNotes)}
+      )}
     </div>
   );
 }
