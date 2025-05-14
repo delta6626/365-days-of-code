@@ -7,7 +7,7 @@ import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { useNotebooksStore } from "../../store/notebooksStore";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
 import { Search, Table, LayoutGrid, BookPlus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GridNotebook from "../components/GridNotebook";
 import TableNotebook from "../components/TableNotebook";
 import EditNotebookModal from "../components/EditNotebookModal";
@@ -38,6 +38,12 @@ function NotebooksArea() {
   function handleNewNotebookButtonClick() {
     document.getElementById(APP_CONSTANTS.CREATE_NOTEBOOK_MODAL).showModal();
   }
+
+  useEffect(() => {
+    if (notesView == APP_CONSTANTS.VIEW_NOTE_EDITOR) {
+      setNotesView(APP_CONSTANTS.VIEW_GRID);
+    }
+  }, []);
 
   return (
     <div className="flex-1 h-[100vh] px-8 py-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
