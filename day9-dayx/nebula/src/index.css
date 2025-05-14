@@ -59,6 +59,11 @@ html[data-theme="light"] .tiptap {
   outline: none;
 }
 
+.tiptap blockquote p::after,
+.tiptap blockquote p::before {
+  content: "";
+}
+
 .tiptap ul,
 .tiptap ol {
   padding: 0 1rem;
