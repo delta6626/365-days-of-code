@@ -1,7 +1,7 @@
 import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
-import { Save, X, Book, FileWarning, Check, CheckCircle2 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Save, X, Book, FileWarning, CheckCircle2 } from "lucide-react";
+import { memo, useEffect, useState } from "react";
 import { objectToDate } from "../../utils/objectToDate";
 import { dateDistanceFromNow } from "../../utils/dateDistanceFromNow";
 import { useEditTargetNoteStore } from "../../store/editTargetNoteStore";
@@ -10,6 +10,12 @@ import { useCurrentEditor } from "@tiptap/react";
 import { updateNoteFromEditor } from "../../firebase/services";
 import { toTimestamp } from "../../utils/toTimestamp";
 import debounce from "lodash.debounce";
+
+const MemoizedBook = memo(Book);
+const MemoizedFileWarning = memo(FileWarning);
+const MemoizedSave = memo(Save);
+const MemoizedX = memo(X);
+const MemoizedCheckCircle2 = memo(CheckCircle2);
 
 function EditorMenuTopBar() {
   const { editTargetNote, setEditTargetNote } = useEditTargetNoteStore();
@@ -123,13 +129,13 @@ function EditorMenuTopBar() {
               {saving ? (
                 <span className="loading loading-spinner"></span>
               ) : (
-                <Save></Save>
+                <MemoizedSave />
               )}
             </button>
           </div>
           <div className="tooltip tooltip-bottom" data-tip={"Close"}>
             <button className="btn btn-square" onClick={handleCloseButtonClick}>
-              <X></X>
+              <MemoizedX />
             </button>
           </div>
         </div>
@@ -137,7 +143,7 @@ function EditorMenuTopBar() {
       <div className="flex justify-between">
         <div className="text-gray-400 flex items-center gap-4">
           <div className="btn bg-base-100 text-gray-400 flex gap-2 items-center max-w-full">
-            <Book size={20} className="flex-shrink-0" />
+            <MemoizedBook size={20} className="flex-shrink-0" />
             <span className="overflow-hidden whitespace-nowrap text-ellipsis block w-full">
               {editTargetNote.assignedTo[1]}
             </span>
@@ -155,13 +161,12 @@ function EditorMenuTopBar() {
           <div className="">
             {!noteContentDelta && !noteNameDelta ? (
               <p className="flex items-center gap-2">
-                Up to date{" "}
-                <CheckCircle2 className="text-primary"></CheckCircle2>
+                Up to date <MemoizedCheckCircle2 className="text-primary" />
               </p>
             ) : (
               <p className="flex items-center gap-2">
                 Unsaved changes{" "}
-                <FileWarning className="animate-pulse text-warning"></FileWarning>
+                <MemoizedFileWarning className="animate-pulse text-warning" />
               </p>
             )}
           </div>
