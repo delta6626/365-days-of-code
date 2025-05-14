@@ -92,7 +92,7 @@ function NoteEditor() {
         extensions={extensions}
         slotBefore={<MemoizedEditorMenu></MemoizedEditorMenu>}
         autofocus={true}
-        shouldRerenderOnTransaction={true}
+        shouldRerenderOnTransaction={false}
         editorContainerProps={{
           className: "prose text-xl min-w-full",
         }}

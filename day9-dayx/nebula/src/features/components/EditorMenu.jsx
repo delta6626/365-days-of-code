@@ -1,4 +1,4 @@
-import { useCurrentEditor } from "@tiptap/react";
+import { useCurrentEditor, useEditorState } from "@tiptap/react";
 import {
   Bold,
   Italic,
@@ -59,6 +59,56 @@ function EditorMenu() {
   ];
 
   const { editor } = useCurrentEditor();
+
+  // Editor optimization
+  const editorState = useEditorState({
+    editor,
+    selector: ({ editor }) => ({
+      // Text styles
+      isBold: editor.isActive("bold"),
+      isItalic: editor.isActive("italic"),
+      isUnderline: editor.isActive("underline"),
+      isStrike: editor.isActive("strike"),
+      isSubscript: editor.isActive("subscript"),
+      isSuperscript: editor.isActive("superscript"),
+      isBlockquote: editor.isActive("blockquote"),
+      isCode: editor.isActive("code"),
+      isCodeBlock: editor.isActive("codeBlock"),
+
+      // Headings
+      isH1: editor.isActive("heading", { level: 1 }),
+      isH2: editor.isActive("heading", { level: 2 }),
+      isH3: editor.isActive("heading", { level: 3 }),
+      isH4: editor.isActive("heading", { level: 4 }),
+      isH5: editor.isActive("heading", { level: 5 }),
+      isH6: editor.isActive("heading", { level: 6 }),
+
+      // Lists
+      isBulletList: editor.isActive("bulletList"),
+      isOrderedList: editor.isActive("orderedList"),
+      isTaskList: editor.isActive("taskList"),
+
+      // Alignment
+      isAlignLeft: editor.isActive({ textAlign: "left" }),
+      isAlignCenter: editor.isActive({ textAlign: "center" }),
+      isAlignRight: editor.isActive({ textAlign: "right" }),
+      isAlignJustify: editor.isActive({ textAlign: "justify" }),
+
+      // Embeds
+      isLink: editor.isActive("link"),
+      isYouTube: editor.isActive("youtube"),
+
+      // Table
+      isTable: editor.isActive("table"),
+
+      // Font family
+      activeFont: getActiveFont,
+
+      // History
+      canUndo: editor.can().undo(),
+      canRedo: editor.can().redo(),
+    }),
+  });
 
   function Section({ title, children, className }) {
     return (
@@ -122,9 +172,7 @@ function EditorMenu() {
               editor.chain().focus().toggleHeading({ level: 1 }).run();
             }}
             className={
-              editor.isActive("heading", { level: 1 })
-                ? "btn btn-primary btn-square"
-                : "btn btn-square"
+              editorState.isH1 ? "btn btn-primary btn-square" : "btn btn-square"
             }
           >
             <Heading1></Heading1>
@@ -135,9 +183,7 @@ function EditorMenu() {
               editor.chain().focus().toggleHeading({ level: 2 }).run();
             }}
             className={
-              editor.isActive("heading", { level: 2 })
-                ? "btn btn-primary btn-square"
-                : "btn btn-square"
+              editorState.isH2 ? "btn btn-primary btn-square" : "btn btn-square"
             }
           >
             <Heading2 />
@@ -148,9 +194,7 @@ function EditorMenu() {
               editor.chain().focus().toggleHeading({ level: 3 }).run();
             }}
             className={
-              editor.isActive("heading", { level: 3 })
-                ? "btn btn-primary btn-square"
-                : "btn btn-square"
+              editorState.isH3 ? "btn btn-primary btn-square" : "btn btn-square"
             }
           >
             <Heading3 />
@@ -161,9 +205,7 @@ function EditorMenu() {
               editor.chain().focus().toggleHeading({ level: 4 }).run();
             }}
             className={
-              editor.isActive("heading", { level: 4 })
-                ? "btn btn-primary btn-square"
-                : "btn btn-square"
+              editorState.isH4 ? "btn btn-primary btn-square" : "btn btn-square"
             }
           >
             <Heading4 />
@@ -174,9 +216,7 @@ function EditorMenu() {
               editor.chain().focus().toggleHeading({ level: 5 }).run();
             }}
             className={
-              editor.isActive("heading", { level: 5 })
-                ? "btn btn-primary btn-square"
-                : "btn btn-square"
+              editorState.isH5 ? "btn btn-primary btn-square" : "btn btn-square"
             }
           >
             <Heading5 />
@@ -187,9 +227,7 @@ function EditorMenu() {
               editor.chain().focus().toggleHeading({ level: 6 }).run();
             }}
             className={
-              editor.isActive("heading", { level: 6 })
-                ? "btn btn-primary btn-square"
-                : "btn btn-square"
+              editorState.isH6 ? "btn btn-primary btn-square" : "btn btn-square"
             }
           >
             <Heading6 />
@@ -200,7 +238,7 @@ function EditorMenu() {
         <Section title="Font styles" className={"grid gap-1"}>
           <select
             className="select w-fit bg-base-200"
-            value={getActiveFont()}
+            value={editorState.activeFont}
             onChange={(e) => {
               editor.chain().focus().setFontFamily(e.target.value).run();
             }}
@@ -229,7 +267,7 @@ function EditorMenu() {
               editor.chain().focus().toggleBold().run();
             }}
             className={
-              editor.isActive("bold")
+              editorState.isBold
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -242,7 +280,7 @@ function EditorMenu() {
               editor.chain().focus().toggleItalic().run();
             }}
             className={
-              editor.isActive("italic")
+              editorState.isItalic
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -255,7 +293,7 @@ function EditorMenu() {
               editor.chain().focus().toggleUnderline().run();
             }}
             className={
-              editor.isActive("underline")
+              editorState.isUnderline
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -268,7 +306,7 @@ function EditorMenu() {
               editor.chain().focus().toggleStrike().run();
             }}
             className={
-              editor.isActive("strike")
+              editorState.isStrike
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -281,7 +319,7 @@ function EditorMenu() {
               editor.chain().focus().toggleSubscript().run();
             }}
             className={
-              editor.isActive("subscript")
+              editorState.isSubscript
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -294,7 +332,7 @@ function EditorMenu() {
               editor.chain().focus().toggleSuperscript().run();
             }}
             className={
-              editor.isActive("superscript")
+              editorState.isSuperscript
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -307,7 +345,7 @@ function EditorMenu() {
               editor.chain().focus().toggleBlockquote().run();
             }}
             className={
-              editor.isActive("blockquote")
+              editorState.isBlockquote
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -333,7 +371,7 @@ function EditorMenu() {
               editor.chain().focus().toggleBulletList().run();
             }}
             className={
-              editor.isActive("bulletList")
+              editorState.isBulletList
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -346,7 +384,7 @@ function EditorMenu() {
               editor.chain().focus().toggleOrderedList().run();
             }}
             className={
-              editor.isActive("orderedList")
+              editorState.isOrderedList
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -359,7 +397,7 @@ function EditorMenu() {
               editor.chain().focus().toggleTaskList().run();
             }}
             className={
-              editor.isActive("taskList")
+              editorState.isTaskList
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -376,7 +414,7 @@ function EditorMenu() {
               editor.chain().focus().toggleCode().run();
             }}
             className={
-              editor.isActive("code")
+              editorState.isCode
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -389,7 +427,7 @@ function EditorMenu() {
               editor.chain().focus().toggleCodeBlock().run();
             }}
             className={
-              editor.isActive("codeBlock")
+              editorState.isCodeBlock
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -409,7 +447,7 @@ function EditorMenu() {
               editor.chain().focus().setTextAlign("left").run();
             }}
             className={
-              editor.isActive({ textAlign: "left" })
+              editorState.isAlignLeft
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -422,7 +460,7 @@ function EditorMenu() {
               editor.chain().focus().setTextAlign("center").run();
             }}
             className={
-              editor.isActive({ textAlign: "center" })
+              editorState.isAlignCenter
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -435,7 +473,7 @@ function EditorMenu() {
               editor.chain().focus().setTextAlign("right").run();
             }}
             className={
-              editor.isActive({ textAlign: "right" })
+              editorState.isAlignRight
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -448,7 +486,7 @@ function EditorMenu() {
               editor.chain().focus().setTextAlign("justify").run();
             }}
             className={
-              editor.isActive({ textAlign: "justify" })
+              editorState.isAlignJustify
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -468,7 +506,11 @@ function EditorMenu() {
                 .insertTable({ rows: 2, cols: 2, withHeaderRow: false })
                 .run();
             }}
-            className={"btn btn-square"}
+            className={
+              editorState.isTable
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
           >
             <Table />
           </button>
@@ -478,7 +520,7 @@ function EditorMenu() {
               editor.chain().focus().addRowAfter().run();
             }}
             className={"btn btn-square"}
-            disabled={!editor.isActive("table")}
+            disabled={!editorState.isTable}
           >
             <AddRowIcon></AddRowIcon>
           </button>
@@ -488,7 +530,7 @@ function EditorMenu() {
               editor.chain().focus().addColumnAfter().run();
             }}
             className={"btn btn-square"}
-            disabled={!editor.isActive("table")}
+            disabled={!editorState.isTable}
           >
             <AddColumnIcon></AddColumnIcon>
           </button>
@@ -498,7 +540,7 @@ function EditorMenu() {
               editor.chain().focus().deleteRow().run();
             }}
             className={"btn btn-square"}
-            disabled={!editor.isActive("table")}
+            disabled={!editorState.isTable}
           >
             <DeleteRowIcon></DeleteRowIcon>
           </button>
@@ -508,7 +550,7 @@ function EditorMenu() {
               editor.chain().focus().deleteColumn().run();
             }}
             className={"btn btn-square"}
-            disabled={!editor.isActive("table")}
+            disabled={!editorState.isTable}
           >
             <DeleteColumnIcon></DeleteColumnIcon>
           </button>
@@ -518,7 +560,7 @@ function EditorMenu() {
               editor.chain().focus().mergeCells().run();
             }}
             className={"btn btn-square"}
-            disabled={!editor.isActive("table")}
+            disabled={!editorState.isTable}
           >
             <TableCellsMerge></TableCellsMerge>
           </button>
@@ -528,7 +570,7 @@ function EditorMenu() {
               editor.chain().focus().splitCell().run();
             }}
             className={"btn btn-square"}
-            disabled={!editor.isActive("table")}
+            disabled={!editorState.isTable}
           >
             <TableCellsSplit></TableCellsSplit>
           </button>
@@ -538,7 +580,7 @@ function EditorMenu() {
               editor.chain().focus().deleteTable().run();
             }}
             className={"btn btn-square"}
-            disabled={!editor.isActive("table")}
+            disabled={!editorState.isTable}
           >
             <SquareX></SquareX>
           </button>
@@ -554,7 +596,7 @@ function EditorMenu() {
                 .showModal();
             }}
             className={
-              editor.isActive("youtube")
+              editorState.isLink
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -569,7 +611,7 @@ function EditorMenu() {
                 .showModal();
             }}
             className={
-              editor.isActive("link")
+              editorState.isYouTube
                 ? "btn btn-primary btn-square"
                 : "btn btn-square"
             }
@@ -589,7 +631,7 @@ function EditorMenu() {
               editor.chain().focus().undo().run();
             }}
             className={"btn btn-square"}
-            disabled={!editor.can().undo()}
+            disabled={!editorState.canUndo}
           >
             <Undo />
           </button>
@@ -599,7 +641,7 @@ function EditorMenu() {
               editor.chain().focus().redo().run();
             }}
             className={"btn btn-square"}
-            disabled={!editor.can().redo()}
+            disabled={!editorState.canRedo}
           >
             <Redo />
           </button>
