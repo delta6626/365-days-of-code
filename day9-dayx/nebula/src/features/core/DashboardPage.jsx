@@ -142,11 +142,11 @@ function DashboardPage() {
     <div className="flex">
       <div
         className={
-          "sideBar h-[100vh] bg-base-300 p-4 flex flex-col ease-in-out duration-200" +
+          "sideBar h-[100vh] bg-base-300 py-4 flex flex-col ease-in-out duration-200" +
           (sideBarCollapsed ? " w-20" : " w-60")
         }
       >
-        <div className="logo flex items-center justify-between">
+        <div className="logo flex items-center justify-between px-4">
           <h1
             className={
               "text-xl font-jakarta font-bold text-center" +
@@ -166,7 +166,7 @@ function DashboardPage() {
           </button>
         </div>
         <div className="divider"></div>
-        <div className="mainButtons flex-1">
+        <div className="mainButtons flex-1 px-4">
           <button
             className={
               activeTab == APP_CONSTANTS.DASHBOARD_PAGE
@@ -233,7 +233,7 @@ function DashboardPage() {
             )}
           </button>
         </div>
-        <div className="bottomButtons flex items-center justify-between">
+        <div className="bottomButtons flex items-center justify-between px-4">
           <button
             className={
               activeTab == APP_CONSTANTS.SETTINGS_PAGE

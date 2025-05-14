@@ -373,7 +373,7 @@ function SettingsArea() {
   }
 
   return (
-    <div className="flex-1 h-[100vh] px-8 py-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
+    <div className="flex-1 h-[100vh] py-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
       <GenericModal
         id={APP_CONSTANTS.GENERIC_MODAL}
         title={message.title}
@@ -386,7 +386,7 @@ function SettingsArea() {
         secondButtonText={message.secondButtonText}
       ></GenericModal>
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between px-8">
         <h1 className="text-3xl font-bold">Settings</h1>
         <button
           className={"btn btn-primary"}
@@ -403,330 +403,353 @@ function SettingsArea() {
       <div className="divider"></div>
 
       {/* Profile */}
-      <div className="bg-base-200 rounded-lg p-4">
-        <p className="text-xl font-semibold">Profile</p>
-        <p className="mt-4 text-neutral-400">
-          Update your personal information
-        </p>
-        <div className="divider"></div>
-        <div className="flex flex-col">
-          <p className="font-medium">Name</p>
-          <input
-            className="input focus:input-primary mt-4 w-200 max-w-full"
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div className="flex flex-col mt-4">
-          <p className="font-medium">Email</p>
-          <input
-            className="input focus:input-primary mt-4 w-200 max-w-full"
-            type="text"
-            placeholder="Email"
-            value={email}
-            readOnly={true}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+      <div className="px-8">
+        <div className="bg-base-200 rounded-lg p-4">
+          <p className="text-xl font-semibold">Profile</p>
+          <p className="mt-4 text-neutral-400">
+            Update your personal information
+          </p>
+          <div className="divider"></div>
+          <div className="flex flex-col">
+            <p className="font-medium">Name</p>
+            <input
+              className="input focus:input-primary mt-4 w-200 max-w-full"
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col mt-4">
+            <p className="font-medium">Email</p>
+            <input
+              className="input focus:input-primary mt-4 w-200 max-w-full"
+              type="text"
+              placeholder="Email"
+              value={email}
+              readOnly={true}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
         </div>
       </div>
 
       {/* Preferences */}
-      <div className="bg-base-200 rounded-lg p-4 mt-4">
-        <p className="text-xl font-semibold">Preferences</p>
-        <p className="mt-4 text-neutral-400">Manage your preferences</p>
-        <div className="divider"></div>
+      <div className="px-8">
+        <div className="bg-base-200 rounded-lg p-4 mt-4">
+          <p className="text-xl font-semibold">Preferences</p>
+          <p className="mt-4 text-neutral-400">Manage your preferences</p>
+          <div className="divider"></div>
 
-        {/* Autosave */}
-        <div className="flex justify-between">
-          <p className="font-medium">Trigger autosave every (in minutes)</p>
-          <div className="w-full max-w-xs">
-            <input
-              type="range"
-              min={0} // 0 indicates 'Off'
-              max={10}
-              value={autoSaveTriggerTime}
-              onChange={(e) => setAutoSaveTriggerTime(Number(e.target.value))}
-              className="range range-primary"
-              step="1"
-            />
-            <div className="flex justify-between px-2.5 mt-4 text-xs">
-              {[...Array(11)].map((_, i) => (
-                <span key={i}>|</span>
-              ))}
-            </div>
-            <div className="flex justify-between px-2.5 mt-4 text-xs">
-              {[...Array(11)].map((_, i) => (
-                <span key={i}>{i != 0 ? i : "Off"}</span>
-              ))}
+          {/* Autosave */}
+          <div className="flex justify-between">
+            <p className="font-medium">Trigger autosave every (in minutes)</p>
+            <div className="w-full max-w-xs">
+              <input
+                type="range"
+                min={0} // 0 indicates 'Off'
+                max={10}
+                value={autoSaveTriggerTime}
+                onChange={(e) => setAutoSaveTriggerTime(Number(e.target.value))}
+                className="range range-primary"
+                step="1"
+              />
+              <div className="flex justify-between px-2.5 mt-4 text-xs">
+                {[...Array(11)].map((_, i) => (
+                  <span key={i}>|</span>
+                ))}
+              </div>
+              <div className="flex justify-between px-2.5 mt-4 text-xs">
+                {[...Array(11)].map((_, i) => (
+                  <span key={i}>{i != 0 ? i : "Off"}</span>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Language */}
-        <div className="flex items-center justify-between mt-4">
-          <p className="font-medium">Default language</p>
-          <select
-            value={language}
-            onChange={(e) => setLanguage(e.target.value)}
-            className="select focus:select-primary"
-          >
-            {Object.keys(LANGUAGES).map((lang, id) => (
-              <option key={id} value={lang}>
-                {lang}
-              </option>
-            ))}
-          </select>
-        </div>
+          {/* Language */}
+          <div className="flex items-center justify-between mt-4">
+            <p className="font-medium">Default language</p>
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              className="select focus:select-primary"
+            >
+              {Object.keys(LANGUAGES).map((lang, id) => (
+                <option key={id} value={lang}>
+                  {lang}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        {/* Email Subscription */}
-        <div className="flex justify-between mt-4">
-          <p className="font-medium">
-            Keep me informed with occasional emails about new features, updates,
-            helpful tips, and special offers.
-          </p>
-          <div className="flex items-center">
-            <p>Yes</p>
-            <input
-              type="radio"
-              name="email-subscription"
-              className="radio radio-primary mx-2"
-              checked={subscribed === true}
-              onChange={() => setSubscribed(true)}
-            />
-            <p>No</p>
-            <input
-              type="radio"
-              name="email-subscription"
-              className="radio radio-primary ml-2"
-              checked={subscribed === false}
-              onChange={() => setSubscribed(false)}
-            />
+          {/* Email Subscription */}
+          <div className="flex justify-between mt-4">
+            <p className="font-medium">
+              Keep me informed with occasional emails about new features,
+              updates, helpful tips, and special offers.
+            </p>
+            <div className="flex items-center">
+              <p>Yes</p>
+              <input
+                type="radio"
+                name="email-subscription"
+                className="radio radio-primary mx-2"
+                checked={subscribed === true}
+                onChange={() => setSubscribed(true)}
+              />
+              <p>No</p>
+              <input
+                type="radio"
+                name="email-subscription"
+                className="radio radio-primary ml-2"
+                checked={subscribed === false}
+                onChange={() => setSubscribed(false)}
+              />
+            </div>
           </div>
         </div>
       </div>
 
       {/* Shortcuts */}
-      <div className="bg-base-200 rounded-lg p-4 mt-4">
-        <p className="text-xl font-semibold">Shortcuts</p>
-        <p className="mt-4 text-neutral-400">Configure your shortcuts </p>
-        <div className="text-warning flex mt-2 items-center">
-          <Info></Info>
-          <p className="ml-2">
-            Your custom shortcut might not work due to existing browser
-            shortcuts.
-          </p>
-        </div>
-        <div className="divider"></div>
-
-        {[
-          "DASHBOARD_PAGE",
-          "NOTES_PAGE",
-          "NOTEBOOKS_PAGE",
-          "SETTINGS_PAGE",
-        ].map((page) => (
-          <div key={page} className="flex items-center justify-between mt-4">
-            <p className="font-medium">
-              Navigate to {page.replace("_", " ").toLowerCase()}
+      <div className="px-8">
+        <div className="bg-base-200 rounded-lg p-4 mt-4">
+          <p className="text-xl font-semibold">Shortcuts</p>
+          <p className="mt-4 text-neutral-400">Configure your shortcuts </p>
+          <div className="text-warning flex mt-2 items-center">
+            <Info></Info>
+            <p className="ml-2">
+              Your custom shortcut might not work due to existing browser
+              shortcuts.
             </p>
-            <div className="flex items-center">
-              <button className="btn" disabled>
-                <Command />
-              </button>
-              <Plus />
-              <button className="btn" disabled>
-                <ArrowBigUp />
-              </button>
-              <Plus />
-              <input
-                className="input focus:input-primary w-20 uppercase"
-                maxLength={1}
-                value={shortcuts[page]}
-                onChange={(e) =>
-                  setShortcuts({
-                    ...shortcuts,
-                    [page]: e.target.value.toUpperCase(),
-                  })
-                }
-              />
-            </div>
           </div>
-        ))}
+          <div className="divider"></div>
+
+          {[
+            "DASHBOARD_PAGE",
+            "NOTES_PAGE",
+            "NOTEBOOKS_PAGE",
+            "SETTINGS_PAGE",
+          ].map((page) => (
+            <div key={page} className="flex items-center justify-between mt-4">
+              <p className="font-medium">
+                Navigate to {page.replace("_", " ").toLowerCase()}
+              </p>
+              <div className="flex items-center">
+                <button className="btn" disabled>
+                  <Command />
+                </button>
+                <Plus />
+                <button className="btn" disabled>
+                  <ArrowBigUp />
+                </button>
+                <Plus />
+                <input
+                  className="input focus:input-primary w-20 uppercase"
+                  maxLength={1}
+                  value={shortcuts[page]}
+                  onChange={(e) =>
+                    setShortcuts({
+                      ...shortcuts,
+                      [page]: e.target.value.toUpperCase(),
+                    })
+                  }
+                />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Account management */}
-      <div className={"bg-base-200 rounded-lg p-4 mt-4"}>
-        <p className="text-xl font-semibold">Account</p>
-        <p className="mt-4 text-neutral-400">Manage your account</p>
-        <div className="divider"></div>
-        <div className="flex justify-between">
-          <p className="font-medium">Send verification mail</p>
-          <button
-            className="btn btn-primary"
-            disabled={userVerified ? true : false}
-            onClick={handleSendVerificationMail}
-          >
-            {userVerified ? (
-              "Already verified"
-            ) : !sendingMail ? (
-              APP_CONSTANTS.SEND
-            ) : (
-              <span className="loading loading-spinner"></span>
-            )}
-          </button>
-        </div>
-        <div className="flex justify-between mt-4">
-          <p className="font-medium">Sign out</p>
-          <button
-            className="btn btn-primary"
-            onClick={() => {
-              setMessage({
-                title: APP_CONSTANTS.SIGN_OUT_MODAL_TITLE,
-                textContent: APP_CONSTANTS.SIGN_OUT_MODAL_TEXT_CONTENT,
-                firstButtonClassName: "btn btn-primary",
-                secondButtonClassName: "btn",
-                firstButtonText: APP_CONSTANTS.SIGN_OUT,
-                secondButtonText: APP_CONSTANTS.CANCEL,
-                firstButtonOnClick: function () {
-                  handleSignOut();
-                },
-                secondButtonOnClick: function () {
-                  if (
-                    document.getElementById(APP_CONSTANTS.GENERIC_MODAL) != null
-                  ) {
-                    document
-                      .getElementById(APP_CONSTANTS.GENERIC_MODAL)
-                      .close();
-                  }
-                },
-              });
-              document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
-            }}
-          >
-            {!signingOut ? (
-              APP_CONSTANTS.SIGN_OUT
-            ) : (
-              <span className="loading loading-spinner"></span>
-            )}
-          </button>
+      <div className="px-8">
+        <div className={"bg-base-200 rounded-lg p-4 mt-4"}>
+          <p className="text-xl font-semibold">Account</p>
+          <p className="mt-4 text-neutral-400">Manage your account</p>
+          <div className="divider"></div>
+          <div className="flex justify-between">
+            <p className="font-medium">Send verification mail</p>
+            <button
+              className="btn btn-primary"
+              disabled={userVerified ? true : false}
+              onClick={handleSendVerificationMail}
+            >
+              {userVerified ? (
+                "Already verified"
+              ) : !sendingMail ? (
+                APP_CONSTANTS.SEND
+              ) : (
+                <span className="loading loading-spinner"></span>
+              )}
+            </button>
+          </div>
+          <div className="flex justify-between mt-4">
+            <p className="font-medium">Sign out</p>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                setMessage({
+                  title: APP_CONSTANTS.SIGN_OUT_MODAL_TITLE,
+                  textContent: APP_CONSTANTS.SIGN_OUT_MODAL_TEXT_CONTENT,
+                  firstButtonClassName: "btn btn-primary",
+                  secondButtonClassName: "btn",
+                  firstButtonText: APP_CONSTANTS.SIGN_OUT,
+                  secondButtonText: APP_CONSTANTS.CANCEL,
+                  firstButtonOnClick: function () {
+                    handleSignOut();
+                  },
+                  secondButtonOnClick: function () {
+                    if (
+                      document.getElementById(APP_CONSTANTS.GENERIC_MODAL) !=
+                      null
+                    ) {
+                      document
+                        .getElementById(APP_CONSTANTS.GENERIC_MODAL)
+                        .close();
+                    }
+                  },
+                });
+                document
+                  .getElementById(APP_CONSTANTS.GENERIC_MODAL)
+                  .showModal();
+              }}
+            >
+              {!signingOut ? (
+                APP_CONSTANTS.SIGN_OUT
+              ) : (
+                <span className="loading loading-spinner"></span>
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Danger Zone */}
-      <div className="bg-base-200 rounded-lg p-4 mt-4">
-        <p className="text-xl font-semibold text-error">Danger zone</p>
-        <p className="mt-4 text-neutral-400">You're walking on thin ice.</p>
-        <div className="divider"></div>
+      <div className="px-8">
+        <div className="bg-base-200 rounded-lg p-4 mt-4">
+          <p className="text-xl font-semibold text-error">Danger zone</p>
+          <p className="mt-4 text-neutral-400">You're walking on thin ice.</p>
+          <div className="divider"></div>
 
-        <div className="flex justify-between">
-          <p className="font-medium">Delete my notes</p>
-          <button
-            className="btn btn-error text-error-content"
-            onClick={() => {
-              setMessage({
-                title: APP_CONSTANTS.DELETE_NOTES_MODAL_TITLE,
-                textContent: APP_CONSTANTS.DELETE_NOTES_MODAL_TEXT_CONTENT,
-                firstButtonClassName: "btn btn-error",
-                secondButtonClassName: "btn",
-                firstButtonText: APP_CONSTANTS.DELETE,
-                secondButtonText: APP_CONSTANTS.CANCEL,
-                firstButtonOnClick: function () {
-                  deleteAllNotes();
-                },
-                secondButtonOnClick: function () {
-                  if (
-                    document.getElementById(APP_CONSTANTS.GENERIC_MODAL) != null
-                  ) {
-                    document
-                      .getElementById(APP_CONSTANTS.GENERIC_MODAL)
-                      .close();
-                  }
-                },
-              });
-              document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
-            }}
-            disabled={!canDelete()}
-          >
-            {!deletingNotes ? (
-              APP_CONSTANTS.DELETE
-            ) : (
-              <span className="loading loading-spinner"></span>
-            )}
-          </button>
-        </div>
+          <div className="flex justify-between">
+            <p className="font-medium">Delete my notes</p>
+            <button
+              className="btn btn-error text-error-content"
+              onClick={() => {
+                setMessage({
+                  title: APP_CONSTANTS.DELETE_NOTES_MODAL_TITLE,
+                  textContent: APP_CONSTANTS.DELETE_NOTES_MODAL_TEXT_CONTENT,
+                  firstButtonClassName: "btn btn-error",
+                  secondButtonClassName: "btn",
+                  firstButtonText: APP_CONSTANTS.DELETE,
+                  secondButtonText: APP_CONSTANTS.CANCEL,
+                  firstButtonOnClick: function () {
+                    deleteAllNotes();
+                  },
+                  secondButtonOnClick: function () {
+                    if (
+                      document.getElementById(APP_CONSTANTS.GENERIC_MODAL) !=
+                      null
+                    ) {
+                      document
+                        .getElementById(APP_CONSTANTS.GENERIC_MODAL)
+                        .close();
+                    }
+                  },
+                });
+                document
+                  .getElementById(APP_CONSTANTS.GENERIC_MODAL)
+                  .showModal();
+              }}
+              disabled={!canDelete()}
+            >
+              {!deletingNotes ? (
+                APP_CONSTANTS.DELETE
+              ) : (
+                <span className="loading loading-spinner"></span>
+              )}
+            </button>
+          </div>
 
-        <div className="flex justify-between mt-4">
-          <p className="font-medium">Delete my notebooks</p>
-          <button
-            className="btn btn-error text-error-content"
-            onClick={() => {
-              setMessage({
-                title: APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL_TITLE,
-                textContent: APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL_TEXT_CONTENT,
-                firstButtonClassName: "btn btn-error",
-                secondButtonClassName: "btn",
-                firstButtonText: APP_CONSTANTS.DELETE,
-                secondButtonText: APP_CONSTANTS.CANCEL,
-                firstButtonOnClick: function () {
-                  deleteAllNotebooks();
-                },
-                secondButtonOnClick: function () {
-                  if (
-                    document.getElementById(APP_CONSTANTS.GENERIC_MODAL) != null
-                  ) {
-                    document
-                      .getElementById(APP_CONSTANTS.GENERIC_MODAL)
-                      .close();
-                  }
-                },
-              });
-              document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
-            }}
-            disabled={!canDelete()}
-          >
-            {!deletingNotebooks ? (
-              APP_CONSTANTS.DELETE
-            ) : (
-              <span className="loading loading-spinner"></span>
-            )}
-          </button>
-        </div>
+          <div className="flex justify-between mt-4">
+            <p className="font-medium">Delete my notebooks</p>
+            <button
+              className="btn btn-error text-error-content"
+              onClick={() => {
+                setMessage({
+                  title: APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL_TITLE,
+                  textContent:
+                    APP_CONSTANTS.DELETE_NOTEBOOKS_MODAL_TEXT_CONTENT,
+                  firstButtonClassName: "btn btn-error",
+                  secondButtonClassName: "btn",
+                  firstButtonText: APP_CONSTANTS.DELETE,
+                  secondButtonText: APP_CONSTANTS.CANCEL,
+                  firstButtonOnClick: function () {
+                    deleteAllNotebooks();
+                  },
+                  secondButtonOnClick: function () {
+                    if (
+                      document.getElementById(APP_CONSTANTS.GENERIC_MODAL) !=
+                      null
+                    ) {
+                      document
+                        .getElementById(APP_CONSTANTS.GENERIC_MODAL)
+                        .close();
+                    }
+                  },
+                });
+                document
+                  .getElementById(APP_CONSTANTS.GENERIC_MODAL)
+                  .showModal();
+              }}
+              disabled={!canDelete()}
+            >
+              {!deletingNotebooks ? (
+                APP_CONSTANTS.DELETE
+              ) : (
+                <span className="loading loading-spinner"></span>
+              )}
+            </button>
+          </div>
 
-        <div className="flex justify-between mt-4">
-          <p className="font-medium">Delete my account</p>
-          <button
-            className="btn btn-error text-error-content"
-            onClick={() => {
-              setMessage({
-                title: APP_CONSTANTS.DELETE_ACCOUNT_MODAL_TITLE,
-                textContent: APP_CONSTANTS.DELETE_ACCOUNT_MODAL_TEXT_CONTENT,
-                firstButtonClassName: "btn btn-error",
-                secondButtonClassName: "btn",
-                firstButtonText: APP_CONSTANTS.DELETE,
-                secondButtonText: APP_CONSTANTS.CANCEL,
-                firstButtonOnClick: function () {
-                  deleteAccount();
-                },
-                secondButtonOnClick: function () {
-                  if (
-                    document.getElementById(APP_CONSTANTS.GENERIC_MODAL) != null
-                  ) {
-                    document
-                      .getElementById(APP_CONSTANTS.GENERIC_MODAL)
-                      .close();
-                  }
-                },
-              });
-              document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
-            }}
-          >
-            {!deletingAccount ? (
-              APP_CONSTANTS.DELETE
-            ) : (
-              <span className="loading loading-spinner"></span>
-            )}
-          </button>
+          <div className="flex justify-between mt-4">
+            <p className="font-medium">Delete my account</p>
+            <button
+              className="btn btn-error text-error-content"
+              onClick={() => {
+                setMessage({
+                  title: APP_CONSTANTS.DELETE_ACCOUNT_MODAL_TITLE,
+                  textContent: APP_CONSTANTS.DELETE_ACCOUNT_MODAL_TEXT_CONTENT,
+                  firstButtonClassName: "btn btn-error",
+                  secondButtonClassName: "btn",
+                  firstButtonText: APP_CONSTANTS.DELETE,
+                  secondButtonText: APP_CONSTANTS.CANCEL,
+                  firstButtonOnClick: function () {
+                    deleteAccount();
+                  },
+                  secondButtonOnClick: function () {
+                    if (
+                      document.getElementById(APP_CONSTANTS.GENERIC_MODAL) !=
+                      null
+                    ) {
+                      document
+                        .getElementById(APP_CONSTANTS.GENERIC_MODAL)
+                        .close();
+                    }
+                  },
+                });
+                document
+                  .getElementById(APP_CONSTANTS.GENERIC_MODAL)
+                  .showModal();
+              }}
+            >
+              {!deletingAccount ? (
+                APP_CONSTANTS.DELETE
+              ) : (
+                <span className="loading loading-spinner"></span>
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -46,7 +46,7 @@ function NotebooksArea() {
   }, []);
 
   return (
-    <div className="flex-1 h-[100vh] px-8 py-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
+    <div className="flex-1 h-[100vh] font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin py-4">
       <GenericModal
         id={APP_CONSTANTS.GENERIC_MODAL}
         title={message.title}
@@ -62,7 +62,7 @@ function NotebooksArea() {
       <EditNotebookModal></EditNotebookModal>
       <CreateNotebookModal />
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between px-8">
         <h1 className="text-3xl font-bold">Notebooks</h1>
         <div className="flex">
           <div className="w-2xl input focus-within:input-primary">
@@ -124,7 +124,7 @@ function NotebooksArea() {
 
       <div className="divider"></div>
 
-      <div className="">
+      <div className="px-8">
         {searchTerm === "" && filteredNotebooks.length !== 0 ? (
           <h3 className="text-xl font-semibold">
             All notebooks ({filteredNotebooks.length})

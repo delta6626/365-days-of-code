@@ -60,40 +60,42 @@ function DashboardArea() {
     }
 
     return (
-      <div className="collapse collapse-arrow bg-base-200 mt-4">
-        <input type="checkbox"></input>
-        <div className="collapse-title text-xl font-semibold">
-          {title} ({noteList.length})
+      <div className="px-8">
+        <div className="collapse collapse-arrow bg-base-200 mt-4">
+          <input type="checkbox"></input>
+          <div className="collapse-title text-xl font-semibold">
+            {title} ({noteList.length})
+          </div>
+          {notesView === APP_CONSTANTS.VIEW_GRID ? (
+            <div className="collapse-content flex gap-5 flex-wrap mt-4">
+              {noteList.map((note, id) => (
+                <GridNote key={id} noteObject={note} />
+              ))}
+            </div>
+          ) : (
+            <div className="collapse-content rounded-lg bg-base-300 p-4 mt-4 overflow-hidden">
+              <table className="table">
+                <thead>
+                  <tr className="text-lg">
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Content</th>
+                    <th>Notebook</th>
+                    <th>Tags</th>
+                    <th>Created</th>
+                    <th>Last edited</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {noteList.map((note, id) => (
+                    <TableNote key={id} id={id} noteObject={note} />
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
-        {notesView === APP_CONSTANTS.VIEW_GRID ? (
-          <div className="collapse-content flex gap-5 flex-wrap mt-4">
-            {noteList.map((note, id) => (
-              <GridNote key={id} noteObject={note} />
-            ))}
-          </div>
-        ) : (
-          <div className="collapse-content rounded-lg bg-base-300 p-4 mt-4 overflow-hidden">
-            <table className="table">
-              <thead>
-                <tr className="text-lg">
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Content</th>
-                  <th>Notebook</th>
-                  <th>Tags</th>
-                  <th>Created</th>
-                  <th>Last edited</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {noteList.map((note, id) => (
-                  <TableNote key={id} id={id} noteObject={note} />
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
       </div>
     );
   };
@@ -104,38 +106,40 @@ function DashboardArea() {
     }
 
     return (
-      <div className="collapse collapse-arrow bg-base-200 mt-4">
-        <input type="checkbox"></input>
-        <div className="collapse-title text-xl font-semibold">
-          {title} ({notebookList.length})
+      <div className="px-8">
+        <div className="collapse collapse-arrow bg-base-200 mt-4">
+          <input type="checkbox"></input>
+          <div className="collapse-title text-xl font-semibold">
+            {title} ({notebookList.length})
+          </div>
+          {notesView === APP_CONSTANTS.VIEW_GRID ? (
+            <div className="collapse-content flex gap-5 flex-wrap mt-4">
+              {notebookList.map((notebook, id) => (
+                <GridNotebook key={id} notebookObject={notebook} />
+              ))}
+            </div>
+          ) : (
+            <div className="collapse-content rounded-lg bg-base-300 p-4 mt-4 overflow-hidden">
+              <table className="table">
+                <thead>
+                  <tr className="text-lg">
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Tags</th>
+                    <th>Created</th>
+                    <th>Last edited</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {notebookList.map((notebook, id) => (
+                    <TableNotebook key={id} id={id} notebookObject={notebook} />
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
-        {notesView === APP_CONSTANTS.VIEW_GRID ? (
-          <div className="collapse-content flex gap-5 flex-wrap mt-4">
-            {notebookList.map((notebook, id) => (
-              <GridNotebook key={id} notebookObject={notebook} />
-            ))}
-          </div>
-        ) : (
-          <div className="collapse-content rounded-lg bg-base-300 p-4 mt-4 overflow-hidden">
-            <table className="table">
-              <thead>
-                <tr className="text-lg">
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Tags</th>
-                  <th>Created</th>
-                  <th>Last edited</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {notebookList.map((notebook, id) => (
-                  <TableNotebook key={id} id={id} notebookObject={notebook} />
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
       </div>
     );
   };
@@ -145,7 +149,7 @@ function DashboardArea() {
   }, []);
 
   return (
-    <div className="flex-1 h-[100vh] px-8 py-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
+    <div className="flex-1 h-[100vh] font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
       <GenericModal
         id={APP_CONSTANTS.GENERIC_MODAL}
         title={message.title}
@@ -165,8 +169,8 @@ function DashboardArea() {
       {notesView === APP_CONSTANTS.VIEW_NOTE_EDITOR ? (
         <NoteEditor></NoteEditor>
       ) : (
-        <div className="">
-          <div className="flex items-center justify-between">
+        <div className="py-4">
+          <div className="flex items-center justify-between px-8">
             <h1 className="text-3xl font-bold">Dashboard</h1>
             <div className="flex">
               <div className="w-2xl input focus-within:input-primary">

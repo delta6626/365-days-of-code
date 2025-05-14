@@ -160,7 +160,7 @@ function EditorMenu() {
       ></EditorYouTubeLinkModal>
       <GenericModal></GenericModal>
       <EditorMenuTopBar></EditorMenuTopBar>
-      <div className="flex flex-wrap justify-between w-full select-none">
+      <div className="flex flex-wrap justify-between w-full select-none px-8">
         {/* Headings */}
         <Section
           title="Headings"

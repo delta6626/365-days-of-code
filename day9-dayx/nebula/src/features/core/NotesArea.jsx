@@ -40,7 +40,7 @@ function NotesArea() {
   }
 
   return (
-    <div className="flex-1 h-[100vh] px-8 py-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
+    <div className="flex-1 h-[100vh] py-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
       <CreateNoteModal></CreateNoteModal>
       <GenericModal
         id={APP_CONSTANTS.GENERIC_MODAL}
@@ -58,7 +58,7 @@ function NotesArea() {
         <NoteEditor></NoteEditor>
       ) : (
         <>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between px-8">
             <h1 className="text-3xl font-bold">Notes</h1>
             <div className="flex">
               <div className="w-2xl input focus-within:input-primary">
@@ -120,7 +120,7 @@ function NotesArea() {
 
           <div className="divider"></div>
 
-          <div className="">
+          <div className="px-8">
             {searchTerm == "" && filteredNotes.length != 0 ? (
               <h3 className="text-xl font-semibold">
                 All notes ({filteredNotes.length})
