@@ -92,7 +92,6 @@ function EditorMenuTopBar() {
   }
 
   function updateFunction({ editor }) {
-    console.log("executed");
     if (editor.getHTML() === "<p></p>" && editTargetNote.content === "") {
       setnoteContentDelta(false);
       return;
