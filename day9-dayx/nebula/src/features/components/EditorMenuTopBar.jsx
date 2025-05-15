@@ -10,6 +10,8 @@ import { useCurrentEditor } from "@tiptap/react";
 import { updateNoteFromEditor } from "../../firebase/services";
 import { toTimestamp } from "../../utils/toTimestamp";
 import debounce from "lodash.debounce";
+import { useHotkeys } from "react-hotkeys-hook";
+import { useUserStore } from "../../store/userStore";
 
 const MemoizedBook = memo(Book);
 const MemoizedFileWarning = memo(FileWarning);
@@ -22,6 +24,7 @@ function EditorMenuTopBar() {
   const { notesView, setNotesView } = useCurrentNotesViewStore();
   const { notes, setNotes } = useNotesStore();
   const { editor } = useCurrentEditor();
+  const { user } = useUserStore();
 
   const [noteName, setNoteName] = useState();
   const [noteContentDelta, setnoteContentDelta] = useState(false);
@@ -104,6 +107,32 @@ function EditorMenuTopBar() {
   }
 
   editor.on("update", debounce(updateFunction, 300)); // Make sure the update function runs 300ms after the user stops typing
+
+  useHotkeys(
+    `ctrl+${user?.shortcuts.CLOSE_NOTE}`,
+    () => {
+      handleCloseButtonClick();
+    },
+    {
+      preventDefault: true,
+      enableOnContentEditable: true,
+      enableOnFormTags: true,
+    }
+  );
+
+  // Hard coded shortcut for save. Will be customizable in the future (maybe).
+
+  useHotkeys(
+    `ctrl+s`,
+    () => {
+      handleSaveButtonClick();
+    },
+    {
+      preventDefault: true,
+      enableOnContentEditable: true,
+      enableOnFormTags: true,
+    }
+  );
 
   useEffect(() => {
     setNoteName(editTargetNote.name);

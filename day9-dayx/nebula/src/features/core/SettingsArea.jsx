@@ -558,6 +558,26 @@ function SettingsArea() {
               </div>
             </div>
           ))}
+          <div className="flex items-center justify-between mt-4">
+            <p className="font-medium">Close note</p>
+            <div className="flex items-center">
+              <button className="btn" disabled>
+                <Command />
+              </button>
+              <Plus />
+              <input
+                className="input focus:input-primary w-20 uppercase"
+                maxLength={1}
+                value={shortcuts["CLOSE_NOTE"]}
+                onChange={(e) =>
+                  setShortcuts({
+                    ...shortcuts,
+                    ["CLOSE_NOTE"]: e.target.value.toUpperCase(),
+                  })
+                }
+              />
+            </div>
+          </div>
         </div>
       </div>
 

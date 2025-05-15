@@ -57,10 +57,11 @@ function addUserToDatabase(uid, name, email, authenticationMethod) {
     tags: [],
     pinnedNotes: [],
     shortcuts: {
-      DASHBOARD_PAGE: "d",
-      NOTES_PAGE: "n",
-      NOTEBOOKS_PAGE: "b",
-      SETTINGS_PAGE: "s",
+      DASHBOARD_PAGE: "D", // ctrl+shift+__
+      NOTES_PAGE: "N", // ctrl+shift+__
+      NOTEBOOKS_PAGE: "B", // ctrl+shift+__
+      SETTINGS_PAGE: "S", // ctrl+shift+__
+      CLOSE_NOTE: "X", // ctrl+__
     },
     preferences: {
       autoSaveTriggerTime: 1,
