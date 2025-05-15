@@ -109,7 +109,7 @@ function EditorMenuTopBar() {
   editor.on("update", debounce(updateFunction, 300)); // Make sure the update function runs 300ms after the user stops typing
 
   useHotkeys(
-    `ctrl+${user?.shortcuts.CLOSE_NOTE}`,
+    `ctrl+${user?.shortcuts.CLOSE}`,
     () => {
       handleCloseButtonClick();
     },
