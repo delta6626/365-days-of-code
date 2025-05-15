@@ -42,6 +42,7 @@ import EditorLinkModal from "../components/EditorLinkModal";
 import EditorYouTubeLinkModal from "../components/EditorYouTubeLinkModal";
 import GenericModal from "../components/GenericModal";
 import EditorMenuTopBar from "./EditorMenuTopBar";
+import { useEffect } from "react";
 
 function EditorMenu() {
   const fonts = [
@@ -102,7 +103,7 @@ function EditorMenu() {
       isTable: editor.isActive("table"),
 
       // Font family
-      activeFont: getActiveFont,
+      activeFont: getActiveFont(editor),
 
       // History
       canUndo: editor.can().undo(),
@@ -119,7 +120,7 @@ function EditorMenu() {
     );
   }
 
-  function getActiveFont() {
+  function getActiveFont(editor) {
     for (let font of fonts) {
       if (editor.isActive("textStyle", { fontFamily: font })) {
         return font; // Return the first active font
