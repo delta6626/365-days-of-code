@@ -64,7 +64,8 @@ function GridNote({ noteObject }) {
       });
   }
 
-  function handleNoteEditButtonClick() {
+  function handleNoteEditButtonClick(e) {
+    e.stopPropagation();
     setEditTargetNote(noteObject);
     document.getElementById(APP_CONSTANTS.EDIT_NOTE_MODAL).showModal();
   }
@@ -106,7 +107,8 @@ function GridNote({ noteObject }) {
       });
   }
 
-  function handleDeleteButtonClick() {
+  function handleDeleteButtonClick(e) {
+    e.stopPropagation();
     setMessage({
       title: APP_CONSTANTS.DELETE_NOTE_MODAL_TITLE,
       textContent: APP_CONSTANTS.DELETE_NOTE_MODAL_TEXT_CONTENT,
@@ -127,12 +129,14 @@ function GridNote({ noteObject }) {
   }
 
   return (
-    <div className="w-sm bg-base-300 rounded-lg p-4 select-none">
+    <div
+      className="w-sm bg-base-300 rounded-lg p-4 select-none cursor-pointer"
+      onClick={handleNoteClick}
+    >
       <div className="flex gap-2 items-center justify-between">
         <h3
-          className="text-xl font-semibold overflow-hidden whitespace-nowrap truncate cursor-pointer"
+          className="text-xl font-semibold overflow-hidden whitespace-nowrap truncate"
           title={noteObject.name}
-          onClick={handleNoteClick}
         >
           {noteObject.name}
         </h3>
@@ -145,7 +149,8 @@ function GridNote({ noteObject }) {
           >
             <button
               className="btn btn-square"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 handleNotePinAndUnpin(noteObject.id);
               }}
             >
@@ -191,10 +196,7 @@ function GridNote({ noteObject }) {
         </div>
       </div>
 
-      <div
-        className="flex gap-4 mt-4 text-gray-400 text-sm cursor-pointer"
-        onClick={handleNoteClick}
-      >
+      <div className="flex gap-4 mt-4 text-gray-400 text-sm">
         <p className="flex gap-2 items-center">
           <Clock size={20} />
           {formatDateDDMMYY(objectToDate(noteObject.creationDate))}
@@ -206,7 +208,7 @@ function GridNote({ noteObject }) {
         </p>
       </div>
       <div className="divider"></div>
-      <div className="cursor-pointer" onClick={handleNoteClick}>
+      <div className="">
         <p
           className={
             noteObject.tags.length != 0 ? "line-clamp-3" : "line-clamp-3 mb-4"

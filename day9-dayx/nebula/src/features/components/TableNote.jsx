@@ -56,7 +56,8 @@ function TableNote({ id, noteObject }) {
       });
   }
 
-  function handleNoteEditButtonClick() {
+  function handleNoteEditButtonClick(e) {
+    e.stopPropagation();
     setEditTargetNote(noteObject);
     document.getElementById(APP_CONSTANTS.EDIT_NOTE_MODAL).showModal();
   }
@@ -98,7 +99,8 @@ function TableNote({ id, noteObject }) {
       });
   }
 
-  function handleDeleteButtonClick() {
+  function handleDeleteButtonClick(e) {
+    e.stopPropagation();
     setMessage({
       title: APP_CONSTANTS.DELETE_NOTE_MODAL_TITLE,
       textContent: APP_CONSTANTS.DELETE_NOTE_MODAL_TEXT_CONTENT,
@@ -119,18 +121,12 @@ function TableNote({ id, noteObject }) {
   }
 
   return (
-    <tr className="hover:bg-base-200">
-      <th className="font-normal cursor-pointer" onClick={handleNoteClick}>
-        {id + 1}
-      </th>
-      <td
-        className="text-lg break-all cursor-pointer"
-        title={noteObject.name}
-        onClick={handleNoteClick}
-      >
+    <tr className="hover:bg-base-200 cursor-pointer" onClick={handleNoteClick}>
+      <th className="font-normal">{id + 1}</th>
+      <td className="text-lg break-all" title={noteObject.name}>
         {noteObject.name}
       </td>
-      <td className="cursor-pointer" onClick={handleNoteClick}>
+      <td className="">
         {(() => {
           const plain = sanitizeHTML(noteObject.content);
           return plain.trim()
@@ -164,10 +160,10 @@ function TableNote({ id, noteObject }) {
           )}
         </div>
       </td>
-      <td className="text-gray-400 cursor-pointer" onClick={handleNoteClick}>
+      <td className="text-gray-400">
         {formatDateDDMMYY(objectToDate(noteObject.creationDate))}
       </td>
-      <td className="text-gray-400 cursor-pointer" onClick={handleNoteClick}>
+      <td className="text-gray-400">
         {dateDistanceFromNow(objectToDate(noteObject.lastEditDate))}
       </td>
       <td>
@@ -180,7 +176,8 @@ function TableNote({ id, noteObject }) {
           >
             <button
               className="btn btn-square"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 handleNotePinAndUnpin(noteObject.id);
               }}
             >
