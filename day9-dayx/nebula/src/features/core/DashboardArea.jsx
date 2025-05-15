@@ -61,19 +61,19 @@ function DashboardArea() {
 
     return (
       <div className="px-8">
-        <div className="collapse collapse-arrow mt-4">
+        <div className="collapse collapse-arrow mt-8 p-0">
           <input type="checkbox"></input>
-          <div className="collapse-title text-xl font-semibold">
+          <div className="collapse-title text-xl font-semibold p-0">
             {title} ({noteList.length})
           </div>
           {notesView === APP_CONSTANTS.VIEW_GRID ? (
-            <div className="collapse-content flex gap-5 flex-wrap mt-4">
+            <div className="collapse-content flex gap-5 flex-wrap mt-0 p-0">
               {noteList.map((note, id) => (
                 <GridNote key={id} noteObject={note} />
               ))}
             </div>
           ) : (
-            <div className="collapse-content rounded-lg bg-base-300 p-4 mt-4 overflow-hidden">
+            <div className="collapse-content rounded-lg bg-base-300 p-0 mt-0 overflow-hidden">
               <table className="table">
                 <thead>
                   <tr className="text-lg">
@@ -107,19 +107,19 @@ function DashboardArea() {
 
     return (
       <div className="px-8">
-        <div className="collapse collapse-arrow mt-4">
+        <div className="collapse collapse-arrow mt-8 p-0">
           <input type="checkbox"></input>
-          <div className="collapse-title text-xl font-semibold">
+          <div className="collapse-title text-xl font-semibold p-0">
             {title} ({notebookList.length})
           </div>
           {notesView === APP_CONSTANTS.VIEW_GRID ? (
-            <div className="collapse-content flex gap-5 flex-wrap mt-4">
+            <div className="collapse-content flex gap-5 flex-wrap mt-0 p-0">
               {notebookList.map((notebook, id) => (
                 <GridNotebook key={id} notebookObject={notebook} />
               ))}
             </div>
           ) : (
-            <div className="collapse-content rounded-lg bg-base-300 p-4 mt-4 overflow-hidden">
+            <div className="collapse-content rounded-lg bg-base-300 p-0 mt-0 overflow-hidden">
               <table className="table">
                 <thead>
                   <tr className="text-lg">
