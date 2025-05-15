@@ -123,7 +123,10 @@ function EditorMenuTopBar() {
           />
         </div>
         <div className="flex gap-2">
-          <div className="tooltip tooltip-bottom ml-2">
+          <div
+            className="tooltip tooltip-bottom ml-2"
+            data-tip={APP_CONSTANTS.SAVE}
+          >
             <button className="btn btn-square" onClick={handleSaveButtonClick}>
               {saving ? (
                 <span className="loading loading-spinner"></span>
@@ -132,7 +135,10 @@ function EditorMenuTopBar() {
               )}
             </button>
           </div>
-          <div className="tooltip tooltip-bottom" data-tip={"Close"}>
+          <div
+            className="tooltip tooltip-bottom"
+            data-tip={APP_CONSTANTS.CLOSE}
+          >
             <button className="btn btn-square" onClick={handleCloseButtonClick}>
               <MemoizedX />
             </button>

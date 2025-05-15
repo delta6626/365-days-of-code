@@ -4,6 +4,8 @@ export const APP_CONSTANTS = {
   PRO_TIER: "pro",
   ENGLISH: "English",
   SUCCESS: "success",
+  SAVE: "Save",
+  CLOSE: "Close",
   NAME_EMPTY: "Enter your name.",
   EMAIL_INVALID: "Enter a valid email address.",
   PASSWORD_LENGTH_SHORT: "Password must be at least 8 characters.",
