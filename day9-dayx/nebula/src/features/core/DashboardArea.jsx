@@ -61,7 +61,7 @@ function DashboardArea() {
 
     return (
       <div className="px-8">
-        <div className="collapse collapse-arrow bg-base-200 mt-4">
+        <div className="collapse collapse-arrow mt-4">
           <input type="checkbox"></input>
           <div className="collapse-title text-xl font-semibold">
             {title} ({noteList.length})
@@ -107,7 +107,7 @@ function DashboardArea() {
 
     return (
       <div className="px-8">
-        <div className="collapse collapse-arrow bg-base-200 mt-4">
+        <div className="collapse collapse-arrow mt-4">
           <input type="checkbox"></input>
           <div className="collapse-title text-xl font-semibold">
             {title} ({notebookList.length})

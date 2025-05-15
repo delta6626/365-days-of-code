@@ -147,22 +147,22 @@ function TableNote({ id, noteObject }) {
           </span>
         </div>
       </td>
-      <td className="flex flex-wrap items-center gap-2">
-        {noteObject.tags.length == 0 ? (
-          <p className="text-gray-400">{APP_CONSTANTS.NO_TAGS}</p>
-        ) : (
-          ""
-        )}
-        {noteObject.tags.slice(0, 10).map((tag, index) => (
-          <Tag key={index} tagText={tag} showTagIcon={false} />
-        ))}
-        {noteObject.tags.length > 10 && (
-          <Tag
-            key="more"
-            moreTag={true}
-            tagText={`${noteObject.tags.length - 10} more`}
-          />
-        )}
+      <td className="">
+        <div className="flex flex-wrap items-center gap-2 h-full">
+          {noteObject.tags.length === 0 ? (
+            <p className="text-gray-400">{APP_CONSTANTS.NO_TAGS}</p>
+          ) : null}
+          {noteObject.tags.slice(0, 10).map((tag, index) => (
+            <Tag key={index} tagText={tag} showTagIcon={false} />
+          ))}
+          {noteObject.tags.length > 10 && (
+            <Tag
+              key="more"
+              moreTag={true}
+              tagText={`${noteObject.tags.length - 10} more`}
+            />
+          )}
+        </div>
       </td>
       <td className="text-gray-400 cursor-pointer" onClick={handleNoteClick}>
         {formatDateDDMMYY(objectToDate(noteObject.creationDate))}

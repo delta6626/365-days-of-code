@@ -648,7 +648,7 @@ function SettingsArea() {
       <div className="px-8">
         <div className="bg-base-200 rounded-lg p-4 mt-4">
           <p className="text-xl font-semibold text-error">Danger zone</p>
-          <p className="mt-4 text-neutral-400">You're walking on thin ice.</p>
+          <p className="mt-4 text-neutral-400">You're walking on thin ice</p>
           <div className="divider"></div>
 
           <div className="flex justify-between">

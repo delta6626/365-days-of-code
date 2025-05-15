@@ -133,22 +133,23 @@ function TableNotebook({ id, notebookObject }) {
       <td className="text-lg break-all" title={notebookObject.name}>
         {notebookObject.name}
       </td>
-      <td className="flex flex-wrap items-center gap-2">
-        {notebookObject.tags.length == 0 ? (
-          <p className="text-gray-400">{APP_CONSTANTS.NO_TAGS}</p>
-        ) : (
-          ""
-        )}
-        {notebookObject.tags.slice(0, 10).map((tag, index) => (
-          <Tag key={index} tagText={tag} showTagIcon={false} />
-        ))}
-        {notebookObject.tags.length > 10 && (
-          <Tag
-            key="more"
-            moreTag={true}
-            tagText={`${notebookObject.tags.length - 10} more`}
-          />
-        )}
+
+      <td>
+        <div className="flex flex-wrap items-center gap-2 h-full">
+          {notebookObject.tags.length === 0 ? (
+            <p className="text-gray-400">{APP_CONSTANTS.NO_TAGS}</p>
+          ) : null}
+          {notebookObject.tags.slice(0, 10).map((tag, index) => (
+            <Tag key={index} tagText={tag} showTagIcon={false} />
+          ))}
+          {notebookObject.tags.length > 10 && (
+            <Tag
+              key="more"
+              moreTag={true}
+              tagText={`${notebookObject.tags.length - 10} more`}
+            />
+          )}
+        </div>
       </td>
 
       <td className="text-gray-400 whitespace-nowrap">
