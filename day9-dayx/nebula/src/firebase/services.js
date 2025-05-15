@@ -61,7 +61,9 @@ function addUserToDatabase(uid, name, email, authenticationMethod) {
       NOTES_PAGE: "N", // ctrl+shift+__
       NOTEBOOKS_PAGE: "B", // ctrl+shift+__
       SETTINGS_PAGE: "S", // ctrl+shift+__
-      CLOSE_NOTE: "X", // ctrl+__
+      CLOSE: "X", // ctrl+__
+      NEW_NOTE: "N", // shift+__
+      NEW_NOTE_BOOK: "B", // shift+__
     },
     preferences: {
       autoSaveTriggerTime: 1,

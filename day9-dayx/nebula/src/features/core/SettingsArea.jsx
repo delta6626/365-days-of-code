@@ -559,7 +559,47 @@ function SettingsArea() {
             </div>
           ))}
           <div className="flex items-center justify-between mt-4">
-            <p className="font-medium">Close note</p>
+            <p className="font-medium">New note</p>
+            <div className="flex items-center">
+              <button className="btn" disabled>
+                <ArrowBigUp />
+              </button>
+              <Plus />
+              <input
+                className="input focus:input-primary w-20 uppercase"
+                maxLength={1}
+                value={shortcuts["NEW_NOTE"]}
+                onChange={(e) =>
+                  setShortcuts({
+                    ...shortcuts,
+                    ["NEW_NOTE"]: e.target.value.toUpperCase(),
+                  })
+                }
+              />
+            </div>
+          </div>
+          <div className="flex items-center justify-between mt-4">
+            <p className="font-medium">New notebook</p>
+            <div className="flex items-center">
+              <button className="btn" disabled>
+                <ArrowBigUp />
+              </button>
+              <Plus />
+              <input
+                className="input focus:input-primary w-20 uppercase"
+                maxLength={1}
+                value={shortcuts["NEW_NOTE_BOOK"]}
+                onChange={(e) =>
+                  setShortcuts({
+                    ...shortcuts,
+                    ["NEW_NOTE_BOOK"]: e.target.value.toUpperCase(),
+                  })
+                }
+              />
+            </div>
+          </div>
+          <div className="flex items-center justify-between mt-4">
+            <p className="font-medium">Close note / notebook</p>
             <div className="flex items-center">
               <button className="btn" disabled>
                 <Command />
@@ -568,11 +608,11 @@ function SettingsArea() {
               <input
                 className="input focus:input-primary w-20 uppercase"
                 maxLength={1}
-                value={shortcuts["CLOSE_NOTE"]}
+                value={shortcuts["CLOSE"]}
                 onChange={(e) =>
                   setShortcuts({
                     ...shortcuts,
-                    ["CLOSE_NOTE"]: e.target.value.toUpperCase(),
+                    ["CLOSE"]: e.target.value.toUpperCase(),
                   })
                 }
               />

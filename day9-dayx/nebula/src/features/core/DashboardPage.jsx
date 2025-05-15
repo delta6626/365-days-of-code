@@ -17,6 +17,8 @@ import { useUserVerifiedStore } from "../../store/userVerifiedStore";
 import { useNotebooksStore } from "../../store/notebooksStore";
 import { useNotesStore } from "../../store/notesStore";
 import { useHotkeys } from "react-hotkeys-hook";
+import CreateNoteModal from "../components/CreateNoteModal";
+import CreateNotebookModal from "../components/CreateNotebookModal";
 
 function DashboardPage() {
   const navigate = useNavigate();
@@ -93,6 +95,28 @@ function DashboardPage() {
     }
   );
 
+  useHotkeys(
+    `shift+${user?.shortcuts.NEW_NOTE}`,
+    () => {
+      handleNotesButtonClick();
+      document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).showModal();
+    },
+    {
+      preventDefault: true,
+    }
+  );
+
+  useHotkeys(
+    `shift+${user?.shortcuts.NEW_NOTE_BOOK}`,
+    () => {
+      handleNotebooksButtonClick();
+      document.getElementById(APP_CONSTANTS.CREATE_NOTEBOOK_MODAL).showModal();
+    },
+    {
+      preventDefault: true,
+    }
+  );
+
   useEffect(() => {
     getAuthenticatedUser().then((user) => {
       if (user == APP_CONSTANTS.UNAUTHENTICATED) {
@@ -139,7 +163,9 @@ function DashboardPage() {
   }, []);
 
   return (
-    <div className="flex">
+    <div className="flex font-jakarta">
+      <CreateNoteModal></CreateNoteModal>
+      <CreateNotebookModal></CreateNotebookModal>
       <div
         className={
           "sideBar h-[100vh] bg-base-300 py-4 flex flex-col ease-in-out duration-200" +

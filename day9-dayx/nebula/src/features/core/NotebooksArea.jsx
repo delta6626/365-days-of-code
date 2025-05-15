@@ -60,7 +60,6 @@ function NotebooksArea() {
       />
       <EditNoteModal />
       <EditNotebookModal></EditNotebookModal>
-      <CreateNotebookModal />
 
       <div className="flex items-center justify-between px-8">
         <h1 className="text-3xl font-bold">Notebooks</h1>
