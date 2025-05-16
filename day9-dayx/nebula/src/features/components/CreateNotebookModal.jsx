@@ -108,7 +108,11 @@ function CreateNotebookModal() {
           })}
         </div>
         <div className="modal-action">
-          <button className="btn btn-primary" onClick={handleCreateButtonClick}>
+          <button
+            className="btn btn-primary"
+            onClick={handleCreateButtonClick}
+            disabled={creatingNotebook}
+          >
             {!creatingNotebook ? (
               APP_CONSTANTS.CREATE
             ) : (

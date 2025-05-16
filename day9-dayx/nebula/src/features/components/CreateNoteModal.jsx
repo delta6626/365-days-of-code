@@ -83,6 +83,9 @@ function CreateNoteModal() {
           secondButtonOnClick: function () {},
         });
         document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+      })
+      .finally(() => {
+        setSelectedNotebook("");
       });
   }
 
@@ -151,7 +154,11 @@ function CreateNoteModal() {
           })}
         </div>
         <div className="modal-action">
-          <button className="btn btn-primary" onClick={handleCreateButtonClick}>
+          <button
+            className="btn btn-primary"
+            onClick={handleCreateButtonClick}
+            disabled={creatingNote}
+          >
             {!creatingNote ? (
               APP_CONSTANTS.CREATE
             ) : (
