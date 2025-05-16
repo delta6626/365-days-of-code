@@ -225,7 +225,7 @@ function EditorMenuTopBar() {
         </div>
       </div>
       <div className="flex justify-between px-8">
-        <div className="text-gray-400 flex items-center gap-4">
+        <div className="text-gray-400 flex items-center gap-4 mt-2">
           <div className="btn bg-base-100 text-gray-400 flex gap-2 items-center max-w-full">
             <MemoizedBook size={20} className="flex-shrink-0" />
             <span className="overflow-hidden whitespace-nowrap text-ellipsis block w-full">
