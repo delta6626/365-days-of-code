@@ -35,52 +35,12 @@
   scrollbar-width: thin;
 }
 
-.prose p {
-  margin: 0;
-}
-
-.tiptap p.is-editor-empty:first-child::before {
-  color: #adb5bd;
-  content: attr(data-placeholder);
-  float: left;
-  height: 0;
-  pointer-events: none;
-}
-
 html[data-theme="dark"] .tiptap {
   color: white;
 }
 
 html[data-theme="light"] .tiptap {
   color: black;
-}
-
-.tiptap[auto-spacing="false"] h1 {
-  margin-block: 0px;
-}
-
-.tiptap[auto-spacing="false"] h2 {
-  margin-block: 0px;
-}
-
-.tiptap[auto-spacing="false"] h3 {
-  margin-block: 0px;
-}
-
-.tiptap[auto-spacing="false"] h4 {
-  margin-block: 0px;
-}
-
-.tiptap[auto-spacing="false"] h5 {
-  margin-block: 0px;
-}
-
-.tiptap[auto-spacing="false"] h6 {
-  margin-block: 0px;
-}
-
-.tiptap[auto-spacing="false"] hr {
-  margin-block: 0px;
 }
 
 .tiptap {
@@ -92,17 +52,124 @@ html[data-theme="light"] .tiptap {
   content: "";
 }
 
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+/* AUTO-SPACING: FALSE (Compact) */
+
+.tiptap[auto-spacing="false"] h1,
+.tiptap[auto-spacing="false"] h2,
+.tiptap[auto-spacing="false"] h3,
+.tiptap[auto-spacing="false"] h4,
+.tiptap[auto-spacing="false"] h5,
+.tiptap[auto-spacing="false"] h6,
+.tiptap[auto-spacing="false"] p,
+.tiptap[auto-spacing="false"] ul,
+.tiptap[auto-spacing="false"] ol,
+.tiptap[auto-spacing="false"] hr,
+.tiptap[auto-spacing="false"] table,
+.tiptap[auto-spacing="false"] th,
+.tiptap[auto-spacing="false"] td,
+.tiptap[auto-spacing="false"] pre {
+  margin-block: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* AUTO-SPACING: TRUE (Readable) */
+
+.tiptap[auto-spacing="true"] h1 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.tiptap[auto-spacing="true"] h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.tiptap[auto-spacing="true"] h3 {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+.tiptap[auto-spacing="true"] h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.tiptap[auto-spacing="true"] h5 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.tiptap[auto-spacing="true"] h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.tiptap[auto-spacing="true"] p,
+.tiptap[auto-spacing="true"] ul,
+.tiptap[auto-spacing="true"] ol {
+  margin-block: 0.25rem;
+}
+
+.tiptap[auto-spacing="true"] hr {
+  margin-block: 1.5rem;
+}
+
+.tiptap[auto-spacing="true"] table {
+  margin-block: 1.25rem;
+}
+
+.tiptap[auto-spacing="false"] pre {
+  margin-block: 1.25rem;
+}
+
+/* List styles */
+
 .tiptap ul,
 .tiptap ol {
   padding: 0 1rem;
   margin: 1.25rem 1rem 1.25rem 0.4rem;
 }
 
-/* Task list specific styles */
+/* Task list spacing: auto-spacing */
+
+/* No spacing (compact) */
+.tiptap[auto-spacing="false"] ul[data-type="taskList"],
+.tiptap[auto-spacing="false"] ul[data-type="taskList"] li,
+.tiptap[auto-spacing="false"] ul[data-type="taskList"] li > div > p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Readable spacing */
+.tiptap[auto-spacing="true"] ul[data-type="taskList"] {
+  list-style: none;
+  margin-block: 1rem;
+  padding-left: 0;
+}
+
+.tiptap[auto-spacing="true"] ul[data-type="taskList"] li {
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+
+.tiptap[auto-spacing="true"] ul[data-type="taskList"] li > div > p {
+  margin: 0;
+}
+
+/* Base Task List Styles  */
+
 .tiptap ul[data-type="taskList"] {
   list-style: none;
   margin-left: 0;
-  padding: 0;
 }
 
 .tiptap ul[data-type="taskList"] li {
@@ -134,6 +201,8 @@ html[data-theme="light"] .tiptap {
 .tiptap ul[data-type="taskList"] ul[data-type="taskList"] {
   margin: 0;
 }
+
+/* Table styles */
 
 .tiptap table {
   border-collapse: collapse;
