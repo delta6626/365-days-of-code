@@ -14,6 +14,12 @@ function CreateNotebookModal() {
   const [creatingNotebook, setCreatingNotebook] = useState(false);
   const [tags, setTags] = useState([]);
 
+  function resetState() {
+    setNotebookName(""); // Reset notebook name
+    setTags([]); // Reset tags
+    setCreatingNotebook(false); // Reset creating state
+  }
+
   function handleNotebookNameChange(e) {
     setNotebookName(e.target.value);
   }
@@ -63,10 +69,14 @@ function CreateNotebookModal() {
           secondButtonOnClick: function () {},
         });
         document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+      })
+      .finally(() => {
+        resetState();
       });
   }
 
   function handleCloseButtonClick() {
+    resetState();
     document.getElementById(APP_CONSTANTS.CREATE_NOTEBOOK_MODAL).close();
   }
 
