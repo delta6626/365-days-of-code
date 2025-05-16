@@ -18,12 +18,26 @@ function CreateNoteModal() {
   const [notebookEmpty, setNotebookEmpty] = useState(false);
   const [creatingNote, setCreatingNote] = useState(false);
 
+  function resetState() {
+    setNoteName("");
+    setSelectedNotebook("");
+    setTags([]);
+    setNotebookEmpty(false);
+    setCreatingNote(false);
+  }
+
   function handleNameInputChange(e) {
     setNoteName(e.target.value);
   }
 
   function handleSelectChange(e) {
-    setSelectedNotebook(e.target.value);
+    const notebook = e.target.value;
+    setSelectedNotebook(notebook);
+    if (notebook == "") {
+      setNotebookEmpty(true);
+    } else {
+      setNotebookEmpty(false);
+    }
   }
 
   function handleTagChange(e) {
@@ -85,11 +99,12 @@ function CreateNoteModal() {
         document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
       })
       .finally(() => {
-        setSelectedNotebook("");
+        resetState();
       });
   }
 
   function handleCloseButtonClick() {
+    resetState();
     document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).close();
   }
 
