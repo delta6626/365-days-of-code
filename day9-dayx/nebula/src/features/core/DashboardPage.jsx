@@ -99,8 +99,12 @@ function DashboardPage() {
   useHotkeys(
     `shift+${user?.shortcuts.NEW_NOTE}`,
     () => {
-      handleNotesButtonClick();
-      document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).showModal();
+      if (userVerified) {
+        handleNotesButtonClick();
+        document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).showModal();
+      } else {
+        return;
+      }
     },
     {
       preventDefault: true,
@@ -110,8 +114,14 @@ function DashboardPage() {
   useHotkeys(
     `shift+${user?.shortcuts.NEW_NOTE_BOOK}`,
     () => {
-      handleNotebooksButtonClick();
-      document.getElementById(APP_CONSTANTS.CREATE_NOTEBOOK_MODAL).showModal();
+      if (userVerified) {
+        handleNotebooksButtonClick();
+        document
+          .getElementById(APP_CONSTANTS.CREATE_NOTEBOOK_MODAL)
+          .showModal();
+      } else {
+        return;
+      }
     },
     {
       preventDefault: true,
