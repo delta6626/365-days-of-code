@@ -149,6 +149,7 @@ function GridNote({ noteObject }) {
           >
             <button
               className="btn btn-square"
+              disabled={updatingPin}
               onClick={(e) => {
                 e.stopPropagation();
                 handleNotePinAndUnpin(noteObject.id);
@@ -177,6 +178,7 @@ function GridNote({ noteObject }) {
             <button
               className="btn btn-square text-error"
               onClick={handleDeleteButtonClick}
+              disabled={deletingNote}
             >
               {deletingNote ? (
                 <span className="loading loading-spinner"></span>

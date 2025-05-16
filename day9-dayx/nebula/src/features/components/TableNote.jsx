@@ -176,6 +176,7 @@ function TableNote({ id, noteObject }) {
           >
             <button
               className="btn btn-square"
+              disabled={updatingPin}
               onClick={(e) => {
                 e.stopPropagation();
                 handleNotePinAndUnpin(noteObject.id);
@@ -203,6 +204,7 @@ function TableNote({ id, noteObject }) {
           <div className="tooltip tooltip-error" data-tip="Delete note">
             <button
               className="btn btn-square text-error"
+              disabled={deletingNote}
               onClick={handleDeleteButtonClick}
             >
               {deletingNote ? (

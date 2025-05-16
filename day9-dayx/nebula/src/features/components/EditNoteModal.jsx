@@ -196,7 +196,11 @@ function EditNoteModal() {
         </div>
 
         <div className="modal-action">
-          <button className="btn btn-primary" onClick={handleEditButtonClick}>
+          <button
+            className="btn btn-primary"
+            onClick={handleEditButtonClick}
+            disabled={editingNote}
+          >
             {!editingNote ? (
               APP_CONSTANTS.EDIT
             ) : (
