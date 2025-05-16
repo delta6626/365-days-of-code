@@ -673,6 +673,7 @@ function SettingsArea() {
             <p className="font-medium">Sign out</p>
             <button
               className="btn btn-primary"
+              disabled={signingOut}
               onClick={() => {
                 setMessage({
                   title: APP_CONSTANTS.SIGN_OUT_MODAL_TITLE,
@@ -747,7 +748,7 @@ function SettingsArea() {
                   .getElementById(APP_CONSTANTS.GENERIC_MODAL)
                   .showModal();
               }}
-              disabled={!canDelete()}
+              disabled={!canDelete() || deletingNotes}
             >
               {!deletingNotes ? (
                 APP_CONSTANTS.DELETE
@@ -788,7 +789,7 @@ function SettingsArea() {
                   .getElementById(APP_CONSTANTS.GENERIC_MODAL)
                   .showModal();
               }}
-              disabled={!canDelete()}
+              disabled={!canDelete() || deletingNotebooks}
             >
               {!deletingNotebooks ? (
                 APP_CONSTANTS.DELETE
@@ -802,6 +803,7 @@ function SettingsArea() {
             <p className="font-medium">Delete my account</p>
             <button
               className="btn btn-error text-error-content"
+              disabled={deletingAccount}
               onClick={() => {
                 setMessage({
                   title: APP_CONSTANTS.DELETE_ACCOUNT_MODAL_TITLE,
