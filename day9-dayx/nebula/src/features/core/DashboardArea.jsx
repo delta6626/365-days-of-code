@@ -149,7 +149,7 @@ function DashboardArea() {
   }, []);
 
   return (
-    <div className="flex-1 h-[100vh] font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
+    <div className="flex-1 h-[100vh] font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin py-4">
       <GenericModal
         id={APP_CONSTANTS.GENERIC_MODAL}
         title={message.title}
@@ -169,7 +169,7 @@ function DashboardArea() {
       {notesView === APP_CONSTANTS.VIEW_NOTE_EDITOR ? (
         <NoteEditor></NoteEditor>
       ) : (
-        <div className="py-4">
+        <div className="">
           <div className="flex items-center justify-between px-8">
             <h1 className="text-3xl font-bold">Dashboard</h1>
             <div className="flex">
