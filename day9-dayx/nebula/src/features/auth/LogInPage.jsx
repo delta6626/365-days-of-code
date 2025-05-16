@@ -177,7 +177,14 @@ function LogInPage() {
           {(emailError || passwordError || databaseError) && (
             <p className="text-error text-sm">{errorMessage}</p>
           )}
-          <button className="btn btn-primary mt-4" onClick={handleLogin}>
+          <button
+            className="btn btn-primary mt-4"
+            onClick={handleLogin}
+            disabled={
+              authenticating == APP_CONSTANTS.WITH_EMAIL ||
+              authenticating == APP_CONSTANTS.WITH_GOOGLE
+            }
+          >
             {authenticating == APP_CONSTANTS.NULL ||
             authenticating == APP_CONSTANTS.WITH_GOOGLE ? (
               "Log In"
@@ -189,6 +196,10 @@ function LogInPage() {
           <button
             className="btn bg-white text-black"
             onClick={handleLogInWithGoogle}
+            disabled={
+              authenticating == APP_CONSTANTS.WITH_EMAIL ||
+              authenticating == APP_CONSTANTS.WITH_GOOGLE
+            }
           >
             {authenticating == APP_CONSTANTS.NULL ||
             authenticating == APP_CONSTANTS.WITH_EMAIL ? (

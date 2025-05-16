@@ -256,7 +256,14 @@ function SignUpPage() {
             <p className="text-error text-sm">{errorMessage}</p>
           )}
 
-          <button className="btn btn-primary mt-4" onClick={handleSignUp}>
+          <button
+            className="btn btn-primary mt-4"
+            onClick={handleSignUp}
+            disabled={
+              authenticating == APP_CONSTANTS.WITH_EMAIL ||
+              authenticating == APP_CONSTANTS.WITH_GOOGLE
+            }
+          >
             {authenticating == APP_CONSTANTS.NULL ||
             authenticating == APP_CONSTANTS.WITH_GOOGLE ? (
               "Sign Up"
@@ -268,6 +275,10 @@ function SignUpPage() {
           <button
             className="btn bg-white text-black"
             onClick={handleSignUpWithGoogle}
+            disabled={
+              authenticating == APP_CONSTANTS.WITH_EMAIL ||
+              authenticating == APP_CONSTANTS.WITH_GOOGLE
+            }
           >
             {authenticating == APP_CONSTANTS.NULL ||
             authenticating == APP_CONSTANTS.WITH_EMAIL ? (
