@@ -136,7 +136,9 @@ function EditorMenuTopBar() {
   useHotkeys(
     `ctrl+s`,
     () => {
-      handleSaveButtonClick();
+      if (!saving) {
+        handleSaveButtonClick();
+      }
     },
     {
       preventDefault: true,
@@ -200,7 +202,11 @@ function EditorMenuTopBar() {
             className="tooltip tooltip-bottom ml-2"
             data-tip={APP_CONSTANTS.SAVE}
           >
-            <button className="btn btn-square" onClick={handleSaveButtonClick}>
+            <button
+              className="btn btn-square"
+              onClick={handleSaveButtonClick}
+              disabled={saving}
+            >
               {saving ? (
                 <span className="loading loading-spinner"></span>
               ) : (

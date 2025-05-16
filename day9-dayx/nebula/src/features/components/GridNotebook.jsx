@@ -148,6 +148,7 @@ function GridNotebook({ notebookObject }) {
           >
             <button
               className="btn btn-square"
+              disabled={updatingPin}
               onClick={() => {
                 handleNotebookPinAndUnpin();
               }}
@@ -174,6 +175,7 @@ function GridNotebook({ notebookObject }) {
           <div className="tooltip tooltip-error" data-tip="Delete note">
             <button
               className="btn btn-square text-error"
+              disabled={deletingNotebook}
               onClick={handleDeleteButtonClick}
             >
               {deletingNotebook ? (
