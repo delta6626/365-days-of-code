@@ -22,7 +22,7 @@ const MemoizedCheckCircle2 = memo(CheckCircle2);
 
 function EditorMenuTopBar() {
   const { editTargetNote, setEditTargetNote } = useEditTargetNoteStore();
-  const { notesView, setNotesView } = useCurrentNotesViewStore();
+  const { setNotesView } = useCurrentNotesViewStore();
   const { notes, setNotes } = useNotesStore();
   const { editor } = useCurrentEditor();
   const { user } = useUserStore();
@@ -31,6 +31,7 @@ function EditorMenuTopBar() {
   const [noteName, setNoteName] = useState();
   const [noteContentDelta, setnoteContentDelta] = useState(false);
   const [noteNameDelta, setNoteNameDelta] = useState(false);
+  const [wordCount, setWordCount] = useState(0);
   const [saving, setSaving] = useState(false);
 
   function handleNoteNameChange(e) {
@@ -160,6 +161,16 @@ function EditorMenuTopBar() {
       } else {
         setnoteContentDelta(false);
       }
+
+      let text = editor.getText();
+      if (text == "") {
+        setWordCount(0);
+        return;
+      } else {
+        setWordCount(text.trim().split(" ").length);
+      }
+
+      console.log(editor.getText().trim().split(" "));
     }
 
     const debouncedUpdate = debounce(updateFunction, 300); // Make sure the update function runs 300ms after the user stops typing
@@ -170,6 +181,16 @@ function EditorMenuTopBar() {
       debouncedUpdate.cancel(); // clean up pending calls
     };
   }, [editor, editTargetNote]);
+
+  useEffect(() => {
+    let text = editor.getText();
+    if (text == "") {
+      setWordCount(0);
+      return;
+    } else {
+      setWordCount(text.trim().split(" ").length);
+    }
+  }, []);
 
   useEffect(() => {
     setNoteName(editTargetNote.name);
@@ -254,6 +275,9 @@ function EditorMenuTopBar() {
               </p>
             )}
           </div>
+        </div>
+        <div className="text-gray-400 flex items-center gap-4 mt-2">
+          <p>{wordCount + " " + (wordCount == 1 ? "word" : "words")}</p>
         </div>
       </div>
       <div className="divider"></div>
