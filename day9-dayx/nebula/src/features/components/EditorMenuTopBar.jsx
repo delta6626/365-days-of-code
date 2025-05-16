@@ -119,20 +119,6 @@ function EditorMenuTopBar() {
     }
   }
 
-  function updateFunction({ editor }) {
-    if (editor.getHTML() === "<p></p>" && editTargetNote.content === "") {
-      setnoteContentDelta(false);
-      return;
-    }
-    if (editor.getHTML() != editTargetNote.content) {
-      setnoteContentDelta(true);
-    } else {
-      setnoteContentDelta(false);
-    }
-  }
-
-  editor.on("update", debounce(updateFunction, 300)); // Make sure the update function runs 300ms after the user stops typing
-
   useHotkeys(
     `ctrl+${user?.shortcuts.CLOSE}`,
     () => {
@@ -158,6 +144,30 @@ function EditorMenuTopBar() {
       enableOnFormTags: true,
     }
   );
+
+  useEffect(() => {
+    if (!editor) return;
+
+    function updateFunction({ editor }) {
+      if (editor.getHTML() === "<p></p>" && editTargetNote.content === "") {
+        setnoteContentDelta(false);
+        return;
+      }
+      if (editor.getHTML() !== editTargetNote.content) {
+        setnoteContentDelta(true);
+      } else {
+        setnoteContentDelta(false);
+      }
+    }
+
+    const debouncedUpdate = debounce(updateFunction, 300); // Make sure the update function runs 300ms after the user stops typing
+    editor.on("update", debouncedUpdate);
+
+    return () => {
+      editor.off("update", debouncedUpdate);
+      debouncedUpdate.cancel(); // clean up pending calls
+    };
+  }, [editor, editTargetNote]);
 
   useEffect(() => {
     setNoteName(editTargetNote.name);
