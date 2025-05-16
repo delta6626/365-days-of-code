@@ -12,6 +12,7 @@ import { toTimestamp } from "../../utils/toTimestamp";
 import debounce from "lodash.debounce";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useUserStore } from "../../store/userStore";
+import { useMessageStore } from "../../store/messageStore";
 
 const MemoizedBook = memo(Book);
 const MemoizedFileWarning = memo(FileWarning);
@@ -25,6 +26,7 @@ function EditorMenuTopBar() {
   const { notes, setNotes } = useNotesStore();
   const { editor } = useCurrentEditor();
   const { user } = useUserStore();
+  const { setMessage } = useMessageStore();
 
   const [noteName, setNoteName] = useState();
   const [noteContentDelta, setnoteContentDelta] = useState(false);
@@ -40,7 +42,7 @@ function EditorMenuTopBar() {
     }
   }
 
-  function handleSaveButtonClick() {
+  function handleSaveButtonClick(closeOnSave) {
     if (!noteContentDelta && !noteNameDelta) return; // Nothing to save
 
     setSaving(true);
@@ -87,11 +89,34 @@ function EditorMenuTopBar() {
       })
       .finally(() => {
         setSaving(false);
+        if (closeOnSave != null && closeOnSave) {
+          setNotesView(APP_CONSTANTS.VIEW_GRID);
+        }
       });
   }
 
   function handleCloseButtonClick() {
-    setNotesView(APP_CONSTANTS.VIEW_GRID);
+    if (!noteContentDelta && !noteNameDelta) {
+      setNotesView(APP_CONSTANTS.VIEW_GRID);
+    } else {
+      setMessage({
+        title: APP_CONSTANTS.UNSAVED_CHANGES,
+        textContent: APP_CONSTANTS.UNSAVED_CHANGES_TEXT_CONTENT,
+        firstButtonClassName: "btn btn-primary",
+        secondButtonClassName: "btn btn-error",
+        firstButtonText: APP_CONSTANTS.SAVE,
+        secondButtonText: APP_CONSTANTS.CLOSE,
+        firstButtonOnClick: function () {
+          handleSaveButtonClick(true);
+          document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+        },
+        secondButtonOnClick: function () {
+          setNotesView(APP_CONSTANTS.VIEW_GRID);
+          document.getElementById(APP_CONSTANTS.GENERIC_MODAL).close();
+        },
+      });
+      document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
+    }
   }
 
   function updateFunction({ editor }) {

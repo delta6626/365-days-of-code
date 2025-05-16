@@ -19,6 +19,7 @@ import { useNotesStore } from "../../store/notesStore";
 import { useHotkeys } from "react-hotkeys-hook";
 import CreateNoteModal from "../components/CreateNoteModal";
 import CreateNotebookModal from "../components/CreateNotebookModal";
+import GenericModal from "../components/GenericModal";
 
 function DashboardPage() {
   const navigate = useNavigate();
@@ -166,6 +167,7 @@ function DashboardPage() {
     <div className="flex font-jakarta">
       <CreateNoteModal></CreateNoteModal>
       <CreateNotebookModal></CreateNotebookModal>
+      <GenericModal></GenericModal>
       <div
         className={
           "sideBar h-[100vh] bg-base-300 py-4 flex flex-col ease-in-out duration-200" +

@@ -65,6 +65,9 @@ export const APP_CONSTANTS = {
     "We've sent a verification link to your email. Please check your inbox to complete the verification.",
   VERIFY_EMAIL: "Please verify your email first.",
   FIELD_EMPTY: "One or more fields are empty. Please fill them and try again.",
+  UNSAVED_CHANGES: "Unsaved changes",
+  UNSAVED_CHANGES_TEXT_CONTENT:
+    "You have unsaved changes. Closing the note will permanently discard them.",
   GENERIC_MODAL: "genericModal",
   CREATE_NOTE_MODAL: "createNoteModal",
   CREATE_NOTEBOOK_MODAL: "createNotebookModal",
