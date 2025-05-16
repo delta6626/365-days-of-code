@@ -55,6 +55,34 @@ html[data-theme="light"] .tiptap {
   color: black;
 }
 
+.tiptap[auto-spacing="false"] h1 {
+  margin-block: 0px;
+}
+
+.tiptap[auto-spacing="false"] h2 {
+  margin-block: 0px;
+}
+
+.tiptap[auto-spacing="false"] h3 {
+  margin-block: 0px;
+}
+
+.tiptap[auto-spacing="false"] h4 {
+  margin-block: 0px;
+}
+
+.tiptap[auto-spacing="false"] h5 {
+  margin-block: 0px;
+}
+
+.tiptap[auto-spacing="false"] h6 {
+  margin-block: 0px;
+}
+
+.tiptap[auto-spacing="false"] hr {
+  margin-block: 0px;
+}
+
 .tiptap {
   outline: none;
 }

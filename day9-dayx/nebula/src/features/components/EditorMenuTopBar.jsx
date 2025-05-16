@@ -161,7 +161,16 @@ function EditorMenuTopBar() {
 
   useEffect(() => {
     setNoteName(editTargetNote.name);
+    document
+      .querySelectorAll(".tiptap")[0]
+      .setAttribute("auto-spacing", user.preferences.autoSpacing);
   }, []);
+
+  useEffect(() => {
+    document
+      .querySelectorAll(".tiptap")[0]
+      .setAttribute("auto-spacing", user.preferences.autoSpacing);
+  }, [user.preferences.autoSpacing]);
 
   return (
     <div className="">

@@ -66,6 +66,7 @@ function addUserToDatabase(uid, name, email, authenticationMethod) {
       NEW_NOTE_BOOK: "B", // shift+__
     },
     preferences: {
+      autoSpacing: true,
       autoSaveTriggerTime: 1,
       language: APP_CONSTANTS.ENGLISH,
       subscribedToEmailNotifications: true,

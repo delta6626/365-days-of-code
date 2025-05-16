@@ -40,6 +40,7 @@ function SettingsArea() {
   const [autoSaveTriggerTime, setAutoSaveTriggerTime] = useState(
     user.preferences.autoSaveTriggerTime
   );
+  const [autoSpacing, setAutoSpacing] = useState(user.preferences.autoSpacing);
   const [language, setLanguage] = useState(user.preferences.language);
   const [subscribed, setSubscribed] = useState(
     user.preferences.subscribedToEmailNotifications
@@ -56,6 +57,7 @@ function SettingsArea() {
     return (
       name !== user.name ||
       email !== user.email ||
+      autoSpacing !== user.preferences.autoSpacing ||
       autoSaveTriggerTime !== user.preferences.autoSaveTriggerTime ||
       language !== user.preferences.language ||
       subscribed !== user.preferences.subscribedToEmailNotifications ||
@@ -98,6 +100,7 @@ function SettingsArea() {
       email,
       preferences: {
         ...user.preferences,
+        autoSpacing,
         autoSaveTriggerTime,
         language,
         subscribedToEmailNotifications: subscribed,
@@ -481,6 +484,29 @@ function SettingsArea() {
                 </option>
               ))}
             </select>
+          </div>
+
+          {/* Auto spacing */}
+          <div className="flex justify-between mt-4">
+            <p className="font-medium">Auto spacing</p>
+            <div className="flex items-center">
+              <p>On</p>
+              <input
+                type="radio"
+                name="auto-spacing"
+                className="radio radio-primary mx-2"
+                checked={autoSpacing === true}
+                onChange={() => setAutoSpacing(true)}
+              />
+              <p>Off</p>
+              <input
+                type="radio"
+                name="auto-spacing"
+                className="radio radio-primary ml-2"
+                checked={autoSpacing === false}
+                onChange={() => setAutoSpacing(false)}
+              />
+            </div>
           </div>
 
           {/* Email Subscription */}
