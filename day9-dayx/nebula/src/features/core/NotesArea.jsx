@@ -21,14 +21,40 @@ function NotesArea() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredNotes = notes.filter((note) => {
-    const lowerName = note.name.toLowerCase();
-    const lowerTags = note.tags.map((tag) => tag.toLowerCase());
-    const searchTerms = searchTerm.toLowerCase().split(/\s+/); // split by space
+    if (searchTerm === "") {
+      return note;
+    } else if (
+      searchTerm.startsWith("notebook:") ||
+      searchTerm.startsWith("book:")
+    ) {
+      // Search by notebook
 
-    return (
-      lowerName.includes(searchTerm.toLowerCase()) ||
-      searchTerms.some((term) => lowerTags.includes(term))
-    );
+      const thisNoteAssignedTo = note.assignedTo[1].toLowerCase();
+      const searchedNotebook = searchTerm.split(":")[1].trim().toLowerCase();
+      return thisNoteAssignedTo.includes(searchedNotebook);
+    } else if (
+      searchTerm.startsWith("tag:") ||
+      searchTerm.startsWith("tags:")
+    ) {
+      // Search by tag
+
+      const thisNoteTags = note.tags.map((tag) => tag.toLowerCase());
+      const searchedTags = searchTerm
+        .split(":")[1]
+        .toLowerCase()
+        .trim()
+        .replace(/ {2,}/g, " ")
+        .split(" ");
+      return searchedTags.every((tag) => thisNoteTags.includes(tag));
+    } else {
+      const lowerName = note.name.toLowerCase();
+      const lowerTags = note.tags.map((tag) => tag.toLowerCase());
+      const searchTerms = searchTerm.toLowerCase().split(/\s+/); // split by spa
+      return (
+        lowerName.includes(searchTerm.toLowerCase()) ||
+        searchTerms.some((term) => lowerTags.includes(term))
+      );
+    }
   });
 
   function handleSearch(e) {
