@@ -45,7 +45,7 @@ I'll try to update this as I go.
 - Day 27 ✅: Change fonts, save note to firestore, warn users of unsaved content, conditionally enable table operation buttons such as delete, merge cell, etc., and some performance improvements
 - Day 28 ✅: Increased editor performance by preventing unnecessary rerenders, disabled spellcheck for codeblock, code, and link nodes, minor UI tweaks
 - Day 29 ✅: Implemented shortcuts for => closing note/notebook, saving, creating notes and notebooks, polished ui, fixed bugs
-
+- Day 30 ✅: Implemented warning modal before closing unsaved note, autospacing (can be enabled or disabled), word count, minor style changes, bug fixes
 ---
 
 ## 📌 Notes
