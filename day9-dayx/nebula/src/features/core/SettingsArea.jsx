@@ -445,7 +445,8 @@ function SettingsArea() {
           <div className="divider"></div>
 
           {/* Autosave */}
-          <div className="flex justify-between">
+          {/* Postponed for later */}
+          {/* <div className="flex justify-between">
             <p className="font-medium">Trigger autosave every (in minutes)</p>
             <div className="w-full max-w-xs">
               <input
@@ -468,7 +469,7 @@ function SettingsArea() {
                 ))}
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Language */}
           <div className="flex items-center justify-between mt-4">
