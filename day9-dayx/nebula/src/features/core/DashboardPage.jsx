@@ -16,6 +16,7 @@ import SettingsArea from "./SettingsArea";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
 import { useNotebooksStore } from "../../store/notebooksStore";
 import { useNotesStore } from "../../store/notesStore";
+import { useActiveTabStore } from "../../store/activeTabStore";
 import { useHotkeys } from "react-hotkeys-hook";
 import CreateNoteModal from "../components/CreateNoteModal";
 import CreateNotebookModal from "../components/CreateNotebookModal";
@@ -28,8 +29,8 @@ function DashboardPage() {
   const { userVerified, setUserVerified } = useUserVerifiedStore();
   const { notebooks, setNotebooks } = useNotebooksStore();
   const { notes, setNotes } = useNotesStore();
+  const { activeTab, setActiveTab } = useActiveTabStore();
 
-  const [activeTab, setActiveTab] = useState(APP_CONSTANTS.DASHBOARD_PAGE);
   const [sideBarCollapsed, setSideBarCollapsed] = useState(false);
 
   function handleCollapse() {
