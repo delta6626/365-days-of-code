@@ -67,6 +67,7 @@ function addUserToDatabase(uid, name, email, authenticationMethod) {
     },
     preferences: {
       autoSpacing: true,
+      strictTagMatching: false,
       autoSaveTriggerTime: 1,
       language: APP_CONSTANTS.ENGLISH,
       subscribedToEmailNotifications: true,

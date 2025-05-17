@@ -4,9 +4,9 @@ import { useNotesStore } from "../../store/notesStore";
 import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
 import { useMessageStore } from "../../store/messageStore";
+import { useUserStore } from "../../store/userStore";
 import GridNote from "../components/GridNote";
 import TableNote from "../components/TableNote";
-import CreateNoteModal from "../components/CreateNoteModal";
 import GenericModal from "../components/GenericModal";
 import { useState } from "react";
 import EditNoteModal from "../components/EditNoteModal";
@@ -16,6 +16,7 @@ function NotesArea() {
   const { notes, setNotes } = useNotesStore();
   const { notesView, setNotesView } = useCurrentNotesViewStore();
   const { userVerified, setUserVerified } = useUserVerifiedStore();
+  const { user } = useUserStore();
   const { message, setMessage } = useMessageStore();
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -45,7 +46,12 @@ function NotesArea() {
         .trim()
         .replace(/ {2,}/g, " ")
         .split(" ");
-      return searchedTags.every((tag) => thisNoteTags.includes(tag));
+
+      if (user.preferences.strictTagMatching) {
+        return searchedTags.every((tag) => thisNoteTags.includes(tag));
+      } else {
+        return searchedTags.some((tag) => thisNoteTags.includes(tag));
+      }
     } else {
       const lowerName = note.name.toLowerCase();
       const lowerTags = note.tags.map((tag) => tag.toLowerCase());

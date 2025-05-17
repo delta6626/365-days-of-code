@@ -40,6 +40,9 @@ function SettingsArea() {
   const [autoSaveTriggerTime, setAutoSaveTriggerTime] = useState(
     user.preferences.autoSaveTriggerTime
   );
+  const [strictTagMatching, setStrictTagMatching] = useState(
+    user.preferences.strictTagMatching
+  );
   const [autoSpacing, setAutoSpacing] = useState(user.preferences.autoSpacing);
   const [language, setLanguage] = useState(user.preferences.language);
   const [subscribed, setSubscribed] = useState(
@@ -57,6 +60,7 @@ function SettingsArea() {
     return (
       name !== user.name ||
       email !== user.email ||
+      strictTagMatching != user.preferences.strictTagMatching ||
       autoSpacing !== user.preferences.autoSpacing ||
       autoSaveTriggerTime !== user.preferences.autoSaveTriggerTime ||
       language !== user.preferences.language ||
@@ -100,6 +104,7 @@ function SettingsArea() {
       email,
       preferences: {
         ...user.preferences,
+        strictTagMatching,
         autoSpacing,
         autoSaveTriggerTime,
         language,
@@ -485,6 +490,29 @@ function SettingsArea() {
                 </option>
               ))}
             </select>
+          </div>
+
+          {/* Strict tag matching */}
+          <div className="flex justify-between mt-4">
+            <p className="font-medium">Strict tag matching</p>
+            <div className="flex items-center">
+              <p>On</p>
+              <input
+                type="radio"
+                name="tag-matching"
+                className="radio radio-primary mx-2"
+                checked={strictTagMatching === true}
+                onChange={() => setStrictTagMatching(true)}
+              />
+              <p>Off</p>
+              <input
+                type="radio"
+                name="tag-matching"
+                className="radio radio-primary ml-2"
+                checked={strictTagMatching === false}
+                onChange={() => setStrictTagMatching(false)}
+              />
+            </div>
           </div>
 
           {/* Auto spacing */}
