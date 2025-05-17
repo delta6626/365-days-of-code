@@ -154,7 +154,6 @@ function EditorMenuTopBar() {
     function updateFunction({ editor }) {
       if (editor.getHTML() === "<p></p>" && editTargetNote.content === "") {
         setnoteContentDelta(false);
-        return;
       }
       if (editor.getHTML() !== editTargetNote.content) {
         setnoteContentDelta(true);
@@ -169,8 +168,6 @@ function EditorMenuTopBar() {
       } else {
         setWordCount(text.trim().split(" ").length);
       }
-
-      console.log(editor.getText().trim().split(" "));
     }
 
     const debouncedUpdate = debounce(updateFunction, 300); // Make sure the update function runs 300ms after the user stops typing
