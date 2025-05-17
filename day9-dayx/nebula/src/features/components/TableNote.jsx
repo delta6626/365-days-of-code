@@ -149,7 +149,12 @@ function TableNote({ id, noteObject }) {
             <p className="text-gray-400">{APP_CONSTANTS.NO_TAGS}</p>
           ) : null}
           {noteObject.tags.slice(0, 10).map((tag, index) => (
-            <Tag key={index} tagText={tag} showTagIcon={false} />
+            <Tag
+              key={index}
+              tagText={tag}
+              showTagIcon={false}
+              source={APP_CONSTANTS.SOURCE_NOTE}
+            />
           ))}
           {noteObject.tags.length > 10 && (
             <Tag

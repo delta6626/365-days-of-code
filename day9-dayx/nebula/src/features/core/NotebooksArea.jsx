@@ -6,6 +6,7 @@ import { useMessageStore } from "../../store/messageStore";
 import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { useNotebooksStore } from "../../store/notebooksStore";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
+import { useNotebookSearchTermStore } from "../../store/notebookSearchTermStore";
 import { Search, Table, LayoutGrid, BookPlus } from "lucide-react";
 import { useEffect, useState } from "react";
 import GridNotebook from "../components/GridNotebook";
@@ -19,15 +20,18 @@ function NotebooksArea() {
   const { notesView, setNotesView } = useCurrentNotesViewStore();
   const { userVerified } = useUserVerifiedStore();
   const { user } = useUserStore();
-
-  const [searchTerm, setSearchTerm] = useState("");
+  const { notebookSearchTerm, setNotebookSearchTerm } =
+    useNotebookSearchTermStore();
 
   const filteredNotebooks = notebooks.filter((notebook) => {
-    if (searchTerm.startsWith("tag:") || searchTerm.startsWith("tags:")) {
+    if (
+      notebookSearchTerm.startsWith("tag:") ||
+      notebookSearchTerm.startsWith("tags:")
+    ) {
       // Search by tag
 
       const thisNotebookTags = notebook.tags.map((tag) => tag.toLowerCase());
-      const searchedTags = searchTerm
+      const searchedTags = notebookSearchTerm
         .split(":")[1]
         .toLowerCase()
         .trim()
@@ -42,16 +46,16 @@ function NotebooksArea() {
     } else {
       const lowerName = notebook.name.toLowerCase();
       const lowerTags = notebook.tags.map((tag) => tag.toLowerCase());
-      const searchTerms = searchTerm.toLowerCase().split(/\s+/); // split by spa
+      const searchTerms = notebookSearchTerm.toLowerCase().split(/\s+/); // split by spa
       return (
-        lowerName.includes(searchTerm.toLowerCase()) ||
+        lowerName.includes(notebookSearchTerm.toLowerCase()) ||
         searchTerms.some((term) => lowerTags.includes(term))
       );
     }
   });
 
   function handleSearch(e) {
-    setSearchTerm(e.target.value);
+    setNotebookSearchTerm(e.target.value);
   }
 
   function handleNewNotebookButtonClick() {
@@ -89,7 +93,7 @@ function NotebooksArea() {
               className=""
               placeholder="Search notebooks"
               type="text"
-              value={searchTerm}
+              value={notebookSearchTerm}
               onChange={handleSearch}
             />
           </div>
@@ -143,13 +147,14 @@ function NotebooksArea() {
       <div className="divider"></div>
 
       <div className="px-8">
-        {searchTerm === "" && filteredNotebooks.length !== 0 ? (
+        {notebookSearchTerm === "" && filteredNotebooks.length !== 0 ? (
           <h3 className="text-xl font-semibold">
             All notebooks ({filteredNotebooks.length})
           </h3>
-        ) : searchTerm !== "" && filteredNotebooks.length !== 0 ? (
+        ) : notebookSearchTerm !== "" && filteredNotebooks.length !== 0 ? (
           <h3 className="text-xl font-semibold">
-            Results for “{searchTerm}” — {filteredNotebooks.length} found
+            Results for “{notebookSearchTerm}” — {filteredNotebooks.length}{" "}
+            found
           </h3>
         ) : (
           ""

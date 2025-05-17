@@ -15,8 +15,8 @@
 15. Allow opening of notebooks
 16. Warn before closing note if changes are unsaved ✅
 17. Open corresponding notebook when user clicks on notebook chip
-18. Rewrite search functionality from scratch.
-19. Put tag text in search bar and perform search when user clicks on a tag chip.
+18. Rewrite search functionality from scratch. 🔃 In progress
+19. Put tag text in search bar and perform search when user clicks on a tag chip. ✅
 20. Autosave functionality ⌚ Postponed
 21. Note referencing functionality ⌚ Postponed
 22. Word count functionality ✅

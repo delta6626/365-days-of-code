@@ -5,6 +5,7 @@ import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
 import { useMessageStore } from "../../store/messageStore";
 import { useUserStore } from "../../store/userStore";
+import { useNoteSearchTermStore } from "../../store/noteSearchTermStore";
 import GridNote from "../components/GridNote";
 import TableNote from "../components/TableNote";
 import GenericModal from "../components/GenericModal";
@@ -18,29 +19,31 @@ function NotesArea() {
   const { userVerified, setUserVerified } = useUserVerifiedStore();
   const { user } = useUserStore();
   const { message, setMessage } = useMessageStore();
-
-  const [searchTerm, setSearchTerm] = useState("");
+  const { noteSearchTerm, setNoteSearchTerm } = useNoteSearchTermStore();
 
   const filteredNotes = notes.filter((note) => {
-    if (searchTerm === "") {
+    if (noteSearchTerm === "") {
       return note;
     } else if (
-      searchTerm.startsWith("notebook:") ||
-      searchTerm.startsWith("book:")
+      noteSearchTerm.startsWith("notebook:") ||
+      noteSearchTerm.startsWith("book:")
     ) {
       // Search by notebook
 
       const thisNoteAssignedTo = note.assignedTo[1].toLowerCase();
-      const searchedNotebook = searchTerm.split(":")[1].trim().toLowerCase();
+      const searchedNotebook = noteSearchTerm
+        .split(":")[1]
+        .trim()
+        .toLowerCase();
       return thisNoteAssignedTo.includes(searchedNotebook);
     } else if (
-      searchTerm.startsWith("tag:") ||
-      searchTerm.startsWith("tags:")
+      noteSearchTerm.startsWith("tag:") ||
+      noteSearchTerm.startsWith("tags:")
     ) {
       // Search by tag
 
       const thisNoteTags = note.tags.map((tag) => tag.toLowerCase());
-      const searchedTags = searchTerm
+      const searchedTags = noteSearchTerm
         .split(":")[1]
         .toLowerCase()
         .trim()
@@ -55,16 +58,16 @@ function NotesArea() {
     } else {
       const lowerName = note.name.toLowerCase();
       const lowerTags = note.tags.map((tag) => tag.toLowerCase());
-      const searchTerms = searchTerm.toLowerCase().split(/\s+/); // split by spa
+      const searchTerms = noteSearchTerm.toLowerCase().split(/\s+/); // split by space
       return (
-        lowerName.includes(searchTerm.toLowerCase()) ||
+        lowerName.includes(noteSearchTerm.toLowerCase()) ||
         searchTerms.some((term) => lowerTags.includes(term))
       );
     }
   });
 
   function handleSearch(e) {
-    setSearchTerm(e.target.value);
+    setNoteSearchTerm(e.target.value);
   }
 
   function handleNewNoteButtonClick() {
@@ -98,7 +101,7 @@ function NotesArea() {
                   className=""
                   placeholder="Search notes"
                   type="text"
-                  value={searchTerm}
+                  value={noteSearchTerm}
                   onChange={handleSearch}
                 />
               </div>
@@ -152,13 +155,13 @@ function NotesArea() {
           <div className="divider"></div>
 
           <div className="px-8">
-            {searchTerm == "" && filteredNotes.length != 0 ? (
+            {noteSearchTerm == "" && filteredNotes.length != 0 ? (
               <h3 className="text-xl font-semibold">
                 All notes ({filteredNotes.length})
               </h3>
-            ) : searchTerm != "" && filteredNotes.length != 0 ? (
+            ) : noteSearchTerm != "" && filteredNotes.length != 0 ? (
               <h3 className="text-xl font-semibold">
-                Results for “{searchTerm}” — {filteredNotes.length} found
+                Results for “{noteSearchTerm}” — {filteredNotes.length} found
               </h3>
             ) : (
               ""

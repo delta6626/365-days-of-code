@@ -210,7 +210,12 @@ function GridNotebook({ notebookObject }) {
       <div className="flex gap-2">
         <div className="flex gap-2 flex-wrap max-w-full overflow-hidden">
           {notebookObject.tags.slice(0, 3).map((tag, index) => (
-            <Tag key={index} tagText={tag} showTagIcon={true} />
+            <Tag
+              key={index}
+              tagText={tag}
+              showTagIcon={true}
+              source={APP_CONSTANTS.SOURCE_NOTEBOOK}
+            />
           ))}
           {notebookObject.tags.length > 3 && (
             <Tag

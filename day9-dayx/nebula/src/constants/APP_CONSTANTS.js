@@ -6,6 +6,8 @@ export const APP_CONSTANTS = {
   SUCCESS: "success",
   SAVE: "Save",
   CLOSE: "Close",
+  SOURCE_NOTE: "note",
+  SOURCE_NOTEBOOK: "notebook",
   NAME_EMPTY: "Enter your name.",
   EMAIL_INVALID: "Enter a valid email address.",
   PASSWORD_LENGTH_SHORT: "Password must be at least 8 characters.",
