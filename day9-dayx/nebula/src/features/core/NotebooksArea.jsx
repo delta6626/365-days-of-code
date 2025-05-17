@@ -11,24 +11,43 @@ import { useEffect, useState } from "react";
 import GridNotebook from "../components/GridNotebook";
 import TableNotebook from "../components/TableNotebook";
 import EditNotebookModal from "../components/EditNotebookModal";
+import { useUserStore } from "../../store/userStore";
 
 function NotebooksArea() {
   const { message } = useMessageStore();
   const { notebooks } = useNotebooksStore();
   const { notesView, setNotesView } = useCurrentNotesViewStore();
   const { userVerified } = useUserVerifiedStore();
+  const { user } = useUserStore();
 
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredNotebooks = notebooks.filter((notebook) => {
-    const lowerName = notebook.name.toLowerCase();
-    const lowerTags = notebook.tags.map((tag) => tag.toLowerCase());
-    const searchTerms = searchTerm.toLowerCase().split(/\s+/); // split by space
+    if (searchTerm.startsWith("tag:") || searchTerm.startsWith("tags:")) {
+      // Search by tag
 
-    return (
-      lowerName.includes(searchTerm.toLowerCase()) ||
-      searchTerms.some((term) => lowerTags.includes(term))
-    );
+      const thisNotebookTags = notebook.tags.map((tag) => tag.toLowerCase());
+      const searchedTags = searchTerm
+        .split(":")[1]
+        .toLowerCase()
+        .trim()
+        .replace(/ {2,}/g, " ")
+        .split(" ");
+
+      if (user.preferences.strictTagMatching) {
+        return searchedTags.every((tag) => thisNotebookTags.includes(tag));
+      } else {
+        return searchedTags.some((tag) => thisNotebookTags.includes(tag));
+      }
+    } else {
+      const lowerName = notebook.name.toLowerCase();
+      const lowerTags = notebook.tags.map((tag) => tag.toLowerCase());
+      const searchTerms = searchTerm.toLowerCase().split(/\s+/); // split by spa
+      return (
+        lowerName.includes(searchTerm.toLowerCase()) ||
+        searchTerms.some((term) => lowerTags.includes(term))
+      );
+    }
   });
 
   function handleSearch(e) {
