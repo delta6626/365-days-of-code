@@ -181,7 +181,7 @@ function DashboardPage() {
       <GenericModal></GenericModal>
       <div
         className={
-          "sideBar h-[100vh] bg-base-300 border-r-1 border-base-100 py-4 flex flex-col ease-in-out duration-200" +
+          "sideBar h-[100vh] bg-base-300 py-4 flex flex-col ease-in-out duration-200" +
           (sideBarCollapsed ? " w-20" : " w-60")
         }
       >
@@ -296,6 +296,7 @@ function DashboardPage() {
           </button>
         </div>
       </div>
+      <div className="divider divider-horizontal m-0"></div>
       {activeTab == APP_CONSTANTS.DASHBOARD_PAGE ? (
         <DashboardArea></DashboardArea>
       ) : activeTab == APP_CONSTANTS.NOTES_PAGE ? (
