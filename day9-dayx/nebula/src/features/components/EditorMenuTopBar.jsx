@@ -1,6 +1,6 @@
 import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
-import { Save, X, Book, FileWarning, CheckCircle2 } from "lucide-react";
+import { Save, X, FileWarning, CheckCircle2 } from "lucide-react";
 import { memo, useEffect, useState } from "react";
 import { objectToDate } from "../../utils/objectToDate";
 import { dateDistanceFromNow } from "../../utils/dateDistanceFromNow";
@@ -13,12 +13,13 @@ import debounce from "lodash.debounce";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useUserStore } from "../../store/userStore";
 import { useMessageStore } from "../../store/messageStore";
+import NotebookChip from "./NotebookChip";
 
-const MemoizedBook = memo(Book);
 const MemoizedFileWarning = memo(FileWarning);
 const MemoizedSave = memo(Save);
 const MemoizedX = memo(X);
 const MemoizedCheckCircle2 = memo(CheckCircle2);
+const MemoizedNotebookChip = memo(NotebookChip);
 
 function EditorMenuTopBar() {
   const { editTargetNote, setEditTargetNote } = useEditTargetNoteStore();
@@ -244,12 +245,10 @@ function EditorMenuTopBar() {
       </div>
       <div className="flex justify-between px-8">
         <div className="text-gray-400 flex items-center gap-4 mt-2">
-          <div className="btn bg-base-100 text-gray-400 flex gap-2 items-center max-w-full">
-            <MemoizedBook size={20} className="flex-shrink-0" />
-            <span className="overflow-hidden whitespace-nowrap text-ellipsis block w-full">
-              {editTargetNote.assignedTo[1]}
-            </span>
-          </div>
+          <MemoizedNotebookChip
+            bookIcon={true}
+            notebookName={editTargetNote.assignedTo[1]}
+          ></MemoizedNotebookChip>
 
           <p> • </p>
 

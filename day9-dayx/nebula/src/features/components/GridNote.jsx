@@ -1,12 +1,4 @@
-import {
-  Book,
-  Clock,
-  FileEdit,
-  PenSquare,
-  Pin,
-  PinOff,
-  Trash2,
-} from "lucide-react";
+import { Clock, FileEdit, PenSquare, Pin, PinOff, Trash2 } from "lucide-react";
 import { dateDistanceFromNow } from "../../utils/dateDistanceFromNow";
 import { objectToDate } from "../../utils/objectToDate";
 import { formatDateDDMMYY } from "../../utils/formatDateDDMMYY";
@@ -19,6 +11,7 @@ import { useEditTargetNoteStore } from "../../store/editTargetNoteStore";
 import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { sanitizeHTML } from "../../utils/sanitizeHTML";
 import { useState } from "react";
+import NotebookChip from "./NotebookChip";
 
 function GridNote({ noteObject }) {
   const { notes, setNotes } = useNotesStore();
@@ -190,12 +183,10 @@ function GridNote({ noteObject }) {
         </div>
       </div>
       <div className="flex gap-4 mt-4 text-gray-400 text-sm">
-        <div className="btn bg-base-100 text-gray-400 flex gap-2 items-center max-w-full">
-          <Book size={20} className="flex-shrink-0" />
-          <span className="overflow-hidden whitespace-nowrap text-ellipsis block w-full">
-            {noteObject.assignedTo[1]}
-          </span>
-        </div>
+        <NotebookChip
+          bookIcon={true}
+          notebookName={noteObject.assignedTo[1]}
+        ></NotebookChip>
       </div>
 
       <div className="flex gap-4 mt-4 text-gray-400 text-sm">

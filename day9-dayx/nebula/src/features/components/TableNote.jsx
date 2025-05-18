@@ -11,6 +11,7 @@ import { useEditTargetNoteStore } from "../../store/editTargetNoteStore";
 import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { sanitizeHTML } from "../../utils/sanitizeHTML";
 import { useState } from "react";
+import NotebookChip from "./NotebookChip";
 
 function TableNote({ id, noteObject }) {
   const { notes, setNotes } = useNotesStore();
@@ -137,11 +138,10 @@ function TableNote({ id, noteObject }) {
         })()}
       </td>
       <td className="break-all">
-        <div className="btn bg-base-100 text-gray-400 flex gap-2 items-center max-w-full">
-          <span className="overflow-hidden whitespace-nowrap text-ellipsis block w-full">
-            {noteObject.assignedTo[1]}
-          </span>
-        </div>
+        <NotebookChip
+          bookIcon={false}
+          notebookName={noteObject.assignedTo[1]}
+        ></NotebookChip>
       </td>
       <td className="">
         <div className="flex flex-wrap items-center gap-2 h-full">
