@@ -248,6 +248,7 @@ function EditorMenuTopBar() {
           <MemoizedNotebookChip
             bookIcon={true}
             notebookName={editTargetNote.assignedTo[1]}
+            source={APP_CONSTANTS.VIEW_NOTE_EDITOR}
           ></MemoizedNotebookChip>
 
           <p> • </p>
