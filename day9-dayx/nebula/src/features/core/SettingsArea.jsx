@@ -575,7 +575,7 @@ function SettingsArea() {
             <Info></Info>
             <p className="ml-2">
               Your custom shortcut might not work due to existing browser
-              shortcuts.
+              shortcuts
             </p>
           </div>
           <div className="divider"></div>
