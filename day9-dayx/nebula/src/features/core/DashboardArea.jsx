@@ -73,7 +73,7 @@ function DashboardArea() {
               ))}
             </div>
           ) : (
-            <div className="collapse-content rounded-lg bg-base-300 p-0 mt-0 overflow-hidden">
+            <div className="collapse-content rounded-lg bg-base-100 p-0 mt-0 overflow-hidden">
               <table className="table">
                 <thead>
                   <tr className="text-lg">
@@ -119,7 +119,7 @@ function DashboardArea() {
               ))}
             </div>
           ) : (
-            <div className="collapse-content rounded-lg bg-base-300 p-0 mt-0 overflow-hidden">
+            <div className="collapse-content rounded-lg bg-base-100 p-0 mt-0 overflow-hidden">
               <table className="table">
                 <thead>
                   <tr className="text-lg">
@@ -149,7 +149,7 @@ function DashboardArea() {
   }, []);
 
   return (
-    <div className="flex-1 h-[100vh] font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin py-4">
+    <div className="flex-1 bg-base-300 h-[100vh] font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin py-4">
       <GenericModal
         id={APP_CONSTANTS.GENERIC_MODAL}
         title={message.title}
@@ -218,8 +218,8 @@ function DashboardArea() {
                   className={
                     "btn btn-square " +
                     (notesView == APP_CONSTANTS.VIEW_GRID
-                      ? "btn-active"
-                      : "btn-ghost")
+                      ? "bg-base-100"
+                      : "bg-base-300")
                   }
                 >
                   <LayoutGrid></LayoutGrid>
@@ -232,8 +232,8 @@ function DashboardArea() {
                   className={
                     "btn btn-square " +
                     (notesView == APP_CONSTANTS.VIEW_TABLE
-                      ? "btn-active"
-                      : "btn-ghost")
+                      ? "bg-base-100"
+                      : "bg-base-300")
                   }
                 >
                   <Table></Table>

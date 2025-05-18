@@ -75,7 +75,7 @@ function NotesArea() {
   }
 
   return (
-    <div className="flex-1 h-[100vh] py-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
+    <div className="flex-1 bg-base-300 h-[100vh] py-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
       <GenericModal
         id={APP_CONSTANTS.GENERIC_MODAL}
         title={message.title}
@@ -183,7 +183,7 @@ function NotesArea() {
               )
             ) : notesView === APP_CONSTANTS.VIEW_TABLE ? (
               filteredNotes.length > 0 ? (
-                <div className="rounded-lg bg-base-300 p-4 mt-4">
+                <div className="rounded-lg bg-base-100 p-4 mt-4">
                   <table className="table">
                     <thead>
                       <tr className="text-lg">

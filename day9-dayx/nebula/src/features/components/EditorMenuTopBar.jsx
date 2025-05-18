@@ -209,7 +209,7 @@ function EditorMenuTopBar() {
         <div className="flex-grow">
           <input
             type="text"
-            className="input shadow-none border-none w-full text-2xl font-bold pl-0 focus:outline-none focus:shadow-none"
+            className="input bg-base-300 shadow-none border-none w-full text-2xl font-bold pl-0 focus:outline-none focus:shadow-none"
             placeholder="Untitled note"
             value={noteName}
             maxLength={150}

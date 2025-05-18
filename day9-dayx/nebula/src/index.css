@@ -27,6 +27,11 @@
   @apply rounded-lg;
 }
 
+.divider::before,
+.divider::after {
+  height: 1px;
+}
+
 * {
   scrollbar-gutter: auto !important;
 }
