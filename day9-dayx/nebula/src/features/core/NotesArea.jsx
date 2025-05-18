@@ -121,7 +121,7 @@ function NotesArea() {
               </div>
             </div>
 
-            <div className="">
+            <div className="flex gap-2">
               <div className="tooltip tooltip-left" data-tip="Grid view">
                 <button
                   onClick={() => setNotesView(APP_CONSTANTS.VIEW_GRID)}

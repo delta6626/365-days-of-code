@@ -211,15 +211,15 @@ function DashboardArea() {
               </div>
             </div>
 
-            <div className="">
+            <div className="flex gap-2">
               <div className="tooltip tooltip-left" data-tip="Grid view">
                 <button
                   onClick={() => setNotesView(APP_CONSTANTS.VIEW_GRID)}
                   className={
                     "btn btn-square " +
                     (notesView == APP_CONSTANTS.VIEW_GRID
-                      ? "bg-base-100"
-                      : "bg-base-300")
+                      ? "btn-active"
+                      : "btn-ghost")
                   }
                 >
                   <LayoutGrid></LayoutGrid>
@@ -232,8 +232,8 @@ function DashboardArea() {
                   className={
                     "btn btn-square " +
                     (notesView == APP_CONSTANTS.VIEW_TABLE
-                      ? "bg-base-100"
-                      : "bg-base-300")
+                      ? "btn-active"
+                      : "btn-ghost")
                   }
                 >
                   <Table></Table>
