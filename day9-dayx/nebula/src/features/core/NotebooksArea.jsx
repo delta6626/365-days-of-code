@@ -85,7 +85,7 @@ function NotebooksArea() {
       <EditNotebookModal></EditNotebookModal>
 
       <div className="flex items-center justify-between px-8">
-        <h1 className="text-3xl font-bold">Notebooks</h1>
+        <h1 className="text-3xl font-bold min-w-[200px]">Notebooks</h1>
         <div className="flex">
           <div className="w-2xl input focus-within:input-primary">
             <Search className="text-gray-400" />
