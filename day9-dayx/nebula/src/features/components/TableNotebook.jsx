@@ -9,6 +9,8 @@ import { useNotesStore } from "../../store/notesStore";
 import { useNotebooksStore } from "../../store/notebooksStore";
 import { useMessageStore } from "../../store/messageStore";
 import { useEditTargetNotebookStore } from "../../store/editTargetNotebookStore";
+import { useActiveTabStore } from "../../store/activeTabStore";
+import { useNoteSearchTermStore } from "../../store/noteSearchTermStore";
 import {
   hardDeleteNotebookAndLinkedNotes,
   updateNotebookPinStatus,
@@ -20,6 +22,8 @@ function TableNotebook({ id, notebookObject }) {
   const { message, setMessage } = useMessageStore();
   const { editTargetNotebook, setEditTargetNotebook } =
     useEditTargetNotebookStore();
+  const { setActiveTab } = useActiveTabStore();
+  const { setNoteSearchTerm } = useNoteSearchTermStore();
 
   const [updatingPin, setUpdatingPin] = useState(false);
   const [deletingNotebook, setDeletingNotebook] = useState(false);
@@ -102,12 +106,14 @@ function TableNotebook({ id, notebookObject }) {
       });
   }
 
-  function handleNotebookEditButtonClick() {
+  function handleNotebookEditButtonClick(e) {
+    e.stopPropagation();
     setEditTargetNotebook(notebookObject);
     document.getElementById(APP_CONSTANTS.EDIT_NOTEBOOK_MODAL).showModal();
   }
 
-  function handleDeleteButtonClick() {
+  function handleDeleteButtonClick(e) {
+    e.stopPropagation();
     setMessage({
       title: APP_CONSTANTS.DELETE_NOTEBOOK_MODAL_TITLE,
       textContent: APP_CONSTANTS.DELETE_NOTEBOOK_MODAL_TEXT_CONTENT,
@@ -127,8 +133,16 @@ function TableNotebook({ id, notebookObject }) {
     document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
   }
 
+  function handleNotebookClick() {
+    setNoteSearchTerm("book: " + notebookObject.name);
+    setActiveTab(APP_CONSTANTS.NOTES_PAGE);
+  }
+
   return (
-    <tr className="hover:bg-base-200 cursor-pointer">
+    <tr
+      className="hover:bg-base-200 cursor-pointer"
+      onClick={handleNotebookClick}
+    >
       <th className="font-normal">{id + 1}</th>
       <td className="text-lg break-all" title={notebookObject.name}>
         {notebookObject.name}
@@ -178,7 +192,10 @@ function TableNotebook({ id, notebookObject }) {
             <button
               className="btn btn-square"
               disabled={updatingPin}
-              onClick={() => handleNotebookPinAndUnpin(notebookObject.id)}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleNotebookPinAndUnpin(notebookObject.id);
+              }}
             >
               {updatingPin ? (
                 <span className="loading loading-spinner"></span>

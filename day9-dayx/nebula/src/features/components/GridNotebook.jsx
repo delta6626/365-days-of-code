@@ -14,6 +14,8 @@ import { useNotebooksStore } from "../../store/notebooksStore";
 import { useNotesStore } from "../../store/notesStore";
 import { useMessageStore } from "../../store/messageStore";
 import { useEditTargetNotebookStore } from "../../store/editTargetNotebookStore";
+import { useActiveTabStore } from "../../store/activeTabStore";
+import { useNoteSearchTermStore } from "../../store/noteSearchTermStore";
 
 function GridNotebook({ notebookObject }) {
   const { notes, setNotes } = useNotesStore();
@@ -21,6 +23,8 @@ function GridNotebook({ notebookObject }) {
   const { message, setMessage } = useMessageStore();
   const { editTargetNotebook, setEditTargetNotebook } =
     useEditTargetNotebookStore();
+  const { setActiveTab } = useActiveTabStore();
+  const { setNoteSearchTerm } = useNoteSearchTermStore();
 
   const [updatingPin, setUpdatingPin] = useState(false);
   const [deletingNotebook, setDeletingNotebook] = useState(false);
@@ -103,12 +107,14 @@ function GridNotebook({ notebookObject }) {
       });
   }
 
-  function handleNotebookEditButtonClick() {
+  function handleNotebookEditButtonClick(e) {
+    e.stopPropagation();
     setEditTargetNotebook(notebookObject);
     document.getElementById(APP_CONSTANTS.EDIT_NOTEBOOK_MODAL).showModal();
   }
 
-  function handleDeleteButtonClick() {
+  function handleDeleteButtonClick(e) {
+    e.stopPropagation();
     setMessage({
       title: APP_CONSTANTS.DELETE_NOTEBOOK_MODAL_TITLE,
       textContent: APP_CONSTANTS.DELETE_NOTEBOOK_MODAL_TEXT_CONTENT,
@@ -128,8 +134,16 @@ function GridNotebook({ notebookObject }) {
     document.getElementById(APP_CONSTANTS.GENERIC_MODAL).showModal();
   }
 
+  function handleNotebookClick() {
+    setNoteSearchTerm("book: " + notebookObject.name);
+    setActiveTab(APP_CONSTANTS.NOTES_PAGE);
+  }
+
   return (
-    <div className="w-sm bg-base-300 rounded-lg p-4 select-none">
+    <div
+      className="w-sm bg-base-300 rounded-lg p-4 select-none cursor-pointer"
+      onClick={handleNotebookClick}
+    >
       <div className="flex gap-2 items-center justify-between">
         <h3
           className="text-xl font-semibold overflow-hidden whitespace-nowrap truncate"
@@ -149,7 +163,8 @@ function GridNotebook({ notebookObject }) {
             <button
               className="btn btn-square"
               disabled={updatingPin}
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 handleNotebookPinAndUnpin();
               }}
             >
