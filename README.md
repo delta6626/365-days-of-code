@@ -47,6 +47,7 @@ I'll try to update this as I go.
 - Day 29 ✅: Implemented shortcuts for => closing note/notebook, saving, creating notes and notebooks, polished ui, fixed bugs
 - Day 30 ✅: Implemented warning modal before closing unsaved note, autospacing (can be enabled or disabled), word count, minor style changes, bug fixes
 - Day 31 ✅: Improved search with tags: and book: prefixes, added strict tag matching option, fixed word counter bug, and made tag clicks autofill the search bar
+- Day 32 ✅: Implemented notebook-based note filtering via clickable cards, rows, and chips using book: prefix; improved themes and refactored notebook chips into a reusable component
 ---
 
 ## 📌 Notes
