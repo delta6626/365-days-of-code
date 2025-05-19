@@ -70,20 +70,6 @@ function NotebooksArea() {
 
   return (
     <div className="flex-1 bg-base-300 h-[100vh] font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin py-4">
-      <GenericModal
-        id={APP_CONSTANTS.GENERIC_MODAL}
-        title={message.title}
-        textContent={message.textContent}
-        firstButtonClassName={message.firstButtonClassName}
-        secondButtonClassName={message.secondButtonClassName}
-        firstButtonOnClick={message.firstButtonOnClick}
-        secondButtonOnClick={message.secondButtonOnClick}
-        firstButtonText={message.firstButtonText}
-        secondButtonText={message.secondButtonText}
-      />
-      <EditNoteModal />
-      <EditNotebookModal></EditNotebookModal>
-
       <div className="flex items-center justify-between px-8">
         <h1 className="text-3xl font-bold min-w-[200px]">Notebooks</h1>
         <div className="flex">

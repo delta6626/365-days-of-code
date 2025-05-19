@@ -31,19 +31,23 @@ import { useNotebooksStore } from "../../store/notebooksStore";
 import { useNotesStore } from "../../store/notesStore";
 import { useActiveTabStore } from "../../store/activeTabStore";
 import { useHotkeys } from "react-hotkeys-hook";
+import { useMessageStore } from "../../store/messageStore";
 import CreateNoteModal from "../components/CreateNoteModal";
 import CreateNotebookModal from "../components/CreateNotebookModal";
 import GenericModal from "../components/GenericModal";
 import UntaggedIcon from "../../assets/UntaggedIcon";
+import EditNoteModal from "../components/EditNoteModal";
+import EditNotebookModal from "../components/EditNotebookModal";
 
 function DashboardPage() {
   const navigate = useNavigate();
 
   const { user, setUser } = useUserStore();
   const { userVerified, setUserVerified } = useUserVerifiedStore();
-  const { notebooks, setNotebooks } = useNotebooksStore();
-  const { notes, setNotes } = useNotesStore();
+  const { setNotebooks } = useNotebooksStore();
+  const { setNotes } = useNotesStore();
   const { activeTab, setActiveTab } = useActiveTabStore();
+  const { message } = useMessageStore();
 
   const [sideBarCollapsed, setSideBarCollapsed] = useState(false);
 
@@ -208,7 +212,19 @@ function DashboardPage() {
     <div className="flex font-jakarta">
       <CreateNoteModal></CreateNoteModal>
       <CreateNotebookModal></CreateNotebookModal>
-      <GenericModal></GenericModal>
+      <GenericModal
+        id={APP_CONSTANTS.GENERIC_MODAL}
+        title={message.title}
+        textContent={message.textContent}
+        firstButtonClassName={message.firstButtonClassName}
+        secondButtonClassName={message.secondButtonClassName}
+        firstButtonOnClick={message.firstButtonOnClick}
+        secondButtonOnClick={message.secondButtonOnClick}
+        firstButtonText={message.firstButtonText}
+        secondButtonText={message.secondButtonText}
+      ></GenericModal>
+      <EditNoteModal></EditNoteModal>
+      <EditNotebookModal></EditNotebookModal>
       <div
         className={
           "sideBar h-[100vh] bg-base-300 py-4 flex flex-col ease-in-out duration-200" +

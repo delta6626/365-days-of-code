@@ -76,18 +76,6 @@ function NotesArea() {
 
   return (
     <div className="flex-1 bg-base-300 h-[100vh] py-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
-      <GenericModal
-        id={APP_CONSTANTS.GENERIC_MODAL}
-        title={message.title}
-        textContent={message.textContent}
-        firstButtonClassName={message.firstButtonClassName}
-        secondButtonClassName={message.secondButtonClassName}
-        firstButtonOnClick={message.firstButtonOnClick}
-        secondButtonOnClick={message.secondButtonOnClick}
-        firstButtonText={message.firstButtonText}
-        secondButtonText={message.secondButtonText}
-      ></GenericModal>
-      <EditNoteModal></EditNoteModal>
       {notesView == APP_CONSTANTS.VIEW_NOTE_EDITOR ? (
         <NoteEditor></NoteEditor>
       ) : (
