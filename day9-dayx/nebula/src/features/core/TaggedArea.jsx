@@ -169,7 +169,7 @@ function TaggedArea() {
             filteredTaggedNotebooks.length === 0 ? (
               <div className="flex justify-center items-center h-[calc(100vh-8rem)] text-gray-400 mt-4 select-none">
                 <p className="whitespace-pre-line text-center">
-                  {APP_CONSTANTS.NO_NOTES}
+                  {APP_CONSTANTS.NO_TAGGED_ITEMS}
                 </p>
               </div>
             ) : (

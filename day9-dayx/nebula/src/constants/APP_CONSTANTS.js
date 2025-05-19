@@ -33,6 +33,8 @@ export const APP_CONSTANTS = {
   NOTES_PAGE: "notes",
   NO_NOTES:
     "No notes in sight. Maybe they’re on vacation? \n Let’s bring new ones to life!",
+  NO_TAGGED_ITEMS:
+    "Hmmm... it looks like you haven’t tagged anything yet.\nBut hey, it's never too late to stay organized.",
   NOTEBOOKS_PAGE: "notebooks",
   SETTINGS_PAGE: "settings",
   TAGGED_ITEMS: "taggedItems",
