@@ -1,4 +1,13 @@
-import { ArrowLeft, File, LayoutPanelTop, Book, Settings } from "lucide-react";
+import {
+  ArrowLeft,
+  File,
+  LayoutPanelTop,
+  Book,
+  Settings,
+  Tag,
+  Pin,
+  PinOff,
+} from "lucide-react";
 import { useUserStore } from "../../store/userStore";
 import {
   getAllNotebooks,
@@ -13,6 +22,10 @@ import DashboardArea from "./DashboardArea";
 import NotesArea from "./NotesArea";
 import NotebooksArea from "./NotebooksArea";
 import SettingsArea from "./SettingsArea";
+import TaggedArea from "./TaggedArea";
+import UntaggedArea from "./UntaggedArea";
+import PinnedArea from "./PinnedArea";
+import UnpinnedArea from "./UnpinnedArea";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
 import { useNotebooksStore } from "../../store/notebooksStore";
 import { useNotesStore } from "../../store/notesStore";
@@ -21,6 +34,7 @@ import { useHotkeys } from "react-hotkeys-hook";
 import CreateNoteModal from "../components/CreateNoteModal";
 import CreateNotebookModal from "../components/CreateNotebookModal";
 import GenericModal from "../components/GenericModal";
+import UntaggedIcon from "../../assets/UntaggedIcon";
 
 function DashboardPage() {
   const navigate = useNavigate();
@@ -47,6 +61,22 @@ function DashboardPage() {
 
   function handleNotebooksButtonClick() {
     setActiveTab(APP_CONSTANTS.NOTEBOOKS_PAGE);
+  }
+
+  function handleTaggedClick() {
+    setActiveTab(APP_CONSTANTS.TAGGED_ITEMS);
+  }
+
+  function handleUntaggedClick() {
+    setActiveTab(APP_CONSTANTS.UNTAGGED_ITEMS);
+  }
+
+  function handlePinnedClick() {
+    setActiveTab(APP_CONSTANTS.PINNED_ITEMS);
+  }
+
+  function handleUnpinnedClick() {
+    setActiveTab(APP_CONSTANTS.UNPINNED_ITEMS);
   }
 
   function handleSettingsButtonClick() {
@@ -271,8 +301,98 @@ function DashboardPage() {
               </>
             )}
           </button>
+
+          <div className="divider"></div>
+
+          <button
+            className={
+              activeTab == APP_CONSTANTS.TAGGED_ITEMS
+                ? `btn btn-wide btn-primary ${
+                    sideBarCollapsed ? "justify-center" : "justify-start"
+                  } flex items-center`
+                : `btn btn-wide mt-2 ${
+                    sideBarCollapsed ? "justify-center" : "justify-start"
+                  } flex items-center`
+            }
+            onClick={handleTaggedClick}
+          >
+            {sideBarCollapsed ? (
+              <Tag className="shrink-0" />
+            ) : (
+              <>
+                <Tag className="shrink-0" />
+                <p>Tagged</p>
+              </>
+            )}
+          </button>
+
+          <button
+            className={
+              activeTab == APP_CONSTANTS.UNTAGGED_ITEMS
+                ? `btn btn-wide btn-primary mt-2 ${
+                    sideBarCollapsed ? "justify-center" : "justify-start"
+                  } flex items-center`
+                : `btn btn-wide mt-2 ${
+                    sideBarCollapsed ? "justify-center" : "justify-start"
+                  } flex items-center`
+            }
+            onClick={handleUntaggedClick}
+          >
+            {sideBarCollapsed ? (
+              <UntaggedIcon className={"shrink-0"} />
+            ) : (
+              <>
+                <UntaggedIcon className={"shrink-0"} />
+                <p>Untagged</p>
+              </>
+            )}
+          </button>
+          <button
+            className={
+              activeTab == APP_CONSTANTS.PINNED_ITEMS
+                ? `btn btn-wide btn-primary mt-2 ${
+                    sideBarCollapsed ? "justify-center" : "justify-start"
+                  } flex items-center`
+                : `btn btn-wide mt-2 ${
+                    sideBarCollapsed ? "justify-center" : "justify-start"
+                  } flex items-center`
+            }
+            onClick={handlePinnedClick}
+          >
+            {sideBarCollapsed ? (
+              <Pin className="shrink-0" />
+            ) : (
+              <>
+                <Pin className="shrink-0" />
+                <p>Pinned</p>
+              </>
+            )}
+          </button>
+          <button
+            className={
+              activeTab == APP_CONSTANTS.UNPINNED_ITEMS
+                ? `btn btn-wide btn-primary mt-2 ${
+                    sideBarCollapsed ? "justify-center" : "justify-start"
+                  } flex items-center`
+                : `btn btn-wide mt-2 ${
+                    sideBarCollapsed ? "justify-center" : "justify-start"
+                  } flex items-center`
+            }
+            onClick={handleUnpinnedClick}
+          >
+            {sideBarCollapsed ? (
+              <PinOff className="shrink-0" />
+            ) : (
+              <>
+                <PinOff className="shrink-0" />
+                <p>Unpinned</p>
+              </>
+            )}
+          </button>
         </div>
-        <div className="bottomButtons flex items-center justify-between px-4">
+        <div className="bottomButtons flex flex-col justify-between px-4">
+          <div className="divider"></div>
+
           <button
             className={
               activeTab == APP_CONSTANTS.SETTINGS_PAGE
@@ -305,6 +425,14 @@ function DashboardPage() {
         <NotebooksArea></NotebooksArea>
       ) : activeTab == APP_CONSTANTS.SETTINGS_PAGE ? (
         <SettingsArea></SettingsArea>
+      ) : activeTab == APP_CONSTANTS.TAGGED_ITEMS ? (
+        <TaggedArea></TaggedArea>
+      ) : activeTab == APP_CONSTANTS.UNTAGGED_ITEMS ? (
+        <UntaggedArea></UntaggedArea>
+      ) : activeTab == APP_CONSTANTS.PINNED_ITEMS ? (
+        <PinnedArea></PinnedArea>
+      ) : activeTab == APP_CONSTANTS.UNPINNED_ITEMS ? (
+        <UnpinnedArea></UnpinnedArea>
       ) : (
         ""
       )}
