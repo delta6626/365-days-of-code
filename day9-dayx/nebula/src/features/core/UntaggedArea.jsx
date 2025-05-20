@@ -140,7 +140,13 @@ function UntaggedArea() {
                     {/* Grid Notes */}
                     {filteredUntaggedNotes.length > 0 && (
                       <>
-                        <h2 className="text-xl font-semibold mt-4">
+                        <h2
+                          className={
+                            filteredUntaggedNotebooks.length == 0
+                              ? "text-xl font-semibold"
+                              : "text-xl font-semibold mt-4"
+                          }
+                        >
                           {`Notes (${filteredUntaggedNotes.length})`}
                         </h2>
                         <div className="flex flex-wrap gap-5">

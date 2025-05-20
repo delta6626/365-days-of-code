@@ -36,6 +36,8 @@ export const APP_CONSTANTS = {
   NO_TAGGED_ITEMS:
     "Hmmm... it looks like you haven’t tagged anything yet.\nBut hey, it's never too late to stay organized.",
   NO_UNTAGGED_ITEMS: "Good news! You don't have any unntagged items.",
+  NO_PINNED_ITEMS:
+    "Nothing pinned yet. Got a favorite? Hit \n the pin icon to keep it close.",
   NOTEBOOKS_PAGE: "notebooks",
   SETTINGS_PAGE: "settings",
   TAGGED_ITEMS: "taggedItems",
