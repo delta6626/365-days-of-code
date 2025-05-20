@@ -6,7 +6,7 @@ import {
   Settings,
   Tag,
   Pin,
-  PinOff,
+  Clock,
 } from "lucide-react";
 import { useUserStore } from "../../store/userStore";
 import {
@@ -25,7 +25,7 @@ import SettingsArea from "./SettingsArea";
 import TaggedArea from "./TaggedArea";
 import UntaggedArea from "./UntaggedArea";
 import PinnedArea from "./PinnedArea";
-import UnpinnedArea from "./UnpinnedArea";
+import RecentArea from "./RecentArea";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
 import { useNotebooksStore } from "../../store/notebooksStore";
 import { useNotesStore } from "../../store/notesStore";
@@ -79,8 +79,8 @@ function DashboardPage() {
     setActiveTab(APP_CONSTANTS.PINNED_ITEMS);
   }
 
-  function handleUnpinnedClick() {
-    setActiveTab(APP_CONSTANTS.UNPINNED_ITEMS);
+  function handleRecentClick() {
+    setActiveTab(APP_CONSTANTS.RECENT_ITEMS);
   }
 
   function handleSettingsButtonClick() {
@@ -394,14 +394,14 @@ function DashboardPage() {
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
             }
-            onClick={handleUnpinnedClick}
+            onClick={handleRecentClick}
           >
             {sideBarCollapsed ? (
-              <PinOff className="shrink-0" />
+              <Clock className="shrink-0" />
             ) : (
               <>
-                <PinOff className="shrink-0" />
-                <p>Unpinned</p>
+                <Clock className="shrink-0" />
+                <p>Recent</p>
               </>
             )}
           </button>
@@ -447,8 +447,8 @@ function DashboardPage() {
         <UntaggedArea></UntaggedArea>
       ) : activeTab == APP_CONSTANTS.PINNED_ITEMS ? (
         <PinnedArea></PinnedArea>
-      ) : activeTab == APP_CONSTANTS.UNPINNED_ITEMS ? (
-        <UnpinnedArea></UnpinnedArea>
+      ) : activeTab == APP_CONSTANTS.RECENT_ITEMS ? (
+        <RecentArea></RecentArea>
       ) : (
         ""
       )}

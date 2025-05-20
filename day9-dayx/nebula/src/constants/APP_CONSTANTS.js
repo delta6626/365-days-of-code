@@ -40,7 +40,7 @@ export const APP_CONSTANTS = {
   TAGGED_ITEMS: "taggedItems",
   UNTAGGED_ITEMS: "untaggedItems",
   PINNED_ITEMS: "pinnedItems",
-  UNPINNED_ITEMS: "unpinnedItems",
+  RECENT_ITEMS: "recentItems",
   VIEW_GRID: "gridView",
   VIEW_TABLE: "tableView",
   NOTE_EDITOR_PLACEHOLDER: "Write something...",
