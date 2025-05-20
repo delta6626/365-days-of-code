@@ -67,7 +67,10 @@ function TableNotebook({ id, notebookObject }) {
         setNotes(
           notes.filter(
             (note) =>
-              note.assignedTo == [notebookObject.id, notebookObject.name]
+              !(
+                note.assignedTo[0] === notebookObject.id &&
+                note.assignedTo[1] === notebookObject.name
+              )
           )
         );
         setNotebooks(

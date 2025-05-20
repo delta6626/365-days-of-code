@@ -68,7 +68,10 @@ function GridNotebook({ notebookObject }) {
         setNotes(
           notes.filter(
             (note) =>
-              note.assignedTo == [notebookObject.id, notebookObject.name]
+              !(
+                note.assignedTo[0] === notebookObject.id &&
+                note.assignedTo[1] === notebookObject.name
+              )
           )
         );
         setNotebooks(
@@ -137,6 +140,9 @@ function GridNotebook({ notebookObject }) {
   function handleNotebookClick() {
     setNoteSearchTerm("book: " + notebookObject.name);
     setActiveTab(APP_CONSTANTS.NOTES_PAGE);
+    notes.forEach((note) => {
+      console.log(note.name, note.assignedTo[0] === notebookObject.id);
+    });
   }
 
   return (
