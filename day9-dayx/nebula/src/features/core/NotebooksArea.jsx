@@ -71,7 +71,7 @@ function NotebooksArea() {
   return (
     <div className="flex-1 bg-base-300 h-[100vh] font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin py-4">
       <div className="flex items-center justify-between px-8">
-        <h1 className="text-3xl font-bold min-w-[200px]">Notebooks</h1>
+        <h1 className="text-3xl font-bold">Notebooks</h1>
         <div className="flex">
           <div className="w-2xl input focus-within:input-primary">
             <Search className="text-gray-400" />

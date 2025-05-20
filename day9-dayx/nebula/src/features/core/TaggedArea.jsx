@@ -116,7 +116,7 @@ function TaggedArea() {
         <>
           {/* Header */}
           <div className="flex items-center justify-between px-8">
-            <h1 className="text-3xl font-bold min-w-[200px]">Tagged</h1>
+            <h1 className="text-3xl font-bold">Tagged</h1>
             <div className="flex">
               <div className="w-2xl input focus-within:input-primary">
                 <Search className="text-gray-400" />
