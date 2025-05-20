@@ -153,19 +153,18 @@ function EditorMenuTopBar() {
     if (!editor) return;
 
     function updateFunction({ editor }) {
-      if (editor.getHTML() === "<p></p>" && editTargetNote.content === "") {
+      const html = editor.getHTML();
+      const original = editTargetNote.content;
+
+      if ((html === "<p></p>" && original === "") || html === original) {
         setnoteContentDelta(false);
-      }
-      if (editor.getHTML() !== editTargetNote.content) {
-        setnoteContentDelta(true);
       } else {
-        setnoteContentDelta(false);
+        setnoteContentDelta(true);
       }
 
-      let text = editor.getText();
-      if (text == "") {
+      const text = editor.getText();
+      if (text === "") {
         setWordCount(0);
-        return;
       } else {
         setWordCount(text.trim().split(" ").length);
       }
