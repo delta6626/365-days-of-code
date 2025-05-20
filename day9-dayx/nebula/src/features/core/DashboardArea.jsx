@@ -27,122 +27,13 @@ function DashboardArea() {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  const pinnedNotes = notes.filter((note) => note.pinned === true);
-  const pinnedNotebooks = notebooks.filter(
-    (notebook) => notebook.pinned === true
-  );
-  const taggedNotes = notes.filter((note) => note.tags.length > 0);
-  const untaggedNotes = notes.filter((note) => note.tags.length === 0);
-  const recentNotes = notes
-    .filter((note) => {
-      return (
-        new Date().getTime() - objectToDate(note.lastEditDate).getTime() <=
-        592200000 // 7 day time window
-      );
-    })
-    .slice(0, APP_CONSTANTS.RECENT_LIMIT);
-
-  const handleSearch = (e) => {
+  function handleSearch(e) {
     setSearchTerm(e.target.value);
-  };
-
-  function handleNewNoteButtonClick() {
-    document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).showModal();
   }
 
-  function handleNewNotebookButtonClick() {
-    document.getElementById(APP_CONSTANTS.CREATE_NOTEBOOK_MODAL).showModal();
-  }
+  function handleNewNotebookButtonClick() {}
 
-  const renderNoteSection = (title, noteList) => {
-    if (noteList.length === 0) {
-      return;
-    }
-
-    return (
-      <div className="px-8">
-        <div className="collapse collapse-arrow mt-8 p-0">
-          <input type="checkbox"></input>
-          <div className="collapse-title text-xl font-semibold p-0">
-            {title} ({noteList.length})
-          </div>
-          {notesView === APP_CONSTANTS.VIEW_GRID ? (
-            <div className="collapse-content flex gap-5 flex-wrap mt-0 p-0">
-              {noteList.map((note, id) => (
-                <GridNote key={id} noteObject={note} />
-              ))}
-            </div>
-          ) : (
-            <div className="collapse-content rounded-lg bg-base-100 p-0 mt-0 overflow-hidden">
-              <table className="table">
-                <thead>
-                  <tr className="text-lg">
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Content</th>
-                    <th>Notebook</th>
-                    <th>Tags</th>
-                    <th>Created</th>
-                    <th>Last edited</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {noteList.map((note, id) => (
-                    <TableNote key={id} id={id} noteObject={note} />
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </div>
-      </div>
-    );
-  };
-
-  const renderNotebookSection = (title, notebookList) => {
-    if (notebookList.length === 0) {
-      return;
-    }
-
-    return (
-      <div className="px-8">
-        <div className="collapse collapse-arrow mt-8 p-0">
-          <input type="checkbox"></input>
-          <div className="collapse-title text-xl font-semibold p-0">
-            {title} ({notebookList.length})
-          </div>
-          {notesView === APP_CONSTANTS.VIEW_GRID ? (
-            <div className="collapse-content flex gap-5 flex-wrap mt-0 p-0">
-              {notebookList.map((notebook, id) => (
-                <GridNotebook key={id} notebookObject={notebook} />
-              ))}
-            </div>
-          ) : (
-            <div className="collapse-content rounded-lg bg-base-100 p-0 mt-0 overflow-hidden">
-              <table className="table">
-                <thead>
-                  <tr className="text-lg">
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Tags</th>
-                    <th>Created</th>
-                    <th>Last edited</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {notebookList.map((notebook, id) => (
-                    <TableNotebook key={id} id={id} notebookObject={notebook} />
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </div>
-      </div>
-    );
-  };
+  function handleNewNoteButtonClick() {}
 
   useEffect(() => {
     setNotesView(APP_CONSTANTS.VIEW_GRID);
@@ -243,12 +134,6 @@ function DashboardArea() {
           </div>
 
           <div className="divider" />
-
-          {renderNoteSection("Pinned notes", pinnedNotes)}
-          {renderNotebookSection("Pinned notebooks", pinnedNotebooks)}
-          {renderNoteSection("Recent notes", recentNotes)}
-          {renderNoteSection("Tagged notes", taggedNotes)}
-          {renderNoteSection("Untagged notes", untaggedNotes)}
         </div>
       )}
     </div>

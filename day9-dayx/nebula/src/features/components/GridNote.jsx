@@ -1,7 +1,15 @@
-import { Clock, FileEdit, PenSquare, Pin, PinOff, Trash2 } from "lucide-react";
+import {
+  Clock,
+  Ellipsis,
+  FileEdit,
+  PenSquare,
+  Pin,
+  PinOff,
+  Trash2,
+} from "lucide-react";
 import { dateDistanceFromNow } from "../../utils/dateDistanceFromNow";
 import { objectToDate } from "../../utils/objectToDate";
-import { formatDateDDMMYY } from "../../utils/formatDateDDMMYY";
+import { formatDateMonthDayYear } from "../../utils/formatDateMonthDayYear";
 import Tag from "./Tag";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useNotesStore } from "../../store/notesStore";
@@ -128,12 +136,15 @@ function GridNote({ noteObject }) {
     >
       <div className="flex gap-2 items-center justify-between">
         <h3
-          className="text-xl font-semibold overflow-hidden whitespace-nowrap truncate"
+          className="text-2xl font-semibold overflow-hidden whitespace-nowrap truncate"
           title={noteObject.name}
         >
           {noteObject.name}
         </h3>
-        <div className="flex gap-2">
+
+        {/* Previous layout of action items */}
+
+        {/* <div className="flex gap-2">
           <div
             className="tooltip"
             data-tip={
@@ -180,6 +191,73 @@ function GridNote({ noteObject }) {
               )}
             </button>
           </div>
+        </div> */}
+
+        {/* New layour for action items */}
+
+        <div
+          className="dropdown"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <div tabIndex={0} role="button" className="btn btn-square">
+            {updatingPin || deletingNote ? (
+              <span
+                className={
+                  deletingNote
+                    ? "loading loading-spinner text-error"
+                    : "loading loading-spinner"
+                }
+              ></span>
+            ) : (
+              <Ellipsis />
+            )}
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu bg-base-200 rounded-box z-1 w-42 p-2 shadow-sm mt-2"
+          >
+            <button
+              className="btn flex justify-start"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleNotePinAndUnpin(noteObject.id);
+              }}
+              disabled={updatingPin}
+            >
+              {noteObject.pinned ? (
+                <div className="flex gap-2">
+                  <PinOff size={20}></PinOff>
+                  Unpin note
+                </div>
+              ) : (
+                <div className="flex gap-2">
+                  <Pin size={20}></Pin>
+                  Pin note
+                </div>
+              )}
+            </button>
+            <button
+              className="btn flex justify-start"
+              onClick={handleNoteEditButtonClick}
+            >
+              <FileEdit size={20}></FileEdit>
+              Edit note
+            </button>
+            <button
+              className="btn text-error flex justify-start"
+              onClick={handleDeleteButtonClick}
+              disabled={deletingNote}
+            >
+              {
+                <div className="flex gap-2">
+                  <Trash2 size={20} />
+                  Delete note
+                </div>
+              }
+            </button>
+          </ul>
         </div>
       </div>
       <div className="flex gap-4 mt-4 text-gray-400 text-sm">
@@ -188,11 +266,10 @@ function GridNote({ noteObject }) {
           notebookName={noteObject.assignedTo[1]}
         ></NotebookChip>
       </div>
-
       <div className="flex gap-4 mt-4 text-gray-400 text-sm">
         <p className="flex gap-2 items-center">
           <Clock size={20} />
-          {formatDateDDMMYY(objectToDate(noteObject.creationDate))}
+          {formatDateMonthDayYear(objectToDate(noteObject.creationDate))}
         </p>
 
         <p className="flex gap-2 items-center">
@@ -201,7 +278,7 @@ function GridNote({ noteObject }) {
         </p>
       </div>
       <div className="divider"></div>
-      <div className="">
+      <div className="text-gray-400">
         <p
           className={
             noteObject.tags.length != 0 ? "line-clamp-3" : "line-clamp-3 mb-4"
