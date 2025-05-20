@@ -386,7 +386,7 @@ function DashboardPage() {
           </button>
           <button
             className={
-              activeTab == APP_CONSTANTS.UNPINNED_ITEMS
+              activeTab == APP_CONSTANTS.RECENT_ITEMS
                 ? `btn btn-wide btn-primary mt-2 ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
