@@ -322,8 +322,50 @@ function DashboardPage() {
 
           <button
             className={
-              activeTab == APP_CONSTANTS.TAGGED_ITEMS
+              activeTab == APP_CONSTANTS.PINNED_ITEMS
                 ? `btn btn-wide btn-primary ${
+                    sideBarCollapsed ? "justify-center" : "justify-start"
+                  } flex items-center`
+                : `btn btn-wide mt-2 ${
+                    sideBarCollapsed ? "justify-center" : "justify-start"
+                  } flex items-center`
+            }
+            onClick={handlePinnedClick}
+          >
+            {sideBarCollapsed ? (
+              <Pin className="shrink-0" />
+            ) : (
+              <>
+                <Pin className="shrink-0" />
+                <p>Pinned</p>
+              </>
+            )}
+          </button>
+          <button
+            className={
+              activeTab == APP_CONSTANTS.RECENT_ITEMS
+                ? `btn btn-wide btn-primary mt-2 ${
+                    sideBarCollapsed ? "justify-center" : "justify-start"
+                  } flex items-center`
+                : `btn btn-wide mt-2 ${
+                    sideBarCollapsed ? "justify-center" : "justify-start"
+                  } flex items-center`
+            }
+            onClick={handleRecentClick}
+          >
+            {sideBarCollapsed ? (
+              <Clock className="shrink-0" />
+            ) : (
+              <>
+                <Clock className="shrink-0" />
+                <p>Recent</p>
+              </>
+            )}
+          </button>
+          <button
+            className={
+              activeTab == APP_CONSTANTS.TAGGED_ITEMS
+                ? `btn btn-wide btn-primary mt-2 ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
                 : `btn btn-wide mt-2 ${
@@ -360,48 +402,6 @@ function DashboardPage() {
               <>
                 <UntaggedIcon className={"shrink-0"} />
                 <p>Untagged</p>
-              </>
-            )}
-          </button>
-          <button
-            className={
-              activeTab == APP_CONSTANTS.PINNED_ITEMS
-                ? `btn btn-wide btn-primary mt-2 ${
-                    sideBarCollapsed ? "justify-center" : "justify-start"
-                  } flex items-center`
-                : `btn btn-wide mt-2 ${
-                    sideBarCollapsed ? "justify-center" : "justify-start"
-                  } flex items-center`
-            }
-            onClick={handlePinnedClick}
-          >
-            {sideBarCollapsed ? (
-              <Pin className="shrink-0" />
-            ) : (
-              <>
-                <Pin className="shrink-0" />
-                <p>Pinned</p>
-              </>
-            )}
-          </button>
-          <button
-            className={
-              activeTab == APP_CONSTANTS.RECENT_ITEMS
-                ? `btn btn-wide btn-primary mt-2 ${
-                    sideBarCollapsed ? "justify-center" : "justify-start"
-                  } flex items-center`
-                : `btn btn-wide mt-2 ${
-                    sideBarCollapsed ? "justify-center" : "justify-start"
-                  } flex items-center`
-            }
-            onClick={handleRecentClick}
-          >
-            {sideBarCollapsed ? (
-              <Clock className="shrink-0" />
-            ) : (
-              <>
-                <Clock className="shrink-0" />
-                <p>Recent</p>
               </>
             )}
           </button>
