@@ -49,6 +49,7 @@ I'll try to update this as I go.
 - Day 31 ✅: Improved search with tags: and book: prefixes, added strict tag matching option, fixed word counter bug, and made tag clicks autofill the search bar
 - Day 32 ✅: Implemented notebook-based note filtering via clickable cards, rows, and chips using book: prefix; improved themes and refactored notebook chips into a reusable component
 - Day 33 ✅: Added new sections for pinned, unpinned,tagged and untagged content; implemented funcitonality for tagged section
+- Day 34 ✅: Designed and implemented Untagged section, Pinned section and Recent section; UI tweaks 
 ---
 
 ## 📌 Notes
