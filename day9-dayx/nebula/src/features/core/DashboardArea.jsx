@@ -17,6 +17,9 @@ import GridNotebook from "../components/GridNotebook";
 import TableNotebook from "../components/TableNotebook";
 import EditNotebookModal from "../components/EditNotebookModal";
 import NoteEditor from "../components/NoteEditor";
+import GreetingSection from "../components/GreetingSection";
+import QuickActions from "../components/QuickActions";
+import DigitalClock from "../components/DigitalClock";
 
 function DashboardArea() {
   const { notes } = useNotesStore();
@@ -138,6 +141,17 @@ function DashboardArea() {
           </div>
 
           <div className="divider" />
+          <div className="px-8">
+            <GreetingSection />
+            <div className="flex justify-between">
+              <div className="left">
+                <QuickActions />
+              </div>
+              <div className="right">
+                <DigitalClock />
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
