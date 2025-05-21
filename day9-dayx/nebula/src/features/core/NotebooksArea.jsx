@@ -58,9 +58,11 @@ function NotebooksArea() {
     setNotebookSearchTerm(e.target.value);
   }
 
-  function handleNewNotebookButtonClick() {
-    document.getElementById(APP_CONSTANTS.CREATE_NOTEBOOK_MODAL).showModal();
-  }
+  // This feature was moved to the sidebar
+
+  // function handleNewNotebookButtonClick() {
+  //   document.getElementById(APP_CONSTANTS.CREATE_NOTEBOOK_MODAL).showModal();
+  // }
 
   useEffect(() => {
     if (notesView == APP_CONSTANTS.VIEW_NOTE_EDITOR) {
@@ -83,7 +85,10 @@ function NotebooksArea() {
               onChange={handleSearch}
             />
           </div>
-          <div
+
+          {/* This feature was moved to the sidebar */}
+
+          {/* <div
             className={!userVerified ? "tooltip tooltip-right" : ""}
             data-tip={APP_CONSTANTS.VERIFY_EMAIL}
           >
@@ -96,7 +101,7 @@ function NotebooksArea() {
                 <BookPlus />
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="flex gap-2">

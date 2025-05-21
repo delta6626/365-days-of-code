@@ -70,9 +70,11 @@ function NotesArea() {
     setNoteSearchTerm(e.target.value);
   }
 
-  function handleNewNoteButtonClick() {
-    document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).showModal();
-  }
+  // This feature was moved to the sidebar
+
+  // function handleNewNoteButtonClick() {
+  //   document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).showModal();
+  // }
 
   return (
     <div className="flex-1 bg-base-300 h-[100vh] py-4 font-jakarta overflow-y-scroll scroll-smooth scrollbar-thin">
@@ -93,7 +95,10 @@ function NotesArea() {
                   onChange={handleSearch}
                 />
               </div>
-              <div
+
+              {/* This feature was moved to the sidebar */}
+
+              {/* <div
                 className={!userVerified ? "tooltip tooltip-right" : ""}
                 data-tip={APP_CONSTANTS.VERIFY_EMAIL}
               >
@@ -106,7 +111,7 @@ function NotesArea() {
                     <FilePlus></FilePlus>
                   </button>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="flex gap-2">

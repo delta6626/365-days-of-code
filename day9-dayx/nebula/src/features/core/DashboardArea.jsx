@@ -31,9 +31,10 @@ function DashboardArea() {
     setSearchTerm(e.target.value);
   }
 
-  function handleNewNotebookButtonClick() {}
+  // These functions were moved to the dashboard page
 
-  function handleNewNoteButtonClick() {}
+  // function handleNewNotebookButtonClick() {}
+  // function handleNewNoteButtonClick() {}
 
   useEffect(() => {
     setNotesView(APP_CONSTANTS.VIEW_GRID);
@@ -74,7 +75,10 @@ function DashboardArea() {
                   onChange={handleSearch}
                 />
               </div>
-              <div
+
+              {/* This feature was moved to the sidebar */}
+
+              {/* <div
                 className={!userVerified ? "tooltip tooltip-right" : ""}
                 data-tip={APP_CONSTANTS.VERIFY_EMAIL}
               >
@@ -99,7 +103,7 @@ function DashboardArea() {
                     <BookPlus></BookPlus>
                   </button>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="flex gap-2">
