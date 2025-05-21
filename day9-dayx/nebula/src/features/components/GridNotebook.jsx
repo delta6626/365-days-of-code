@@ -1,10 +1,17 @@
-import { Pin, PinOff, FileEdit, Trash2 } from "lucide-react";
+import {
+  Pin,
+  PinOff,
+  FileEdit,
+  Trash2,
+  Clock,
+  PenSquare,
+  Ellipsis,
+} from "lucide-react";
 import Tag from "./Tag";
 import { formatDateDDMMYY } from "../../utils/formatDateDDMMYY";
 import { dateDistanceFromNow } from "../../utils/dateDistanceFromNow";
 import { objectToDate } from "../../utils/objectToDate";
 import { useState } from "react";
-import { Clock, PenSquare } from "lucide-react";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import {
   hardDeleteNotebookAndLinkedNotes,
@@ -152,12 +159,15 @@ function GridNotebook({ notebookObject }) {
     >
       <div className="flex gap-2 items-center justify-between">
         <h3
-          className="text-xl font-semibold overflow-hidden whitespace-nowrap truncate"
+          className="text-2xl font-semibold overflow-hidden whitespace-nowrap truncate"
           title={notebookObject.name}
         >
           {notebookObject.name}
         </h3>
-        <div className="flex gap-2">
+
+        {/* Old layout of action buttons */}
+
+        {/* <div className="flex gap-2">
           <div
             className="tooltip"
             data-tip={
@@ -206,6 +216,73 @@ function GridNotebook({ notebookObject }) {
               )}
             </button>
           </div>
+        </div> */}
+
+        {/* New layout for action buttons */}
+
+        <div
+          className="dropdown"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <div tabIndex={0} role="button" className="btn btn-square">
+            {updatingPin || deletingNotebook ? (
+              <span
+                className={
+                  deletingNotebook
+                    ? "loading loading-spinner text-error"
+                    : "loading loading-spinner"
+                }
+              ></span>
+            ) : (
+              <Ellipsis />
+            )}
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu bg-base-200 rounded-box z-1 w-52 p-2 shadow-sm mt-2"
+          >
+            <button
+              className="btn flex justify-start"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleNotebookPinAndUnpin();
+              }}
+              disabled={updatingPin}
+            >
+              {notebookObject.pinned ? (
+                <div className="flex gap-2">
+                  <PinOff size={20}></PinOff>
+                  Unpin notebook
+                </div>
+              ) : (
+                <div className="flex gap-2">
+                  <Pin size={20}></Pin>
+                  Pin notebook
+                </div>
+              )}
+            </button>
+            <button
+              className="btn flex justify-start"
+              onClick={handleNotebookEditButtonClick}
+            >
+              <FileEdit size={20}></FileEdit>
+              Edit notebook
+            </button>
+            <button
+              className="btn text-error flex justify-start"
+              onClick={handleDeleteButtonClick}
+              disabled={deletingNotebook}
+            >
+              {
+                <div className="flex gap-2">
+                  <Trash2 size={20} />
+                  Delete notebook
+                </div>
+              }
+            </button>
+          </ul>
         </div>
       </div>
 
