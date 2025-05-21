@@ -7,6 +7,8 @@ import {
   Tag,
   Pin,
   Clock,
+  FilePlus,
+  BookPlus,
 } from "lucide-react";
 import { useUserStore } from "../../store/userStore";
 import {
@@ -53,6 +55,16 @@ function DashboardPage() {
 
   function handleCollapse() {
     setSideBarCollapsed(!sideBarCollapsed);
+  }
+
+  function handleNewNoteButtonClick() {
+    document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).showModal();
+    setActiveTab(APP_CONSTANTS.NOTES_PAGE);
+  }
+
+  function handleNewNotebookButtonClick() {
+    document.getElementById(APP_CONSTANTS.CREATE_NOTEBOOK_MODAL).showModal();
+    setActiveTab(APP_CONSTANTS.NOTEBOOKS_PAGE);
   }
 
   function handleDashboardButtonClick() {
@@ -252,6 +264,42 @@ function DashboardPage() {
         </div>
         <div className="divider"></div>
         <div className="mainButtons flex-1 px-4">
+          <button
+            className={`btn btn-wide ${
+              sideBarCollapsed ? "justify-center" : "justify-start"
+            } flex items-center`}
+            disabled={!userVerified}
+            onClick={handleNewNoteButtonClick}
+          >
+            {sideBarCollapsed ? (
+              <FilePlus className="shrink-0" />
+            ) : (
+              <>
+                <FilePlus className="shrink-0" />
+                <p className="text-nowrap">New note</p>
+              </>
+            )}
+          </button>
+
+          <button
+            className={`btn btn-wide mt-2 ${
+              sideBarCollapsed ? "justify-center" : "justify-start"
+            } flex items-center`}
+            disabled={!userVerified}
+            onClick={handleNewNotebookButtonClick}
+          >
+            {sideBarCollapsed ? (
+              <BookPlus className="shrink-0" />
+            ) : (
+              <>
+                <BookPlus className="shrink-0" />
+                <p className="text-nowrap">New notebook</p>
+              </>
+            )}
+          </button>
+
+          <div className="divider"></div>
+
           <button
             className={
               activeTab == APP_CONSTANTS.DASHBOARD_PAGE
