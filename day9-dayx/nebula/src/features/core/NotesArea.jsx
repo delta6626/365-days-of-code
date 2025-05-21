@@ -82,9 +82,9 @@ function NotesArea() {
         <NoteEditor></NoteEditor>
       ) : (
         <>
-          <div className="flex items-center justify-between px-8">
+          <div className="flex items-center justify-between px-8 relative">
             <h1 className="text-3xl font-bold">Notes</h1>
-            <div className="flex">
+            <div className="flex absolute left-1/2 -translate-x-1/2">
               <div className="w-2xl input focus-within:input-primary">
                 <Search className="text-gray-400"></Search>
                 <input
