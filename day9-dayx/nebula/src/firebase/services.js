@@ -239,15 +239,15 @@ export function updateNotebook(
     );
 
     return getDocs(notesQuery).then((snapshots) => {
-      const deletePromises = [];
+      const updatePromises = [];
 
       snapshots.forEach((noteDoc) => {
-        deletePromises.push(
+        updatePromises.push(
           updateDoc(noteDoc.ref, { assignedTo: [notebookId, newNotebookName] })
         );
       });
 
-      return Promise.all(deletePromises).then(() =>
+      return Promise.all(updatePromises).then(() =>
         updateDoc(notebookRef, {
           name: newNotebookName,
           tags: newTagList,
