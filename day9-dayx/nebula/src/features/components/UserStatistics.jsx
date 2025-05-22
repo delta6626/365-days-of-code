@@ -12,18 +12,20 @@ function UserStatistics() {
         <ActivitySquare />
         Your stats
       </h1>
-      <h1 className="flex items-center gap-2 mt-4">
-        <span>•</span>{" "}
-        {notebooks.length === 1
-          ? "1 notebook in total"
-          : `${notebooks.length} notebooks in total`}
-      </h1>
-      <h1 className="flex items-center gap-2 mt-2">
-        <span>•</span>{" "}
-        {notes.length === 1
-          ? "1 note in total"
-          : `${notes.length} notes in total`}
-      </h1>
+      <div className="text-gray-400">
+        <h1 className="flex items-center gap-2 mt-4">
+          <span>•</span>{" "}
+          {notebooks.length === 1
+            ? "1 notebook in total"
+            : `${notebooks.length} notebooks in total`}
+        </h1>
+        <h1 className="flex items-center gap-2 mt-2">
+          <span>•</span>{" "}
+          {notes.length === 1
+            ? "1 note in total"
+            : `${notes.length} notes in total`}
+        </h1>
+      </div>
     </div>
   );
 }

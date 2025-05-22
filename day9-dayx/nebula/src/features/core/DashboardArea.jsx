@@ -22,6 +22,7 @@ import QuickActions from "../components/QuickActions";
 import DigitalClock from "../components/DigitalClock";
 import PinnedNotes from "../components/PinnedNotes";
 import UserStatistics from "../components/UserStatistics";
+import Quote from "../components/Quote";
 
 function DashboardArea() {
   const { notes } = useNotesStore();
@@ -153,6 +154,7 @@ function DashboardArea() {
               <div className="right">
                 <DigitalClock />
                 <UserStatistics />
+                <Quote />
               </div>
             </div>
           </div>
