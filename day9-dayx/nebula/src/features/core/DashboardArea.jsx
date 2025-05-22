@@ -20,6 +20,7 @@ import NoteEditor from "../components/NoteEditor";
 import GreetingSection from "../components/GreetingSection";
 import QuickActions from "../components/QuickActions";
 import DigitalClock from "../components/DigitalClock";
+import PinnedNotes from "../components/PinnedNotes";
 
 function DashboardArea() {
   const { notes } = useNotesStore();
@@ -146,6 +147,7 @@ function DashboardArea() {
             <div className="flex justify-between">
               <div className="left">
                 <QuickActions />
+                <PinnedNotes />
               </div>
               <div className="right">
                 <DigitalClock />
