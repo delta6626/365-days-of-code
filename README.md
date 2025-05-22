@@ -51,6 +51,8 @@ I'll try to update this as I go.
 - Day 33 ✅: Added new sections for pinned, unpinned,tagged and untagged content; implemented funcitonality for tagged section
 - Day 34 ✅: Designed and implemented Untagged section, Pinned section and Recent section; UI tweaks
 - Day 35 ✅: Designed and implemented a greeting section, quick actions sectiion and a digital clock for the dashboard
+- Day 36 ✅: Designed and implemented a basic "User stats" section, "Motivation" section and pinned notes section in the dashboard. Still WIP.
+
 ---
 
 ## 📌 Notes
