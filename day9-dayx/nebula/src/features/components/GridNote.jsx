@@ -196,7 +196,7 @@ function GridNote({ noteObject }) {
         {/* New layour for action items */}
 
         <div
-          className="dropdown"
+          className="dropdown dropdown-end"
           onClick={(e) => {
             e.stopPropagation();
           }}

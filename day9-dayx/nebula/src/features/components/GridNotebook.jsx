@@ -221,7 +221,7 @@ function GridNotebook({ notebookObject }) {
         {/* New layout for action buttons */}
 
         <div
-          className="dropdown"
+          className="dropdown dropdown-end"
           onClick={(e) => {
             e.stopPropagation();
           }}
