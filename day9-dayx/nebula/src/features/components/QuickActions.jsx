@@ -1,4 +1,4 @@
-import { BookPlus, FilePlus } from "lucide-react";
+import { BookPlus, Clock, FilePlus } from "lucide-react";
 import { useActiveTabStore } from "../../store/activeTabStore";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
 
@@ -22,6 +22,14 @@ function QuickActions() {
       >
         <BookPlus size={40} />
         New notebook
+      </button>
+
+      <button
+        className="btn w-[20rem] h-[10rem] flex flex-col"
+        disabled={!userVerified}
+      >
+        <Clock size={40} />
+        Recent
       </button>
     </div>
   );
