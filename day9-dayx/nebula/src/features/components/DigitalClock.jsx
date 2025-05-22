@@ -1,5 +1,8 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { formatDateMonthDayYear } from "../../utils/formatDateMonthDayYear";
+import { Clock10 } from "lucide-react";
+
+const MemoizedClock = memo(Clock10);
 
 function DigitalClock() {
   const [parts, setParts] = useState({
@@ -12,6 +15,8 @@ function DigitalClock() {
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
+      setDate(formatDateMonthDayYear(now));
+
       const timeString = now.toLocaleTimeString("en-US", {
         hour: "2-digit",
         minute: "2-digit",
@@ -30,23 +35,24 @@ function DigitalClock() {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    const d = new Date();
-    setDate(formatDateMonthDayYear(d));
-  }, []);
-
   return (
     <div className="bg-transparent border-1 border-base-200 mt-4 w-sm mx-auto rounded-lg p-4">
-      <table className="text-3xl font-semibold w-full flex flex-col items-center justify-center">
-        <tr className="flex gap-2">
-          <td className="w-[1.5ch] text-center">{parts.hour}</td>
-          <td className="w-[1.5ch] text-center">:</td>
-          <td className="w-[1.5ch] text-center">{parts.minute}</td>
-          <td className="w-[1.5ch] text-center">:</td>
-          <td className="w-[1.5ch] text-center">{parts.second}</td>
-        </tr>
-      </table>
-      <p className="font-semibold text-center mt-2">{date}</p>
+      <h1 className="flex items-center gap-2 font-semibold">
+        <MemoizedClock />
+        Now
+      </h1>
+      <div className="text-gray-400">
+        <table className="text-3xl font-semibold w-full flex flex-col items-center justify-center mt-4">
+          <tr className="flex gap-2">
+            <td className="w-[1.5ch] text-center">{parts.hour}</td>
+            <td className="w-[1.5ch] text-center">:</td>
+            <td className="w-[1.5ch] text-center">{parts.minute}</td>
+            <td className="w-[1.5ch] text-center">:</td>
+            <td className="w-[1.5ch] text-center">{parts.second}</td>
+          </tr>
+        </table>
+        <p className="font-semibold text-center mt-2">{date}</p>
+      </div>
     </div>
   );
 }
