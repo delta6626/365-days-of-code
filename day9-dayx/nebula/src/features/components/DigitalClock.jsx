@@ -36,7 +36,7 @@ function DigitalClock() {
   }, []);
 
   return (
-    <div className="bg-base-200 mt-4 w-sm mx-auto rounded-lg p-4">
+    <div className="bg-transparent border-1 border-base-200 mt-4 w-sm mx-auto rounded-lg p-4">
       <table className="text-3xl font-semibold w-full flex flex-col items-center justify-center">
         <tr className="flex gap-2">
           <td className="w-[1.5ch] text-center">{parts.hour}</td>
