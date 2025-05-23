@@ -34,12 +34,14 @@ import { useNotesStore } from "../../store/notesStore";
 import { useActiveTabStore } from "../../store/activeTabStore";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useMessageStore } from "../../store/messageStore";
+import { useQuoteStore } from "../../store/quoteStore";
 import CreateNoteModal from "../components/CreateNoteModal";
 import CreateNotebookModal from "../components/CreateNotebookModal";
 import GenericModal from "../components/GenericModal";
 import UntaggedIcon from "../../assets/UntaggedIcon";
 import EditNoteModal from "../components/EditNoteModal";
 import EditNotebookModal from "../components/EditNotebookModal";
+import { getQuote } from "../../utils/getQuote";
 
 function DashboardPage() {
   const navigate = useNavigate();
@@ -50,6 +52,7 @@ function DashboardPage() {
   const { setNotes } = useNotesStore();
   const { activeTab, setActiveTab } = useActiveTabStore();
   const { message } = useMessageStore();
+  const { setQuote } = useQuoteStore();
 
   const [sideBarCollapsed, setSideBarCollapsed] = useState(false);
 
@@ -218,6 +221,20 @@ function DashboardPage() {
       });
       setNotes(allNotesData);
     });
+  }, []);
+
+  useEffect(() => {
+    getQuote()
+      .then((quoteData) => {
+        quoteData.json().then((quoteDataArray) => {
+          const quote = [quoteDataArray[0].content, quoteDataArray[0].author];
+          setQuote(quote);
+        });
+      })
+      .catch((error) => {
+        setQuote("An error occured while fetching the quote");
+        console.error(error);
+      });
   }, []);
 
   return (
