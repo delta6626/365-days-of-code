@@ -19,12 +19,12 @@ function Quote() {
 
   return (
     <div className="bg-transparent border-1 border-base-200 mt-4 w-sm mx-auto rounded-lg p-4">
-      <div className="flex justify-between">
+      <div className="flex justify-between text-gray-400">
         <h1 className="flex items-center gap-2 font-semibold">
           <Feather />
           Motivation
         </h1>
-        <button className="btn" onClick={handleRefreshClick}>
+        <button className="btn text-gray-400" onClick={handleRefreshClick}>
           {loading ? (
             <span className="loading loading-spinner" />
           ) : (
@@ -32,9 +32,9 @@ function Quote() {
           )}
         </button>
       </div>
-      <div className="text-gray-400 mt-4">
+      <div className="mt-4">
         <h1>{quote[0]}</h1>
-        <p className="mt-2">— {quote[1]}</p>
+        <p className="mt-2 text-gray-400">— {quote[1]}</p>
       </div>
     </div>
   );

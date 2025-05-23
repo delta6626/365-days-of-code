@@ -8,11 +8,11 @@ function UserStatistics() {
 
   return (
     <div className="bg-transparent border-1 border-base-200 mt-4 w-sm mx-auto rounded-lg p-4">
-      <h1 className="flex items-center gap-2 font-semibold">
+      <h1 className="flex items-center gap-2 font-semibold text-gray-400">
         <ActivitySquare />
         Your stats
       </h1>
-      <div className="text-gray-400">
+      <div className="">
         <h1 className="flex items-center gap-2 mt-4">
           <span>•</span>{" "}
           {notebooks.length === 1
