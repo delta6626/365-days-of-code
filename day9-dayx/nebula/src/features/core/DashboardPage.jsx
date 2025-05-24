@@ -281,6 +281,11 @@ function DashboardPage() {
       });
   }, []);
 
+  useEffect(() => {
+    const htmlTag = document.documentElement;
+    htmlTag.setAttribute("data-theme", user?.preferences.theme);
+  }, [user?.preferences.theme]);
+
   return (
     <div className="flex font-jakarta">
       <CreateNoteModal></CreateNoteModal>

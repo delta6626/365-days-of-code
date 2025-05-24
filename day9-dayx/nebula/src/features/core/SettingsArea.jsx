@@ -1,6 +1,7 @@
 import React, { useState, useSyncExternalStore } from "react";
 import { ArrowBigUp, Command, Info, Plus } from "lucide-react";
 import { LANGUAGES } from "../../constants/LANGUAGES";
+import { THEMES } from "../../constants/THEMES";
 import { useUserStore } from "../../store/userStore";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
@@ -40,6 +41,7 @@ function SettingsArea() {
   );
   const [autoSpacing, setAutoSpacing] = useState(user.preferences.autoSpacing);
   const [language, setLanguage] = useState(user.preferences.language);
+  const [theme, setTheme] = useState(user.preferences.theme);
   const [subscribed, setSubscribed] = useState(
     user.preferences.subscribedToEmailNotifications
   );
@@ -59,6 +61,7 @@ function SettingsArea() {
       autoSpacing !== user.preferences.autoSpacing ||
       autoSaveTriggerTime !== user.preferences.autoSaveTriggerTime ||
       language !== user.preferences.language ||
+      theme !== user.preferences.theme ||
       subscribed !== user.preferences.subscribedToEmailNotifications ||
       JSON.stringify(shortcuts) !== JSON.stringify(user.shortcuts)
     );
@@ -103,6 +106,7 @@ function SettingsArea() {
         autoSpacing,
         autoSaveTriggerTime,
         language,
+        theme,
         subscribedToEmailNotifications: subscribed,
       },
       shortcuts: {
@@ -472,6 +476,24 @@ function SettingsArea() {
                   {lang}
                 </option>
               ))}
+            </select>
+          </div>
+
+          {/* Theme */}
+          <div className="flex items-center justify-between mt-4">
+            <p className="font-medium">Preferred theme</p>
+            <select
+              value={theme}
+              onChange={(e) => setTheme(e.target.value)}
+              className="select focus:select-primary"
+            >
+              {THEMES.map((theme, id) => {
+                return (
+                  <option key={id} value={theme}>
+                    {theme.charAt(0).toUpperCase() + theme.substring(1)}
+                  </option>
+                );
+              })}
             </select>
           </div>
 
