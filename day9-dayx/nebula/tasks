@@ -22,3 +22,4 @@
 22. Word count functionality ✅
 23. Add more features to user stat component ✅
 24. Add a quote component to dashboard ✅
+25. Fix CORS issue with Motivation component
