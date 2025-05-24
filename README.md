@@ -53,6 +53,7 @@ I'll try to update this as I go.
 - Day 35 ✅: Designed and implemented a greeting section, quick actions sectiion and a digital clock for the dashboard
 - Day 36 ✅: Designed and implemented a basic "User stats" section, "Motivation" section and pinned notes section in the dashboard. Still WIP.
 - Day 37 ✅: Completed the dashboard with dyamic user stats, refreshable motivational quotes powered by Quotable API, functional quick actions and a few UI tweaks
+- Day 38 ✅: Added keyboard shortcuts for navigation, implemented theme switching via settings, and refined the light theme styling
 
 ---
 
