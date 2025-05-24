@@ -14,9 +14,9 @@
 @plugin "daisyui/theme" {
   name: "light";
   color-scheme: "light";
-  --color-base-100: oklch(98% 0.002 247.839);
-  --color-base-200: oklch(96% 0.003 264.542);
-  --color-base-300: oklch(92% 0.006 264.531);
+  --color-base-100: oklch(93% 0.005 250);
+  --color-base-200: oklch(90% 0.006 264.531);
+  --color-base-300: oklch(100% 0 0);
   --color-base-content: oklch(21% 0.034 264.665);
   --color-primary: oklch(0.55 0.2453 278.16);
   --color-primary-content: oklch(98% 0.003 247.858);
