@@ -21,7 +21,7 @@ function QuickActions() {
   }
 
   return (
-    <div className="flex gap-5 mt-4 w-full">
+    <div className="min-w-fit flex flex-wrap gap-5 mt-4">
       <div
         className={!userVerified ? "tooltip tooltip-bottom" : ""}
         data-tip={APP_CONSTANTS.VERIFY_EMAIL}
