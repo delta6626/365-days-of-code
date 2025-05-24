@@ -147,6 +147,50 @@ function DashboardPage() {
   );
 
   useHotkeys(
+    `shift+${user?.shortcuts.PINNED_PAGE}`,
+    () => {
+      handlePinnedClick();
+    },
+    {
+      preventDefault: true,
+      enableOnFormTags: true,
+    }
+  );
+
+  useHotkeys(
+    `shift+${user?.shortcuts.RECENT_PAGE}`,
+    () => {
+      handleRecentClick();
+    },
+    {
+      preventDefault: true,
+      enableOnFormTags: true,
+    }
+  );
+
+  useHotkeys(
+    `shift+${user?.shortcuts.TAGGED_PAGE}`,
+    () => {
+      handleTaggedClick();
+    },
+    {
+      preventDefault: true,
+      enableOnFormTags: true,
+    }
+  );
+
+  useHotkeys(
+    `shift+${user?.shortcuts.UNTAGGED_PAGE}`,
+    () => {
+      handleUntaggedClick();
+    },
+    {
+      preventDefault: true,
+      enableOnFormTags: true,
+    }
+  );
+
+  useHotkeys(
     `shift+${user?.shortcuts.NEW_NOTE}`,
     () => {
       if (userVerified) {

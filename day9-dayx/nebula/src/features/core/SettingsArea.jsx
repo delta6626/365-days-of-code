@@ -20,11 +20,6 @@ import { Timestamp } from "firebase/firestore";
 import GenericModal from "../components/GenericModal";
 import { useNavigate } from "react-router-dom";
 
-/*
-TO DO
-6. Send verification email
-*/
-
 function SettingsArea() {
   const navigate = useNavigate();
 
@@ -601,6 +596,91 @@ function SettingsArea() {
               </div>
             </div>
           ))}
+
+          <div className="flex items-center justify-between mt-4">
+            <p className="font-medium">Navigate to Pinned page</p>
+            <div className="flex items-center">
+              <button className="btn" disabled>
+                <ArrowBigUp />
+              </button>
+              <Plus />
+              <input
+                className="input focus:input-primary w-20 uppercase"
+                maxLength={1}
+                value={shortcuts["PINNED_PAGE"]}
+                onChange={(e) =>
+                  setShortcuts({
+                    ...shortcuts,
+                    ["PINNED_PAGE"]: e.target.value.toUpperCase(),
+                  })
+                }
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between mt-4">
+            <p className="font-medium">Navigate to Recent page</p>
+            <div className="flex items-center">
+              <button className="btn" disabled>
+                <ArrowBigUp />
+              </button>
+              <Plus />
+              <input
+                className="input focus:input-primary w-20 uppercase"
+                maxLength={1}
+                value={shortcuts["RECENT_PAGE"]}
+                onChange={(e) =>
+                  setShortcuts({
+                    ...shortcuts,
+                    ["RECENT_PAGE"]: e.target.value.toUpperCase(),
+                  })
+                }
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between mt-4">
+            <p className="font-medium">Navigate to Tagged page</p>
+            <div className="flex items-center">
+              <button className="btn" disabled>
+                <ArrowBigUp />
+              </button>
+              <Plus />
+              <input
+                className="input focus:input-primary w-20 uppercase"
+                maxLength={1}
+                value={shortcuts["TAGGED_PAGE"]}
+                onChange={(e) =>
+                  setShortcuts({
+                    ...shortcuts,
+                    ["TAGGED_PAGE"]: e.target.value.toUpperCase(),
+                  })
+                }
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between mt-4">
+            <p className="font-medium">Navigate to Untagged page</p>
+            <div className="flex items-center">
+              <button className="btn" disabled>
+                <ArrowBigUp />
+              </button>
+              <Plus />
+              <input
+                className="input focus:input-primary w-20 uppercase"
+                maxLength={1}
+                value={shortcuts["UNTAGGED_PAGE"]}
+                onChange={(e) =>
+                  setShortcuts({
+                    ...shortcuts,
+                    ["UNTAGGED_PAGE"]: e.target.value.toUpperCase(),
+                  })
+                }
+              />
+            </div>
+          </div>
+
           <div className="flex items-center justify-between mt-4">
             <p className="font-medium">New note</p>
             <div className="flex items-center">
@@ -621,6 +701,7 @@ function SettingsArea() {
               />
             </div>
           </div>
+
           <div className="flex items-center justify-between mt-4">
             <p className="font-medium">New notebook</p>
             <div className="flex items-center">
