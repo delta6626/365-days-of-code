@@ -1,11 +1,12 @@
 import { ArrowBigUp, BookPlus, Clock, FilePlus, Plus } from "lucide-react";
 import { useActiveTabStore } from "../../store/activeTabStore";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
+import { useUserStore } from "../../store/userStore";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
-
 function QuickActions() {
   const { activeTab, setActiveTab } = useActiveTabStore();
   const { userVerified, setUserVerified } = useUserVerifiedStore();
+  const { user } = useUserStore();
 
   function handleNewNoteClick() {
     document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).showModal();
@@ -29,7 +30,7 @@ function QuickActions() {
         <FilePlus size={30} />
         <p className="text-xl">New note</p>
         <div className="flex flex-row items-center text-gray-400">
-          Shift + N
+          {user ? `Shift + ${user.shortcuts.NEW_NOTE}` : ""}
         </div>
       </button>
 
@@ -41,7 +42,7 @@ function QuickActions() {
         <BookPlus size={30} />
         <p className="text-xl">New notebook</p>
         <div className="flex flex-row items-center text-gray-400">
-          Shift + B
+          {user ? `Shift + ${user.shortcuts.NEW_NOTE_BOOK}` : ""}
         </div>
       </button>
 
@@ -53,7 +54,7 @@ function QuickActions() {
         <Clock size={30} />
         <p className="text-xl">Recent</p>
         <div className="flex flex-row items-center text-gray-400">
-          Shift + R
+          {user ? `Shift + ${user.shortcuts.RECENT_PAGE}` : ""}
         </div>
       </button>
     </div>
