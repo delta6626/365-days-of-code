@@ -9,10 +9,12 @@ import {
   getAuthenticatedUser,
   googleAuthSignIn,
 } from "../../firebase/services";
+import { useThemeStore } from "../../store/themeStore";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 
 function SignUpPage() {
   const navigate = useNavigate();
+  const { theme } = useThemeStore();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -84,7 +86,8 @@ function SignUpPage() {
       name,
       email,
       password,
-      APP_CONSTANTS.WITH_EMAIL
+      APP_CONSTANTS.WITH_EMAIL,
+      theme
     )
       .then(() => {
         setAuthenticating(APP_CONSTANTS.NULL);
@@ -150,7 +153,7 @@ function SignUpPage() {
   function handleSignUpWithGoogle() {
     setAuthenticating(APP_CONSTANTS.WITH_GOOGLE);
     setDatabaseError(false);
-    googleAuthSignIn()
+    googleAuthSignIn(theme)
       .then(() => {
         setAuthenticating(APP_CONSTANTS.NULL);
         navigate("/dashboard");

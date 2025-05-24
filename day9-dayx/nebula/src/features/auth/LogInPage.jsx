@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import validateEmail from "../../utils/validateEmail";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
+import { useThemeStore } from "../../store/themeStore";
 import {
   logInWithEmailAndPassword,
   getAuthenticatedUser,
@@ -12,6 +13,7 @@ import {
 
 function LogInPage() {
   const navigate = useNavigate();
+  const { theme } = useThemeStore();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -103,7 +105,7 @@ function LogInPage() {
   function handleLogInWithGoogle() {
     setAuthenticating(APP_CONSTANTS.WITH_GOOGLE);
     setDatabaseError(false);
-    googleAuthSignIn()
+    googleAuthSignIn(theme)
       .then(() => {
         setAuthenticating(APP_CONSTANTS.NULL);
         navigate("/dashboard");

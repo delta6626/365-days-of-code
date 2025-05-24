@@ -46,7 +46,7 @@ export function updateUserData(userObject) {
   });
 }
 
-function addUserToDatabase(uid, name, email, authenticationMethod) {
+function addUserToDatabase(uid, name, email, authenticationMethod, theme) {
   const basicUserSchema = {
     deleted: "false",
     lastMassDeletionTime: null,
@@ -70,6 +70,7 @@ function addUserToDatabase(uid, name, email, authenticationMethod) {
       NEW_NOTE_BOOK: "B", // shift+__
     },
     preferences: {
+      theme: theme,
       autoSpacing: true,
       strictTagMatching: false,
       autoSaveTriggerTime: 1,
@@ -92,12 +93,13 @@ export function createNewUserWithEmailAndPassword(
   name,
   email,
   password,
-  authenticationMethod
+  authenticationMethod,
+  theme
 ) {
   return createUserWithEmailAndPassword(auth, email, password)
     .then((userCredentials) => {
       const uid = userCredentials.user.uid;
-      return addUserToDatabase(uid, name, email, authenticationMethod);
+      return addUserToDatabase(uid, name, email, authenticationMethod, theme);
     })
     .then(() => {
       return APP_CONSTANTS.SUCCESS;
@@ -108,7 +110,7 @@ export function createNewUserWithEmailAndPassword(
 }
 
 // Sign in with Google
-export function googleAuthSignIn() {
+export function googleAuthSignIn(theme) {
   const provider = new GoogleAuthProvider();
   return signInWithPopup(auth, provider)
     .then((result) => {
@@ -118,7 +120,8 @@ export function googleAuthSignIn() {
           result.user.uid,
           result.user.displayName,
           result.user.email,
-          APP_CONSTANTS.WITH_GOOGLE
+          APP_CONSTANTS.WITH_GOOGLE,
+          theme
         );
       } else {
         return;
