@@ -163,10 +163,11 @@ function EditorMenuTopBar() {
       }
 
       const text = editor.getText();
+
       if (text === "") {
         setWordCount(0);
       } else {
-        setWordCount(text.trim().split(" ").length);
+        setWordCount(text.trim().split(/[ \n]+/).length);
       }
     }
 
