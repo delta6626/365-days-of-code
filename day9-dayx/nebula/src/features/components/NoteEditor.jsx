@@ -22,6 +22,7 @@ import FontFamily from "@tiptap/extension-font-family";
 import TextStyle from "@tiptap/extension-text-style";
 import { useEditTargetNoteStore } from "../../store/editTargetNoteStore";
 import { memo } from "react";
+import { Markdown } from "tiptap-markdown";
 
 const MemoizedEditorMenu = memo(EditorMenu);
 
@@ -41,6 +42,7 @@ function NoteEditor() {
         },
       },
     }),
+    Markdown,
     Heading.configure({
       levels: [1, 2, 3, 4, 5, 6],
     }),

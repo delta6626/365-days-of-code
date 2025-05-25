@@ -1,6 +1,6 @@
 import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
-import { Save, X, FileWarning, CheckCircle2 } from "lucide-react";
+import { Save, X, FileWarning, CheckCircle2, FileUp } from "lucide-react";
 import { memo, useEffect, useState } from "react";
 import { objectToDate } from "../../utils/objectToDate";
 import { dateDistanceFromNow } from "../../utils/dateDistanceFromNow";
@@ -18,6 +18,7 @@ import NotebookChip from "./NotebookChip";
 const MemoizedFileWarning = memo(FileWarning);
 const MemoizedSave = memo(Save);
 const MemoizedX = memo(X);
+const MemoizedFileUp = memo(FileUp);
 const MemoizedCheckCircle2 = memo(CheckCircle2);
 const MemoizedNotebookChip = memo(NotebookChip);
 
@@ -95,6 +96,19 @@ function EditorMenuTopBar() {
           setNotesView(APP_CONSTANTS.VIEW_GRID);
         }
       });
+  }
+
+  function handleMarkDownExport() {
+    const markdown = editor.storage.markdown.getMarkdown();
+    const blob = new Blob([markdown], { type: "text/markdown" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${noteName}.md`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
   }
 
   function handleCloseButtonClick() {
@@ -233,6 +247,26 @@ function EditorMenuTopBar() {
               )}
             </button>
           </div>
+
+          <div className="tooltip tooltip-bottom" data-tip={"Export"}>
+            <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button" className="btn btn-square">
+                <MemoizedFileUp />
+              </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu bg-base-200 rounded-box z-1 w-42 p-2 shadow-sm mt-2"
+              >
+                <button
+                  className="btn flex justify-start"
+                  onClick={handleMarkDownExport}
+                >
+                  Export MD (Beta)
+                </button>
+              </ul>
+            </div>
+          </div>
+
           <div
             className="tooltip tooltip-bottom"
             data-tip={APP_CONSTANTS.CLOSE}
