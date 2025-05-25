@@ -1,6 +1,13 @@
 import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
-import { Save, X, FileWarning, CheckCircle2, FileUp } from "lucide-react";
+import {
+  Save,
+  X,
+  FileWarning,
+  CheckCircle2,
+  FileUp,
+  Ellipsis,
+} from "lucide-react";
 import { memo, useEffect, useState } from "react";
 import { objectToDate } from "../../utils/objectToDate";
 import { dateDistanceFromNow } from "../../utils/dateDistanceFromNow";
@@ -19,6 +26,7 @@ const MemoizedFileWarning = memo(FileWarning);
 const MemoizedSave = memo(Save);
 const MemoizedX = memo(X);
 const MemoizedFileUp = memo(FileUp);
+const MemoizedEllipsis = memo(Ellipsis);
 const MemoizedCheckCircle2 = memo(CheckCircle2);
 const MemoizedNotebookChip = memo(NotebookChip);
 
@@ -35,6 +43,7 @@ function EditorMenuTopBar() {
   const [noteNameDelta, setNoteNameDelta] = useState(false);
   const [wordCount, setWordCount] = useState(0);
   const [saving, setSaving] = useState(false);
+  const [exporting, setExporting] = useState(false);
 
   function handleNoteNameChange(e) {
     setNoteName(e.target.value);
@@ -99,6 +108,7 @@ function EditorMenuTopBar() {
   }
 
   function handleMarkDownExport() {
+    setExporting(true);
     const markdown = editor.storage.markdown.getMarkdown();
     const blob = new Blob([markdown], { type: "text/markdown" });
     const url = URL.createObjectURL(blob);
@@ -109,6 +119,7 @@ function EditorMenuTopBar() {
     a.click();
     a.remove();
     URL.revokeObjectURL(url);
+    setExporting(false);
   }
 
   function handleCloseButtonClick() {
@@ -248,10 +259,23 @@ function EditorMenuTopBar() {
             </button>
           </div>
 
-          <div className="tooltip tooltip-bottom" data-tip={"Export"}>
+          <div
+            className="tooltip tooltip-bottom"
+            data-tip={APP_CONSTANTS.CLOSE}
+          >
+            <button className="btn btn-square" onClick={handleCloseButtonClick}>
+              <MemoizedX />
+            </button>
+          </div>
+
+          <div className="tooltip tooltip-bottom" data-tip={"Options"}>
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn btn-square">
-                <MemoizedFileUp />
+                {exporting ? (
+                  <span className="loading loading-spinner"></span>
+                ) : (
+                  <MemoizedEllipsis />
+                )}
               </div>
               <ul
                 tabIndex={0}
@@ -261,19 +285,11 @@ function EditorMenuTopBar() {
                   className="btn flex justify-start"
                   onClick={handleMarkDownExport}
                 >
-                  Export MD (Beta)
+                  <MemoizedFileUp className="shrink-0" />
+                  Export MD
                 </button>
               </ul>
             </div>
-          </div>
-
-          <div
-            className="tooltip tooltip-bottom"
-            data-tip={APP_CONSTANTS.CLOSE}
-          >
-            <button className="btn btn-square" onClick={handleCloseButtonClick}>
-              <MemoizedX />
-            </button>
           </div>
         </div>
       </div>
