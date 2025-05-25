@@ -23,6 +23,9 @@ import TextStyle from "@tiptap/extension-text-style";
 import { useEditTargetNoteStore } from "../../store/editTargetNoteStore";
 import { memo } from "react";
 import { Markdown } from "tiptap-markdown";
+import MathExtension from "@aarkue/tiptap-math-extension";
+
+import "katex/dist/katex.css";
 
 const MemoizedEditorMenu = memo(EditorMenu);
 
@@ -85,6 +88,9 @@ function NoteEditor() {
     }),
     TextStyle,
     FontFamily,
+    MathExtension.configure({
+      evaluation: true,
+    }),
   ];
 
   return (

@@ -32,6 +32,7 @@ import {
   TableCellsMerge,
   TableCellsSplit,
   SquareX,
+  SquareFunction,
 } from "lucide-react";
 import AddRowIcon from "../../assets/AddRowIcon";
 import AddColumnIcon from "../../assets/AddColumnIcon";
@@ -43,6 +44,7 @@ import EditorYouTubeLinkModal from "../components/EditorYouTubeLinkModal";
 import GenericModal from "../components/GenericModal";
 import EditorMenuTopBar from "./EditorMenuTopBar";
 import { useEffect } from "react";
+import MathEquationModal from "./MathEquationModal";
 
 function EditorMenu() {
   const fonts = [
@@ -75,6 +77,7 @@ function EditorMenu() {
       isBlockquote: editor.isActive("blockquote"),
       isCode: editor.isActive("code"),
       isCodeBlock: editor.isActive("codeBlock"),
+      isMath: editor.isActive("inlineMath"),
 
       // Headings
       isH1: editor.isActive("heading", { level: 1 }),
@@ -153,12 +156,20 @@ function EditorMenu() {
     editor.commands.setYoutubeVideo({ src: youtubeURL });
   }
 
+  function addMathToEditor(latexExpression) {
+    editor.commands.insertContent({
+      type: "inlineMath",
+      attrs: { latex: latexExpression },
+    });
+  }
+
   return (
     <div className="">
       <EditorLinkModal addLinkToEditor={addLinkToEditor}></EditorLinkModal>
       <EditorYouTubeLinkModal
         addYouTubeLinkToEditor={addYouTubeLinkToEditor}
       ></EditorYouTubeLinkModal>
+      <MathEquationModal addMathToEditor={addMathToEditor} />
       <GenericModal></GenericModal>
       <EditorMenuTopBar></EditorMenuTopBar>
       <div className="flex flex-wrap justify-between w-full select-none px-8">
@@ -407,36 +418,6 @@ function EditorMenu() {
           </button>
         </Section>
 
-        {/* Code & Block Formatting */}
-        <Section title="Code" className={"grid grid-cols-2 grid-rows-1 gap-1"}>
-          <button
-            onMouseDown={(e) => e.preventDefault()}
-            onClick={() => {
-              editor.chain().focus().toggleCode().run();
-            }}
-            className={
-              editorState.isCode
-                ? "btn btn-primary btn-square"
-                : "btn btn-square"
-            }
-          >
-            <Code />
-          </button>
-          <button
-            onMouseDown={(e) => e.preventDefault()}
-            onClick={() => {
-              editor.chain().focus().toggleCodeBlock().run();
-            }}
-            className={
-              editorState.isCodeBlock
-                ? "btn btn-primary btn-square"
-                : "btn btn-square"
-            }
-          >
-            <SquareCode />
-          </button>
-        </Section>
-
         {/* Alignment */}
         <Section
           title="Alignment"
@@ -618,6 +599,51 @@ function EditorMenu() {
             }
           >
             <Video></Video>
+          </button>
+        </Section>
+
+        {/* Code, Math*/}
+        <Section title="Other" className={"grid grid-cols-2 grid-rows-2 gap-1"}>
+          <button
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={() => {
+              editor.chain().focus().toggleCode().run();
+            }}
+            className={
+              editorState.isCode
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <Code />
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={() => {
+              editor.chain().focus().toggleCodeBlock().run();
+            }}
+            className={
+              editorState.isCodeBlock
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <SquareCode />
+          </button>
+          <button
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={() => {
+              document
+                .getElementById(APP_CONSTANTS.MATH_EQUATION_MODAL)
+                .showModal();
+            }}
+            className={
+              editorState.isMath
+                ? "btn btn-primary btn-square"
+                : "btn btn-square"
+            }
+          >
+            <SquareFunction />
           </button>
         </Section>
 
