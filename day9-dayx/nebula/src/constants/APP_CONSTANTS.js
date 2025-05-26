@@ -95,6 +95,10 @@ export const APP_CONSTANTS = {
   NOTE_EMPTY:
     "Don't be shy, give your note some love! Start typing your masterpiece.",
   TAG_LIMIT: 15,
+  ULTRA_LARGE: "ultra-large",
+  LARGE: "large",
+  MEDIUM: "medium",
+  COMPACT: "compact",
   RECENT_LIMIT: 20,
   CREATE: "Create",
   INSERT: "Insert",

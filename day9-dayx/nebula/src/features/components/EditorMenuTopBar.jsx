@@ -35,7 +35,12 @@ const MemoizedCheckIcon = memo(CheckIcon);
 const MemoizedNotebookChip = memo(NotebookChip);
 
 function EditorMenuTopBar() {
-  const widthOptions = ["Compact", "Medium", "Large", "Ultra-Large"];
+  const widthOptions = [
+    APP_CONSTANTS.COMPACT,
+    APP_CONSTANTS.MEDIUM,
+    APP_CONSTANTS.LARGE,
+    APP_CONSTANTS.ULTRA_LARGE,
+  ];
 
   const { editTargetNote, setEditTargetNote } = useEditTargetNoteStore();
   const { setNotesView } = useCurrentNotesViewStore();
@@ -47,10 +52,11 @@ function EditorMenuTopBar() {
   const [noteName, setNoteName] = useState();
   const [noteContentDelta, setnoteContentDelta] = useState(false);
   const [noteNameDelta, setNoteNameDelta] = useState(false);
+  const [editorWidth, setEditorWidth] = useState();
+  const [editorWidthDelta, setEditorWidthDelta] = useState(false);
   const [wordCount, setWordCount] = useState(0);
   const [saving, setSaving] = useState(false);
   const [exporting, setExporting] = useState(false);
-  const [editorWidth, setEditorWidth] = useState(widthOptions[3].toLowerCase());
 
   function handleNoteNameChange(e) {
     setNoteName(e.target.value);
@@ -61,8 +67,17 @@ function EditorMenuTopBar() {
     }
   }
 
+  function handleEditorWidthChange(newWidth) {
+    setEditorWidth(newWidth);
+    if (newWidth !== editTargetNote.editorWidth) {
+      setEditorWidthDelta(true);
+    } else {
+      setEditorWidthDelta(false);
+    }
+  }
+
   function handleSaveButtonClick(closeOnSave) {
-    if (!noteContentDelta && !noteNameDelta) return; // Nothing to save
+    if (!noteContentDelta && !noteNameDelta && !editorWidthDelta) return; // Nothing to save
 
     setSaving(true);
     const date = new Date();
@@ -78,6 +93,10 @@ function EditorMenuTopBar() {
 
     if (noteContentDelta) {
       updatedNotePropertiesObject.content = editor.getHTML();
+    }
+
+    if (editorWidthDelta) {
+      updatedNotePropertiesObject.editorWidth = editorWidth;
     }
 
     updateNoteFromEditor(editTargetNote.id, updatedNotePropertiesObject)
@@ -96,12 +115,17 @@ function EditorMenuTopBar() {
           updatedNote.content = editor.getHTML();
         }
 
+        if (editorWidthDelta) {
+          updatedNote.editorWidth = editorWidth;
+        }
+
         setEditTargetNote(updatedNote);
         setNotes(
           notes.map((note) => (note.id === updatedNote.id ? updatedNote : note))
         );
         setNoteNameDelta(false);
         setnoteContentDelta(false);
+        setEditorWidthDelta(false);
       })
       .catch((error) => {
         alert(error);
@@ -130,7 +154,7 @@ function EditorMenuTopBar() {
   }
 
   function handleCloseButtonClick() {
-    if (!noteContentDelta && !noteNameDelta) {
+    if (!noteContentDelta && !noteNameDelta && !editorWidthDelta) {
       setNotesView(APP_CONSTANTS.VIEW_GRID);
     } else {
       setMessage({
@@ -224,6 +248,7 @@ function EditorMenuTopBar() {
 
   useEffect(() => {
     setNoteName(editTargetNote.name);
+    setEditorWidth(editTargetNote.editorWidth.toLowerCase());
     document
       .querySelectorAll(".tiptap")[0]
       .setAttribute("auto-spacing", user.preferences.autoSpacing);
@@ -261,7 +286,9 @@ function EditorMenuTopBar() {
           >
             <button
               className="btn btn-square"
-              onClick={handleSaveButtonClick}
+              onClick={() => {
+                handleSaveButtonClick(false);
+              }}
               disabled={saving}
             >
               {saving ? (
@@ -315,7 +342,7 @@ function EditorMenuTopBar() {
                         <button
                           className="btn flex justify-start"
                           onClick={() => {
-                            setEditorWidth(option.toLowerCase());
+                            handleEditorWidthChange(option);
                           }}
                         >
                           {editorWidth === option.toLowerCase() ? (
@@ -323,7 +350,7 @@ function EditorMenuTopBar() {
                           ) : (
                             ""
                           )}
-                          {option}
+                          {option[0].toUpperCase() + option.substring(1)}
                         </button>
                       );
                     })}
@@ -360,7 +387,7 @@ function EditorMenuTopBar() {
           <p> • </p>
 
           <div className="">
-            {!noteContentDelta && !noteNameDelta ? (
+            {!noteContentDelta && !noteNameDelta && !editorWidthDelta ? (
               <p className="flex items-center gap-2">
                 Up to date <MemoizedCheckCircle2 className="text-primary" />
               </p>

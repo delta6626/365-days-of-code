@@ -168,6 +168,7 @@ export function addNoteToDatabase(noteName, assignedNotebook, tags) {
     referencedBy: {},
     references: {},
     tags: tags,
+    editorWidth: APP_CONSTANTS.ULTRA_LARGE,
     creationDate: new Date(),
     lastEditDate: new Date(),
   };

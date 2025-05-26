@@ -73,6 +73,7 @@ function CreateNoteModal() {
           referencedBy: {},
           references: {},
           tags: tags,
+          editorWidth: APP_CONSTANTS.ULTRA_LARGE,
           creationDate: toTimestamp(new Date()),
           lastEditDate: toTimestamp(new Date()),
         };
