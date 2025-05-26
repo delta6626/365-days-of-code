@@ -7,6 +7,8 @@ import {
   CheckCircle2,
   FileUp,
   Ellipsis,
+  Layout,
+  CheckIcon,
 } from "lucide-react";
 import { memo, useEffect, useState } from "react";
 import { objectToDate } from "../../utils/objectToDate";
@@ -28,9 +30,13 @@ const MemoizedX = memo(X);
 const MemoizedFileUp = memo(FileUp);
 const MemoizedEllipsis = memo(Ellipsis);
 const MemoizedCheckCircle2 = memo(CheckCircle2);
+const MemoizedLayout = memo(Layout);
+const MemoizedCheckIcon = memo(CheckIcon);
 const MemoizedNotebookChip = memo(NotebookChip);
 
 function EditorMenuTopBar() {
+  const widthOptions = ["Compact", "Medium", "Large", "Ultra-Large"];
+
   const { editTargetNote, setEditTargetNote } = useEditTargetNoteStore();
   const { setNotesView } = useCurrentNotesViewStore();
   const { notes, setNotes } = useNotesStore();
@@ -44,6 +50,7 @@ function EditorMenuTopBar() {
   const [wordCount, setWordCount] = useState(0);
   const [saving, setSaving] = useState(false);
   const [exporting, setExporting] = useState(false);
+  const [editorWidth, setEditorWidth] = useState(widthOptions[3].toLowerCase());
 
   function handleNoteNameChange(e) {
     setNoteName(e.target.value);
@@ -228,6 +235,12 @@ function EditorMenuTopBar() {
       .setAttribute("auto-spacing", user.preferences.autoSpacing);
   }, [user.preferences.autoSpacing]);
 
+  useEffect(() => {
+    const editor = document.querySelectorAll(".tiptap")[0];
+    editor.classList.remove("compact", "medium", "large");
+    editor.classList.add(editorWidth);
+  }, [editorWidth]);
+
   return (
     <div className="">
       <div className="flex justify-between px-8">
@@ -281,6 +294,42 @@ function EditorMenuTopBar() {
                 tabIndex={0}
                 className="dropdown-content menu bg-base-200 rounded-box z-1 w-42 p-2 shadow-sm mt-2"
               >
+                <div className="dropdown dropdown-left dropdown-hover">
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="btn flex justify-start"
+                  >
+                    <MemoizedLayout />
+                    Editor width
+                  </div>
+                  <ul
+                    tabIndex={1}
+                    className="dropdown-content menu bg-base-200 rounded-box z-1 w-42 p-2 shadow-sm mt-2"
+                  >
+                    {/* <button className="btn flex justify-start"></button>
+                    <button className="btn flex justify-start">2</button>
+                    <button className="btn flex justify-start">3</button> */}
+                    {widthOptions.map((option, id) => {
+                      return (
+                        <button
+                          className="btn flex justify-start"
+                          onClick={() => {
+                            setEditorWidth(option.toLowerCase());
+                          }}
+                        >
+                          {editorWidth === option.toLowerCase() ? (
+                            <MemoizedCheckIcon />
+                          ) : (
+                            ""
+                          )}
+                          {option}
+                        </button>
+                      );
+                    })}
+                  </ul>
+                </div>
+
                 <button
                   className="btn flex justify-start"
                   onClick={handleMarkDownExport}

@@ -102,7 +102,7 @@ function NoteEditor() {
         autofocus={true}
         shouldRerenderOnTransaction={false}
         editorContainerProps={{
-          className: "prose text-xl min-w-full px-8",
+          className: "prose text-xl min-w-full",
         }}
       ></EditorProvider>
     </div>
