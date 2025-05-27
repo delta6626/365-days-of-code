@@ -314,7 +314,7 @@ function DashboardPage() {
           </h1>
           <button
             className={
-              "btn btn-square" +
+              "btn btn-square bg-transparent" +
               (sideBarCollapsed ? " btn-wide rotate-180" : "")
             }
             onClick={handleCollapse}
@@ -366,7 +366,7 @@ function DashboardPage() {
                 ? `btn btn-wide btn-primary ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
-                : `btn btn-wide ${
+                : `btn btn-wide bg-transparent ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
             }
@@ -388,7 +388,7 @@ function DashboardPage() {
                 ? `btn btn-wide btn-primary mt-2 ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
-                : `btn btn-wide mt-2 ${
+                : `btn btn-wide mt-2 bg-transparent ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
             }
@@ -410,7 +410,7 @@ function DashboardPage() {
                 ? `btn btn-wide btn-primary mt-2 ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
-                : `btn btn-wide mt-2 ${
+                : `btn btn-wide mt-2 bg-transparent ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
             }
@@ -434,7 +434,7 @@ function DashboardPage() {
                 ? `btn btn-wide btn-primary ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
-                : `btn btn-wide mt-2 ${
+                : `btn btn-wide mt-2 bg-transparent ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
             }
@@ -455,7 +455,7 @@ function DashboardPage() {
                 ? `btn btn-wide btn-primary mt-2 ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
-                : `btn btn-wide mt-2 ${
+                : `btn btn-wide mt-2 bg-transparent ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
             }
@@ -476,7 +476,7 @@ function DashboardPage() {
                 ? `btn btn-wide btn-primary mt-2 ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
-                : `btn btn-wide mt-2 ${
+                : `btn btn-wide mt-2 bg-transparent ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
             }
@@ -498,7 +498,7 @@ function DashboardPage() {
                 ? `btn btn-wide btn-primary mt-2 ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
-                : `btn btn-wide mt-2 ${
+                : `btn btn-wide mt-2 bg-transparent ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
             }
@@ -523,7 +523,7 @@ function DashboardPage() {
                 ? `btn btn-wide btn-primary ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
-                : `btn btn-wide ${
+                : `btn btn-wide bg-transparent ${
                     sideBarCollapsed ? "justify-center" : "justify-start"
                   } flex items-center`
             }
