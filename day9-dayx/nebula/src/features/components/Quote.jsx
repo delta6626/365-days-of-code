@@ -1,21 +1,25 @@
 import { Feather, RefreshCcw } from "lucide-react";
 import { useQuoteStore } from "../../store/quoteStore";
-import { getQuote } from "../../utils/getQuote";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Quote() {
-  const { quote, setQuote } = useQuoteStore();
+  const { quotes } = useQuoteStore();
+  const [currentQuote, setCurrentQuote] = useState();
   const [loading, setLoading] = useState(false);
+
+  function getRandomQuote() {
+    return quotes[Math.floor(Math.random() * quotes.length)];
+  }
 
   function handleRefreshClick() {
     setLoading(true);
-    getQuote().then((quoteData) => {
-      quoteData.json().then((quoteDataArray) => {
-        setQuote([quoteDataArray[0].content, quoteDataArray[0].author]);
-        setLoading(false);
-      });
-    });
+    setCurrentQuote(getRandomQuote());
+    setLoading(false);
   }
+
+  useEffect(() => {
+    setCurrentQuote(getRandomQuote());
+  }, [quotes]);
 
   return (
     <div className="bg-transparent border-1 border-base-200 mt-4 w-sm mx-auto rounded-lg p-4">
@@ -33,8 +37,8 @@ function Quote() {
         </button>
       </div>
       <div className="mt-4">
-        <h1>{quote[0]}</h1>
-        <p className="mt-2 text-gray-400">— {quote[1]}</p>
+        <h1>{currentQuote?.quote}</h1>
+        <p className="mt-2 text-gray-400">— {currentQuote?.author}</p>
       </div>
     </div>
   );

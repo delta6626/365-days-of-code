@@ -41,7 +41,7 @@ import GenericModal from "../components/GenericModal";
 import UntaggedIcon from "../../assets/UntaggedIcon";
 import EditNoteModal from "../components/EditNoteModal";
 import EditNotebookModal from "../components/EditNotebookModal";
-import { getQuote } from "../../utils/getQuote";
+import fetchAllQuotes from "../../utils/fetchAllQuotes";
 
 function DashboardPage() {
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ function DashboardPage() {
   const { setNotes } = useNotesStore();
   const { activeTab, setActiveTab } = useActiveTabStore();
   const { message } = useMessageStore();
-  const { setQuote } = useQuoteStore();
+  const { quotes, setQuotes } = useQuoteStore();
 
   const [sideBarCollapsed, setSideBarCollapsed] = useState(false);
 
@@ -268,17 +268,11 @@ function DashboardPage() {
   }, []);
 
   useEffect(() => {
-    getQuote()
-      .then((quoteData) => {
-        quoteData.json().then((quoteDataArray) => {
-          const quote = [quoteDataArray[0].content, quoteDataArray[0].author];
-          setQuote(quote);
-        });
-      })
-      .catch((error) => {
-        setQuote("An error occured while fetching the quote");
-        console.error(error);
+    fetchAllQuotes().then((response) => {
+      response.json().then((quotesArray) => {
+        setQuotes(quotesArray);
       });
+    });
   }, []);
 
   useEffect(() => {
