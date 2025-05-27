@@ -2,19 +2,14 @@ import { useNotesStore } from "../../store/notesStore";
 import { useMessageStore } from "../../store/messageStore";
 import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 import { useUserVerifiedStore } from "../../store/userVerifiedStore";
-import GridNote from "../components/GridNote";
-import TableNote from "../components/TableNote";
 import GenericModal from "../components/GenericModal";
 import EditNoteModal from "../components/EditNoteModal";
 import CreateNoteModal from "../components/CreateNoteModal";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import { useEffect, useState } from "react";
-import { Search, Table, LayoutGrid, BookPlus, FilePlus } from "lucide-react";
-import { objectToDate } from "../../utils/objectToDate";
+import { Search, Table, LayoutGrid } from "lucide-react";
 import CreateNotebookModal from "../components/CreateNotebookModal";
 import { useNotebooksStore } from "../../store/notebooksStore";
-import GridNotebook from "../components/GridNotebook";
-import TableNotebook from "../components/TableNotebook";
 import EditNotebookModal from "../components/EditNotebookModal";
 import NoteEditor from "../components/NoteEditor";
 import GreetingSection from "../components/GreetingSection";
@@ -25,11 +20,8 @@ import UserStatistics from "../components/UserStatistics";
 import Quote from "../components/Quote";
 
 function DashboardArea() {
-  const { notes } = useNotesStore();
-  const { notebooks } = useNotebooksStore();
   const { message } = useMessageStore();
   const { notesView, setNotesView } = useCurrentNotesViewStore();
-  const { userVerified, setUserVerified } = useUserVerifiedStore();
 
   const [searchTerm, setSearchTerm] = useState("");
 
