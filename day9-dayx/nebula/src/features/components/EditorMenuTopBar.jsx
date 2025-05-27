@@ -9,6 +9,7 @@ import {
   Ellipsis,
   Layout,
   CheckIcon,
+  HelpCircle,
 } from "lucide-react";
 import { memo, useEffect, useState } from "react";
 import { objectToDate } from "../../utils/objectToDate";
@@ -28,6 +29,7 @@ const MemoizedFileWarning = memo(FileWarning);
 const MemoizedSave = memo(Save);
 const MemoizedX = memo(X);
 const MemoizedFileUp = memo(FileUp);
+const MemoizedHelp = memo(HelpCircle);
 const MemoizedEllipsis = memo(Ellipsis);
 const MemoizedCheckCircle2 = memo(CheckCircle2);
 const MemoizedLayout = memo(Layout);
@@ -280,92 +282,81 @@ function EditorMenuTopBar() {
           />
         </div>
         <div className="flex gap-2">
-          <div
-            className="tooltip tooltip-bottom ml-2"
-            data-tip={APP_CONSTANTS.SAVE}
+          <button
+            className="btn btn-square"
+            onClick={() => {
+              handleSaveButtonClick(false);
+            }}
+            disabled={saving}
           >
-            <button
-              className="btn btn-square"
-              onClick={() => {
-                handleSaveButtonClick(false);
-              }}
-              disabled={saving}
-            >
-              {saving ? (
+            {saving ? (
+              <span className="loading loading-spinner"></span>
+            ) : (
+              <MemoizedSave />
+            )}
+          </button>
+
+          <button className="btn btn-square" onClick={handleCloseButtonClick}>
+            <MemoizedX />
+          </button>
+
+          <div className="dropdown dropdown-end">
+            <div tabIndex={0} role="button" className="btn btn-square">
+              {exporting ? (
                 <span className="loading loading-spinner"></span>
               ) : (
-                <MemoizedSave />
+                <MemoizedEllipsis />
               )}
-            </button>
-          </div>
-
-          <div
-            className="tooltip tooltip-bottom"
-            data-tip={APP_CONSTANTS.CLOSE}
-          >
-            <button className="btn btn-square" onClick={handleCloseButtonClick}>
-              <MemoizedX />
-            </button>
-          </div>
-
-          <div className="tooltip tooltip-bottom" data-tip={"Options"}>
-            <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="btn btn-square">
-                {exporting ? (
-                  <span className="loading loading-spinner"></span>
-                ) : (
-                  <MemoizedEllipsis />
-                )}
-              </div>
-              <ul
-                tabIndex={0}
-                className="dropdown-content menu bg-base-200 rounded-box z-1 w-42 p-2 shadow-sm mt-2"
-              >
-                <div className="dropdown dropdown-left dropdown-hover">
-                  <div
-                    tabIndex={0}
-                    role="button"
-                    className="btn flex justify-start"
-                  >
-                    <MemoizedLayout />
-                    Editor width
-                  </div>
-                  <ul
-                    tabIndex={1}
-                    className="dropdown-content menu bg-base-200 rounded-box z-1 w-42 p-2 shadow-sm mt-2"
-                  >
-                    {/* <button className="btn flex justify-start"></button>
-                    <button className="btn flex justify-start">2</button>
-                    <button className="btn flex justify-start">3</button> */}
-                    {widthOptions.map((option, id) => {
-                      return (
-                        <button
-                          className="btn flex justify-start"
-                          onClick={() => {
-                            handleEditorWidthChange(option);
-                          }}
-                        >
-                          {editorWidth === option.toLowerCase() ? (
-                            <MemoizedCheckIcon />
-                          ) : (
-                            ""
-                          )}
-                          {option[0].toUpperCase() + option.substring(1)}
-                        </button>
-                      );
-                    })}
-                  </ul>
-                </div>
-
-                <button
-                  className="btn flex justify-start"
-                  onClick={handleMarkDownExport}
-                >
-                  <MemoizedFileUp className="shrink-0" />
-                  Export MD
-                </button>
-              </ul>
             </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu bg-base-200 rounded-box z-1 w-42 p-2 shadow-sm mt-2"
+            >
+              <div className="dropdown dropdown-left dropdown-hover">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn flex justify-start"
+                >
+                  <MemoizedLayout />
+                  Editor width
+                </div>
+                <ul
+                  tabIndex={1}
+                  className="dropdown-content menu bg-base-200 rounded-box z-1 w-42 p-2 shadow-sm mt-2"
+                >
+                  {widthOptions.map((option, id) => {
+                    return (
+                      <button
+                        className="btn flex justify-between"
+                        onClick={() => {
+                          handleEditorWidthChange(option);
+                        }}
+                      >
+                        {option[0].toUpperCase() + option.substring(1)}
+                        {editorWidth === option.toLowerCase() ? (
+                          <MemoizedCheckIcon />
+                        ) : (
+                          ""
+                        )}
+                      </button>
+                    );
+                  })}
+                </ul>
+              </div>
+
+              <button
+                className="btn flex justify-start"
+                onClick={handleMarkDownExport}
+              >
+                <MemoizedFileUp className="shrink-0" />
+                Export MD
+              </button>
+              <button className="btn flex justify-start">
+                <MemoizedHelp />
+                Shortcuts
+              </button>
+            </ul>
           </div>
         </div>
       </div>
