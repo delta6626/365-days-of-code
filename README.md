@@ -56,7 +56,7 @@ I'll try to update this as I go.
 - Day 38 ✅: Added keyboard shortcuts for navigation, implemented theme switching via settings, and refined the light theme styling
 - Day 39 ✅: Added math equation support with evaluation, Markdown export (beta), and fixed a word counter bug in the editor
 - Day 40 ✅: Added per-note editor width customization in Nebula
-- Day 41 ✅: Added 4 new themes, made some changes to the styling and refactored the codebase to reduce code duplication
+- Day 41 ✅: Added 4 new themes, made some changes to the styling, refactored quote component to fetch quotes from my personal repo and reduced code duplixation
 
 ---
 
