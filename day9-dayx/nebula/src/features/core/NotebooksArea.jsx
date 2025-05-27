@@ -13,6 +13,7 @@ import GridNotebook from "../components/GridNotebook";
 import TableNotebook from "../components/TableNotebook";
 import EditNotebookModal from "../components/EditNotebookModal";
 import { useUserStore } from "../../store/userStore";
+import ViewSwitcher from "../components/ViewSwitcher";
 
 function NotebooksArea() {
   const { message } = useMessageStore();
@@ -104,35 +105,7 @@ function NotebooksArea() {
           </div> */}
         </div>
 
-        <div className="flex gap-2">
-          <div className="tooltip tooltip-left" data-tip="Grid view">
-            <button
-              onClick={() => setNotesView(APP_CONSTANTS.VIEW_GRID)}
-              className={
-                "btn btn-square " +
-                (notesView === APP_CONSTANTS.VIEW_GRID
-                  ? "btn-active"
-                  : "btn-ghost")
-              }
-            >
-              <LayoutGrid />
-            </button>
-          </div>
-
-          <div className="tooltip tooltip-left" data-tip="Table view">
-            <button
-              onClick={() => setNotesView(APP_CONSTANTS.VIEW_TABLE)}
-              className={
-                "btn btn-square " +
-                (notesView === APP_CONSTANTS.VIEW_TABLE
-                  ? "btn-active"
-                  : "btn-ghost")
-              }
-            >
-              <Table />
-            </button>
-          </div>
-        </div>
+        <ViewSwitcher />
       </div>
 
       <div className="divider"></div>

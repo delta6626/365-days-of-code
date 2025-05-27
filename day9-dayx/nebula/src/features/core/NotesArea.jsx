@@ -12,6 +12,7 @@ import GenericModal from "../components/GenericModal";
 import { useState } from "react";
 import EditNoteModal from "../components/EditNoteModal";
 import NoteEditor from "../components/NoteEditor";
+import ViewSwitcher from "../components/ViewSwitcher";
 
 function NotesArea() {
   const { notes, setNotes } = useNotesStore();
@@ -114,35 +115,7 @@ function NotesArea() {
               </div> */}
             </div>
 
-            <div className="flex gap-2">
-              <div className="tooltip tooltip-left" data-tip="Grid view">
-                <button
-                  onClick={() => setNotesView(APP_CONSTANTS.VIEW_GRID)}
-                  className={
-                    "btn btn-square " +
-                    (notesView == APP_CONSTANTS.VIEW_GRID
-                      ? "btn-active"
-                      : "btn-ghost")
-                  }
-                >
-                  <LayoutGrid></LayoutGrid>
-                </button>
-              </div>
-
-              <div className="tooltip tooltip-left" data-tip="Table view">
-                <button
-                  onClick={() => setNotesView(APP_CONSTANTS.VIEW_TABLE)}
-                  className={
-                    "btn btn-square " +
-                    (notesView == APP_CONSTANTS.VIEW_TABLE
-                      ? "btn-active"
-                      : "btn-ghost")
-                  }
-                >
-                  <Table></Table>
-                </button>
-              </div>
-            </div>
+            <ViewSwitcher />
           </div>
 
           <div className="divider"></div>
