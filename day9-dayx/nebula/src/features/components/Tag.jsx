@@ -50,7 +50,7 @@ function Tag({
   return (
     <div
       className={
-        (darkBackground ? "bg-base-300 " : "bg-base-200 ") +
+        (darkBackground ? "bg-base-200 " : "bg-base-200 ") +
         "btn rounded-lg flex text-gray-400 items-center gap-2 px-4 py-2 max-w-[200px] cursor-pointer"
       }
       title={tagText}
