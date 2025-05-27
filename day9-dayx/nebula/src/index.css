@@ -116,6 +116,7 @@ html[data-theme="light"] .tiptap {
 
 .tiptap {
   outline: none;
+  margin-inline: 2rem;
 }
 
 .tiptap.ultra-large {
