@@ -656,7 +656,11 @@ function EditorMenu() {
 
           <button
             onMouseDown={(e) => e.preventDefault()}
-            onClick={() => {}}
+            onClick={() => {
+              document
+                .getElementById(APP_CONSTANTS.SPEECH_RECOGNITION_MODAL)
+                .showModal();
+            }}
             className="btn btn-square"
           >
             <Mic />
