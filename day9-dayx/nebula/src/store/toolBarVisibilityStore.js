@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 export const useToolBarVisibilityStore = create(function (set) {
   return {
-    toolBarVisible: false,
+    toolBarVisible: true,
     setToolBarVisible: function (newVisibilityStatus) {
       set({ toolBarVisible: newVisibilityStatus });
     },
