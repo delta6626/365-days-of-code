@@ -34,6 +34,7 @@ import {
   TableCellsSplit,
   SquareX,
   SquareFunction,
+  Mic,
 } from "lucide-react";
 import AddRowIcon from "../../assets/AddRowIcon";
 import AddColumnIcon from "../../assets/AddColumnIcon";
@@ -651,6 +652,10 @@ function EditorMenu() {
             }
           >
             <SquareFunction />
+          </button>
+
+          <button className="btn btn-square">
+            <Mic />
           </button>
         </Section>
 
