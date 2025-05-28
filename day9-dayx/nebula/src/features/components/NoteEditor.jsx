@@ -94,7 +94,7 @@ function NoteEditor() {
   ];
 
   return (
-    <div className="">
+    <div className="flex flex-col h-full">
       <EditorProvider
         content={editTargetNote.content}
         extensions={extensions}
@@ -102,7 +102,7 @@ function NoteEditor() {
         autofocus={true}
         shouldRerenderOnTransaction={false}
         editorContainerProps={{
-          className: "prose text-xl min-w-full",
+          className: "prose text-xl min-w-full flex-grow-1 min-h-0",
         }}
       ></EditorProvider>
     </div>
