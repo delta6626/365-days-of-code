@@ -463,7 +463,7 @@ function SettingsArea() {
             </div>
           </div> */}
 
-          {/* Language */}
+          {/* Language selector. Postponed for later.
           <div className="flex items-center justify-between mt-4">
             <p className="font-medium">Default language</p>
             <select
@@ -477,7 +477,8 @@ function SettingsArea() {
                 </option>
               ))}
             </select>
-          </div>
+          </div> 
+          */}
 
           {/* Theme */}
           <div className="flex items-center justify-between mt-4">
