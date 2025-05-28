@@ -1,4 +1,5 @@
 import { useCurrentEditor, useEditorState } from "@tiptap/react";
+import { useToolBarVisibilityStore } from "../../store/toolBarVisibilityStore";
 import {
   Bold,
   Italic,
@@ -43,7 +44,6 @@ import EditorLinkModal from "../components/EditorLinkModal";
 import EditorYouTubeLinkModal from "../components/EditorYouTubeLinkModal";
 import GenericModal from "../components/GenericModal";
 import EditorMenuTopBar from "./EditorMenuTopBar";
-import { useEffect } from "react";
 import MathEquationModal from "./MathEquationModal";
 
 function EditorMenu() {
@@ -62,6 +62,7 @@ function EditorMenu() {
   ];
 
   const { editor } = useCurrentEditor();
+  const { toolBarVisible } = useToolBarVisibilityStore();
 
   // Editor optimization
   const editorState = useEditorState({
@@ -172,7 +173,13 @@ function EditorMenu() {
       <MathEquationModal addMathToEditor={addMathToEditor} />
       <GenericModal></GenericModal>
       <EditorMenuTopBar></EditorMenuTopBar>
-      <div className="flex flex-wrap justify-between w-full select-none px-8">
+      <div
+        className={
+          toolBarVisible
+            ? "flex flex-wrap justify-between w-full select-none px-8"
+            : "hidden"
+        }
+      >
         {/* Headings */}
         <Section
           title="Headings"
@@ -674,7 +681,7 @@ function EditorMenu() {
           </button>
         </Section>
       </div>
-      <div className="divider"></div>
+      <div className={toolBarVisible ? "divider" : "hidden"}></div>
     </div>
   );
 }

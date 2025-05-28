@@ -9,6 +9,7 @@ import {
   Ellipsis,
   Layout,
   CheckIcon,
+  RectangleEllipsis,
   HelpCircle,
 } from "lucide-react";
 import { memo, useEffect, useState } from "react";
@@ -16,6 +17,7 @@ import { objectToDate } from "../../utils/objectToDate";
 import { dateDistanceFromNow } from "../../utils/dateDistanceFromNow";
 import { useEditTargetNoteStore } from "../../store/editTargetNoteStore";
 import { useNotesStore } from "../../store/notesStore";
+import { useToolBarVisibilityStore } from "../../store/toolBarVisibilityStore";
 import { useCurrentEditor } from "@tiptap/react";
 import { updateNoteFromEditor } from "../../firebase/services";
 import { toTimestamp } from "../../utils/toTimestamp";
@@ -34,6 +36,7 @@ const MemoizedEllipsis = memo(Ellipsis);
 const MemoizedCheckCircle2 = memo(CheckCircle2);
 const MemoizedLayout = memo(Layout);
 const MemoizedCheckIcon = memo(CheckIcon);
+const MemoizedMenuBar = memo(RectangleEllipsis);
 const MemoizedNotebookChip = memo(NotebookChip);
 
 function EditorMenuTopBar() {
@@ -50,6 +53,7 @@ function EditorMenuTopBar() {
   const { editor } = useCurrentEditor();
   const { user } = useUserStore();
   const { setMessage } = useMessageStore();
+  const { toolBarVisible, setToolBarVisible } = useToolBarVisibilityStore();
 
   const [noteName, setNoteName] = useState();
   const [noteContentDelta, setnoteContentDelta] = useState(false);
@@ -310,7 +314,7 @@ function EditorMenuTopBar() {
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content menu bg-base-200 rounded-box z-1 w-42 p-2 shadow-sm mt-2"
+              className="dropdown-content menu bg-base-200 rounded-box z-1 w-44 p-2 shadow-sm mt-2"
             >
               <div className="dropdown dropdown-left dropdown-hover">
                 <div
@@ -344,6 +348,16 @@ function EditorMenuTopBar() {
                   })}
                 </ul>
               </div>
+
+              <button
+                className="btn flex justify-start"
+                onClick={() => {
+                  setToolBarVisible(!toolBarVisible);
+                }}
+              >
+                <MemoizedMenuBar />
+                {toolBarVisible ? "Hide toolbar" : "Show toolbar"}
+              </button>
 
               <button
                 className="btn flex justify-start"
