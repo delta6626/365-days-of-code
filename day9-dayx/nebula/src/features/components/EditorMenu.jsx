@@ -46,6 +46,7 @@ import EditorYouTubeLinkModal from "../components/EditorYouTubeLinkModal";
 import GenericModal from "../components/GenericModal";
 import EditorMenuTopBar from "./EditorMenuTopBar";
 import MathEquationModal from "./MathEquationModal";
+import SpeechRecognitionModal from "./SpeechRecognitionModal";
 
 function EditorMenu() {
   const fonts = [
@@ -172,6 +173,7 @@ function EditorMenu() {
         addYouTubeLinkToEditor={addYouTubeLinkToEditor}
       ></EditorYouTubeLinkModal>
       <MathEquationModal addMathToEditor={addMathToEditor} />
+      <SpeechRecognitionModal />
       <GenericModal></GenericModal>
       <EditorMenuTopBar></EditorMenuTopBar>
       <div
