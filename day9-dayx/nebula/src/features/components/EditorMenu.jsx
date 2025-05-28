@@ -654,7 +654,11 @@ function EditorMenu() {
             <SquareFunction />
           </button>
 
-          <button className="btn btn-square">
+          <button
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={() => {}}
+            className="btn btn-square"
+          >
             <Mic />
           </button>
         </Section>

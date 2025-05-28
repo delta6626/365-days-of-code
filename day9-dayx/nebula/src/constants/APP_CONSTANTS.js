@@ -89,7 +89,6 @@ export const APP_CONSTANTS = {
   EDITOR_LINK_MODAL: "editorLinkModal",
   EDITOR_YOUTUBE_LINK_MODAL: "editorYouTubeLinkModal",
   MATH_EQUATION_MODAL: "mathEquationModal",
-  SPEECH_RECOGNITION_MODAL: "speechRecognitionModal",
   NO_NOTEBOOKS:
     "We checked twice. Still no notebooks.\n Maybe it's time to create one?",
   NO_TAGS: "No tags here yet. Add some to keep things easy to find.",
