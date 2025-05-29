@@ -57,7 +57,7 @@ I'll try to update this as I go.
 - Day 39 ✅: Added math equation support with evaluation, Markdown export (beta), and fixed a word counter bug in the editor
 - Day 40 ✅: Added per-note editor width customization in Nebula
 - Day 41 ✅: Added 4 new themes, made some changes to the styling, refactored quote component to fetch quotes from my personal repo and reduced code duplication
-Day 42 ✅ Made the top info bar and editor toolbar sticky; added a toggle to show/hide the toolbar
+- Day 42 ✅ Made the top info bar and editor toolbar sticky; added a toggle to show/hide the toolbar
 
 ---
 
