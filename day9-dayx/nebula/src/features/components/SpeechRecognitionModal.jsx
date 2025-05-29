@@ -1,9 +1,9 @@
-import { LoaderIcon, Mic } from "lucide-react";
+import { Disc, LoaderIcon, Mic } from "lucide-react";
 import { APP_CONSTANTS } from "../../constants/APP_CONSTANTS";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function SpeechRecognitionModal() {
   const {
@@ -11,37 +11,59 @@ function SpeechRecognitionModal() {
     listening,
     resetTranscript,
     browserSupportsSpeechRecognition,
-  } = useSpeechRecognition({});
+  } = useSpeechRecognition();
 
   return (
     <dialog id={APP_CONSTANTS.SPEECH_RECOGNITION_MODAL} className="modal">
       <div className="modal-box">
-        <h3 className="text-lg font-bold">Dictation</h3>
+        <h3 className="flex text-lg font-bold items-center gap-2">
+          Smart dictation
+          {listening === true ? (
+            <Disc size={20} className="text-error animate-pulse" />
+          ) : (
+            ""
+          )}
+        </h3>
         {browserSupportsSpeechRecognition ? (
-          <div className="w-full flex flex-col items-center justify-center">
-            <button className="my-8" onClick={SpeechRecognition.startListening}>
-              <div className="relative h-[50px] flex items-center justify-center">
-                <LoaderIcon
-                  className={listening ? "absolute animate-ping" : "hidden"}
-                  size={50}
-                  strokeWidth={1}
-                />
-                <Mic size={30} className="z-10" />
-              </div>
-            </button>
-
-            <p className="max-h-[300px] overflow-y-auto"></p>
+          <div className="mt-2">
+            <p
+              className={
+                transcript.length === 0
+                  ? "text-gray-400"
+                  : "" + " max-h-[300px] overflow-y-auto"
+              }
+            >
+              {transcript
+                ? transcript
+                : "Speak your thoughts and we'll capture it for you."}
+            </p>
           </div>
         ) : (
-          <p className="mt-2">
+          <p className="mt-2 text-gray-400">
             Sorry, your browser doesn't support speech recognition.
           </p>
         )}
         <div className="modal-action">
-          <button className="btn btn-primary">{APP_CONSTANTS.INSERT}</button>
+          <button
+            className={"btn btn-primary"}
+            onClick={
+              listening
+                ? SpeechRecognition.stopListening
+                : SpeechRecognition.startListening
+            }
+          >
+            {listening === true ? "Stop listening" : "Start listening"}
+          </button>
+          <button
+            className="btn btn-primary"
+            disabled={transcript.length === 0}
+          >
+            {APP_CONSTANTS.INSERT}
+          </button>
           <button
             className="btn"
             onClick={() => {
+              resetTranscript();
               document
                 .getElementById(APP_CONSTANTS.SPEECH_RECOGNITION_MODAL)
                 .close();
