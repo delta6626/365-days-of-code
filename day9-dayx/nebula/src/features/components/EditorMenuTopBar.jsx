@@ -322,7 +322,7 @@ function EditorMenuTopBar() {
                   role="button"
                   className="btn flex justify-start"
                 >
-                  <MemoizedLayout />
+                  <MemoizedLayout size={20} />
                   Editor width
                 </div>
                 <ul
@@ -339,7 +339,7 @@ function EditorMenuTopBar() {
                       >
                         {option[0].toUpperCase() + option.substring(1)}
                         {editorWidth === option.toLowerCase() ? (
-                          <MemoizedCheckIcon />
+                          <MemoizedCheckIcon size={20} />
                         ) : (
                           ""
                         )}
@@ -355,7 +355,7 @@ function EditorMenuTopBar() {
                   setToolBarVisible(!toolBarVisible);
                 }}
               >
-                <MemoizedMenuBar />
+                <MemoizedMenuBar size={20} />
                 {toolBarVisible ? "Hide toolbar" : "Show toolbar"}
               </button>
 
@@ -363,10 +363,10 @@ function EditorMenuTopBar() {
                 className="btn flex justify-start"
                 onClick={handleMarkDownExport}
               >
-                <MemoizedFileUp className="shrink-0" />
+                <MemoizedFileUp className="shrink-0" size={20} />
                 Export MD
               </button>
-              <button className="btn flex justify-start">
+              <button className="btn flex justify-start" size={20}>
                 <MemoizedHelp />
                 Shortcuts
               </button>
