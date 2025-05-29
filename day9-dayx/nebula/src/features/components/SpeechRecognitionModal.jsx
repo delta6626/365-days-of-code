@@ -45,12 +45,15 @@ function SpeechRecognitionModal({ addSpeechContent }) {
           </div>
         ) : (
           <p className="mt-2 text-gray-400">
-            Sorry, your browser doesn't support speech recognition.
+            Sorry, your browser doesn't support speech recognition. Please
+            switch to Google Chrome or Microsoft Edge if you would like to use
+            this feature.
           </p>
         )}
         <div className="modal-action">
           <button
             className={"btn btn-primary"}
+            disabled={!browserSupportsSpeechRecognition}
             onClick={
               listening
                 ? SpeechRecognition.stopListening
