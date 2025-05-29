@@ -11,6 +11,7 @@ import {
   CheckIcon,
   RectangleEllipsis,
   HelpCircle,
+  PencilLine,
 } from "lucide-react";
 import { memo, useEffect, useState } from "react";
 import { objectToDate } from "../../utils/objectToDate";
@@ -37,6 +38,7 @@ const MemoizedCheckCircle2 = memo(CheckCircle2);
 const MemoizedLayout = memo(Layout);
 const MemoizedCheckIcon = memo(CheckIcon);
 const MemoizedMenuBar = memo(RectangleEllipsis);
+const MemoizedPencilLine = memo(PencilLine);
 const MemoizedNotebookChip = memo(NotebookChip);
 
 function EditorMenuTopBar() {
@@ -60,6 +62,7 @@ function EditorMenuTopBar() {
   const [noteNameDelta, setNoteNameDelta] = useState(false);
   const [editorWidth, setEditorWidth] = useState();
   const [editorWidthDelta, setEditorWidthDelta] = useState(false);
+  const [editable, setEditable] = useState(true);
   const [wordCount, setWordCount] = useState(0);
   const [saving, setSaving] = useState(false);
   const [exporting, setExporting] = useState(false);
@@ -346,6 +349,42 @@ function EditorMenuTopBar() {
                       </button>
                     );
                   })}
+                </ul>
+              </div>
+
+              <div className="dropdown dropdown-left dropdown-hover">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn flex justify-start"
+                >
+                  <MemoizedPencilLine size={20} />
+                  Editor mode
+                </div>
+                <ul
+                  tabIndex={1}
+                  className="dropdown-content menu bg-base-200 rounded-box z-1 w-42 p-2 shadow-sm mt-2"
+                >
+                  <button
+                    className="btn flex justify-start"
+                    onClick={() => {
+                      editor.setEditable(true);
+                      setEditable(true);
+                    }}
+                  >
+                    Edit
+                    {editable ? <MemoizedCheckIcon size={20} /> : ""}
+                  </button>
+                  <button
+                    className="btn flex justify-start"
+                    onClick={() => {
+                      editor.setEditable(false);
+                      setEditable(false);
+                    }}
+                  >
+                    Read
+                    {editable === false ? <MemoizedCheckIcon size={20} /> : ""}
+                  </button>
                 </ul>
               </div>
 
