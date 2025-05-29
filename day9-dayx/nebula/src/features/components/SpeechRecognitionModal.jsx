@@ -5,13 +5,18 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 import { useEffect, useState } from "react";
 
-function SpeechRecognitionModal() {
+function SpeechRecognitionModal({ addSpeechContent }) {
   const {
     transcript,
     listening,
     resetTranscript,
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
+
+  function handleInsertClick() {
+    addSpeechContent(transcript);
+    resetTranscript();
+  }
 
   return (
     <dialog id={APP_CONSTANTS.SPEECH_RECOGNITION_MODAL} className="modal">
@@ -57,6 +62,7 @@ function SpeechRecognitionModal() {
           <button
             className="btn btn-primary"
             disabled={transcript.length === 0}
+            onClick={handleInsertClick}
           >
             {APP_CONSTANTS.INSERT}
           </button>
@@ -69,7 +75,7 @@ function SpeechRecognitionModal() {
                 .close();
             }}
           >
-            {APP_CONSTANTS.CANCEL}
+            {APP_CONSTANTS.CLOSE}
           </button>
         </div>
       </div>

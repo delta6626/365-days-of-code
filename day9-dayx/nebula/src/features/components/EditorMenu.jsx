@@ -166,6 +166,10 @@ function EditorMenu() {
     });
   }
 
+  function addSpeechContent(speechContent) {
+    editor.commands.insertContent(speechContent);
+  }
+
   return (
     <div className="">
       <EditorLinkModal addLinkToEditor={addLinkToEditor}></EditorLinkModal>
@@ -173,7 +177,7 @@ function EditorMenu() {
         addYouTubeLinkToEditor={addYouTubeLinkToEditor}
       ></EditorYouTubeLinkModal>
       <MathEquationModal addMathToEditor={addMathToEditor} />
-      <SpeechRecognitionModal />
+      <SpeechRecognitionModal addSpeechContent={addSpeechContent} />
       <GenericModal></GenericModal>
       <EditorMenuTopBar></EditorMenuTopBar>
       <div
