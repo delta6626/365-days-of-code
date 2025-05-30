@@ -276,7 +276,7 @@ function SignUpPage() {
           </button>
           <div className="divider">OR</div>
           <button
-            className="btn bg-white text-black"
+            className="btn bg-base-100"
             onClick={handleSignUpWithGoogle}
             disabled={
               authenticating == APP_CONSTANTS.WITH_EMAIL ||
