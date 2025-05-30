@@ -304,11 +304,11 @@ function SignUpPage() {
           <p className="text-sm text-gray-400 mt-4">
             By signing up, you acknowledge that you have read, understood and
             agree to our{" "}
-            <Link className="text-primary" to={"terms-of-service"}>
+            <Link className="text-primary" to={"/terms-of-service"}>
               Terms of service
             </Link>{" "}
             and{" "}
-            <Link className="text-primary" to={"privacy-policy"}>
+            <Link className="text-primary" to={"/privacy-policy"}>
               Privacy Policy
             </Link>
             .
