@@ -406,7 +406,7 @@ function EditorMenuTopBar() {
                 Export MD
               </button>
               <button className="btn flex justify-start" size={20}>
-                <MemoizedHelp />
+                <MemoizedHelp size={20} />
                 Shortcuts
               </button>
             </ul>
