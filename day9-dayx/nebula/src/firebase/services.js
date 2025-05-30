@@ -8,6 +8,7 @@ import {
   getAdditionalUserInfo,
   signOut,
   sendEmailVerification,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import {
   getDoc,
@@ -130,6 +131,10 @@ export function googleAuthSignIn(theme) {
     .catch((error) => {
       throw error;
     });
+}
+
+export function resetPassword(email) {
+  return sendPasswordResetEmail(auth, email);
 }
 
 export function getAuthenticatedUser() {

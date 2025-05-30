@@ -9,6 +9,7 @@ import {
   logInWithEmailAndPassword,
   getAuthenticatedUser,
   googleAuthSignIn,
+  resetPassword,
 } from "../../firebase/services";
 
 function LogInPage() {
@@ -21,6 +22,7 @@ function LogInPage() {
   const [passwordError, setPasswordError] = useState(false);
   const [databaseError, setDatabaseError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [resetMailSent, setResetMailSent] = useState(false);
   const [authenticating, setAuthenticating] = useState(APP_CONSTANTS.NULL);
 
   function handleEmailChange(e) {
@@ -51,6 +53,36 @@ function LogInPage() {
       })
       .catch((error) => {
         setAuthenticating(APP_CONSTANTS.NULL);
+        setDatabaseError(true);
+        switch (error.code) {
+          case "auth/invalid-email":
+            setErrorMessage(APP_CONSTANTS.EMAIL_INVALID);
+            break;
+          case "auth/user-disabled":
+            setErrorMessage(APP_CONSTANTS.USER_DISABLED);
+            break;
+          case "auth/too-many-requests":
+            setErrorMessage(APP_CONSTANTS.TOO_MANY_ATTEMPTS);
+            break;
+          case "auth/invalid-credential":
+            setErrorMessage(APP_CONSTANTS.INVALID_CREDENTIALS);
+            break;
+          case "auth/network-request-failed":
+            setErrorMessage(APP_CONSTANTS.BAD_NETWORK);
+            break;
+          default:
+            setErrorMessage(APP_CONSTANTS.UNKNOWN_ERROR);
+            break;
+        }
+      });
+  }
+
+  function handlePasswordReset() {
+    resetPassword(email)
+      .then(() => {
+        setResetMailSent(true);
+      })
+      .catch((error) => {
         setDatabaseError(true);
         switch (error.code) {
           case "auth/invalid-email":
@@ -205,7 +237,28 @@ function LogInPage() {
               <span className="loading loading-spinner"></span>
             )}
           </button>
-          <p className="text-center text-sm mt-4">
+          <div className="divider"></div>
+          {resetMailSent ? (
+            <p className="text-center text-sm">
+              Password reset email sent! Check your inbox.
+            </p>
+          ) : (
+            <p className="text-center text-sm">
+              Forgot password?{" "}
+              <button
+                className={
+                  validateEmail(email)
+                    ? "text-primary cursor-pointer"
+                    : "text-gray-400"
+                }
+                onClick={handlePasswordReset}
+                disabled={!validateEmail(email)}
+              >
+                Reset it.
+              </button>
+            </p>
+          )}
+          <p className="text-center text-sm">
             Don't have an account?{" "}
             <Link className="text-primary" to={"/signup"}>
               Sign up.
