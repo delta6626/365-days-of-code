@@ -39,14 +39,6 @@ function LogInPage() {
   function handlePasswordChange(e) {
     const value = e.target.value;
     setPassword(value);
-
-    if (value.length >= 0 && value.length < 8) {
-      setPasswordError(true);
-      setErrorMessage(APP_CONSTANTS.PASSWORD_LENGTH_SHORT);
-    } else {
-      setPasswordError(false);
-      setErrorMessage("");
-    }
   }
 
   function logIn() {
