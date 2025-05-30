@@ -218,9 +218,8 @@ function LogInPage() {
               <span className="loading loading-spinner"></span>
             )}
           </button>
-          <div className="divider">OR</div>
           <button
-            className="btn bg-base-100"
+            className="btn bg-secondary"
             onClick={handleLogInWithGoogle}
             disabled={
               authenticating == APP_CONSTANTS.WITH_EMAIL ||
@@ -237,13 +236,12 @@ function LogInPage() {
               <span className="loading loading-spinner"></span>
             )}
           </button>
-          <div className="divider"></div>
           {resetMailSent ? (
-            <p className="text-center text-sm">
+            <p className="text-center text-sm mt-2">
               Password reset email sent! Check your inbox.
             </p>
           ) : (
-            <p className="text-center text-sm">
+            <p className="text-center text-sm mt-2">
               Forgot password?{" "}
               <button
                 className={
