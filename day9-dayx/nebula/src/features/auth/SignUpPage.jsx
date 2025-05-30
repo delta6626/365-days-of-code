@@ -274,9 +274,9 @@ function SignUpPage() {
               <span className="loading loading-spinner"></span>
             )}
           </button>
-          <div className="divider">OR</div>
+
           <button
-            className="btn bg-base-100"
+            className="btn bg-secondary mt-2 text-secondary-content"
             onClick={handleSignUpWithGoogle}
             disabled={
               authenticating == APP_CONSTANTS.WITH_EMAIL ||
@@ -294,11 +294,24 @@ function SignUpPage() {
             )}
           </button>
 
-          <p className="text-center text-sm mt-4">
+          <p className="text-center text-gray-400 text-sm mt-2">
             Already have an account?{" "}
             <Link className="text-primary" to={"/login"}>
               Login.
             </Link>
+          </p>
+
+          <p className="text-sm text-gray-400 mt-4">
+            By signing up, you acknowledge that you have read, understood and
+            agree to our{" "}
+            <Link className="text-primary" to={"/terms-of-service"}>
+              Terms of service
+            </Link>{" "}
+            and{" "}
+            <Link className="text-primary" to={"/privacy-policy"}>
+              Privacy Policy
+            </Link>
+            .
           </p>
         </fieldset>
       </div>

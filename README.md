@@ -59,6 +59,7 @@ I'll try to update this as I go.
 - Day 41 ✅: Added 4 new themes, made some changes to the styling, refactored quote component to fetch quotes from my personal repo and reduced code duplication
 - Day 42 ✅: Made the top info bar and editor toolbar sticky; added a toggle to show/hide the toolbar
 - Day 43 ✅: Added smart speech recognition; read mode for notes
+- Day 44 ✅: Password reset functionality, minor ui changes, components for privacy policy and terms of service
 
 ---
 
