@@ -13,13 +13,13 @@ function TermsOfService() {
             <p className="">
               These Terms of Service ("Terms") govern your access to and use of
               Nebula ("the App"), a free and open-source note-taking platform
-              developed and maintained by{" "}
+              developed and maintained by this{" "}
               <Link
                 className="text-primary"
                 to="https://github.com/delta6626"
                 target="_blank"
               >
-                this individual
+                individual
               </Link>
               {""} ("the Developer").
               <p className="mt-2">
@@ -106,7 +106,7 @@ function TermsOfService() {
             </h2>
             <p className="mt-4">
               Nebula incorporates external services for speech recognition,
-              including Google and Microsoft Edge. Your use of these features
+              including Google and Microsoft. Your use of these features
               constitutes agreement with their respective terms and privacy
               policies.
             </p>

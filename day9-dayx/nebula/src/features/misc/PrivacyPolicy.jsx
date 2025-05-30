@@ -86,8 +86,8 @@ function PrivacyPolicy() {
             </h2>
             <p className="mt-4">
               Speech recognition is facilitated by services from Google and
-              Microsoft Edge. Users agree to their respective privacy policies
-              when using such features.
+              Microsoft. Users agree to their respective privacy policies when
+              using such features.
             </p>
           </div>
           <div className="mt-10">
