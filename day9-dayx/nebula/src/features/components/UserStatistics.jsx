@@ -40,21 +40,23 @@ function UserStatistics() {
           <li>
             {`${notebooks.length} ${
               notebooks.length == 1 ? "notebook" : "notebooks"
-            }`}
+            } and ${notes.length} ${notes.length == 1 ? "note" : "notes"} `}
           </li>
-          <li className="mt-2">{`${notes.length} ${
+          {/* <li className="mt-2">{`${notes.length} ${
             notes.length == 1 ? "note" : "notes"
-          }`}</li>
+          }`}</li> */}
           <li className="mt-2">
             {`${pinnedNotebooksCount} ${
               pinnedNotebooksCount == 1 ? "pinned notebook" : "pinned notebooks"
-            }`}
-          </li>
-          <li className="mt-2">
-            {`${pinnedNotesCount} ${
+            } and ${pinnedNotesCount} ${
               pinnedNotesCount == 1 ? "pinned note" : "pinned notes"
             }`}
           </li>
+          {/* <li className="mt-2">
+            {`${pinnedNotesCount} ${
+              pinnedNotesCount == 1 ? "pinned note" : "pinned notes"
+            }`}
+          </li> */}
           <li className="mt-2">{`${uniqueTags.size} unique ${
             uniqueTags.size == 1 ? "tag" : "tags"
           }`}</li>
