@@ -42,6 +42,7 @@ import UntaggedIcon from "../../assets/UntaggedIcon";
 import EditNoteModal from "../components/EditNoteModal";
 import EditNotebookModal from "../components/EditNotebookModal";
 import fetchAllQuotes from "../../utils/fetchAllQuotes";
+import { useCurrentNotesViewStore } from "../../store/currentNotesViewStore";
 
 function DashboardPage() {
   const navigate = useNavigate();
@@ -53,6 +54,7 @@ function DashboardPage() {
   const { activeTab, setActiveTab } = useActiveTabStore();
   const { message } = useMessageStore();
   const { quotes, setQuotes } = useQuoteStore();
+  const { setNotesView } = useCurrentNotesViewStore();
 
   const [sideBarCollapsed, setSideBarCollapsed] = useState(false);
 
@@ -71,10 +73,12 @@ function DashboardPage() {
   }
 
   function handleDashboardButtonClick() {
+    setNotesView(APP_CONSTANTS.VIEW_GRID);
     setActiveTab(APP_CONSTANTS.DASHBOARD_PAGE);
   }
 
   function handleNotesButtonClick() {
+    setNotesView(APP_CONSTANTS.VIEW_GRID);
     setActiveTab(APP_CONSTANTS.NOTES_PAGE);
   }
 
@@ -83,18 +87,22 @@ function DashboardPage() {
   }
 
   function handleTaggedClick() {
+    setNotesView(APP_CONSTANTS.VIEW_GRID);
     setActiveTab(APP_CONSTANTS.TAGGED_ITEMS);
   }
 
   function handleUntaggedClick() {
+    setNotesView(APP_CONSTANTS.VIEW_GRID);
     setActiveTab(APP_CONSTANTS.UNTAGGED_ITEMS);
   }
 
   function handlePinnedClick() {
+    setNotesView(APP_CONSTANTS.VIEW_GRID);
     setActiveTab(APP_CONSTANTS.PINNED_ITEMS);
   }
 
   function handleRecentClick() {
+    setNotesView(APP_CONSTANTS.VIEW_GRID);
     setActiveTab(APP_CONSTANTS.RECENT_ITEMS);
   }
 
