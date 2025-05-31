@@ -12,15 +12,15 @@ function Donation() {
       </div>
       <div className="mt-4">
         <p className="">
-          Nebula is free and open source but running it isn’t. Support if you
-          can. ❤️
+          Nebula is free and open source but it does cost to run. Support if you
+          can.
         </p>
         <Link
           className="btn mt-2"
           target="_blank"
           to={"https://ko-fi.com/hasan04"}
         >
-          Donate
+          Donate ❤️
         </Link>
       </div>
     </div>
