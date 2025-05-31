@@ -3,7 +3,7 @@ import ThemeChanger from "./ThemeChanger";
 
 function NavBar() {
   return (
-    <div className="navbar bg-base-100 flex justify-between px-90 py-5">
+    <div className="navbar bg-base-100 flex justify-between px-10 py-5">
       <div className="">
         <Link className="text-xl font-jakarta font-bold" to={"/"}>
           Nebula
