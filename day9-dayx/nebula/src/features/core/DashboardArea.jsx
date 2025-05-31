@@ -19,6 +19,7 @@ import PinnedNotes from "../components/PinnedNotes";
 import UserStatistics from "../components/UserStatistics";
 import Quote from "../components/Quote";
 import ViewSwitcher from "../components/ViewSwitcher";
+import Donation from "../components/Donation";
 
 function DashboardArea() {
   const { message } = useMessageStore();
@@ -120,6 +121,7 @@ function DashboardArea() {
                 <DigitalClock />
                 <UserStatistics />
                 <Quote />
+                <Donation />
               </div>
             </div>
           </div>
