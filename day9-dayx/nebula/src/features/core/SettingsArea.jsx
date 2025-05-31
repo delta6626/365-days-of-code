@@ -578,7 +578,7 @@ function SettingsArea() {
           <p className="text-xl font-semibold">Shortcuts</p>
           <p className="mt-4 text-neutral-400">Configure your shortcuts </p>
           <div className="text-warning flex mt-2 items-center">
-            <Info></Info>
+            <Info size={20}></Info>
             <p className="ml-2">
               Your custom shortcut might not work due to existing browser
               shortcuts
