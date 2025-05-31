@@ -6,7 +6,6 @@ import { useNotebooksStore } from "../../store/notebooksStore";
 import { addNoteToDatabase } from "../../firebase/services";
 import { toTimestamp } from "../../utils/toTimestamp";
 import Tag from "../components/Tag";
-import { useHotkeys } from "react-hotkeys-hook";
 
 function CreateNoteModal() {
   const { notebooks, setNotebooks } = useNotebooksStore();
@@ -109,14 +108,6 @@ function CreateNoteModal() {
     resetState();
     document.getElementById(APP_CONSTANTS.CREATE_NOTE_MODAL).close();
   }
-
-  useHotkeys(
-    "enter",
-    () => {
-      handleCreateButtonClick();
-    },
-    { enableOnFormTags: true }
-  );
 
   return (
     <dialog id={APP_CONSTANTS.CREATE_NOTE_MODAL} className="modal">
