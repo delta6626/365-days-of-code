@@ -5,6 +5,7 @@ import { addNotebookToDatabase } from "../../firebase/services";
 import { useNotebooksStore } from "../../store/notebooksStore";
 import { useMessageStore } from "../../store/messageStore";
 import { toTimestamp } from "../../utils/toTimestamp";
+import { useHotkeys } from "react-hotkeys-hook";
 
 function CreateNotebookModal() {
   const { notebooks, setNotebooks } = useNotebooksStore();
@@ -79,6 +80,14 @@ function CreateNotebookModal() {
     resetState();
     document.getElementById(APP_CONSTANTS.CREATE_NOTEBOOK_MODAL).close();
   }
+
+  useHotkeys(
+    "enter",
+    () => {
+      handleCreateButtonClick();
+    },
+    { enableOnFormTags: true }
+  );
 
   return (
     <dialog id={APP_CONSTANTS.CREATE_NOTEBOOK_MODAL} className="modal">
