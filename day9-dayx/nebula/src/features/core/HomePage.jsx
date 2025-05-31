@@ -1,5 +1,22 @@
 import NavBar from "../components/NavBar";
-import { ArrowRight, Play } from "lucide-react";
+import {
+  ArrowRight,
+  Book,
+  Code2,
+  FileText,
+  FileUp,
+  Grid,
+  Keyboard,
+  LetterText,
+  Mic,
+  Palette,
+  Play,
+  Search,
+  Settings2,
+  Sigma,
+  Type,
+  Zap,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import FeatureCard from "../components/FeatureCard";
 
@@ -35,84 +52,101 @@ function HomePage() {
             <div className="mt-10 flex flex-wrap gap-4">
               <FeatureCard
                 title={"Rich Text Formatting"}
-                body={""}
-                icon={<Play />}
+                body={
+                  "Create structured notes with support for headings, bold, underline, quotes, code blocks, tables, and more — all accessible via intuitive controls and shortcuts."
+                }
+                icon={<Type />}
               />
               <FeatureCard
                 title={"Smart Speech Recognition"}
-                body={"lorem ipsum dolor sit amet lorem ipsum dolor sit amet"}
-                icon={<Play />}
+                body={
+                  "Convert your spoken words into text effortlessly with Nebula’s built-in speech recognition, perfect for capturing ideas quickly without typing."
+                }
+                icon={<Mic />}
               />
               <FeatureCard
                 title={"Markdown Support"}
-                body={"lorem ipsum dolor sit amet lorem ipsum dolor sit amet"}
-                icon={<Play />}
+                body={
+                  "Write using Markdown syntax to quickly format your notes with ease. Nebula lets you seamlessly toggle between Markdown and rich text."
+                }
+                icon={<FileText />}
               />
               <FeatureCard
                 title={"Beautiful Math"}
-                body={"lorem ipsum dolor sit amet lorem ipsum dolor sit amet"}
-                icon={<Play />}
+                body={
+                  "Use LaTeX-style math rendering to add complex equations and formulas to your notes, ideal for students, researchers, and professionals."
+                }
+                icon={<Sigma />}
               />
               <FeatureCard
                 title={"Auto Formatting"}
-                body={"lorem ipsum dolor sit amet lorem ipsum dolor sit amet"}
-                icon={<Play />}
+                body={
+                  "Nebula automatically formats lists, spacing, and indentation as you type, keeping your notes clean and well-structured without extra effort. Manual formatting supported as well."
+                }
+                icon={<Settings2 />}
               />
               <FeatureCard
                 title={"Notebook System"}
                 body={
-                  "Group related notes into custom notebooks with tags and filters."
+                  "Organize notes by grouping them into notebooks with tags and filters, and switch between grid and table views for easy management."
                 }
-                icon={<Play />}
+                icon={<Book />}
               />
               <FeatureCard
                 title={"Powerful Organization"}
-                body={"lorem ipsum dolor sit amet lorem ipsum dolor sit amet"}
-                icon={<Play />}
+                body={
+                  "Pin notes, tag them, and sort your notebooks effortlessly to keep your important information front and center at all times."
+                }
+                icon={<Grid />}
               />
               <FeatureCard
-                title={"Powerful Search"}
-                body={"lorem ipsum dolor sit amet lorem ipsum dolor sit amet"}
-                icon={<Play />}
+                title={"Fast Search"}
+                body={
+                  "Quickly find notes using advanced search with support for tags and notebook filters, delivering precise results blazingly fast."
+                }
+                icon={<Search />}
               />
               <FeatureCard
                 title={"Beautiful Themes"}
-                body={"lorem ipsum dolor sit amet lorem ipsum dolor sit amet"}
-                icon={<Play />}
+                body={
+                  "Choose from multiple themes designed for comfort and focus, including light and dark modes for different working environments."
+                }
+                icon={<Palette />}
               />
               <FeatureCard
                 title={"Handy Keyboard Shortcuts"}
-                body={"lorem ipsum dolor sit amet lorem ipsum dolor sit amet"}
-                icon={<Play />}
+                body={
+                  "Work faster with customizable keyboard shortcuts for creating, editing, navigating, and saving notes, designed to keep your workflow smooth."
+                }
+                icon={<Keyboard />}
               />
               <FeatureCard
                 title={"Real-Time Word Count"}
                 body={
-                  "Stay focused on your writing goals with live word tracking."
+                  "Track your writing progress with live word count, perfect for staying on top of writing goals."
                 }
-                icon={<Play />}
+                icon={<LetterText />}
               />
               <FeatureCard
                 title={"Quick Actions"}
                 body={
-                  "Create notes, notebooks, or view recent activity with one click."
+                  "Access common tasks like creating notes or viewing recent activity instantly from your dashboard with one-click quick actions."
                 }
-                icon={<Play />}
-              />
-              <FeatureCard
-                title={"Secure Cloud Sync"}
-                body={"Your notes are saved and synced safely using Firestore."}
-                icon={<Play />}
+                icon={<Zap />}
               />
               <FeatureCard
                 title={"Markdown Export"}
-                body={"lorem ipsum dolor sit amet lorem ipsum dolor sit amet"}
-                icon={<Play />}
+                body={
+                  "Export notes as Markdown files for easy sharing, publishing, or integration with other tools, maintaining your formatting perfectly."
+                }
+                icon={<FileUp />}
               />
               <FeatureCard
                 title={"Open Source"}
-                body={"lorem ipsum dolor sit amet lorem ipsum dolor sit amet"}
-                icon={<Play />}
+                body={
+                  "Nebula is built openly, inviting you to see how it works, suggest improvements, or even help build it yourself."
+                }
+                icon={<Code2 />}
               />
             </div>
           </div>
