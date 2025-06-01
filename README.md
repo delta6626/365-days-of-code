@@ -61,6 +61,7 @@ I'll try to update this as I go.
 - Day 43 ✅: Added smart speech recognition; read mode for notes
 - Day 44 ✅: Password reset functionality, minor ui changes, components for privacy policy and terms of service
 - Day 45 ✅: Fixed tab-switching editor bug; added Ko-fi donation button to dashboard and polished UI.
+- Day 46 ✅: Started on Nebula’s landing page: hero, features, a few sections, and footer.
 
 ---
 
