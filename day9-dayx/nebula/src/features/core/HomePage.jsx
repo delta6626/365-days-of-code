@@ -4,8 +4,10 @@ import {
   Book,
   Cloud,
   Code2,
+  DollarSign,
   FileText,
   Grid,
+  HeartHandshake,
   Keyboard,
   LetterText,
   Mic,
@@ -14,6 +16,7 @@ import {
   Settings2,
   Sigma,
   Sparkles,
+  Star,
   Type,
   Zap,
 } from "lucide-react";
@@ -147,8 +150,10 @@ function HomePage() {
               <h1 className="text-4xl font-bold">Cloud based & Secure</h1>
               <div className="mt-10">
                 <p className="max-w-140 text-xl text-gray-400">
-                  Nebula securely backs up your notes to the cloud so you never
-                  lose your work.
+                  Nebula securely backs up your notes to the cloud whenever you
+                  hit save, giving you full control while keeping your work
+                  safe. Cloud storage is completely free* for all users, made
+                  possible by community donations.
                 </p>
               </div>
             </div>
@@ -159,20 +164,49 @@ function HomePage() {
 
           <div className="mt-40 flex items-center justify-between">
             <div className="">
-              <h1 className="text-4xl font-bold">Free & Open Source</h1>
+              <h1 className="text-4xl font-bold">Open Source</h1>
               <div className="mt-10">
                 <p className="max-w-140 text-xl text-gray-400">
                   Nebula is built for the community — no subscriptions, no
                   paywalls. You can view, use, and contribute to the entire
-                  codebase on GitHub. If you love Nebula and want to help keep
-                  it running, consider supporting us with a donation. Every bit
-                  helps keep the lights on!
+                  codebase on GitHub.
                 </p>
+                <Link className="btn mt-4">
+                  Star on GitHub <Star size={20} />
+                </Link>
               </div>
             </div>
             <div className="flex items-center p-20 border-1 border-accent rounded-lg">
               <Code2 size={120} />
             </div>
+          </div>
+
+          <div className="mt-40 flex flex-row-reverse items-center justify-between">
+            <div className="">
+              <h1 className="text-4xl font-bold">
+                Free Cloud Storage, Powered by You
+              </h1>
+              <div className="mt-10">
+                <p className="max-w-140 text-xl text-gray-400">
+                  Nebula offers free cloud storage for your notes — no
+                  subscriptions, no hidden fees. Just hit save and your work is
+                  securely backed up. This is possible thanks to a
+                  donation-supported model. We don’t charge for storage, but
+                  running servers isn't free — your support helps keep Nebula
+                  open and sustainable for everyone.
+                </p>
+                <Link className="btn mt-4">
+                  Support Nebula <HeartHandshake size={20} />
+                </Link>
+              </div>
+            </div>
+            <div className="flex items-center p-20 border-1 border-accent rounded-lg">
+              <DollarSign size={120} />
+            </div>
+          </div>
+
+          <div className="mt-40 flex flex-col items-center text-center">
+            <h1 className="text-4xl font-bold">Frequently Asked Questions</h1>
           </div>
         </div>
       </div>
