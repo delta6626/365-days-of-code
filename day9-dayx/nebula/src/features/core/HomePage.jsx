@@ -2,23 +2,24 @@ import NavBar from "../components/NavBar";
 import {
   ArrowRight,
   Book,
+  Cloud,
   Code2,
   FileText,
-  FileUp,
   Grid,
   Keyboard,
   LetterText,
   Mic,
   Palette,
-  Play,
   Search,
   Settings2,
   Sigma,
+  Sparkles,
   Type,
   Zap,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import FeatureCard from "../components/FeatureCard";
+import Footer from "../components/Footer";
 
 function HomePage() {
   return (
@@ -30,26 +31,30 @@ function HomePage() {
             Bring clarity to your <br />
             thoughts.
           </h1>
-          <p className="mt-10 text-xl">
+          <p className="mt-10 text-xl text-gray-400">
             Craft and organize your thoughts in a space
             <br />
             built for clarity, speed, and creativity.
             <br />
-            Free. Feature-packed. Fully yours.
+            Free. Cloud-based. Feature-packed.
+            <br />
+            Fully yours.
           </p>
           <div className="mt-10 flex gap-4">
             <Link className="btn btn-primary" to={"/signup"}>
               Start taking notes <ArrowRight size={20} />
             </Link>
             <Link className="btn">
-              <Play size={20} />
-              Watch demo
+              <Sparkles size={20} />
+              Explore features
             </Link>
           </div>
 
+          {/* Features */}
+
           <div className="mt-40 flex flex-col items-center text-center">
             <h1 className="text-4xl font-bold">Packed with features</h1>
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-10 grid grid-cols-3 gap-6">
               <FeatureCard
                 title={"Rich Text Formatting"}
                 body={
@@ -67,7 +72,7 @@ function HomePage() {
               <FeatureCard
                 title={"Markdown Support"}
                 body={
-                  "Write using Markdown syntax to quickly format your notes with ease. Nebula lets you seamlessly toggle between Markdown and rich text."
+                  "Write with Markdown for quick, clean formatting and export your notes as Markdown files with perfect styling, ready for sharing or publishing anywhere."
                 }
                 icon={<FileText />}
               />
@@ -134,23 +139,47 @@ function HomePage() {
                 }
                 icon={<Zap />}
               />
-              <FeatureCard
-                title={"Markdown Export"}
-                body={
-                  "Export notes as Markdown files for easy sharing, publishing, or integration with other tools, maintaining your formatting perfectly."
-                }
-                icon={<FileUp />}
-              />
-              <FeatureCard
-                title={"Open Source"}
-                body={
-                  "Nebula is built openly, inviting you to see how it works, suggest improvements, or even help build it yourself."
-                }
-                icon={<Code2 />}
-              />
+            </div>
+          </div>
+
+          <div className="mt-40 flex flex-row-reverse items-center justify-between">
+            <div className="">
+              <h1 className="text-4xl font-bold">Cloud based & Secure</h1>
+              <div className="mt-10">
+                <p className="max-w-140 text-xl text-gray-400">
+                  Nebula securely backs up your notes to the cloud so you never
+                  lose your work.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center p-20 border-1 border-accent rounded-lg">
+              <Cloud size={120} />
+            </div>
+          </div>
+
+          <div className="mt-40 flex items-center justify-between">
+            <div className="">
+              <h1 className="text-4xl font-bold">Free & Open Source</h1>
+              <div className="mt-10">
+                <p className="max-w-140 text-xl text-gray-400">
+                  Nebula is built for the community — no subscriptions, no
+                  paywalls. You can view, use, and contribute to the entire
+                  codebase on GitHub. If you love Nebula and want to help keep
+                  it running, consider supporting us with a donation. Every bit
+                  helps keep the lights on!
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center p-20 border-1 border-accent rounded-lg">
+              <Code2 size={120} />
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Footer */}
+      <div className="mt-40">
+        <Footer></Footer>
       </div>
     </div>
   );
