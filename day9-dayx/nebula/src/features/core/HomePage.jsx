@@ -26,7 +26,7 @@ import Footer from "../components/Footer";
 
 function HomePage() {
   return (
-    <div className="font-jakarta">
+    <div className="font-jakarta scroll-smooth scrollbar-thin">
       <NavBar></NavBar>
       <div className="px-80">
         <div className="mt-40 flex flex-col">
@@ -44,18 +44,30 @@ function HomePage() {
             Fully yours.
           </p>
           <div className="mt-10 flex gap-4">
-            <Link className="btn btn-primary" to={"/signup"}>
+            <Link
+              className="btn btn-primary border-1 border-accent"
+              to={"/signup"}
+            >
               Start taking notes <ArrowRight size={20} />
             </Link>
-            <Link className="btn">
+            <button
+              className="btn border-1 border-accent"
+              onClick={() => {
+                const el = document.getElementById("features");
+                el.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
               <Sparkles size={20} />
               Explore features
-            </Link>
+            </button>
           </div>
 
           {/* Features */}
 
-          <div className="mt-40 flex flex-col items-center text-center">
+          <div
+            id="features"
+            className="mt-40 flex flex-col items-center text-center"
+          >
             <h1 className="text-4xl font-bold">Packed with features</h1>
             <div className="mt-10 grid grid-cols-3 gap-6">
               <FeatureCard
@@ -145,7 +157,10 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="mt-40 flex flex-row-reverse items-center justify-between">
+          <div
+            id="features"
+            className="mt-40 flex flex-row-reverse items-center justify-between"
+          >
             <div className="">
               <h1 className="text-4xl font-bold">Cloud based & Secure</h1>
               <div className="mt-10">
@@ -153,7 +168,7 @@ function HomePage() {
                   Nebula securely backs up your notes to the cloud whenever you
                   hit save, giving you full control while keeping your work
                   safe. Cloud storage is completely free* for all users, made
-                  possible by community donations.
+                  possible by community donations. *Terms and conditions apply.
                 </p>
               </div>
             </div>
@@ -171,7 +186,7 @@ function HomePage() {
                   paywalls. You can view, use, and contribute to the entire
                   codebase on GitHub.
                 </p>
-                <Link className="btn mt-4">
+                <Link className="btn mt-4 border-1 border-accent">
                   Star on GitHub <Star size={20} />
                 </Link>
               </div>
@@ -195,7 +210,11 @@ function HomePage() {
                   running servers isn't free — your support helps keep Nebula
                   open and sustainable for everyone.
                 </p>
-                <Link className="btn mt-4">
+                <Link
+                  className="btn mt-4 border-1 border-accent"
+                  to={"https://ko-fi.com/hasan04"}
+                  target="_blank"
+                >
                   Support Nebula <HeartHandshake size={20} />
                 </Link>
               </div>
@@ -227,7 +246,12 @@ function HomePage() {
                   Yes! Nebula offers completely free cloud storage for your
                   notes with no subscriptions or hidden fees. While the app
                   remains free to use, unusually heavy usage may be subject to
-                  limits to keep things sustainable for everyone.
+                  limits to keep things sustainable for everyone.You can read
+                  more about this on our{" "}
+                  <Link className="text-primary" to={"terms-of-service"}>
+                    Terms of Service
+                  </Link>
+                  .
                 </div>
               </div>
               <div className="collapse collapse-arrow border border-accent">
@@ -293,7 +317,31 @@ function HomePage() {
                   8. How can I contact Nebula?
                 </div>
                 <div className="collapse-content text-gray-400">
-                  You can reach out anytime via email, X / twitter, or GitHub.
+                  You can reach out anytime via{" "}
+                  <Link
+                    className="text-primary"
+                    to={"mailto:hasan04.asm@gmail.com"}
+                    target={"_blank"}
+                  >
+                    email
+                  </Link>
+                  ,{" "}
+                  <Link
+                    className="text-primary"
+                    to={"https://x.com/delta6626"}
+                    target={"_blank"}
+                  >
+                    X / twitter
+                  </Link>
+                  , or{" "}
+                  <Link
+                    className="text-primary"
+                    to={"https://github.com/delta6626"}
+                    target={"_blank"}
+                  >
+                    GitHub
+                  </Link>
+                  .
                 </div>
               </div>
             </div>
@@ -306,7 +354,10 @@ function HomePage() {
               yours. Start creating, organizing, and finding your ideas
               effortlessly today.
             </p>
-            <Link className="btn btn-primary mt-10">
+            <Link
+              className="btn btn-primary mt-10 border-1 border-accent"
+              to={"/signup"}
+            >
               Get started <ArrowRight size={20} />
             </Link>
           </div>
