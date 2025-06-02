@@ -14,17 +14,39 @@ function Footer() {
           and doers.
         </p>
         <div className="flex gap-4">
-          <GithubIcon />
-          <XIcon />
+          <Link to={"https://github.com/delta6626"} target="_blank">
+            <GithubIcon />
+          </Link>
+          <Link to={"https://x.com/delta6626"} target="_blank">
+            <XIcon />
+          </Link>
         </div>
       </div>
 
       <div className="flex flex-col gap-10">
         <h1 className="text-xl font-jakarta font-bold">Product</h1>
         <div className="flex flex-col gap-2 text-gray-400">
-          <Link className="">Features</Link>
-          <Link className="">FAQ</Link>
-          <Link className="">Donate</Link>
+          <Link
+            className=""
+            onClick={() => {
+              const f = document.getElementById("features");
+              f.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            Features
+          </Link>
+          <Link
+            className=""
+            onClick={() => {
+              const f = document.getElementById("faq");
+              f.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            FAQ
+          </Link>
+          <Link className="" to={"https://ko-fi.com/hasan04"} target="_blank">
+            Donate
+          </Link>
           <Link className="">Source code</Link>
         </div>
       </div>
@@ -32,18 +54,38 @@ function Footer() {
       <div className="flex flex-col gap-10">
         <h1 className="text-xl font-jakarta font-bold">Legal</h1>
         <div className="flex flex-col gap-2 text-gray-400">
-          <Link className="">Terms of Service</Link>
-          <Link className="">Privacy Policy</Link>
+          <Link className="" to={"/terms-of-service"}>
+            Terms of Service
+          </Link>
+          <Link className="" to={"/privacy-policy"}>
+            Privacy Policy
+          </Link>
         </div>
       </div>
 
       <div className="flex flex-col gap-10">
         <h1 className="text-xl font-jakarta font-bold">Contact</h1>
         <div className="flex flex-col gap-2 text-gray-400">
-          <Link className="">Developer site</Link>
-          <Link className="">Mail</Link>
-          <Link className="">X</Link>
-          <Link className="">GitHub</Link>
+          <Link className="" to={"https://"} target="_blank">
+            Developer site
+          </Link>
+          <Link
+            className=""
+            to={"mailto:hasan04.asm@gmail.com"}
+            target="_blank"
+          >
+            Mail
+          </Link>
+          <Link className="" to={"https://x.com/delta6626"} target="_blank">
+            X
+          </Link>
+          <Link
+            className=""
+            to={"https://github.com/delta6626"}
+            target="_blank"
+          >
+            GitHub
+          </Link>
         </div>
       </div>
     </div>

@@ -224,7 +224,7 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="mt-40 flex flex-col items-center">
+          <div id="faq" className="mt-40 flex flex-col items-center">
             <h1 className="text-4xl font-bold">Frequently Asked Questions</h1>
             <div className="mt-10 w-full flex flex-col gap-4">
               <div className="collapse collapse-arrow border border-accent">
