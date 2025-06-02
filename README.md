@@ -62,6 +62,7 @@ I'll try to update this as I go.
 - Day 44 ✅: Password reset functionality, minor ui changes, components for privacy policy and terms of service
 - Day 45 ✅: Fixed tab-switching editor bug; added Ko-fi donation button to dashboard and polished UI.
 - Day 46 ✅: Started on Nebula’s landing page: hero, features, a few sections, and footer.
+- Day 47 ✅: Added FAQ section, added links to footer, included a product screenshot near the hero, did some UI polish
 
 ---
 
