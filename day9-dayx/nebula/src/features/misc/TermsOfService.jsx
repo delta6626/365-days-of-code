@@ -7,7 +7,7 @@ function TermsOfService() {
       <NavBar />
       <div className="w-full py-10 font-jakarta flex flex-col items-center scroll-smooth scrollbar-thin">
         <h1 className="text-4xl font-semibold">Terms of Service</h1>
-        <p className="mt-2 text-gray-400">Updated May 30, 2025</p>
+        <p className="mt-2 text-gray-400">Updated June 2, 2025</p>
         <div className="w-[40%] text-lg">
           <div className="mt-10">
             <p className="">
@@ -122,7 +122,20 @@ function TermsOfService() {
             </p>
           </div>
           <div className="mt-10">
-            <h2 className="text-2xl font-medium">9. Account Termination</h2>
+            <h2 className="text-2xl font-medium">9. Free Cloud Storage</h2>
+            <p className="mt-4">
+              Nebula provides free cloud storage for all users to save and sync
+              their notes. While this service is offered at no cost, it is
+              funded by community donations and maintained on a best-effort
+              basis. We reserve the right to introduce usage limits or make
+              changes to storage availability in the future to ensure long-term
+              sustainability. In cases of unusually heavy usage, we may
+              implement reasonable restrictions to preserve fair access for all
+              users. Any such changes will be communicated in advance.
+            </p>
+          </div>
+          <div className="mt-10">
+            <h2 className="text-2xl font-medium">10. Account Termination</h2>
             <p className="mt-4">
               Users may discontinue use at any time. Accounts found in violation
               of these Terms may be restricted or terminated at the discretion
@@ -130,7 +143,7 @@ function TermsOfService() {
             </p>
           </div>
           <div className="mt-10">
-            <h2 className="text-2xl font-medium">10. Contact Information</h2>
+            <h2 className="text-2xl font-medium">11. Contact Information</h2>
             <p className="mt-4">
               For questions, feedback, or concerns regarding the Terms of
               Service or the{" "}
