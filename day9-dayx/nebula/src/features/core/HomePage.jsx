@@ -23,8 +23,11 @@ import {
 import { Link } from "react-router-dom";
 import FeatureCard from "../components/FeatureCard";
 import Footer from "../components/Footer";
+import { useThemeStore } from "../../store/themeStore";
 
 function HomePage() {
+  const { theme } = useThemeStore();
+
   return (
     <div className="font-jakarta scroll-smooth scrollbar-thin">
       <NavBar></NavBar>
@@ -60,6 +63,17 @@ function HomePage() {
               <Sparkles size={20} />
               Explore features
             </button>
+          </div>
+
+          <div className="mt-40 flex flex-col items-center text-center">
+            <img
+              className="rounded-lg"
+              src={
+                theme == "dark"
+                  ? "../../public/dark.png"
+                  : "../../public/light.png"
+              }
+            />
           </div>
 
           {/* Features */}
