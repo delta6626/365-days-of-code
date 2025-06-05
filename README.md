@@ -63,7 +63,8 @@ I'll try to update this as I go.
 - Day 45 ✅: Fixed tab-switching editor bug; added Ko-fi donation button to dashboard and polished UI.
 - Day 46 ✅: Started on Nebula’s landing page: hero, features, a few sections, and footer.
 - Day 47 ✅: Added FAQ section, added links to footer, included a product screenshot near the hero, did some UI polish
-- Dat 48 ✅: Polished UI, animations, scrollbar tweaks, cleanup — and rewrote Firestore rules.
+- Day 48 ✅: Polished UI, animations, scrollbar tweaks, cleanup — and rewrote Firestore rules.
+- Day 49 ✅: Minor UI tweaks + added a working mobile hamburger menu.
 
 ---
 
