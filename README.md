@@ -65,6 +65,7 @@ I'll try to update this as I go.
 - Day 47 ✅: Added FAQ section, added links to footer, included a product screenshot near the hero, did some UI polish
 - Day 48 ✅: Polished UI, animations, scrollbar tweaks, cleanup — and rewrote Firestore rules.
 - Day 49 ✅: Minor UI tweaks + added a working mobile hamburger menu.
+- Day 50 ✅: Minor UI tweaks
 
 ---
 
