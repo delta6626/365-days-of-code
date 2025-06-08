@@ -67,6 +67,7 @@ I'll try to update this as I go.
 - Day 49 ✅: Minor UI tweaks + added a working mobile hamburger menu.
 - Day 50 ✅: Minor UI tweaks
 - Day 51 ✅: Made landing page mobile responsive
+- Day 52 ✅: Responsive footer, Favicon and Logo, UI tweaks
 
 ---
 
