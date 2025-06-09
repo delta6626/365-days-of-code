@@ -68,6 +68,7 @@ I'll try to update this as I go.
 - Day 50 ✅: Minor UI tweaks
 - Day 51 ✅: Made landing page mobile responsive
 - Day 52 ✅: Responsive footer, Favicon and Logo, UI tweaks
+- Day 53 ✅: Redesigned the table view to make it cleaner 
 
 ---
 
