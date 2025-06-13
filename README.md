@@ -72,7 +72,7 @@ I'll try to update this as I go.
 - Day 54 ✅: Refactored core components to adopt the new table layout + minor fixes
 - Day 55 ✅: Refactored Nebula to remove unused imports. Created a new project: [Simple Book Manager](https://github.com/delta6626/simpleBookManager) as part of a university assignment.
 - Day 56 ✅: Added tooltips for toolbar buttons
-- Day 57 ✅: Deployed nebula to [production](https://nebulanotes.live), Fixed bugs, Optimized performance
+- Day 57 ✅: Deployed nebula to [production](https://nebulanotes.live), Fixed bugs, Optimized performance, Introduced google analytics
 ---
 
 ## 📌 Notes
