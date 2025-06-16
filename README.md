@@ -75,6 +75,7 @@ I'll try to update this as I go.
 - Day 57 ✅: Deployed nebula to [production](https://nebulanotes.live), Fixed bugs, Optimized performance, Introduced google analytics
 - Day 58 ✅: Changed boring tooltips to daisyUi's tooltips, fixed theme related issue
 - Day 59 ✅: Reviewed a PR for Nebula, added link to homepage in the dashboard
+Day 60 ✅: Completed Nebula’s README, added a Code of Conduct and Contributing Guide, made UI tweaks
 
 ---
 
