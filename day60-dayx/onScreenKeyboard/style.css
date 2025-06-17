@@ -35,8 +35,29 @@ body {
   margin: 1rem;
   height: fit-content;
   background-color: var(--keyboardBgColor);
-  border: 1px solid var(--keyboardBorderColor);
+  border-style: solid;
+  border-width: 2px;
+  animation: borderPulse 2.5s linear infinite;
+  box-shadow: 0px 100px 200px 0px rgba(126, 207, 253, 0.164);
   border-radius: 0.5rem;
+}
+
+@keyframes borderPulse {
+  0% {
+    border-color: rgba(126, 207, 253, 0.164);
+  }
+
+  25% {
+    border-color: rgba(86, 219, 252, 0.808);
+  }
+
+  50% {
+    border-color: rgba(48, 196, 255, 0.397);
+  }
+
+  100% {
+    border-color: rgba(126, 207, 253, 0.164);
+  }
 }
 
 .keyboardRow {
