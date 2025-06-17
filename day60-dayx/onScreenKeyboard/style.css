@@ -1,0 +1,62 @@
+:root {
+  --bgColor: rgb(0, 0, 0);
+  --fontColor: rgb(255, 255, 255);
+  --keyboardBgColor: rgb(0, 0, 0);
+  --keyboardBorderColor: rgb(88, 216, 255);
+  --keyboardRowBgColor: rgb(0, 0, 0);
+  --defaultPadding: 1rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+body {
+  background-color: var(--bgColor);
+  color: var(--fontColor);
+  width: 100vw;
+  height: 100vh;
+}
+
+.keyboard {
+  padding: var(--defaultPadding);
+  width: 75%;
+  margin: 1rem;
+  height: fit-content;
+  background-color: var(--keyboardBgColor);
+  border: 1px solid var(--keyboardBorderColor);
+  border-radius: 0.5rem;
+}
+
+.keyboardRow {
+  margin-bottom: var(--defaultPadding);
+  width: 100%;
+  height: calc(20rem / 5);
+  background-color: var(--keyboardRowBgColor);
+}
+
+.keyboardRow:last-child {
+  margin-bottom: 0;
+}
