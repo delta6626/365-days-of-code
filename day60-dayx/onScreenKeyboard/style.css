@@ -58,7 +58,10 @@ body {
   border-radius: 0.5rem;
 }
 
-.backspace {
+.backspace,
+.caps,
+.shift1,
+.ctrl {
   min-width: 6rem;
 }
 
@@ -68,4 +71,13 @@ body {
 
 .slash {
   min-width: 4.5rem;
+}
+
+.enter,
+.shift2 {
+  min-width: 8rem;
+}
+
+.space {
+  min-width: 30rem;
 }
