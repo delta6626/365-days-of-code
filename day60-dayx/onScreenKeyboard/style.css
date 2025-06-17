@@ -38,14 +38,9 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: var(--defaultPadding);
+  align-items: center;
   width: 100%;
   height: calc(20rem / 5);
-  background-color: var(--keyboardRowBgColor);
-}
-
-.keyboardRow:last-child {
-  margin-bottom: 0;
 }
 
 .keyContainer {
@@ -60,7 +55,6 @@ body {
 
 .backspace,
 .caps,
-.shift1,
 .ctrl {
   min-width: 6rem;
 }
@@ -74,8 +68,12 @@ body {
 }
 
 .enter,
-.shift2 {
+.shift1 {
   min-width: 8rem;
+}
+
+.shift2 {
+  min-width: 10rem;
 }
 
 .space {
