@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+
 :root {
   --bgColor: rgb(0, 0, 0);
   --fontColor: rgb(255, 255, 255);
@@ -22,6 +24,9 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: "Michroma", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .keyboard {
@@ -45,7 +50,7 @@ body {
 
 .keyContainer {
   min-width: 3.5rem;
-  height: 3rem;
+  height: 3.5rem;
   border: 1px solid var(--keyboardBorderColor);
   display: flex;
   justify-content: center;
