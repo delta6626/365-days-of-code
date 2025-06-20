@@ -157,6 +157,8 @@ def generateBarCodeArray(textInput):
 
 def drawBarCode(textInput, barWidth, barHeight):
 
+    # Handle edge cases
+
     if barWidth == "" or not isInteger(barWidth):
         barWidth = STANDARD_BAR_WIDTH
     else:
@@ -167,8 +169,13 @@ def drawBarCode(textInput, barWidth, barHeight):
     else:
         barHeight = int(barHeight)
 
+
+    # Generate the bar code array
+
     barCodeArray = generateBarCodeArray(textInput)
-    
+
+    # Draw the final barcode image
+
     imageWidth = 0;
     for pattern in barCodeArray:
         imageWidth += sum(pattern)*barWidth;
@@ -186,7 +193,7 @@ def drawBarCode(textInput, barWidth, barHeight):
             black = not black
             x += code*barWidth
 
-    image.save(textInput + "_barcode.png")
+    image.save(textInput + "_barcode.png") # Finally, save the image
     
 def getUserInput():
     try:
