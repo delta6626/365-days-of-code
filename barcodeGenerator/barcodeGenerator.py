@@ -129,7 +129,30 @@ CODE128_CHAR_TO_CODEB = {
 }
 
 
-def generateBarCodeArray(textInput):
+def drawBarCode(barCodeArray, standardBarWidth, barHeight):
+    
+    imageWidth = 0;
+    for pattern in barCodeArray:
+        imageWidth += sum(pattern)*standardBarWidth;
+
+    image = Image.new("RGB", (imageWidth, barHeight), "white")
+    imageDraw = ImageDraw.Draw(image)
+
+    x = 0
+
+    for pattern in barCodeArray:
+        black = True
+        for code in pattern:
+            if black:
+                imageDraw.rectangle([x,0, x + code*standardBarWidth - 1, barHeight], fill="black")
+            black = not black
+            x += code*standardBarWidth
+
+    image.show()
+    image.save()
+
+
+def generateBarCodeArray(textInput, standardBarWidth, barHeight):
 
     barCodeArray = [CODE128_PATTERNS[104]]  # Start Code B
     for char in textInput:
@@ -144,13 +167,13 @@ def generateBarCodeArray(textInput):
     barCodeArray.append(CODE128_PATTERNS[checkSum])  # Checksum pattern
     barCodeArray.append(CODE128_PATTERNS[106])      # Stop pattern
 
-    return barCodeArray
-
-def drawBarCode(barCodeArray, standardBarWidth = 3):
+    drawBarCode(barCodeArray, standardBarWidth, barHeight)
     
-    imageWidth = 0;
-    for pattern in barCodeArray:
-        imageWidth += sum(pattern)*standardBarWidth;
-
-
-print(generateBarCodeArray("Hello"))
+def getUserInput():
+    try:
+        textInput = input("Enter yout text: ")
+        standardBarWidth = int(input("Enter the standard bar width: "))
+        barHeight = int(input("Enter bar height: "))
+        generateBarCodeArray(textInput, standardBarWidth, barHeight);
+    except:
+        print("An error occured. Try again.")
