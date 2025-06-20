@@ -148,8 +148,7 @@ def drawBarCode(barCodeArray, standardBarWidth, barHeight):
             black = not black
             x += code*standardBarWidth
 
-    image.show()
-    image.save()
+    image.save("barcode.png")
 
 
 def generateBarCodeArray(textInput, standardBarWidth, barHeight):
@@ -175,5 +174,8 @@ def getUserInput():
         standardBarWidth = int(input("Enter the standard bar width: "))
         barHeight = int(input("Enter bar height: "))
         generateBarCodeArray(textInput, standardBarWidth, barHeight);
-    except:
+    except Exception:
         print("An error occured. Try again.")
+
+if __name__ == "__main__":
+    getUserInput()
