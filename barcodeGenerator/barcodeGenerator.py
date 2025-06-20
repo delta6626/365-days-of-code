@@ -128,6 +128,16 @@ CODE128_CHAR_TO_CODEB = {
     'x': 88, 'y': 89, 'z': 90, '{': 91, '|': 92, '}': 93, '~': 94, 'DEL': 95
 }
 
+STANDARD_BAR_WIDTH = 2
+STANDARD_BAR_HEIGHT = 100
+
+def isInteger(stringValue):
+    try:
+        int(stringValue)
+        return True
+    except ValueError:
+        return False
+
 def generateBarCodeArray(textInput):
 
     barCodeArray = [CODE128_PATTERNS[104]]  # Start Code B
@@ -145,13 +155,23 @@ def generateBarCodeArray(textInput):
 
     return barCodeArray
 
-def drawBarCode(textInput, standardBarWidth, barHeight):
+def drawBarCode(textInput, barWidth, barHeight):
+
+    if barWidth == "" or not isInteger(barWidth):
+        barWidth = STANDARD_BAR_WIDTH
+    else:
+        barWidth = int(barWidth)
+
+    if barHeight == "" or not isInteger(barHeight):
+        barHeight = STANDARD_BAR_HEIGHT
+    else:
+        barHeight = int(barHeight)
 
     barCodeArray = generateBarCodeArray(textInput)
     
     imageWidth = 0;
     for pattern in barCodeArray:
-        imageWidth += sum(pattern)*standardBarWidth;
+        imageWidth += sum(pattern)*barWidth;
 
     image = Image.new("RGB", (imageWidth, barHeight), "white")
     imageDraw = ImageDraw.Draw(image)
@@ -162,18 +182,18 @@ def drawBarCode(textInput, standardBarWidth, barHeight):
         black = True
         for code in pattern:
             if black:
-                imageDraw.rectangle([x,0, x + code*standardBarWidth - 1, barHeight], fill="black")
+                imageDraw.rectangle([x,0, x + code*barWidth - 1, barHeight], fill="black")
             black = not black
-            x += code*standardBarWidth
+            x += code*barWidth
 
     image.save(textInput + "_barcode.png")
     
 def getUserInput():
     try:
         textInput = input("Enter yout text: ")
-        standardBarWidth = int(input("Enter the standard bar width: "))
-        barHeight = int(input("Enter bar height: "))
-        drawBarCode(textInput, standardBarWidth, barHeight);
+        barWidth = input("Enter the standard bar width: ")
+        barHeight = input("Enter bar height: ")
+        drawBarCode(textInput, barWidth, barHeight);
     except Exception as e:
         print("An error occured. Try again.", e)
 
