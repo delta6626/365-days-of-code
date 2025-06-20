@@ -1,6 +1,8 @@
 # A Python program to create a barcode from command line input.
 # Author: https://github.com/delta6626
 
+from PIL import Image, ImageDraw
+
 CODE128_PATTERNS = [
     [2, 1, 2, 2, 2, 2],  # 0
     [2, 2, 2, 1, 2, 2],  # 1
@@ -126,9 +128,9 @@ CODE128_CHAR_TO_CODEB = {
     'x': 88, 'y': 89, 'z': 90, '{': 91, '|': 92, '}': 93, '~': 94, 'DEL': 95
 }
 
-def generateBarCodeArray(textInput):
-    barCodeArray = [CODE128_PATTERNS[104]]  # Start Code B
+barCodeArray = [CODE128_PATTERNS[104]]  # Start Code B
 
+def generateBarCodeArray(textInput):
     for char in textInput:
         barCodeArray.append(CODE128_PATTERNS[CODE128_CHAR_TO_CODEB[char]])
 
@@ -142,6 +144,9 @@ def generateBarCodeArray(textInput):
     barCodeArray.append(CODE128_PATTERNS[106])      # Stop pattern
 
     return barCodeArray
+
+def drawBarCode():
+    return
 
 
 print(generateBarCodeArray("Hello"))
