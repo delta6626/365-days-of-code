@@ -130,6 +130,7 @@ CODE128_CHAR_TO_CODEB = {
 
 STANDARD_BAR_WIDTH = 2
 STANDARD_BAR_HEIGHT = 100
+STANDARD_TEXT_INPUT = "Type something!"
 
 def isInteger(stringValue):
     try:
@@ -139,6 +140,9 @@ def isInteger(stringValue):
         return False
 
 def generateBarCodeArray(textInput):
+
+    if textInput == "":
+        textInput = STANDARD_TEXT_INPUT
 
     barCodeArray = [CODE128_PATTERNS[104]]  # Start Code B
     for char in textInput:
@@ -156,6 +160,9 @@ def generateBarCodeArray(textInput):
     return barCodeArray
 
 def drawBarCode(textInput, barWidth, barHeight):
+
+    if textInput == "":
+        textInput = STANDARD_TEXT_INPUT
 
     # Handle edge cases
 
@@ -193,7 +200,7 @@ def drawBarCode(textInput, barWidth, barHeight):
             black = not black
             x += code*barWidth
 
-    image.save(textInput + "_barcode.png") # Finally, save the image
+    image.save("barcode.png") # Finally, save the image
     print("Your barcode has been saved!") # Success message
     
 def getUserInput():
