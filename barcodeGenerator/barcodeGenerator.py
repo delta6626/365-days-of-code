@@ -194,15 +194,16 @@ def drawBarCode(textInput, barWidth, barHeight):
             x += code*barWidth
 
     image.save(textInput + "_barcode.png") # Finally, save the image
+    print("Your barcode has been saved!") # Success message
     
 def getUserInput():
     try:
         textInput = input("Enter yout text: ")
         barWidth = input("Enter the standard bar width: ")
         barHeight = input("Enter bar height: ")
-        drawBarCode(textInput, barWidth, barHeight);
+        drawBarCode(textInput, barWidth, barHeight)
     except Exception as e:
-        print("An error occured. Try again.", e)
+        print("An error occured. Try again.", e) # Error message
 
 if __name__ == "__main__":
     getUserInput()
