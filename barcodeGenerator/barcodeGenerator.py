@@ -106,7 +106,7 @@ CODE128_PATTERNS = [
     [3, 1, 1, 1, 4, 1],  # 101
     [4, 1, 1, 1, 3, 1],  # 102
     [2, 1, 1, 4, 1, 2],  # 103 Start A
-    [2, 1, 1, 2, 1, 4],  # 104 Start B
+    [2, 1, 1, 2, 1, 4],  # 104 Start B (Supports all printable ASCII characters)
     [2, 1, 1, 2, 3, 2],  # 105 Start C
     [2, 3, 3, 1, 1, 1, 2],  # 106 STOP (7 elements)
 ]
@@ -125,3 +125,23 @@ CODE128_CHAR_TO_CODEB = {
     'p': 80, 'q': 81, 'r': 82, 's': 83, 't': 84, 'u': 85, 'v': 86, 'w': 87,
     'x': 88, 'y': 89, 'z': 90, '{': 91, '|': 92, '}': 93, '~': 94, 'DEL': 95
 }
+
+def generateBarCodeArray(textInput):
+    barCodeArray = [CODE128_PATTERNS[104]]  # Start Code B
+
+    for char in textInput:
+        barCodeArray.append(CODE128_PATTERNS[CODE128_CHAR_TO_CODEB[char]])
+
+    checkSum = 104
+    for i in range(len(textInput)):
+        checkSum += (i + 1) * CODE128_CHAR_TO_CODEB[textInput[i]]
+
+    checkSum = checkSum % 103
+
+    barCodeArray.append(CODE128_PATTERNS[checkSum])  # Checksum pattern
+    barCodeArray.append(CODE128_PATTERNS[106])      # Stop pattern
+
+    return barCodeArray
+
+
+print(generateBarCodeArray("Hello"))
