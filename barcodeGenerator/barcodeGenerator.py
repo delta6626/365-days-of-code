@@ -1,3 +1,6 @@
+# A Python program to create a barcode from command line input.
+# Author: https://github.com/delta6626
+
 CODE128_PATTERNS = [
     [2, 1, 2, 2, 2, 2],  # 0
     [2, 2, 2, 1, 2, 2],  # 1
