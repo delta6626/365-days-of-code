@@ -205,7 +205,7 @@ def drawBarCode(textInput, barWidth, barHeight):
     
 def getUserInput():
     try:
-        textInput = input("Enter yout text: ")
+        textInput = input("Enter text to encode: ")
         barWidth = input("Enter the standard bar width: ")
         barHeight = input("Enter bar height: ")
         drawBarCode(textInput, barWidth, barHeight)
