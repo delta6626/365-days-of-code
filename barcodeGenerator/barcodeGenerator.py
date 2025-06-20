@@ -128,9 +128,10 @@ CODE128_CHAR_TO_CODEB = {
     'x': 88, 'y': 89, 'z': 90, '{': 91, '|': 92, '}': 93, '~': 94, 'DEL': 95
 }
 
-barCodeArray = [CODE128_PATTERNS[104]]  # Start Code B
 
 def generateBarCodeArray(textInput):
+
+    barCodeArray = [CODE128_PATTERNS[104]]  # Start Code B
     for char in textInput:
         barCodeArray.append(CODE128_PATTERNS[CODE128_CHAR_TO_CODEB[char]])
 
@@ -145,8 +146,11 @@ def generateBarCodeArray(textInput):
 
     return barCodeArray
 
-def drawBarCode():
-    return
+def drawBarCode(barCodeArray, standardBarWidth = 3):
+    
+    imageWidth = 0;
+    for pattern in barCodeArray:
+        imageWidth += sum(pattern)*standardBarWidth;
 
 
 print(generateBarCodeArray("Hello"))
