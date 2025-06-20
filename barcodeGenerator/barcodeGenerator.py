@@ -128,8 +128,26 @@ CODE128_CHAR_TO_CODEB = {
     'x': 88, 'y': 89, 'z': 90, '{': 91, '|': 92, '}': 93, '~': 94, 'DEL': 95
 }
 
+def generateBarCodeArray(textInput):
 
-def drawBarCode(barCodeArray, standardBarWidth, barHeight):
+    barCodeArray = [CODE128_PATTERNS[104]]  # Start Code B
+    for char in textInput:
+        barCodeArray.append(CODE128_PATTERNS[CODE128_CHAR_TO_CODEB[char]])
+
+    checkSum = 104
+    for i in range(len(textInput)):
+        checkSum += (i + 1) * CODE128_CHAR_TO_CODEB[textInput[i]]
+
+    checkSum = checkSum % 103
+
+    barCodeArray.append(CODE128_PATTERNS[checkSum])  # Checksum pattern
+    barCodeArray.append(CODE128_PATTERNS[106])      # Stop pattern
+
+    return barCodeArray
+
+def drawBarCode(textInput, standardBarWidth, barHeight):
+
+    barCodeArray = generateBarCodeArray(textInput)
     
     imageWidth = 0;
     for pattern in barCodeArray:
@@ -148,34 +166,16 @@ def drawBarCode(barCodeArray, standardBarWidth, barHeight):
             black = not black
             x += code*standardBarWidth
 
-    image.save("barcode.png")
-
-
-def generateBarCodeArray(textInput, standardBarWidth, barHeight):
-
-    barCodeArray = [CODE128_PATTERNS[104]]  # Start Code B
-    for char in textInput:
-        barCodeArray.append(CODE128_PATTERNS[CODE128_CHAR_TO_CODEB[char]])
-
-    checkSum = 104
-    for i in range(len(textInput)):
-        checkSum += (i + 1) * CODE128_CHAR_TO_CODEB[textInput[i]]
-
-    checkSum = checkSum % 103
-
-    barCodeArray.append(CODE128_PATTERNS[checkSum])  # Checksum pattern
-    barCodeArray.append(CODE128_PATTERNS[106])      # Stop pattern
-
-    drawBarCode(barCodeArray, standardBarWidth, barHeight)
+    image.save(textInput + "_barcode.png")
     
 def getUserInput():
     try:
         textInput = input("Enter yout text: ")
         standardBarWidth = int(input("Enter the standard bar width: "))
         barHeight = int(input("Enter bar height: "))
-        generateBarCodeArray(textInput, standardBarWidth, barHeight);
-    except Exception:
-        print("An error occured. Try again.")
+        drawBarCode(textInput, standardBarWidth, barHeight);
+    except Exception as e:
+        print("An error occured. Try again.", e)
 
 if __name__ == "__main__":
     getUserInput()
