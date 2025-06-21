@@ -36,7 +36,7 @@ class Animation(Scene):
         sideCA = Line(C, A)
 
         angleMarker = Angle(sideCB, sideCA, radius=0.4)
-        angleLabel = MathTex("x").next_to(angleMarker, LEFT).shift(0.2*UP)
+        angleLabel = MathTex("x").next_to(angleMarker, LEFT).shift(0.15*UP)
 
         # Group everything to center it
         group = VGroup(
