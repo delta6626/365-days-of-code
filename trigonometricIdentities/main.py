@@ -17,7 +17,11 @@ class Animation(Scene):
 
         # Create the right triangle
         rightTriangle = Polygon(A, B, C)
+        rightTriangle.set_stroke(WHITE)
+
+        # Create the right angle indicator
         rightAngle = RightAngle(Line(A, B), Line(A, C))
+        rightAngle.set_stroke(WHITE)
 
         self.play(Create(rightTriangle))
         self.play(Create(rightAngle))
