@@ -66,6 +66,11 @@ class Animation(Scene):
         self.play(Create(angleMarker), Write(angleLabel))
         self.play(Write(opposite), Write(adjacent), Write(hypotenuse))
 
-        # Remove side labels after 0.5 seconds
-        self.wait(0.4)
+        # Remove side labels
         self.play(FadeOut(opposite), FadeOut(adjacent), FadeOut(hypotenuse))
+        rightTriangleGroup.remove(opposite, adjacent, hypotenuse)
+        
+        # Move the right triangle group to the left
+
+        self.play(rightTriangleGroup.animate.shift(LEFT*4))
+        
