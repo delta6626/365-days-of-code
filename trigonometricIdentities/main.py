@@ -23,5 +23,11 @@ class Animation(Scene):
         rightAngle = RightAngle(Line(A, B), Line(A, C))
         rightAngle.set_stroke(WHITE)
 
+        # Create label for vertices
+
+        vertexA = MathTex("A").next_to(A)
+        vertexB = MathTex("B").next_to(B)
+        vertexA = MathTex("C").next_to(C)
+
         self.play(Create(rightTriangle))
         self.play(Create(rightAngle))
