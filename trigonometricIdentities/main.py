@@ -38,21 +38,34 @@ class Animation(Scene):
         angleMarker = Angle(sideCB, sideCA, radius=0.4)
         angleLabel = MathTex("x").next_to(angleMarker, LEFT).shift(0.15*UP)
 
+        # Text description of sides
+
+        opposite = MathTex("opposite").next_to(A).shift(UP*1.15, LEFT*2.2)
+        adjacent = MathTex("adjacent").next_to(C).shift(DOWN*0.4, LEFT* 2.7)
+        hypotenuse = MathTex("hypotenuse").next_to(B).shift(RIGHT*1.2, DOWN)
+
+
         # Group everything to center it
-        group = VGroup(
+        rightTriangleGroup = VGroup(
             rightTriangle,
             rightAngle,
             vertexA, vertexB, vertexC,
             angleMarker,
-            angleLabel
+            angleLabel,
+            opposite,
+            adjacent,
+            hypotenuse
         )
 
-        group.move_to(ORIGIN)
+        rightTriangleGroup.move_to(ORIGIN)
 
         # Animations
         self.play(Create(rightTriangle))
         self.play(Create(rightAngle))
         self.play(Write(vertexA), Write(vertexB), Write(vertexC))
         self.play(Create(angleMarker), Write(angleLabel))
+        self.play(Write(opposite), Write(adjacent), Write(hypotenuse))
 
-        
+        # Remove side labels after 0.5 seconds
+        self.wait(0.4)
+        self.play(FadeOut(opposite), FadeOut(adjacent), FadeOut(hypotenuse))
