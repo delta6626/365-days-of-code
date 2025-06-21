@@ -79,27 +79,52 @@ class Animation(Scene):
         ########## Trigonometric formulas ##########
 
         sinFormula = MathTex(r"\sin(x) = \frac{\text{opposite}}{\text{hypotenuse}}")
-        sinFormula_replaced = MathTex(r"\sin(x) = \frac{AB}{BC}")
+        sinFormulaReplaced = MathTex(r"\sin(x) = \frac{AB}{BC}")
 
         self.play(Write(sinFormula))
-        self.play(Transform(sinFormula, sinFormula_replaced))
+        self.play(Transform(sinFormula, sinFormulaReplaced))
         self.remove(sinFormula)
-        self.play(sinFormula_replaced.animate.shift(UP*3 + LEFT*2.5))
+        self.play(sinFormulaReplaced.animate.shift(UP*3 + LEFT*2.5))
 
         cosFormula = MathTex(r"\cos(x) = \frac{\text{adjacent}}{\text{hypotenuse}}")
-        cosFormula_replaced = MathTex(r"\cos(x) = \frac{AC}{BC}")
+        cosFormulaReplaced = MathTex(r"\cos(x) = \frac{AC}{BC}")
 
         self.play(Write(cosFormula))
-        self.play(Transform(cosFormula, cosFormula_replaced))
+        self.play(Transform(cosFormula, cosFormulaReplaced))
         self.remove(cosFormula)
-        self.play(cosFormula_replaced.animate.shift(UP*3, RIGHT))
+        self.play(cosFormulaReplaced.animate.shift(UP*3, RIGHT))
 
         tanFormula = MathTex(r"\tan(x) = \frac{\text{opposite}}{\text{adjacent}}")
-        tanFormula_replaced = MathTex(r"\tan(x) = \frac{AB}{AC}")
+        tanFormulaReplaced = MathTex(r"\tan(x) = \frac{AB}{AC}")
 
         self.play(Write(tanFormula))
-        self.play(Transform(tanFormula, tanFormula_replaced))
+        self.play(Transform(tanFormula, tanFormulaReplaced))
         self.remove(tanFormula)
-        self.play(tanFormula_replaced.animate.shift(UP*3, RIGHT*4.5))
+        self.play(tanFormulaReplaced.animate.shift(UP*3, RIGHT*4.5))
 
+        ########## Pythagoras theorem ##########
+
+        title = Text("Pythagoras theorem: ")
+        title.font_size = 40
+        title.shift(UP, RIGHT)
+
+        pythagorasTheorem = MathTex("opposite^2 + adjacent^2 = hypotenuse^2")
+        replacedPythagorasTheorem = MathTex("AB^2 + AC^2 = BC^2")
+
+        pythagorasTheorem.shift(RIGHT*2)
+        replacedPythagorasTheorem.shift(RIGHT)
+
+       
+        self.play(Write(title))
+        self.play(Write(pythagorasTheorem))
+        self.play(Transform(pythagorasTheorem, replacedPythagorasTheorem))
         
+        ########## Remove triangle and trigonometric formulas
+
+        self.play(rightTriangleGroup.animate.shift(LEFT*10), sinFormulaReplaced.animate.shift(UP*5), cosFormulaReplaced.animate.shift(UP*5), tanFormulaReplaced.animate.shift(UP*5));
+        self.remove(rightTriangleGroup, sinFormulaReplaced, cosFormulaReplaced, tanFormulaReplaced)
+
+        ########## Align title to left, Copy formula, shift one of them up and keep the other one in the center
+        self.remove(pythagorasTheorem)
+        pythagorasTheoremCentered = replacedPythagorasTheorem.copy()
+        self.play(title.animate.shift(LEFT*4,  + UP*2), replacedPythagorasTheorem.animate.shift(RIGHT*2, UP*3), pythagorasTheoremCentered.animate.shift(LEFT, UP))
