@@ -10,24 +10,49 @@ from manim import *
 class Animation(Scene):
     def construct(self):
 
-        # Vertices of the right triangle
-        A = ORIGIN                  # Point at (0,0)
-        B = UP * 2                 # Point at (0,2)
-        C = RIGHT * 2              # Point at (2,0)
+        A = ORIGIN          # 0,0,0
+        B = UP * 3          # 3, 0, 0
+        C = RIGHT * 3       # 0, 3, 0
 
-        # Create the right triangle
+        # Triangle
         rightTriangle = Polygon(A, B, C)
         rightTriangle.set_stroke(WHITE)
 
-        # Create the right angle indicator
-        rightAngle = RightAngle(Line(A, B), Line(A, C))
+        # Lines for right angle marker
+        sideAB = Line(A, B)
+        sideAC = Line(A, C)
+
+        rightAngle = RightAngle(sideAB, sideAC, length=0.3)
         rightAngle.set_stroke(WHITE)
 
-        # Create label for vertices
+        # Vertex labels
+        vertexA = MathTex("A").next_to(A, DOWN + LEFT)
+        vertexB = MathTex("B").next_to(B, UP + LEFT)
+        vertexC = MathTex("C").next_to(C, DOWN + RIGHT)
 
-        vertexA = MathTex("A").next_to(A)
-        vertexB = MathTex("B").next_to(B)
-        vertexA = MathTex("C").next_to(C)
+        # Lines for angle x marker
 
+        sideCB = Line(C, B)
+        sideCA = Line(C, A)
+
+        angleMarker = Angle(sideCB, sideCA, radius=0.4)
+        angleLabel = MathTex("x").next_to(angleMarker, LEFT).shift(0.2*UP)
+
+        # Group everything to center it
+        group = VGroup(
+            rightTriangle,
+            rightAngle,
+            vertexA, vertexB, vertexC,
+            angleMarker,
+            angleLabel
+        )
+
+        group.move_to(ORIGIN)
+
+        # Animations
         self.play(Create(rightTriangle))
         self.play(Create(rightAngle))
+        self.play(Write(vertexA), Write(vertexB), Write(vertexC))
+        self.play(Create(angleMarker), Write(angleLabel))
+
+        
