@@ -125,6 +125,30 @@ class Animation(Scene):
         self.remove(rightTriangleGroup, sinFormulaReplaced, cosFormulaReplaced, tanFormulaReplaced)
 
         ########## Align title to left, Copy formula, shift one of them up and keep the other one in the center
+
         self.remove(pythagorasTheorem)
         pythagorasTheoremCentered = replacedPythagorasTheorem.copy()
         self.play(title.animate.shift(LEFT*4,  + UP*2), replacedPythagorasTheorem.animate.shift(RIGHT*2, UP*3), pythagorasTheoremCentered.animate.shift(LEFT, UP))
+
+        ########## Derive sin^2(x) + cos^2(x) = 1 ##########
+
+        step1 = MathTex(r"\frac{AB^2}{BC^2} + \frac{AC^2}{BC^2} = \frac{BC^2}{BC^2}")
+        self.play(Transform(pythagorasTheoremCentered, step1))
+        self.wait(0.4)
+        self.remove(pythagorasTheoremCentered)
+
+        step2 = MathTex(r"\left(\frac{AB}{BC}\right)^2 + \left(\frac{AC}{BC}\right)^2 = \left(\frac{BC}{BC}\right)^2")
+        self.play(Transform(step1, step2))
+        self.wait(0.4)
+        self.remove(step1)
+
+        step3 = MathTex(r"\left(\frac{AB}{BC}\right)^2 + \left(\frac{AC}{BC}\right)^2 = 1")
+        self.play(Transform(step2, step3))
+        self.wait(0.4)
+        self.remove(step2)
+
+        step4 = MathTex("sin^2(x) + cos^2(x) = 1")
+        self.play(Transform(step3, step4))
+        self.wait(0.4)
+        self.remove(step3)
+        
