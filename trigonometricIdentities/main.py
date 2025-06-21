@@ -10,6 +10,8 @@ from manim import *
 class Animation(Scene):
     def construct(self):
 
+        ########## Triangle section ##########
+
         A = ORIGIN          # 0,0,0
         B = UP * 3          # 3, 0, 0
         C = RIGHT * 3       # 0, 3, 0
@@ -69,8 +71,35 @@ class Animation(Scene):
         # Remove side labels
         self.play(FadeOut(opposite), FadeOut(adjacent), FadeOut(hypotenuse))
         rightTriangleGroup.remove(opposite, adjacent, hypotenuse)
-        
+
         # Move the right triangle group to the left
 
         self.play(rightTriangleGroup.animate.shift(LEFT*4))
+        
+        ########## Trigonometric formulas ##########
+
+        sinFormula = MathTex(r"\sin(x) = \frac{\text{opposite}}{\text{hypotenuse}}")
+        sinFormula_replaced = MathTex(r"\sin(x) = \frac{AB}{BC}")
+
+        self.play(Write(sinFormula))
+        self.play(Transform(sinFormula, sinFormula_replaced))
+        self.remove(sinFormula)
+        self.play(sinFormula_replaced.animate.shift(UP*3 + LEFT*2.5))
+
+        cosFormula = MathTex(r"\cos(x) = \frac{\text{adjacent}}{\text{hypotenuse}}")
+        cosFormula_replaced = MathTex(r"\cos(x) = \frac{AC}{BC}")
+
+        self.play(Write(cosFormula))
+        self.play(Transform(cosFormula, cosFormula_replaced))
+        self.remove(cosFormula)
+        self.play(cosFormula_replaced.animate.shift(UP*3, RIGHT))
+
+        tanFormula = MathTex(r"\tan(x) = \frac{\text{opposite}}{\text{adjacent}}")
+        tanFormula_replaced = MathTex(r"\tan(x) = \frac{AB}{AC}")
+
+        self.play(Write(tanFormula))
+        self.play(Transform(tanFormula, tanFormula_replaced))
+        self.remove(tanFormula)
+        self.play(tanFormula_replaced.animate.shift(UP*3, RIGHT*4.5))
+
         
