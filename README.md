@@ -76,7 +76,10 @@ I'll try to update this as I go.
 - Day 58 ✅: Changed boring tooltips to daisyUi's tooltips, fixed theme related issue
 - Day 59 ✅: Reviewed a PR for Nebula, added link to homepage in the dashboard
 - Day 60 ✅: Completed Nebula’s README, added a Code of Conduct and Contributing Guide, made UI tweaks
-- Day 61 ✅: Designed a virtual on screen keyboard 
+- Day 61 ✅: Designed a virtual on screen keyboard
+- Day 62 ✅: Added fade animations to Nebula's homepage
+- Day 63 ✅: Added some JS logic for the virtual keyboard
+- Day 64 ✅: Created a barcode generator using Python
 
 ---
 
