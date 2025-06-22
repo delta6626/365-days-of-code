@@ -80,6 +80,7 @@ I'll try to update this as I go.
 - Day 62 ✅: Added fade animations to Nebula's homepage
 - Day 63 ✅: Added some JS logic for the virtual keyboard
 - Day 64 ✅: Created a barcode generator using Python
+- Day 65 ✅: Started working with Python and Manim to animate the derivation of the 3 fundamental trigonometric identities.
 
 ---
 
