@@ -229,3 +229,9 @@ class Animation(Scene):
         self.play(Transform(step5, step6), Create(step6SurroundingRectangle))
         self.wait(0.4)
         self.remove(step5)
+
+        ########## Group all identities and bring them to the center ##########
+
+        allIdentities = VGroup(firstIdentity, secondIdentity, thirdIdentity)
+
+        self.play(title.animate.shift(UP*4), replacedPythagorasTheorem.animate.shift(UP*4), firstIdentity.animate.move_to(UP), secondIdentity.animate.move_to(ORIGIN), thirdIdentity.animate.move_to(DOWN))
