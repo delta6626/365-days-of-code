@@ -191,3 +191,41 @@ class Animation(Scene):
         self.wait(0.4)
         self.remove(step4)
         self.play(secondIdentity.animate.shift(UP*2, RIGHT*2.5))
+
+        ########## Derive 1 + tan^2(x) = sec^2(x) ##########
+
+        pythagorasTheoremCentered = replacedPythagorasTheorem.copy()
+        self.play(pythagorasTheoremCentered.animate.move_to(ORIGIN))
+
+        step1 = MathTex(r"\frac{AB^2}{AC^2} + \frac{AC^2}{AC^2} = \frac{BC^2}{AC^2}")
+        self.play(Transform(pythagorasTheoremCentered, step1))
+        self.wait(0.4)
+        self.remove(pythagorasTheoremCentered)
+
+        step2 = MathTex(r"\left(\frac{AB}{AC}\right)^2 + \left(\frac{AC}{AC}\right)^2 = \left(\frac{BC}{AC}\right)^2")
+        self.play(Transform(step1, step2))
+        self.wait(0.4)
+        self.remove(step1)
+
+        step3 = MathTex(r"\left(\frac{AB}{AC}\right)^2 + 1 = \left(\frac{BC}{AC}\right)^2")
+        self.play(Transform(step2, step3))
+        self.wait(0.4)
+        self.remove(step2)
+
+        step4 = MathTex(r"\tan^2{x} + 1 = \frac{1}{\cos^2{x}}")
+        self.play(Transform(step3, step4))
+        self.wait(0.4)
+        self.remove(step3)
+
+        step5 = MathTex("tan^2(x) + 1 = sec^2(x)")
+        self.play(Transform(step4, step5))
+        self.wait(0.4)
+        self.remove(step4)
+
+        step6 = MathTex("1 + tan^2(x) = sec^2(x)")
+        step6SurroundingRectangle = SurroundingRectangle(step6)
+        thirdIdentity = VGroup(step6, step6SurroundingRectangle)
+
+        self.play(Transform(step5, step6), Create(step6SurroundingRectangle))
+        self.wait(0.4)
+        self.remove(step5)
