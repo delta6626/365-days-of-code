@@ -2,8 +2,8 @@
 # Author: https://github.com/delta6626
 
 # sin^2(x) + cos^2(x) = 1
-# 1 + tan^2(x) = sec^2(x)
 # 1 + cot^2(x) = cosec^2(x)
+# 1 + tan^2(x) = sec^2(x)
 
 from manim import *
 
@@ -147,8 +147,47 @@ class Animation(Scene):
         self.wait(0.4)
         self.remove(step2)
 
+
         step4 = MathTex("sin^2(x) + cos^2(x) = 1")
+        step4SurroundingRectangle = SurroundingRectangle(step4)
+        firstIdentity = VGroup(step4, step4SurroundingRectangle)
+
+        self.play(Transform(step3, step4), Create(step4SurroundingRectangle))
+        self.wait(0.4)
+        self.remove(step3)
+        self.play(firstIdentity.animate.shift(UP*2, LEFT*3))
+        
+        ########## Derive 1 + cot^2(x) = cosec^2(x) ##########
+
+        pythagorasTheoremCentered = replacedPythagorasTheorem.copy()
+        self.play(pythagorasTheoremCentered.animate.move_to(ORIGIN))
+
+        step1 = MathTex(r"\frac{AB^2}{AB^2} + \frac{AC^2}{AB^2} = \frac{BC^2}{AB^2}")
+        self.play(Transform(pythagorasTheoremCentered, step1))
+        self.wait(0.4)
+        self.remove(pythagorasTheoremCentered)
+
+        step2 = MathTex(r"\left(\frac{AB}{AB}\right)^2 + \left(\frac{AC}{AB}\right)^2 = \left(\frac{BC}{AB}\right)^2")
+        self.play(Transform(step1, step2))
+        self.wait(0.4)
+        self.remove(step1)
+
+        
+        step3 = MathTex(r"1 + \left(\frac{AC}{AB}\right)^2 = \left(\frac{BC}{AB}\right)^2")
+        self.play(Transform(step2, step3))
+        self.wait(0.4)
+        self.remove(step2)
+
+        step4 = MathTex(r"1 + \frac{1}{\tan^2{x}} = \frac{1}{\sin^2{x}}")
         self.play(Transform(step3, step4))
         self.wait(0.4)
         self.remove(step3)
-        
+
+        step5 = MathTex("1 + cot^2(x) = cosec^2(x)")
+        step5SurroundingRectangle = SurroundingRectangle(step5)
+        secondIdentity = VGroup(step5, step5SurroundingRectangle)
+
+        self.play(Transform(step4, step5), Create(step5SurroundingRectangle))
+        self.wait(0.4)
+        self.remove(step4)
+        self.play(secondIdentity.animate.shift(UP*2, RIGHT*2.5))
