@@ -82,8 +82,9 @@ I'll try to update this as I go.
 - Day 64 ✅: Created a barcode generator using Python
 - Day 65 ✅: Started working with Python and Manim to animate the derivation of the 3 fundamental trigonometric identities.
 - Day 66 ✅: Completed Manim Animation! [Check it out.](https://github.com/delta6626/365-days-of-code/blob/main/trigonometricIdentities/media/videos/main/1080p60/Animation.mp4)
-- Day 67 ✅: Created a much needed 404 page for Nebula, Started learning C
+- Day 67 ✅: Created a much needed 404 page for Nebula, Started learning [C](https://github.com/delta6626/learning-c)
 - Day 68 ✅: Learnt about data types in C, the C standard library and its core functions, format specifiers
+- Day 69 ✅: Learnt about auto, static and extern, defining custom types with typedef, and the null terminator character
 ---
 
 ## 📌 Notes
