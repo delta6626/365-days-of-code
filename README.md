@@ -85,6 +85,9 @@ I'll try to update this as I go.
 - Day 67 ✅: Created a much needed 404 page for Nebula, Started learning [C](https://github.com/delta6626/learning-c)
 - Day 68 ✅: Learnt about data types in C, the C standard library and its core functions, format specifiers
 - Day 69 ✅: Learnt about auto, static and extern, defining custom types with typedef, and the null terminator character
+- Day 70 ✅: Learnt more about math operations in C and how typecasting works
+- Day 71 ✅: Learnt about bitwise operations in C, sizeof() function, truthy and falsey values
+
 ---
 
 ## 📌 Notes
