@@ -87,6 +87,7 @@ I'll try to update this as I go.
 - Day 69 ✅: Learnt about auto, static and extern, defining custom types with typedef, and the null terminator character
 - Day 70 ✅: Learnt more about math operations in C and how typecasting works
 - Day 71 ✅: Learnt about bitwise operations in C, sizeof() function, truthy and falsey values
+- Day 72 ✅: Learnt about switch statement, goto statament and ternary operator in C
 
 ---
 
