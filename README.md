@@ -90,7 +90,8 @@ I'll try to update this as I go.
 - Day 72 ✅: Learnt about switch statement, goto statament and ternary operator in C
 - Day 73 ✅: Learnt about functions, function arguments, argv, argc and arrays in C
 - Day 74 ✅: Learnt about multidimensional arrays and structures in C, Made [Nebula](https://nebulanotes.live) more SEO friendly
-- Day 75 ✅: Learnt more about putchar, getchar, printf, scanf and fgets. Also learnt about character and string functions. 
+- Day 75 ✅: Learnt more about putchar, getchar, printf, scanf and fgets. Also learnt about character and string functions (introduction)
+- Day 76 ✅: Learnt about strlen(), strcat(), strcpy() and strcmp() functions, basics of pointers
 
 ---
 
