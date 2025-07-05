@@ -91,7 +91,9 @@ I'll try to update this as I go.
 - Day 73 ✅: Learnt about functions, function arguments, argv, argc and arrays in C
 - Day 74 ✅: Learnt about multidimensional arrays and structures in C, Made [Nebula](https://nebulanotes.live) more SEO friendly
 - Day 75 ✅: Learnt more about putchar, getchar, printf, scanf and fgets. Also learnt about character and string functions (introduction)
-- Day 76 ✅: Learnt about strlen(), strcat(), strcpy() and strcmp() functions, basics of pointers
+- Day 76 ✅: Learnt about strlen(), strcat(), strcpy() and strcmp() functions, basics of pointers/
+- Day 77 ✅: Learnt about pointer math, malloc() and free()
+- Day 78 ✅: Learnt about pointer arrays, structures as pointers and passing pointers to functions
 
 ---
 
