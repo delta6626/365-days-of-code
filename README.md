@@ -94,6 +94,7 @@ I'll try to update this as I go.
 - Day 76 ✅: Learnt about strlen(), strcat(), strcpy() and strcmp() functions, basics of pointers/
 - Day 77 ✅: Learnt about pointer math, malloc() and free()
 - Day 78 ✅: Learnt about pointer arrays, structures as pointers and passing pointers to functions
+- Day 79 ✅: Learnt about basic file manipulation functions, tested previous knowledge 
 
 ---
 
