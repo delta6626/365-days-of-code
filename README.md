@@ -97,6 +97,8 @@ I'll try to update this as I go.
 - Day 79 ✅: Learnt about basic file manipulation functions, tested previous knowledge
 - Day 81 ✅: Explored file opening modes in C (r, w, a, rb+) and practiced basic file manipulation operations
 - Day 82 ✅: Dived into binary file handling using .dat files with fread(), fwrite(), and fseek() for efficient data access
+- Day 83 ✅: Learnt about system(), capture output with popen()/pclose(), and explored math.h and time.h functions like ctime() and time().
+
 
 ---
 
