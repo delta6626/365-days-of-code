@@ -99,6 +99,7 @@ I'll try to update this as I go.
 - Day 82 ✅: Dived into binary file handling using .dat files with fread(), fwrite(), and fseek() for efficient data access
 - Day 83 ✅: Learnt about system(), capture output with popen()/pclose(), and explored math.h and time.h functions like ctime() and time().
 - Day 84 ✅: Explored rand(), srand(), and qsort() in C; built a number guessing game using random numbers between 1 and 100
+- Day 85 ✅: Practiced C fundamentals—memory allocation, string reversal, palindrome check, character frequency, and more
 ---
 
 ## 📌 Notes
