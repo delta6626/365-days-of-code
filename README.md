@@ -100,6 +100,7 @@ I'll try to update this as I go.
 - Day 83 ✅: Learnt about system(), capture output with popen()/pclose(), and explored math.h and time.h functions like ctime() and time().
 - Day 84 ✅: Explored rand(), srand(), and qsort() in C; built a number guessing game using random numbers between 1 and 100
 - Day 85 ✅: Practiced C fundamentals—memory allocation, string reversal, palindrome check, character frequency, and more
+- Day 86 ✅: Built a C password generator with rand(), pointers, and custom length support
 ---
 
 ## 📌 Notes
