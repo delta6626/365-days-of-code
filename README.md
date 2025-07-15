@@ -102,6 +102,7 @@ I'll try to update this as I go.
 - Day 85 ✅: Practiced C fundamentals—memory allocation, string reversal, palindrome check, character frequency, and more
 - Day 86 ✅: Built a C password generator with rand(), pointers, and custom length support
 - Day 87 ✅: Learned about enums in C, using typedef and custom values, then built a traffic light simulator to apply it all
+- Day 88 ✅: Day 88 ✅: Created a custom C string library with stringLength(), stringCopy(), stringReverse(), charToAsciiCode(), and stringCharacterPosition(); also updated Nebula to set the page title to the opened note’s name
 ---
 
 ## 📌 Notes
