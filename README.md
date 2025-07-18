@@ -105,6 +105,7 @@ I'll try to update this as I go.
 - Day 88 ✅: Day 88 ✅: Created a custom C string library with stringLength(), stringCopy(), stringReverse(), charToAsciiCode(), and stringCharacterPosition(); also updated Nebula to set the page title to the opened note’s name
 - Day 89 ✅: Added stringUpper(), stringLower(), stringIsAlpha(), and stringIsNumeric() to my custom string library
 - Day 90 ✅: Implemented stringStartsWith() and stringConcat()
+- Day 91 ✅: Made Nebula’s layout responsive, adjusted widths and margins, and removed redundant modals from the dashboard
 ---
 
 ## 📌 Notes
