@@ -107,6 +107,7 @@ I'll try to update this as I go.
 - Day 90 ✅: Implemented stringStartsWith() and stringConcat()
 - Day 91 ✅: Made Nebula’s layout responsive, adjusted widths and margins, and removed redundant modals from the dashboard
 - Day 92 ✅: Focused on making Nebula more responsive
+- Day 93 ✅: Still grinding on Nebula’s responsiveness. Adjusted sizes for cards and buttons, and started working on a hamburger menu for the dashboard
 ---
 
 ## 📌 Notes
