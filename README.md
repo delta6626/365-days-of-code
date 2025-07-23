@@ -110,6 +110,7 @@ I'll try to update this as I go.
 - Day 93 ✅: Still grinding on Nebula’s responsiveness. Adjusted sizes for cards and buttons, and started working on a hamburger menu for the dashboard
 - Day 94 ✅: Refactored Nebula’s dashboard to integrate a WIP hamburger menu using Zustand 
 - Day 95 ✅: Fixed the note editor width bug and implemented the hamburger menu with actual nav items
+- Day 96 ✅: Hooked up hamburger menu functionality across all pages in Nebula, added icons, dividers, and cleaned up the layout.
 ---
 
 ## 📌 Notes
