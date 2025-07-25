@@ -112,6 +112,7 @@ I'll try to update this as I go.
 - Day 95 ✅: Fixed the note editor width bug and implemented the hamburger menu with actual nav items
 - Day 96 ✅: Hooked up hamburger menu functionality across all pages in Nebula, added icons, dividers, and cleaned up the layout.
 - Day 97 ✅: More responsive tweaks to Nebula’s dashboard.
+- Day 98 ✅: Finished making Nebula’s dashboard fully responsive 
 ---
 
 ## 📌 Notes
