@@ -113,6 +113,7 @@ I'll try to update this as I go.
 - Day 96 ✅: Hooked up hamburger menu functionality across all pages in Nebula, added icons, dividers, and cleaned up the layout.
 - Day 97 ✅: More responsive tweaks to Nebula’s dashboard.
 - Day 98 ✅: Finished making Nebula’s dashboard fully responsive 
+- Day 99 ✅: Made everything in Nebula responsive except the Note Editor 
 ---
 
 ## 📌 Notes
