@@ -115,6 +115,7 @@ I'll try to update this as I go.
 - Day 98 ✅: Finished making Nebula’s dashboard fully responsive 
 - Day 99 ✅: Made everything in Nebula responsive except the Note Editor
 - Day 100 ✅: Started making Nebula’s Note Editor mobile-friendly
+- Day 101 ✅: More progress on making the Note Editor responsive, also added auto-open for newly created notes
 ---
 
 ## 📌 Notes
