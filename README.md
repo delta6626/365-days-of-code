@@ -118,6 +118,7 @@ I'll try to update this as I go.
 - Day 101 ✅: More progress on making the Note Editor responsive, also added auto-open for newly created notes
 - Day 102 ✅: Made Nebula's note editor fully responsive. All tools now work beautifully on mobile with a clean, scrollable layout.
 - Day 103 ✅: Started learning basic Three.js. Created a 3D football rotating along the X, Y, and Z axes
+- Day 104 ✅: Made Nebula’s settings page responsive. Every part of the app now works smoothly on all screen sizes
 ---
 
 ## 📌 Notes
