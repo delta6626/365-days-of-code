@@ -120,6 +120,7 @@ I'll try to update this as I go.
 - Day 103 ✅: Started learning basic Three.js. Created a 3D football rotating along the X, Y, and Z axes
 - Day 104 ✅: Made Nebula’s settings page responsive. Every part of the app now works smoothly on all screen sizes
 - Day 105 ✅: Played more with Three.js and built scene abstractions. Also added a new “Abyss” theme to Nebula
+- Day 106 ✅: Cleaned up the codebase, added a new “classic” theme with sharp corners, and improved accessibility by replacing divs with buttons where appropriate.
 ---
 
 ## 📌 Notes
