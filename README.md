@@ -122,6 +122,7 @@ I'll try to update this as I go.
 - Day 105 ✅: Played more with Three.js and built scene abstractions. Also added a new “Abyss” theme to Nebula
 - Day 106 ✅: Cleaned up the codebase, added a new “classic” theme with sharp corners, and improved accessibility by replacing divs with buttons where appropriate.
 - Day 107 ✅: Played with Three.js, used circular parametric equations for camera orbiting, and experimented with textures
+- Day 108 ✅: Cleaned up some animation in Nebula’s footer to remove jitter, and updated the FAQ
 ---
 
 ## 📌 Notes
