@@ -125,6 +125,7 @@ I'll try to update this as I go.
 - Day 108 ✅: Cleaned up some animation in Nebula’s footer to remove jitter, and updated the FAQ
 - Day 109 ✅: Explored MeshPhongMaterial and point lighting in Three.js
 - Day 110 ✅: (More three.js) Added interactive GUI controls for object position and lighting, enabled orbit controls and shadows
+- Day 111 ✅: Experimented with directional and spotlights in Three.js, and wrote a custom function to generate a grid of cubes with dynamic row sizes
 ---
 
 ## 📌 Notes
