@@ -127,6 +127,7 @@ I'll try to update this as I go.
 - Day 110 ✅: (More three.js) Added interactive GUI controls for object position and lighting, enabled orbit controls and shadows
 - Day 111 ✅: Experimented with directional and spotlights in Three.js, and wrote a custom function to generate a grid of cubes with dynamic row sizes
 - Day 112 ✅: Continued exploring Three.js with a focus on ambient lighting
+- Day 113 ✅: Improved Nebula’s read mode by making the toolbar 30% opaque and disabling all editor buttons
 ---
 
 ## 📌 Notes
