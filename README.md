@@ -128,6 +128,7 @@ I'll try to update this as I go.
 - Day 111 ✅: Experimented with directional and spotlights in Three.js, and wrote a custom function to generate a grid of cubes with dynamic row sizes
 - Day 112 ✅: Continued exploring Three.js with a focus on ambient lighting
 - Day 113 ✅: Improved Nebula’s read mode by making the toolbar 30% opaque and disabling all editor buttons
+- Day 114 ✅: Switched to an orthographic camera, experimented with XZ plane rotations, created oscillating and circular cube motion
 ---
 
 ## 📌 Notes
