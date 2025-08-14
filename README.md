@@ -132,6 +132,7 @@ I'll try to update this as I go.
 - Day 115 ✅: Continued experimenting with Three.js and integrated Tween.js for smooth animations
 - Day 116 ✅: Started planning and setting up [PartnerPair](https://github.com/delta6626/partnerpair), a co-founder matching platform built with React, TypeScript, Firebase, Tailwind, DaisyUI, and Zustand.
 - Day 117 ✅: Started building the Navbar for PartnerPair, ensuring responsiveness across all screens.
+- Day 118 ✅: Built a theme changer component for PartnerPair that remembers user preferences in local storage, along with additional UI tinkering
 ---
 
 ## 📌 Notes
