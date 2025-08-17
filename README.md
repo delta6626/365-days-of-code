@@ -136,6 +136,7 @@ I'll try to update this as I go.
 - Day 119 ✅: Designed a minimalistic sign-up page UI for PartnerPair, set up Firebase, and created basic TypeScript user types for authentication
 - Day 120 ✅: Fixed UI issues in PartnerPair and started implementing state and logic for the sign-up page
 - Day 121 ✅: Completed real-time form validation logic for PartnerPair’s sign-up form
+- Day 122 ✅: Added basic user sign-in functionality for PartnerPair, created authentication service functions, and polished the sign-up form UI and error handling
 ---
 
 ## 📌 Notes
