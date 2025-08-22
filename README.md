@@ -140,7 +140,8 @@ I'll try to update this as I go.
 - Day 123 ✅: Fully implemented user sign-in for PartnerPair, integrated Firestore for saving user data, started email verification flow, and created a Zustand store for user state
 - Day 124 ✅: Improved PartnerPair’s UI with design refinements and responsiveness fixes, added a verification form UI, optimized user fetching with Zustand hydration, and set up hooks for user initialization and theming
 - Day 125 ✅: Completed PartnerPair’s email verification form, added service functions for sending verification emails, and polished the flow with state management and dashboard navigation
-- Day 126 ✅: Refactored PartnerPair’s sign-up flow to include a date of birth field, updated Firestore save logic accordingly, and redesigned the loader with a more classic style
+- Day 126 ✅: Refactored PartnerPair’s sign-up flow to include a date of birth field, updated Firestore save logic accordingly, and redesigned the loader with a more classic 
+- Day 127 ✅: Fixed PartnerPair’s Navbar by properly placing the theme changer in the mobile menu, making it full width with a label and icon
 ---
 
 ## 📌 Notes
