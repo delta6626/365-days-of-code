@@ -143,6 +143,7 @@ I'll try to update this as I go.
 - Day 126 ✅: Refactored PartnerPair’s sign-up flow to include a date of birth field, updated Firestore save logic accordingly, and redesigned the loader with a more classic 
 - Day 127 ✅: Fixed PartnerPair’s Navbar by properly placing the theme changer in the mobile menu, making it full width with a label and icon
 - Day 128 ✅: Focused on building PartnerPair’s login form
+- Day 129 ✅: Continued developing PartnerPair’s login functionality, designing UI elements, and adding error handling via a custom hook
 ---
 
 ## 📌 Notes
