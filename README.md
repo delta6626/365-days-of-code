@@ -145,6 +145,7 @@ I'll try to update this as I go.
 - Day 128 ✅: Focused on building PartnerPair’s login form
 - Day 129 ✅: Continued developing PartnerPair’s login functionality, designing UI elements, and adding error handling via a custom hook
 - Day 130 ✅: Fully implemented PartnerPair’s login functionality with error handling, validation, and navigation
+- Day 131 ✅: Implemented Google sign-in as a second authentication method for PartnerPair + revamped the loader to be more visually appealing
 ---
 
 ## 📌 Notes
