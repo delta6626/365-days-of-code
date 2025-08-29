@@ -147,6 +147,7 @@ I'll try to update this as I go.
 - Day 130 ✅: Fully implemented PartnerPair’s login functionality with error handling, validation, and navigation
 - Day 131 ✅: Implemented Google sign-in as a second authentication method for PartnerPair + revamped the loader to be more visually appealing
 - Day 132 ✅: Fixed a critical bug with stale local storage data affecting user sessions and started building PartnerPair’s main app screen/dashboard
+- Day 133 ✅: Began building PartnerPair’s dashboard, settings, and profile management
 ---
 
 ## 📌 Notes
