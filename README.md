@@ -149,6 +149,7 @@ I'll try to update this as I go.
 - Day 132 ✅: Fixed a critical bug with stale local storage data affecting user sessions and started building PartnerPair’s main app screen/dashboard
 - Day 133 ✅: Began building PartnerPair’s dashboard, settings, and profile management
 - Day 134 ✅: Extended the settings & profile manager for PartnerPair. Integrated the DiceBear HTTP API so users can set their own profile picture
+- Day 135 ✅: Major refactor in PartnerPair - completely dropped localStorage for caching due to security and data integrity concerns
 ---
 
 ## 📌 Notes
