@@ -151,6 +151,7 @@ I'll try to update this as I go.
 - Day 134 ✅: Extended the settings & profile manager for PartnerPair. Integrated the DiceBear HTTP API so users can set their own profile picture
 - Day 135 ✅: Major refactor in PartnerPair - completely dropped localStorage for caching due to security and data integrity concerns
 - Day 136 ✅: Improved PartnerPair’s profile settings UI with better input layouts, scrollbars, and overall styling polish
+- Day 137 ✅: Built the Skills Manager and Skills Holder components for PartnerPair’s settings page
 ---
 
 ## 📌 Notes
