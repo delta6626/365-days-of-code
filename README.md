@@ -155,6 +155,7 @@ I'll try to update this as I go.
 - Day 138 ✅: Started building a modal for the Skills Manager component in PartnerPair to allow users to add new skills
 - Day 139 ✅: Completed the Skills Manager by finishing the add-skill modal with length and duplicate validation
 - Day 140 ✅: Refactored PartnerPair’s dashboard to add a user profile dropdown showing the profile picture, linking to settings, and including a sign-out button
+- Day 141 ✅: Began building the User Roles Manager for PartnerPair and updated the user schema
 ---
 
 ## 📌 Notes
