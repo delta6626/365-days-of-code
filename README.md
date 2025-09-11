@@ -160,6 +160,7 @@ I'll try to update this as I go.
 - Day 143 ✅: Fixed UI loader alignment, resolved a critical hook bug, and updated the user schema with a startup description field
 - Day 144 ✅: Began building the StartupInformationManager component for PartnerPair
 - Day 145 ✅: Completed the StartupInformationManager component, letting users define their goal on PartnerPair
+- Day 146 ✅: Built the SocialLinksManager component for PartnerPair to manage user links
 ---
 
 ## 📌 Notes
