@@ -162,6 +162,7 @@ I'll try to update this as I go.
 - Day 145 ✅: Completed the StartupInformationManager component, letting users define their goal on PartnerPair
 - Day 146 ✅: Built the SocialLinksManager component for PartnerPair to manage user links
 - Day 147 ✅: Added an Account Management section in PartnerPair’s settings and added the theme changer into it
+- Day 148 ✅: Expanded PartnerPair’s Account Management section with sign-out and delete account options
 ---
 
 ## 📌 Notes
