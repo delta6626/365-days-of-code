@@ -163,6 +163,7 @@ I'll try to update this as I go.
 - Day 146 ✅: Built the SocialLinksManager component for PartnerPair to manage user links
 - Day 147 ✅: Added an Account Management section in PartnerPair’s settings and added the theme changer into it
 - Day 148 ✅: Expanded PartnerPair’s Account Management section with sign-out and delete account options
+- Day 149 ✅: Made the settings page functional for PartnerPair v1 by enabling users to save updated profile data to Firestore.
 ---
 
 ## 📌 Notes
