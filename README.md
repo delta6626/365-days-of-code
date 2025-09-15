@@ -164,6 +164,7 @@ I'll try to update this as I go.
 - Day 147 ✅: Added an Account Management section in PartnerPair’s settings and added the theme changer into it
 - Day 148 ✅: Expanded PartnerPair’s Account Management section with sign-out and delete account options
 - Day 149 ✅: Made the settings page functional for PartnerPair v1 by enabling users to save updated profile data to Firestore.
+- Day 150 ✅: Started a closed-source secret project. Set up authentication using React, TypeScript, Shadcn, and Firebase and got the Navbar done.
 ---
 
 ## 📌 Notes
