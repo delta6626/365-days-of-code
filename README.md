@@ -166,6 +166,7 @@ I'll try to update this as I go.
 - Day 149 ✅: Made the settings page functional for PartnerPair v1 by enabling users to save updated profile data to Firestore.
 - Day 150 ✅: Started a closed-source secret project. Set up authentication using React, TypeScript, Shadcn, and Firebase and got the Navbar done.
 - Day 151 ✅: Built a pricing page with reusable plan cards for the secret project
+- Day 152 ✅: Refactored the secret project, fixed bugs, and finalized PayPal as the payment gateway
 ---
 
 ## 📌 Notes
