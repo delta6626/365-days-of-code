@@ -167,6 +167,7 @@ I'll try to update this as I go.
 - Day 150 ✅: Started a closed-source secret project. Set up authentication using React, TypeScript, Shadcn, and Firebase and got the Navbar done.
 - Day 151 ✅: Built a pricing page with reusable plan cards for the secret project
 - Day 152 ✅: Refactored the secret project, fixed bugs, and finalized PayPal as the payment gateway
+- Day 153 ✅: Added a startup stage selector to the Professional Information Manager in PartnerPair
 ---
 
 ## 📌 Notes
