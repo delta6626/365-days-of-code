@@ -168,6 +168,7 @@ I'll try to update this as I go.
 - Day 151 ✅: Built a pricing page with reusable plan cards for the secret project
 - Day 152 ✅: Refactored the secret project, fixed bugs, and finalized PayPal as the payment gateway
 - Day 153 ✅: Added a startup stage selector to the Professional Information Manager in PartnerPair
+- Day 154 ✅: Built the MatchingPreferenceManager for PartnerPair and refactored the Role Manager to handle both user roles and desired roles in potential matches
 ---
 
 ## 📌 Notes
