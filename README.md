@@ -171,6 +171,7 @@ I'll try to update this as I go.
 - Day 154 ✅: Built the MatchingPreferenceManager for PartnerPair and refactored the Role Manager to handle both user roles and desired roles in potential matches
 - Day 155 ✅: Started building a location picker for PartnerPair
 - Day 156 ✅ Improved the location picker component in PartnerPair. Made it prettier and faster.
+- Day 157 ✅ Made the location picker component reusable with props
 ---
 
 ## 📌 Notes
