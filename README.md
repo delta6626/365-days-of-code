@@ -172,6 +172,7 @@ I'll try to update this as I go.
 - Day 155 ✅: Started building a location picker for PartnerPair
 - Day 156 ✅ Improved the location picker component in PartnerPair. Made it prettier and faster.
 - Day 157 ✅ Made the location picker component reusable with props
+- Day 158 ✅ Built the Commitment Level Manager component for PartnerPair
 ---
 
 ## 📌 Notes
