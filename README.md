@@ -173,6 +173,7 @@ I'll try to update this as I go.
 - Day 156 ✅ Improved the location picker component in PartnerPair. Made it prettier and faster.
 - Day 157 ✅ Made the location picker component reusable with props
 - Day 158 ✅ Built the Commitment Level Manager component for PartnerPair
+- Day 159 ✅ Built the Availability Manager component for PartnerPair, letting users define how quickly they want cofounders to be available
 ---
 
 ## 📌 Notes
