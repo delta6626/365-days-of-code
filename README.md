@@ -176,6 +176,7 @@ I'll try to update this as I go.
 - Day 159 ✅ Built the Availability Manager component for PartnerPair, letting users define how quickly they want cofounders to be available
 - Day 160 ✅ Refactored the Availability Manager in PartnerPair to be reusable
 - Day 161 ✅ Built a component in PartnerPair that lets cofounder-seeking users select their preferred startup stages
+- Day 162 ✅ Refactored the Skills Manager in PartnerPair to handle both user skills and desired cofounder skills
 ---
 
 ## 📌 Notes
