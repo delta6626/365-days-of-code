@@ -175,6 +175,7 @@ I'll try to update this as I go.
 - Day 158 ✅ Built the Commitment Level Manager component for PartnerPair
 - Day 159 ✅ Built the Availability Manager component for PartnerPair, letting users define how quickly they want cofounders to be available
 - Day 160 ✅ Refactored the Availability Manager in PartnerPair to be reusable
+- Day 161 ✅ Built a component in PartnerPair that lets cofounder-seeking users select their preferred startup stages
 ---
 
 ## 📌 Notes
