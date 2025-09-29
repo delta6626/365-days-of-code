@@ -178,6 +178,7 @@ I'll try to update this as I go.
 - Day 161 ✅ Built a component in PartnerPair that lets cofounder-seeking users select their preferred startup stages
 - Day 162 ✅ Refactored the Skills Manager in PartnerPair to handle both user skills and desired cofounder skills
 - Day 163 ✅ Added a DOB field to PartnerPair’s settings page with age validation
+- Day 164 ✅ Added a phone number input component to PartnerPair using react-phone-number-input
 ---
 
 ## 📌 Notes
