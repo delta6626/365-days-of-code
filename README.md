@@ -179,6 +179,7 @@ I'll try to update this as I go.
 - Day 162 ✅ Refactored the Skills Manager in PartnerPair to handle both user skills and desired cofounder skills
 - Day 163 ✅ Added a DOB field to PartnerPair’s settings page with age validation
 - Day 164 ✅ Added a phone number input component to PartnerPair using react-phone-number-input
+- Day 165 ✅ Rewrote the phone number input component using react-international-phone for a better fit and fixed some bugs
 ---
 
 ## 📌 Notes
