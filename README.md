@@ -181,6 +181,7 @@ I'll try to update this as I go.
 - Day 164 ✅ Added a phone number input component to PartnerPair using react-phone-number-input
 - Day 165 ✅ Rewrote the phone number input component using react-international-phone for a better fit and fixed some bugs
 - Day 166 ✅ Recreated the location picker using the country
+- Day 167 ✅ Improved the location picker by switching to a native select for better accessibility and started working on a profile incomplete alert
 ---
 
 ## 📌 Notes
