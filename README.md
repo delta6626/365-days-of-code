@@ -182,6 +182,7 @@ I'll try to update this as I go.
 - Day 165 ✅ Rewrote the phone number input component using react-international-phone for a better fit and fixed some bugs
 - Day 166 ✅ Recreated the location picker using the country
 - Day 167 ✅ Improved the location picker by switching to a native select for better accessibility and started working on a profile incomplete alert
+- Day 168 ✅: Improved profile alerts and refined update button validation for a smoother user experience
 ---
 
 ## 📌 Notes
