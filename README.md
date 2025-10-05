@@ -184,6 +184,7 @@ I'll try to update this as I go.
 - Day 167 ✅ Improved the location picker by switching to a native select for better accessibility and started working on a profile incomplete alert
 - Day 168 ✅: Improved profile alerts and refined update button validation for a smoother user experience
 - Day 169 ✅: Added a utility function to check and return whether a user’s profile is complete after each update
+- Day 170 ✅: Enhanced the UI and integrated the profile completion utility into the settings page for smarter profile validation
 ---
 
 ## 📌 Notes
