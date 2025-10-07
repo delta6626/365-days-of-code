@@ -186,6 +186,7 @@ I'll try to update this as I go.
 - Day 169 ✅: Added a utility function to check and return whether a user’s profile is complete after each update
 - Day 170 ✅: Enhanced the UI and integrated the profile completion utility into the settings page for smarter profile validation
 - Day 171 ✅: Implemented validation logic for social profile links to ensure each platform’s URL follows the correct format
+- Day 172 ✅: Fixed critical bugs in PartnerPair
 ---
 
 ## 📌 Notes
