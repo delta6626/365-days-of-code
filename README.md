@@ -187,6 +187,7 @@ I'll try to update this as I go.
 - Day 170 ✅: Enhanced the UI and integrated the profile completion utility into the settings page for smarter profile validation
 - Day 171 ✅: Implemented validation logic for social profile links to ensure each platform’s URL follows the correct format
 - Day 172 ✅: Fixed critical bugs in PartnerPair
+- Day 173 ✅: Added an “Upgrade Tier” button to the navigation menu and set up routes for viewing other user profiles.
 ---
 
 ## 📌 Notes
