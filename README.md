@@ -189,6 +189,7 @@ I'll try to update this as I go.
 - Day 172 ✅: Fixed critical bugs in PartnerPair
 - Day 173 ✅: Added an “Upgrade Tier” button to the navigation menu and set up routes for viewing other user profiles.
 - Day 174 ✅: Created a stub to simulate fetching other users’ data from the server for upcoming profile view functionality
+- Day 175 ✅: Began developing the Profile Viewer component in PartnerPair to display other users’ profiles
 ---
 
 ## 📌 Notes
