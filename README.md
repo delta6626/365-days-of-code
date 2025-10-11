@@ -191,6 +191,7 @@ I'll try to update this as I go.
 - Day 174 ✅: Created a stub to simulate fetching other users’ data from the server for upcoming profile view functionality
 - Day 175 ✅: Began developing the Profile Viewer component in PartnerPair to display other users’ profiles
 - Day 176 ✅: Added a dynamic “Connect/Disconnect” button UI with styling to the Profile Viewer in PartnerPair
+- Day 177 ✅: Improved the Profile Viewer layout in PartnerPair
 ---
 
 ## 📌 Notes
