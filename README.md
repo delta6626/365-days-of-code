@@ -190,6 +190,7 @@ I'll try to update this as I go.
 - Day 173 ✅: Added an “Upgrade Tier” button to the navigation menu and set up routes for viewing other user profiles.
 - Day 174 ✅: Created a stub to simulate fetching other users’ data from the server for upcoming profile view functionality
 - Day 175 ✅: Began developing the Profile Viewer component in PartnerPair to display other users’ profiles
+- Day 176 ✅: Added a dynamic “Connect/Disconnect” button UI with styling to the Profile Viewer in PartnerPair
 ---
 
 ## 📌 Notes
