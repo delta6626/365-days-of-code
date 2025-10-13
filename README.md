@@ -193,6 +193,7 @@ I'll try to update this as I go.
 - Day 176 ✅: Added a dynamic “Connect/Disconnect” button UI with styling to the Profile Viewer in PartnerPair
 - Day 177 ✅: Improved the Profile Viewer layout in PartnerPair
 - Day 178 ✅: Added a clean skills section to the Profile Viewer component in PartnerPair
+- Day 179 ✅: Added a roles section to the Profile Viewer in PartnerPair and built a reusable chip collection component
 ---
 
 ## 📌 Notes
