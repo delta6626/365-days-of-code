@@ -194,6 +194,7 @@ I'll try to update this as I go.
 - Day 177 ✅: Improved the Profile Viewer layout in PartnerPair
 - Day 178 ✅: Added a clean skills section to the Profile Viewer component in PartnerPair
 - Day 179 ✅: Added a roles section to the Profile Viewer in PartnerPair and built a reusable chip collection component
+- Day 180 ✅: Added a startup section to the Profile Viewer in PartnerPair, adapting dynamically based on whether the user has a startup.
 ---
 
 ## 📌 Notes
