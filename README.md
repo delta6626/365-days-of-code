@@ -200,7 +200,7 @@ I'll try to update this as I go.
 - Day 183 ✅: Improved PartnerPair's social links section with external link icons, cleaned up the user schema, and added a new profileViews field in the user schema with auth service updates
 - Day 184 ✅: Added a section in the Profile Viewer to display user's preferred company stages in PartnerPair
 - Day 185 ✅: Performed maintenance work on PartnerPair including code restructuring, fixing typos, standardizing imports, and created a cloud functions directory
----
+- Day 186 ✅: Updated user schema to store contacts, modified the Profile Viewer, added boilerplate for Firebase functions
 
 ## 📌 Notes
 
