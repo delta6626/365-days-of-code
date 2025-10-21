@@ -201,6 +201,7 @@ I'll try to update this as I go.
 - Day 184 ✅: Added a section in the Profile Viewer to display user's preferred company stages in PartnerPair
 - Day 185 ✅: Performed maintenance work on PartnerPair including code restructuring, fixing typos, standardizing imports, and created a cloud functions directory
 - Day 186 ✅: Updated user schema to store contacts, modified the Profile Viewer, added boilerplate for Firebase functions
+- Day 187 ✅: Worked on a Firebase Cloud Function to fetch a user’s tier by ID and spent time debugging deployment issues in PartnerPair
 
 ## 📌 Notes
 
