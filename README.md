@@ -204,6 +204,7 @@ I'll try to update this as I go.
 - Day 187 ✅: Worked on a Firebase Cloud Function to fetch a user’s tier by ID and spent time debugging deployment issues in PartnerPair
 - Day 188 ✅: Developed and deployed getUserTier() Firebase Cloud Functions for PartnerPair after extensive ESLint and TypeScript configuration fixes
 - Day 189 ✅: Made major backend updates in PartnerPair by creating a new Cloud Function to fetch user profile data and adding new TypeScript types
+- Day 190 ✅: Fixed type errors and began integrating backend data into the Profile Viewer in PartnerPair
 
 ## 📌 Notes
 
