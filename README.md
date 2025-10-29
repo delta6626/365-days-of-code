@@ -209,6 +209,7 @@ I'll try to update this as I go.
 - Day 192 ✅: Minor updates in PartnerPair - cleaned up types and Cloud Functions, and simplified the UI
 - Day 193 ✅: Built the dashboard with greeting and profile status message, and refactored the status alert to use a global Zustand store in PartnerPair.
 - Day 194 ✅: Developed a profile view count tracking system for PartnerPair
+- Day 195 ✅: Started building the backend function for PartnerPair to return profile view count data to the frontend
 
 ## 📌 Notes
 
