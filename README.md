@@ -214,6 +214,7 @@ I'll try to update this as I go.
 - Day 197 ✅: Finished the cloud function for returning profile view count data, integrated React Query on the frontend, and fixed several bugs and type errors
 - Day 198 ✅: Added a new cloud function to fetch user tier data from the backend and built a profile view count component
 - Day 199 ✅: Finished the profile view counter component for PartnerPair, did some refactoring
+- Day 200 ✅: Fixed bugs in the profile view counter, updated related cloud functions, and did some general refactoring across the codebase
 
 ## 📌 Notes
 
