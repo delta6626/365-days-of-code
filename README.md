@@ -215,6 +215,7 @@ I'll try to update this as I go.
 - Day 198 ✅: Added a new cloud function to fetch user tier data from the backend and built a profile view count component
 - Day 199 ✅: Finished the profile view counter component for PartnerPair, did some refactoring
 - Day 200 ✅: Fixed bugs in the profile view counter, updated related cloud functions, and did some general refactoring across the codebase
+- Day 201 ✅: Worked on UI enhancements, set up boilerplate for a new profileInsights route for pro users, did refactoring, and fixed bugs
 
 ## 📌 Notes
 
