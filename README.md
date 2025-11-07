@@ -217,6 +217,7 @@ I'll try to update this as I go.
 - Day 200 ✅: Fixed bugs in the profile view counter, updated related cloud functions, and did some general refactoring across the codebase
 - Day 201 ✅: Worked on UI enhancements, set up boilerplate for a new profileInsights route for pro users, did refactoring, and fixed bugs
 - Day 202 ✅: Continued work on the profile insights page, added data fetching from the backend via React Query, handled loading and error states
+- Day 203 ✅: Set up new types and a component for displaying the visited user on the profile insights page
 
 ## 📌 Notes
 
