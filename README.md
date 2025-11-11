@@ -222,6 +222,7 @@ I'll try to update this as I go.
 - Day 205 ✅: Implemented logic to send last 24-hour view counts, added buttons and styles in profile insights page, improved layout
 - Day 206 ✅: Created a new component for saved contacts, integrated them into the app, refined layouts, tweaked widths and styles
 - Day 207 ✅: Added a new page for viewing users in your contacts, updated the contact counter with a loader and text, plus general style enhancements
+- Day 208 ✅: Implemented add and remove contact functionality in PartnerPair
 
 ## 📌 Notes
 
