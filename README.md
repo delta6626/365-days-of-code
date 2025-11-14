@@ -224,6 +224,7 @@ I'll try to update this as I go.
 - Day 207 ✅: Added a new page for viewing users in your contacts, updated the contact counter with a loader and text, plus general style enhancements
 - Day 208 ✅: Implemented add and remove contact functionality in PartnerPair
 - Day 209 ✅: Updated the add/remove contact button to prevent users from adding themselves, and added unique view tracking alongside total views
+- Day 210 ✅: Made UI and component adjustments and added a new user contacts page to view all of a user’s contacts
 
 ## 📌 Notes
 
