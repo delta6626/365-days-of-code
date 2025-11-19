@@ -230,6 +230,7 @@ I'll try to update this as I go.
 - Day 213 ✅: Set up boilerplate components and a backend function for the suggested profile system; still a work in progress
 - Day 214 ✅: Continued working on the recommendation system for suggesting profiles on the dashboard.
 - Day 215 ✅: Finished the recommendation system algorithm
+- Day 216 ✅: Built the backend cloud function that calls the recommendation algorithm and sends results to the client, plus the frontend React Query setup with loading and error handling
 
 ## 📌 Notes
 
