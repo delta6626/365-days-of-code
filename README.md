@@ -239,6 +239,7 @@ I'll try to update this as I go.
 - Day 222 ✅: Refactored code, polished UI text, added a basic footer, and redesigned the Pro badge
 - Day 223 ✅: Started the browse page with the title, subtitle, and a search bar with an icon
 - Day 224 ✅: Revamped the contacts page by adding a search bar to filter through contacts
+- Day 225 ✅: Set up the Browse page UI with a search input, a filters button, and a Zustand store for managing the filter menu state
 
 ## 📌 Notes
 
