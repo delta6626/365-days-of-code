@@ -240,6 +240,7 @@ I'll try to update this as I go.
 - Day 223 ✅: Started the browse page with the title, subtitle, and a search bar with an icon
 - Day 224 ✅: Revamped the contacts page by adding a search bar to filter through contacts
 - Day 225 ✅: Set up the Browse page UI with a search input, a filters button, and a Zustand store for managing the filter menu state
+- Day 226 ✅: Fixed missing rendering for pro-user commitment level and availability, and resolved a critical React Query + Zustand caching bug.
 
 ## 📌 Notes
 
