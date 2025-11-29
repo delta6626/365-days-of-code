@@ -241,6 +241,7 @@ I'll try to update this as I go.
 - Day 224 ✅: Revamped the contacts page by adding a search bar to filter through contacts
 - Day 225 ✅: Set up the Browse page UI with a search input, a filters button, and a Zustand store for managing the filter menu state
 - Day 226 ✅: Fixed missing rendering for pro-user commitment level and availability, and resolved a critical React Query + Zustand caching bug.
+- Day 227 ✅: Implemented dropdown menus for each filter item on the browse page to keep the UI clean and compact. Menu content comes next
 
 ## 📌 Notes
 
