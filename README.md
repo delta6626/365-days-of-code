@@ -242,6 +242,7 @@ I'll try to update this as I go.
 - Day 225 ✅: Set up the Browse page UI with a search input, a filters button, and a Zustand store for managing the filter menu state
 - Day 226 ✅: Fixed missing rendering for pro-user commitment level and availability, and resolved a critical React Query + Zustand caching bug.
 - Day 227 ✅: Implemented dropdown menus for each filter item on the browse page to keep the UI clean and compact. Menu content comes next
+- Day 228 ✅: Built the skill-filter dropdown content with input, chip rendering, and automatic URL param syncing
 
 ## 📌 Notes
 
