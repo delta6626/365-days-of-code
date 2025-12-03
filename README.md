@@ -244,6 +244,7 @@ I'll try to update this as I go.
 - Day 227 ✅: Implemented dropdown menus for each filter item on the browse page to keep the UI clean and compact. Menu content comes next
 - Day 228 ✅: Built the skill-filter dropdown content with input, chip rendering, and automatic URL param syncing
 - Day 229 ✅: Built the roles-filter dropdown where selected roles update the URL params
+- Day 230 ✅: Built the commitment-level filter dropdown with full URL-param handling
 
 ## 📌 Notes
 
