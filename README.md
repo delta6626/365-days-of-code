@@ -245,6 +245,7 @@ I'll try to update this as I go.
 - Day 228 ✅: Built the skill-filter dropdown content with input, chip rendering, and automatic URL param syncing
 - Day 229 ✅: Built the roles-filter dropdown where selected roles update the URL params
 - Day 230 ✅: Built the commitment-level filter dropdown with full URL-param handling
+- Day 231 ✅: Built the availability filter dropdown with full URL-param handling
 
 ## 📌 Notes
 
