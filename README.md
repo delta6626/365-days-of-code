@@ -246,6 +246,7 @@ I'll try to update this as I go.
 - Day 229 ✅: Built the roles-filter dropdown where selected roles update the URL params
 - Day 230 ✅: Built the commitment-level filter dropdown with full URL-param handling
 - Day 231 ✅: Built the availability filter dropdown with full URL-param handling
+- Day 232 ✅: Basic UI + boilerplate for the Startup Preferences filter dropdown
 
 ## 📌 Notes
 
