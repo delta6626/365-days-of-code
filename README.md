@@ -248,6 +248,7 @@ I'll try to update this as I go.
 - Day 231 ✅: Built the availability filter dropdown with full URL-param handling
 - Day 232 ✅: Basic UI + boilerplate for the Startup Preferences filter dropdown
 - Day 233 ✅: Finished the Startup Preferences filter dropdown.
+- Day 234 ✅: Built the Looking For Skills filter dropdown.
 
 ## 📌 Notes
 
