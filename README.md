@@ -249,6 +249,7 @@ I'll try to update this as I go.
 - Day 232 ✅: Basic UI + boilerplate for the Startup Preferences filter dropdown
 - Day 233 ✅: Finished the Startup Preferences filter dropdown.
 - Day 234 ✅: Built the Looking For Skills filter dropdown.
+- Day 235 ✅: Built Looking Roles and Looking Commitment Level filter dropdowns and did some refactoring
 
 ## 📌 Notes
 
