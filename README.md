@@ -253,6 +253,8 @@ I'll try to update this as I go.
 - Day 236 ✅: Small Nebula UX overhaul - redesigned mobile menu, removed unused UI, added proper loading states
 - Day 237 ✅: Finished the “Looking for Availabilities” filter dropdown with full URL parameter handling in PartnerPair
 - Day 238 ✅: Built the location filter dropdown with complete URL parameter handling
+- Day 239 ✅: Added search + reset buttons and began paywalling certain filters.
+- Day 240 ✅: Added frontend paywalling on browse filters by blocking URL param updates, with backend enforcement still pending.
 
 ## 📌 Notes
 
