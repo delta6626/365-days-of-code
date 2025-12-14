@@ -255,6 +255,7 @@ I'll try to update this as I go.
 - Day 238 ✅: Built the location filter dropdown with complete URL parameter handling
 - Day 239 ✅: Added search + reset buttons and began paywalling certain filters.
 - Day 240 ✅: Added frontend paywalling on browse filters by blocking URL param updates, with backend enforcement still pending.
+- Day 241 ✅: Set up initial state and boilerplate for fetching users based on search filters
 
 ## 📌 Notes
 
