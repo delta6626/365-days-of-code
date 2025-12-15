@@ -257,6 +257,7 @@ I'll try to update this as I go.
 - Day 240 ✅: Added frontend paywalling on browse filters by blocking URL param updates, with backend enforcement still pending.
 - Day 241 ✅: Set up initial state and boilerplate for fetching users based on search filters
 - Day 242 ✅: Continued building search functionality with backend functions, auth checks, and pro feature paywalling
+- Day 243 ✅: Implemented backend filtering logic for sending users based on search params, with pagination next
 
 ## 📌 Notes
 
