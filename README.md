@@ -240,7 +240,7 @@ I'll try to update this as I go.
 - Day 223 ✅: Started the browse page with the title, subtitle, and a search bar with an icon
 - Day 224 ✅: Revamped the contacts page by adding a search bar to filter through contacts
 - Day 225 ✅: Set up the Browse page UI with a search input, a filters button, and a Zustand store for managing the filter menu state
-- Day 226 ✅: Fixed missing rendering for pro-user commitment level and availability, and resolved a critical React Query + Zustand caching bug.
+- Day 226 ✅: Fixed missing rendering for pro-user commitment level and availability, and resolved a critical React Query + Zustand caching bug
 - Day 227 ✅: Implemented dropdown menus for each filter item on the browse page to keep the UI clean and compact. Menu content comes next
 - Day 228 ✅: Built the skill-filter dropdown content with input, chip rendering, and automatic URL param syncing
 - Day 229 ✅: Built the roles-filter dropdown where selected roles update the URL params
@@ -254,11 +254,12 @@ I'll try to update this as I go.
 - Day 237 ✅: Finished the “Looking for Availabilities” filter dropdown with full URL parameter handling in PartnerPair
 - Day 238 ✅: Built the location filter dropdown with complete URL parameter handling
 - Day 239 ✅: Added search + reset buttons and began paywalling certain filters.
-- Day 240 ✅: Added frontend paywalling on browse filters by blocking URL param updates, with backend enforcement still pending.
+- Day 240 ✅: Added frontend paywalling on browse filters by blocking URL param updates, with backend enforcement still pending
 - Day 241 ✅: Set up initial state and boilerplate for fetching users based on search filters
 - Day 242 ✅: Continued building search functionality with backend functions, auth checks, and pro feature paywalling
 - Day 243 ✅: Implemented backend filtering logic for sending users based on search params, with pagination next
-- Day 244 ✅: Added pagination to the backend function for filtered users, with React Query infinite query planned on the frontend.
+- Day 244 ✅: Added pagination to the backend function for filtered users, with React Query infinite query planned on the frontend
+- Day 245 ✅: Fixed backend bugs, set up the initial React Query infinite query, and handled loading and undefined states
 
 ## 📌 Notes
 
