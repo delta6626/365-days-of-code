@@ -261,6 +261,7 @@ I'll try to update this as I go.
 - Day 244 ✅: Added pagination to the backend function for filtered users, with React Query infinite query planned on the frontend
 - Day 245 ✅: Fixed backend bugs, set up the initial React Query infinite query, and handled loading and undefined states
 - Day 246 ✅: Rendered filtered users on the browse page with infinite pagination, loading states, and error handling
+- Day 247 ✅: Did extensive UI polish and bug fixes, with more UX improvements still planned
 
 ## 📌 Notes
 
