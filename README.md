@@ -268,6 +268,7 @@ I'll try to update this as I go.
 - Day 251 ✅: Continued backend development for the user messaging feature.
 - Day 252 ✅: Enabled chat creation from the client via a reusable MessageUser component
 - Day 253 ✅: Built the basic messaging page UI, added chat search, and implemented real-time fetching of all user chats with onSnapshot
+- Day 254 ✅: Updated backend chat data and types, and built a ChatCard component to display chats with user info
 
 ## 📌 Notes
 
