@@ -270,6 +270,7 @@ I'll try to update this as I go.
 - Day 253 ✅: Built the basic messaging page UI, added chat search, and implemented real-time fetching of all user chats with onSnapshot
 - Day 254 ✅: Updated backend chat data and types, and built a ChatCard component to display chats with user info
 - Day 255 ✅: Enhanced the ChatCard with unread message counts, added a delete button placeholder, and implemented chat inbox filtering logic
+- Day 256 ✅: Built the chat viewer, added error handling and accessibility fixes, and implemented loading messages for a selected chat
 
 ## 📌 Notes
 
