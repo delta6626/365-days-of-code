@@ -272,6 +272,7 @@ I'll try to update this as I go.
 - Day 255 ✅: Enhanced the ChatCard with unread message counts, added a delete button placeholder, and implemented chat inbox filtering logic
 - Day 256 ✅: Built the chat viewer, added error handling and accessibility fixes, and implemented loading messages for a selected chat
 - Day 257 ✅: Updated backend chat data, added utilities for data formatting, and improved the UI for displaying chat messages
+- Day 258 ✅: Continued work on messaging. Added the input form for writing messages, implemented the Firebase service to post messages to the correct collection, and fixed several bugs.
 
 ## 📌 Notes
 
