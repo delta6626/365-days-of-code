@@ -279,6 +279,7 @@ I'll try to update this as I go.
 - Day 262 ✅: Refactored profile update logic to update chat metadata to reflect changes in a user’s profile attributes
 - Day 263 ✅: Polished the message component by expanding the messaging area, adding clickable timestamps to chat bubbles, and making minor chat card refinements
 - Day 264 ✅: Expanded the chat area by removing the message page footer, fixed layout issues, made general improvements, and added a dashboard indicator for total unread messages across all chats
+- Day 265 ✅: Refactored unread message indicator to a blinking red dot and updated the nav menu to highlight the selected item
 
 ## 📌 Notes
 
