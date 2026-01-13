@@ -285,6 +285,7 @@ I'll try to update this as I go.
 - Day 268 ✅: Added an icebreaker generator button near the message input along with bug fixes and UI enhancements
 - Day 269 ✅: Made UI enhancements, improved the forums discussion page, and created a custom 404 page
 - Day 270 ✅: Continued UI enhancements and started reworking the profile picture selector by moving to initial based avatars
+- Day 271 ✅: Built the profile picture upload UI with file input handling, size and media type validation, and a service to upload images to Firebase Storage
 
 ## 📌 Notes
 
