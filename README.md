@@ -288,6 +288,7 @@ I'll try to update this as I go.
 - Day 271 ✅: Built the profile picture upload UI with file input handling, size and media type validation, and a service to upload images to Firebase Storage
 - Day 272 ✅: Completed the profile picture upload feature with size limits, single image enforcement, automatic cleanup in Firebase Storage, and related UI enhancements
 - Day 273 ✅: Fixed a backend function bug, added UI enhancements, introduced generic error modals, and implemented a default email opt in with settings control
+- Day 274 ✅: Improved error handling with modal based feedback and added icons to modals for better clarity
 
 ## 📌 Notes
 
