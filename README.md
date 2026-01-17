@@ -291,6 +291,7 @@ I'll try to update this as I go.
 - Day 274 ✅: Improved error handling with modal based feedback and added icons to modals for better clarity
 - Day 275 ✅: Designed and implemented a polished footer component with a variety of useful links
 - Day 276 ✅: Created and integrated a privacy policy component for PartnerPair
+- Day 277 ✅: Created a Terms of Service page for PartnerPair
 
 ## 📌 Notes
 
