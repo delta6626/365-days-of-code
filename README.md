@@ -292,6 +292,7 @@ I'll try to update this as I go.
 - Day 275 ✅: Designed and implemented a polished footer component with a variety of useful links
 - Day 276 ✅: Created and integrated a privacy policy component for PartnerPair
 - Day 277 ✅: Created a Terms of Service page for PartnerPair
+- Day 278 ✅: Started building a message abuse reporting system to help keep conversations safe and moderated
 
 ## 📌 Notes
 
