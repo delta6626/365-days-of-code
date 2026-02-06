@@ -310,6 +310,7 @@ I'll try to update this as I go.
 - Day 293 ✅: Made the PartnerPair settings page fully mobile responsive
 - Day 294 ✅: Fixed issues in the Google authentication flow and improved responsiveness across all dropdown components
 - Day 295 ✅: Made the PartnerPair dashboard fully responsive and applied minor style adjustments across the app
+- Day 296 ✅: Made the user profile viewer, saved contacts viewer, and profile view insights responsive
 
 ## 📌 Notes
 
