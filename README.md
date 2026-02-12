@@ -314,7 +314,8 @@ I'll try to update this as I go.
 - Day 297 ✅: Enforced chat and contact limits for basic accounts and added upgrade CTAs to encourage tier upgrade
 - Day 298 ✅: Fixed multiple TypeScript errors and started work on the subscription system
 - Day 299 ✅: Continued working on the subscription system
-- Day 300 ✅: Built the subscription upgrade page detailing Pro benefits, Basic limitations, and the subscribe button
+- Day 300 ✅: Built the subscription upgrade page detailing Pro benefits, Basic limitations, and the subscribe button/
+- Day 301 ✅: Worked on the backend subscription flow by implementing access token retrieval and subscription creation logic
 
 ## 📌 Notes
 
