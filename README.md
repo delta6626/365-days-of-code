@@ -318,6 +318,7 @@ I'll try to update this as I go.
 - Day 301 ✅: Worked on the backend subscription flow by implementing access token retrieval and subscription creation logic
 - Day 302 ✅: Implemented frontend handling for subscription approval
 - Day 303 ✅: Implemented the PayPal webhook on the backend along with a function to verify webhook signatures
+- Day 304 ✅: Nearly completed the subscription system. Cancellation feature remaining.
 
 ## 📌 Notes
 
