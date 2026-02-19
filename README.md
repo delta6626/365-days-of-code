@@ -323,6 +323,7 @@ I'll try to update this as I go.
 - Day 306 ✅: Started building the delete account feature
 - Day 307 ✅: Implemented the backend logic for account deletion
 - Day 308 ✅: Integrated success and error modals into the account deletion flow and fixed server side bugs
+- Day 309 ✅: Made the footer and upgrade page fully responsive
 
 ## 📌 Notes
 
