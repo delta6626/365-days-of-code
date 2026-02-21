@@ -324,6 +324,7 @@ I'll try to update this as I go.
 - Day 307 ✅: Implemented the backend logic for account deletion
 - Day 308 ✅: Integrated success and error modals into the account deletion flow and fixed server side bugs
 - Day 309 ✅: Made the footer and upgrade page fully responsive
+- Day 310 ✅: Created mock UI components for the landing page to replace screenshots
 
 ## 📌 Notes
 
