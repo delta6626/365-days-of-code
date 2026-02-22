@@ -325,6 +325,7 @@ I'll try to update this as I go.
 - Day 308 ✅: Integrated success and error modals into the account deletion flow and fixed server side bugs
 - Day 309 ✅: Made the footer and upgrade page fully responsive
 - Day 310 ✅: Created mock UI components for the landing page to replace screenshots
+- Day 311 ✅: Completed the landing page with mock UI components
 
 ## 📌 Notes
 
