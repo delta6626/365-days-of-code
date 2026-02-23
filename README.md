@@ -326,6 +326,7 @@ I'll try to update this as I go.
 - Day 309 ✅: Made the footer and upgrade page fully responsive
 - Day 310 ✅: Created mock UI components for the landing page to replace screenshots
 - Day 311 ✅: Completed the landing page with mock UI components
+- Day 312 ✅: Made the PartnerPair landing page responsive
 
 ## 📌 Notes
 
