@@ -329,6 +329,7 @@ I'll try to update this as I go.
 - Day 312 ✅: Made the PartnerPair landing page responsive
 - Day 313 ✅: Polished UI and fixed React warnings and errors across all components
 - Day 314 ✅: Fixed npm security vulnerabilities through auditing, resolved React warnings, and implemented scroll to ID navigation
+- Day 315 ✅: Fixed broken navigation links and designed and integrated a logo into the navbar
 
 ## 📌 Notes
 
