@@ -330,6 +330,7 @@ I'll try to update this as I go.
 - Day 313 ✅: Polished UI and fixed React warnings and errors across all components
 - Day 314 ✅: Fixed npm security vulnerabilities through auditing, resolved React warnings, and implemented scroll to ID navigation
 - Day 315 ✅: Fixed broken navigation links and designed and integrated a logo into the navbar
+- Day 316 ✅: Added TOS and Privacy Policy links to the sign up page and implemented redirects between login and sign up
 
 ## 📌 Notes
 
