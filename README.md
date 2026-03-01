@@ -331,6 +331,7 @@ I'll try to update this as I go.
 - Day 314 ✅: Fixed npm security vulnerabilities through auditing, resolved React warnings, and implemented scroll to ID navigation
 - Day 315 ✅: Fixed broken navigation links and designed and integrated a logo into the navbar
 - Day 316 ✅: Added TOS and Privacy Policy links to the sign up page and implemented redirects between login and sign up
+- Day 317 ✅: Refactored navbar to conditionally render links across auth and home pages
 
 ## 📌 Notes
 
