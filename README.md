@@ -332,6 +332,7 @@ I'll try to update this as I go.
 - Day 315 ✅: Fixed broken navigation links and designed and integrated a logo into the navbar
 - Day 316 ✅: Added TOS and Privacy Policy links to the sign up page and implemented redirects between login and sign up
 - Day 317 ✅: Refactored navbar to conditionally render links across auth and home pages
+- Day 318 ✅: Started designing the password reset UI
 
 ## 📌 Notes
 
