@@ -334,6 +334,7 @@ I'll try to update this as I go.
 - Day 317 ✅: Refactored navbar to conditionally render links across auth and home pages
 - Day 318 ✅: Started designing the password reset UI
 - Day 319 ✅: Completed password reset functionality for PartnerPair
+- Day 320 ✅: Minor fixes and enhancements, followed by successful Vercel deployment of [PartnerPair]("https://partnerpair.vercel.app")
 
 ## 📌 Notes
 
