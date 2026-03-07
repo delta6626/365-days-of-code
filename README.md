@@ -338,6 +338,7 @@ I'll try to update this as I go.
 - Day 321 ✅: Post-launch homepage fixes for PartnerPair
 - Day 322 ✅: Fixed styling issues on the PartnerPair verification page
 - Day 323 ✅: Started a new project called [Vowed](https://github.com/delta6626/vowed) - A public commitment platform
+- Day 324 ✅: Set up fonts, themes, navbar and hero section for Vowed
 
 ## 📌 Notes
 
