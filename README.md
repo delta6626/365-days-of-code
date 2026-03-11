@@ -341,6 +341,7 @@ I'll try to update this as I go.
 - Day 324 ✅: Set up fonts, themes, navbar and hero section for Vowed
 - Day 325 ✅: Continued building the Vowed landing page
 - Day 326 ✅: Refactored landing page, added footer, privacy policy and ToS pages for Vowed
+- Day 327 ✅: Started integrating Clerk for authentication in Vowed
 
 ## 📌 Notes
 
