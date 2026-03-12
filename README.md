@@ -343,6 +343,7 @@ I'll try to update this as I go.
 - Day 326 ✅: Refactored landing page, added footer, privacy policy and ToS pages for Vowed
 - Day 327 ✅: Started integrating Clerk for authentication in Vowed
 - Day 328 ✅: Completed Clerk auth integration — sign in and sign up functional
+- Day 329 ✅: Styled Vowed auth pages and set up Clerk middleware
 
 ## 📌 Notes
 
