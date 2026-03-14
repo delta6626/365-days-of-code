@@ -344,6 +344,7 @@ I'll try to update this as I go.
 - Day 327 ✅: Started integrating Clerk for authentication in Vowed
 - Day 328 ✅: Completed Clerk auth integration — sign in and sign up functional
 - Day 329 ✅: Styled Vowed auth pages and set up Clerk middleware
+- Day 330 ✅: Started building the Vowed dashboard
 
 ## 📌 Notes
 
