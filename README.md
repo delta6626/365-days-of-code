@@ -346,6 +346,7 @@ I'll try to update this as I go.
 - Day 329 ✅: Styled Vowed auth pages and set up Clerk middleware
 - Day 330 ✅: Started building the Vowed dashboard
 - Day 331 ✅: Set up webhooks and types for Vowed
+- Day 332 ✅: Defined types, implemented webhooks and minor fixes for Vowed
 
 ## 📌 Notes
 
