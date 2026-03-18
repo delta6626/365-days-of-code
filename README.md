@@ -348,6 +348,7 @@ I'll try to update this as I go.
 - Day 331 ✅: Set up webhooks and types for Vowed
 - Day 332 ✅: Defined types, implemented webhooks and minor fixes for Vowed
 - Day 333 ✅: More refactoring and styling on Vowed
+- Day 334 ✅: Started wiring Vowed dashboard with backend data for user stats
 
 ## 📌 Notes
 
