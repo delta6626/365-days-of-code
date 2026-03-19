@@ -350,6 +350,7 @@ I'll try to update this as I go.
 - Day 333 ✅: More refactoring and styling on Vowed
 - Day 334 ✅: Started wiring Vowed dashboard with backend data for user stats
 - Day 335 ✅: Completed dashboard stats and started building the create vow page
+- Day 336 ✅: Continued building the create vow page for Vowed
 
 ## 📌 Notes
 
