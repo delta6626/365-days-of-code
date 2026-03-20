@@ -351,6 +351,7 @@ I'll try to update this as I go.
 - Day 334 ✅: Started wiring Vowed dashboard with backend data for user stats
 - Day 335 ✅: Completed dashboard stats and started building the create vow page
 - Day 336 ✅: Continued building the create vow page for Vowed
+- Day 337 ✅: Worked on create vow page — styles and React state logic
 
 ## 📌 Notes
 
