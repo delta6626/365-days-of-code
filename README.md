@@ -352,6 +352,7 @@ I'll try to update this as I go.
 - Day 335 ✅: Completed dashboard stats and started building the create vow page
 - Day 336 ✅: Continued building the create vow page for Vowed
 - Day 337 ✅: Worked on create vow page — styles and React state logic
+- Day 338 ✅: Added data validation logic including minimum vow period for Vowed
 
 ## 📌 Notes
 
