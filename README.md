@@ -355,6 +355,7 @@ I'll try to update this as I go.
 - Day 338 ✅: Added data validation logic including minimum vow period for Vowed
 - Day 339 ✅: Built the backend API for creating vows
 - Day 340 ✅: Completed backend for vow creation, refactored form into components, started working on vow ID copy feature
+- Day 341 ✅: Implemented copy vow ID logic, refactoring and bug fixes
 
 ## 📌 Notes
 
