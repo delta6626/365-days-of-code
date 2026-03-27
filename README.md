@@ -357,6 +357,7 @@ I'll try to update this as I go.
 - Day 340 ✅: Completed backend for vow creation, refactored form into components, started working on vow ID copy feature
 - Day 341 ✅: Implemented copy vow ID logic, refactoring and bug fixes
 - Day 342 ✅: Built API for fetching vows and added tab-based dashboard navigation with status classification
+- Day 343 ✅: UI enhancements for Vowed
 
 ## 📌 Notes
 
