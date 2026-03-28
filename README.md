@@ -359,6 +359,7 @@ I'll try to update this as I go.
 - Day 342 ✅: Built API for fetching vows and added tab-based dashboard navigation with status classification
 - Day 343 ✅: UI enhancements for Vowed
 - Day 344 ✅: Added server-side UTC timestamp to API, integrated it into components, and set up react-scan for performance monitoring
+- Day 345 ✅: Built the countdown logic for Vowed
 
 ## 📌 Notes
 
