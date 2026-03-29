@@ -360,6 +360,7 @@ I'll try to update this as I go.
 - Day 343 ✅: UI enhancements for Vowed
 - Day 344 ✅: Added server-side UTC timestamp to API, integrated it into components, and set up react-scan for performance monitoring
 - Day 345 ✅: Built the countdown logic for Vowed
+- Day 346 ✅: UI enhancements for Vowed
 
 ## 📌 Notes
 
