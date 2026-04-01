@@ -362,6 +362,7 @@ I'll try to update this as I go.
 - Day 345 ✅: Built the countdown logic for Vowed
 - Day 346 ✅: UI enhancements for Vowed
 - Day 347 ✅: Set up Clerk webhook user update and delete logic, integrated React Query, fixed TS errors
+- Day 348 ✅: Major refactor of dashboard and vow manager component with React Query
 
 ## 📌 Notes
 
