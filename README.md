@@ -364,6 +364,7 @@ I'll try to update this as I go.
 - Day 347 ✅: Set up Clerk webhook user update and delete logic, integrated React Query, fixed TS errors
 - Day 348 ✅: Major refactor of dashboard and vow manager component with React Query
 - Day 349 ✅: Refactoring and critical countdown bug fix for Vowed
+- Day 350 ✅: Added vow visibility to vow container, started building vow resolution logic
 
 ## 📌 Notes
 
