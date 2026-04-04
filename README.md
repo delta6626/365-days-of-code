@@ -366,6 +366,7 @@ I'll try to update this as I go.
 - Day 349 ✅: Refactoring and critical countdown bug fix for Vowed
 - Day 350 ✅: Added vow visibility to vow container, started building vow resolution logic
 - Day 351 ✅: Completed frontend for vow resolution modal
+- Day 352 ✅: Completed backend logic for vow resolution
 
 ## 📌 Notes
 
