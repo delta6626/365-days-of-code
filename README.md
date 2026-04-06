@@ -367,6 +367,7 @@ I'll try to update this as I go.
 - Day 350 ✅: Added vow visibility to vow container, started building vow resolution logic
 - Day 351 ✅: Completed frontend for vow resolution modal
 - Day 352 ✅: Completed backend logic for vow resolution
+- Day 353 ✅: Bug fixes and React Query invalidation to keep dashboard and vow data fresh
 
 ## 📌 Notes
 
