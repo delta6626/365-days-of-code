@@ -372,6 +372,7 @@ I'll try to update this as I go.
 - Day 355 ✅: Started building the backend for fetching individual vow data
 - Day 356 ✅: Completed backend for individual vow fetching and handling the data fetching with react query
 - Day 357 ✅: Started building the frontend for the vow viewing page
+- Day 358 ✅: Continued frontend work on the vow viewing page
 
 ## 📌 Notes
 
