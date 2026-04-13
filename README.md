@@ -374,6 +374,7 @@ I'll try to update this as I go.
 - Day 357 ✅: Started building the frontend for the vow viewing page
 - Day 358 ✅: Continued frontend work on the vow viewing page
 - Day 359 ✅: Completed vow viewing page frontend for all vow states, comment counts and view counts
+- Day 360 ✅: Started building vow commenting feature
 
 ## 📌 Notes
 
