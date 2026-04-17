@@ -378,6 +378,7 @@ I'll try to update this as I go.
 - Day 361 ✅: Continued building the vow commenting feature
 - Day 362 ✅: Shipped vow commenting feature, minor frontend tweaks remaining
 - Day 363 ✅: Frontend polish on comments and built a generic reusable modal component
+- Day 364 ✅: Started building user profiles for Vowed
 
 ## 📌 Notes
 
